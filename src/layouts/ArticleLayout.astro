@@ -60,16 +60,18 @@ const frontmatter: ArticleFrontmatter = {
         <p style="margin: 0 0 1rem; font-size: 0.9rem;">
           Jeden Freitag eine ehrliche Wein-Empfehlung in deine Inbox.
         </p>
-        <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+        <form action="https://buttondown.com/api/emails/embed-subscribe/fknwine" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/fknwine', 'popupwindow')" style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
           <input
             type="email"
+            name="email"
             placeholder="deine@email.de"
+            required
             style="padding: 0.6rem 0.75rem; border: 3px solid var(--color-text); background: var(--color-surface); color: var(--color-text); font-family: var(--font-sans); font-size: 0.9rem; min-width: 180px;"
           />
           <button class="brutal-btn" type="submit" style="border-color: var(--color-cta); font-size: 0.85rem;">
             Anmelden
           </button>
-        </div>
+        </form>
       </div>
     </footer>
   </article>

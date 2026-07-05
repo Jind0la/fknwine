@@ -1,43 +1,53 @@
-# Astro Starter Kit: Minimal
+# FKN Wine 🍷
 
-```sh
-npm create astro@latest -- --template minimal
+**F*ck Nice Wine.** Ehrliche Wein-Empfehlungen ohne Snob-Getue. Welcher Supermarkt-Wein ist wirklich gut? Find's raus.
+
+## Was ist das?
+
+Ein autonomer Affiliate-Wein-Blog für Deutsche die Wein trinken wollen ohne Sommelier zu werden. Keine €80-Bordeaux-Empfehlungen. Kein "Noten von nasser Schieferplatte"-Gelaber. Nur: **Schmeckt geil. Kostet wenig. Kauf das.**
+
+## Tech
+
+- **Astro 7** — Static Site Generation
+- **Tailwind CSS 4** — Utility-first (Vite plugin)
+- **Neubrutalist Design** — Space Grotesk + Inter, Dark Mode
+- **Cloudflare Pages** — Hosting & Auto-Deploy via GitHub
+
+## Struktur
+
+```
+src/
+├── layouts/
+│   ├── Layout.astro        # Base layout (nav, footer, SEO)
+│   └── ArticleLayout.astro # Article wrapper
+├── pages/
+│   ├── index.astro         # Homepage mit Artikelliste
+│   ├── impressum.astro
+│   ├── datenschutz.astro
+│   └── artikel/
+│       ├── beste-weine-unter-10-euro-supermarkt.astro
+│       ├── aldi-lidl-edeka-wein-vergleich.astro
+│       └── wein-fuer-pizza.astro
+└── styles/
+    └── global.css          # Neubrutalist Design System
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Deployment
 
-## 🚀 Project Structure
+Push auf `main` → Cloudflare Pages baut und deployed automatisch.
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run build    # Produktion-Build nach dist/
+npm run dev      # Lokaler Dev-Server :4321
+npm run preview  # Build-Vorschau lokal
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Roadmap
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [x] 3 Artikel live (Supermarkt-Weine, Discounter-Vergleich, Pizza-Wein)
+- [x] Favicon & OG-Images
+- [x] Newsletter-Integration (Buttondown)
+- [ ] Affiliate-Links (Awin/Adcell)
+- [ ] Artikel-Cron (freitags auto-publishen)
+- [ ] X-Thread-Automation
+- [ ] Cloudflare Web Analytics
