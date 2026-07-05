@@ -218,53 +218,87 @@ const articles = [
 </Layout>
 
 <style>
-  /* === HERO BG: animated wine gradient === */
+  /* === HERO BG: wine stain / splash === */
   .hero-section {
-    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(196, 30, 58, 0.12) 0%, transparent 60%),
-                radial-gradient(ellipse 50% 50% at 85% 30%, rgba(255, 210, 63, 0.06) 0%, transparent 50%),
+    background: radial-gradient(ellipse 70% 50% at 80% 20%, rgba(120, 20, 40, 0.18) 0%, transparent 50%),
+                radial-gradient(ellipse 40% 60% at 10% 70%, rgba(80, 15, 20, 0.22) 0%, transparent 50%),
                 var(--color-bg);
   }
 
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image:
-      linear-gradient(rgba(255, 210, 63, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 210, 63, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    animation: hero-drift 20s linear infinite;
     pointer-events: none;
+    overflow: hidden;
   }
 
-  @keyframes hero-drift {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(60px, 60px); }
+  /* Wine stain blobs */
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -5%;
+    width: 45%;
+    height: 80%;
+    background: radial-gradient(ellipse at 60% 40%, rgba(160, 25, 50, 0.15) 0%, transparent 70%);
+    border-radius: 60% 40% 55% 45% / 40% 55% 45% 60%;
+    transform: rotate(-12deg);
+    filter: blur(30px);
+    animation: stain-breathe 8s ease-in-out infinite;
   }
 
-  /* Decorative wine ring */
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    bottom: -15%;
+    left: -8%;
+    width: 35%;
+    height: 60%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(100, 15, 30, 0.2) 0%, transparent 65%);
+    border-radius: 45% 55% 60% 40% / 55% 40% 45% 60%;
+    transform: rotate(8deg);
+    filter: blur(35px);
+  }
+
+  @keyframes stain-breathe {
+    0%, 100% { opacity: 0.7; transform: rotate(-12deg) scale(1); }
+    50% { opacity: 1; transform: rotate(-10deg) scale(1.08); }
+  }
+
+  /* Drip accent */
   .hero-deco {
     position: absolute;
-    top: 6rem;
-    right: -3rem;
-    width: 280px;
-    height: 280px;
-    border: 2px solid rgba(196, 30, 58, 0.2);
-    border-radius: 50%;
+    top: 3rem;
+    right: 2rem;
+    width: 4px;
+    height: 120px;
+    background: linear-gradient(to bottom, rgba(196, 30, 58, 0.4), rgba(196, 30, 58, 0.05) 80%, transparent);
+    border-radius: 0 0 2px 2px;
     pointer-events: none;
-    animation: deco-pulse 6s ease-in-out infinite;
+    animation: drip 4s ease-in-out infinite;
+    transform-origin: top;
   }
 
   .hero-deco::after {
     content: '';
     position: absolute;
-    inset: 12px;
-    border: 2px solid rgba(255, 210, 63, 0.15);
+    bottom: 0;
+    left: -6px;
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle, rgba(196, 30, 58, 0.35) 0%, transparent 70%);
     border-radius: 50%;
+    animation: drip-dot 4s ease-in-out infinite;
   }
 
-  @keyframes deco-pulse {
-    0%, 100% { opacity: 0.25; transform: scale(1) rotate(0deg); }
-    50% { opacity: 0.45; transform: scale(1.05) rotate(3deg); }
+  @keyframes drip {
+    0%, 100% { height: 120px; opacity: 0.6; }
+    50% { height: 140px; opacity: 0.9; }
+  }
+
+  @keyframes drip-dot {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(10px); opacity: 0.9; }
   }
 
   @media (min-width: 768px) {
