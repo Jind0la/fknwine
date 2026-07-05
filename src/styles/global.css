@@ -143,6 +143,71 @@ a:hover {
   outline-offset: 2px;
 }
 
+/* === Article Content Spacing === */
+.article-content p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.article-content h3 {
+  font-size: 1.2rem;
+  margin-top: 2.75rem;
+  margin-bottom: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 2px solid #c41e3a;
+}
+.article-content h3:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0.5rem;
+}
+.article-content ul,
+.article-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+.article-content li {
+  margin-bottom: 0.4rem;
+}
+.article-content hr {
+  margin: 2rem 0;
+  border: none;
+  border-top: 3px solid var(--color-primary);
+}
+.article-content blockquote {
+  margin: 1.25rem 0;
+}
+.article-content img {
+  width: 100%;
+  height: auto;
+  border: 3px solid var(--color-primary);
+  box-shadow: 4px 4px 0 0 var(--color-primary);
+  margin: 1.5rem 0;
+}
+.article-content table {
+  margin: 1rem 0;
+}
+.article-content a {
+  color: var(--color-cta);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.article-content .brutal-btn {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+.article-content blockquote {
+  border-left: 4px solid var(--color-primary);
+  padding-left: 1rem;
+  margin-left: 0;
+  font-style: italic;
+  color: color-mix(in srgb, var(--color-text) 75%, transparent);
+}
+
 /* === Utilities === */
 .wrapper {
   max-width: 1100px;
