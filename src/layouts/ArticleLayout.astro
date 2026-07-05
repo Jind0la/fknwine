@@ -85,3 +85,11 @@ const frontmatter: ArticleFrontmatter = {
     </footer>
   </article>
 </Layout>
+
+<style is:global>
+  /* Ensure button text is readable — override any cascade issues */
+  .article-content .brutal-btn,
+  a.brutal-btn {
+    color: #0a0a0a !important;
+  }
+</style>
