@@ -86,24 +86,32 @@ const frontmatter: ArticleFrontmatter = {
   </article>
 </Layout>
 
-<style>
+<style is:global>
+  /* === Vertical Rhythm === */
   .article-content p {
     margin-bottom: 1rem;
     font-size: 1.05rem;
   }
   .article-content h2 {
     font-size: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 0.75rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
   }
   .article-content h3 {
     font-size: 1.2rem;
-    margin-top: 2rem;
+    margin-top: 2.75rem;
     margin-bottom: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 2px solid #c41e3a;
+  }
+  .article-content h3:first-of-type {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0.5rem;
   }
   .article-content .brutal-btn {
-    margin-top: 0.25rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
   }
   .article-content ul,
   .article-content ol {
@@ -114,7 +122,9 @@ const frontmatter: ArticleFrontmatter = {
     margin-bottom: 0.4rem;
   }
   .article-content hr {
-    margin: 1.5rem 0;
+    margin: 2rem 0;
+    border: none;
+    border-top: 3px solid var(--color-primary);
   }
   .article-content blockquote {
     margin: 1.25rem 0;
