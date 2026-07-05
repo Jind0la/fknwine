@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import Icon from '../../components/Icon.astro';
 
 const frontmatter = {
   title: 'Wein für den Grillabend — 7 Flaschen die jeder Mannschaftstrinker feiert',
@@ -22,13 +23,13 @@ const frontmatter = {
   </p>
 
   <blockquote>
-    🥩 Regel Nr. 1 beim Grill-Wein: Der Wein muss FETT und RAUCH aushalten. Leichte Weine gehen unter.
+    <Icon name="flame" size={20} color="var(--color-primary)" /> Regel Nr. 1 beim Grill-Wein: Der Wein muss FETT und RAUCH aushalten. Leichte Weine gehen unter.
     Volle, fruchtige Rote mit wenig Tannin sind deine Freunde. Und ja — Rosé vom Grill ist KEIN Verbrechen.
   </blockquote>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🍷 Die Rotwein-Fraktion: 4 Flaschen für Fleisch</h2>
+  <h2><Icon name="wine" size={20} color="var(--color-primary)" /> Die Rotwein-Fraktion: 4 Flaschen für Fleisch</h2>
 
   <h3>1. Premium Steak Wine Malbec Mendoza — €7,99 (Lidl)</h3>
   <p>
@@ -92,7 +93,7 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🥂 Rosé & Weiß: Die Überraschungs-Gäste</h2>
+  <h2><Icon name="wine" size={20} color="var(--color-primary)" /> Rosé & Weiß: Die Überraschungs-Gäste</h2>
 
   <h3>5. Aldi Catalunya Rosé — €3,99 (Aldi)</h3>
   <p>
@@ -135,7 +136,7 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>📊 Cheat Sheet: Welcher Wein zu was vom Grill?</h2>
+  <h2><Icon name="chart-bar" size={18} color="var(--color-primary)" /> Cheat Sheet: Welcher Wein zu was vom Grill?</h2>
 
   <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem;">
     <thead>
@@ -147,34 +148,34 @@ const frontmatter = {
     <tbody>
       <tr style="border-bottom: 1px solid var(--color-surface);">
         <td style="padding: 0.75rem 0.5rem;">Rindersteak / Entrecôte</td>
-        <td style="padding: 0.75rem 0.5rem;">Malbec Mendoza 🥩</td>
+        <td style="padding: 0.75rem 0.5rem;">Malbec Mendoza <Icon name="flame" size={20} color="var(--color-primary)" /></td>
       </tr>
       <tr style="border-bottom: 1px solid var(--color-surface);">
         <td style="padding: 0.75rem 0.5rem;">Schweinenacken / Rippchen</td>
-        <td style="padding: 0.75rem 0.5rem;">Tempranillo Navarra 🍷</td>
+        <td style="padding: 0.75rem 0.5rem;">Tempranillo Navarra <Icon name="wine" size={20} color="var(--color-primary)" /></td>
       </tr>
       <tr style="border-bottom: 1px solid var(--color-surface);">
         <td style="padding: 0.75rem 0.5rem;">Lamm / Grillwürste</td>
-        <td style="padding: 0.75rem 0.5rem;">Syrah Peloponnes 🌿</td>
+        <td style="padding: 0.75rem 0.5rem;">Syrah Peloponnes <Icon name="wine" size={20} color="var(--color-primary)" /></td>
       </tr>
       <tr style="border-bottom: 1px solid var(--color-surface);">
         <td style="padding: 0.75rem 0.5rem;">Hähnchen / Geflügel</td>
-        <td style="padding: 0.75rem 0.5rem;">Catalunya Rosé 🥂</td>
+        <td style="padding: 0.75rem 0.5rem;">Catalunya Rosé <Icon name="wine" size={20} color="var(--color-primary)" /></td>
       </tr>
       <tr style="border-bottom: 1px solid var(--color-surface);">
         <td style="padding: 0.75rem 0.5rem;">BBQ-Sauce / Marinaden</td>
-        <td style="padding: 0.75rem 0.5rem;">Primitivo 💣</td>
+        <td style="padding: 0.75rem 0.5rem;">Primitivo <Icon name="flame" size={18} color="var(--color-primary)" /></td>
       </tr>
       <tr>
         <td style="padding: 0.75rem 0.5rem;">Fisch / Garnelen</td>
-        <td style="padding: 0.75rem 0.5rem;">Greco Beneventano 🐟</td>
+        <td style="padding: 0.75rem 0.5rem;">Greco Beneventano <Icon name="fish" size={18} color="var(--color-primary)" /></td>
       </tr>
     </tbody>
   </table>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🧠 Die 3 Grill-Wein-Gesetze</h2>
+  <h2><Icon name="lightbulb" size={18} color="var(--color-cta)" /> Die 3 Grill-Wein-Gesetze</h2>
 
   <ol>
     <li><strong>Fett braucht Frucht.</strong> Magerer Wein + fettiges Steak = Wein schmeckt nach Wasser. Volle, fruchtige Weine halten dagegen.</li>
@@ -185,7 +186,7 @@ const frontmatter = {
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
   <p style="font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.03em;">
-    🍷 Deine geheime Grill-Wein-Waffe die wir nicht auf dem Schirm haben? Her damit.
+    <Icon name="wine" size={20} color="var(--color-primary)" /> Deine geheime Grill-Wein-Waffe die wir nicht auf dem Schirm haben? Her damit.
     Nächste Woche: Rosé-Guide — welche Flasche schmeckt und welche ist überteuerte Zuckerpampe?
   </p>
 </ArticleLayout>

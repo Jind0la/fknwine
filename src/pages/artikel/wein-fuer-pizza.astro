@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import Icon from '../../components/Icon.astro';
 
 const frontmatter = {
   title: 'Wein für Pizza — 5 Flaschen die besser sind als dein Standard-Chianti',
@@ -22,13 +23,13 @@ const frontmatter = {
   </p>
 
   <blockquote>
-    🍕 Regel Nr. 1 bei Pizza-Wein: Säure > Tannin. Dein Wein braucht genug Säure um gegen die
+    <Icon name="pizza" size={20} color="var(--color-primary)" /> Regel Nr. 1 bei Pizza-Wein: Säure > Tannin. Dein Wein braucht genug Säure um gegen die
     Tomatensoße anzukommen — sonst schmeckt er flach.
   </blockquote>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🍷 1. Barbera d'Asti Superiore — Der echte Pizza-König</h2>
+  <h2><Icon name="wine" size={20} color="var(--color-primary)" /> 1. Barbera d'Asti Superiore — Der echte Pizza-König</h2>
 
   <p>
     <strong>Vergiss Chianti.</strong> Barbera ist DER Pizza-Wein Italiens — das sagen nicht wir,
@@ -47,7 +48,7 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🍷 2. Primitivo — Die Fruchtbombe für Fleisch-Pizza</h2>
+  <h2><Icon name="wine" size={20} color="var(--color-primary)" /> 2. Primitivo — Die Fruchtbombe für Fleisch-Pizza</h2>
 
   <p>
     Primitivo (in Kalifornien: Zinfandel) ist das Gegenteil von dezent. Der kommt mit
@@ -68,7 +69,7 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🍷 3. Lambrusco — Ja, wirklich. Der mit Blubber.</h2>
+  <h2><Icon name="wine" size={20} color="var(--color-primary)" /> 3. Lambrusco — Ja, wirklich. Der mit Blubber.</h2>
 
   <p>
     <strong>Ich weiß was du denkst.</strong> „Lambrusco? Der süße Billig-Prickler aus
@@ -92,13 +93,13 @@ const frontmatter = {
   </a>
 
   <blockquote>
-    🧊 Lambrusco gehört in den KÜHLSCHRANK. 10-12°C. So kalt wie dein Weißwein.
+    <Icon name="snowflake" size={18} color="var(--color-primary)" /> Lambrusco gehört in den KÜHLSCHRANK. 10-12°C. So kalt wie dein Weißwein.
     Und ja, der BIO von Lidl ist halbtrocken — perfekt für den Einstieg.
   </blockquote>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🍷 4. Nero d'Avola — Sizilien im Glas</h2>
+  <h2><Icon name="wine" size={20} color="var(--color-primary)" /> 4. Nero d'Avola — Sizilien im Glas</h2>
 
   <p>
     Siziliens Antwort auf „Welcher Wein zur Pizza?". Nero d'Avola ist
@@ -118,7 +119,7 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🍷 5. Montepulciano d'Abruzzo — Der Unschlagbare</h2>
+  <h2><Icon name="wine" size={20} color="var(--color-primary)" /> 5. Montepulciano d'Abruzzo — Der Unschlagbare</h2>
 
   <p>
     Wenn's schnell gehen muss und du keinen Bock auf Nachdenken hast:
@@ -138,7 +139,7 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>📊 Cheat Sheet: Welcher Wein zu welcher Pizza?</h2>
+  <h2><Icon name="chart-bar" size={18} color="var(--color-primary)" /> Cheat Sheet: Welcher Wein zu welcher Pizza?</h2>
 
   <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem;">
     <thead>
@@ -150,30 +151,30 @@ const frontmatter = {
     <tbody>
       <tr style="border-bottom: 1px solid var(--color-surface);">
         <td style="padding: 0.75rem 0.5rem;">Margherita</td>
-        <td style="padding: 0.75rem 0.5rem;">Lambrusco 🥂</td>
+        <td style="padding: 0.75rem 0.5rem;">Lambrusco <Icon name="wine" size={20} color="var(--color-primary)" /></td>
       </tr>
       <tr style="border-bottom: 1px solid var(--color-surface);">
         <td style="padding: 0.75rem 0.5rem;">Salami / Diavola</td>
-        <td style="padding: 0.75rem 0.5rem;">Barbera d'Asti 🍷</td>
+        <td style="padding: 0.75rem 0.5rem;">Barbera d'Asti <Icon name="wine" size={20} color="var(--color-primary)" /></td>
       </tr>
       <tr style="border-bottom: 1px solid var(--color-surface);">
         <td style="padding: 0.75rem 0.5rem;">Prosciutto / Rucola</td>
-        <td style="padding: 0.75rem 0.5rem;">Nero d'Avola 🍷</td>
+        <td style="padding: 0.75rem 0.5rem;">Nero d'Avola <Icon name="wine" size={20} color="var(--color-primary)" /></td>
       </tr>
       <tr style="border-bottom: 1px solid var(--color-surface);">
         <td style="padding: 0.75rem 0.5rem;">Meat Lovers / BBQ</td>
-        <td style="padding: 0.75rem 0.5rem;">Primitivo 💣</td>
+        <td style="padding: 0.75rem 0.5rem;">Primitivo <Icon name="flame" size={18} color="var(--color-primary)" /></td>
       </tr>
       <tr>
         <td style="padding: 0.75rem 0.5rem;">„Ich will einfach Wein"</td>
-        <td style="padding: 0.75rem 0.5rem;">Montepulciano d'Abruzzo ✅</td>
+        <td style="padding: 0.75rem 0.5rem;">Montepulciano d'Abruzzo <Icon name="check-circle" size={18} color="var(--color-primary)" /></td>
       </tr>
     </tbody>
   </table>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🤌 Die 3 Goldenen Pizza-Wein-Regeln</h2>
+  <h2> Die 3 Goldenen Pizza-Wein-Regeln</h2>
 
   <ol>
     <li><strong>Säure schlägt Tannin.</strong> Tomatensoße ist sauer. Dein Wein muss sauer sein. Hohes Tannin + Tomatensoße = Metallgeschmack. Igitt.</li>
@@ -184,7 +185,7 @@ const frontmatter = {
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
   <p style="font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.03em;">
-    🍷 Hast du 'ne Pizza-Wein-Kombo die uns umhaut? Her damit.
+    <Icon name="wine" size={20} color="var(--color-primary)" /> Hast du 'ne Pizza-Wein-Kombo die uns umhaut? Her damit.
     Nächste Woche: Die 10 besten Weine unter €10 im Supermarkt.
   </p>
 </ArticleLayout>

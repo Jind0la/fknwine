@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import Icon from '../../components/Icon.astro';
 
 const frontmatter = {
   title: 'Rosé-Guide — Welcher schmeckt und welcher ist überteuerte Zuckerpampe',
@@ -22,15 +23,15 @@ const frontmatter = {
   </p>
 
   <blockquote>
-    🧊 Regel Nr. 1: Rosé wird KALT getrunken. 6-8°C. So kalt wie dein Bier. Wenn er warm wird,
+    <Icon name="snowflake" size={18} color="var(--color-primary)" /> Regel Nr. 1: Rosé wird KALT getrunken. 6-8°C. So kalt wie dein Bier. Wenn er warm wird,
     schmeckt auch der beste Rosé nach Kompost. Kühlschrank, nicht Küchentisch.
   </blockquote>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🏆 Die Gewinner: 6 Rosés die du kaufen solltest</h2>
+  <h2><Icon name="trophy" size={22} color="var(--color-cta)" /> Die Gewinner: 6 Rosés die du kaufen solltest</h2>
 
-  <h3>🥇 1. Aldi Catalunya Rosé — €3,99 (Aldi)</h3>
+  <h3><span style="font-family: var(--font-display); font-weight: 700; color: var(--color-cta); font-size: 1.1em;">1.</span> 1. Aldi Catalunya Rosé — €3,99 (Aldi)</h3>
   <p>
     <strong>Der beste Rosé unter €5.</strong> Spanischer Rosé aus Katalonien, trocken, schmeckt
     nach Erdbeere und Sommer. Kein künstlicher Süßstoff-Geschmack, kein Chemie-Abgang.
@@ -42,7 +43,7 @@ const frontmatter = {
     <li><strong>Preis/Leistung:</strong> Unschlagbar. 10/10.</li>
   </ul>
 
-  <h3>🥈 2. Monalie Côtes de Provence Rosé AOP — €5,99 (Lidl, im Angebot)</h3>
+  <h3><span style="font-family: var(--font-display); font-weight: 700; color: #c0c0c0; font-size: 1.1em;">2.</span> 2. Monalie Côtes de Provence Rosé AOP — €5,99 (Lidl, im Angebot)</h3>
   <p>
     <strong>Provence-Qualität zum Discount-Preis.</strong> Monalie ist 'ne echte Côtes de Provence AOP —
     das offizielle Siegel der französischen Rosé-Region. 90 Punkte, Silber bei Mundus Vini 2025.
@@ -58,7 +59,7 @@ const frontmatter = {
     Bei Lidl ansehen →
   </a>
 
-  <h3>🥉 3. Aldi Editions Côtes de Provence Rosé — €7,99 (Aldi)</h3>
+  <h3><span style="font-family: var(--font-display); font-weight: 700; color: #cd7f32; font-size: 1.1em;">3.</span> 3. Aldi Editions Côtes de Provence Rosé — €7,99 (Aldi)</h3>
   <p>
     Aldis Premium-Schiene. Echter Provence-Rosé mit dem AOP-Siegel, trocken, delikate
     Frucht. Der schmeckt wie 'ne €15-Flasche aus dem Fachhandel. Perfekt wenn du Gäste
@@ -113,28 +114,28 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🚫 Die Verlierer: 4 Rosés die du stehen lässt</h2>
+  <h2><Icon name="prohibit" size={18} color="var(--color-primary)" /> Die Verlierer: 4 Rosés die du stehen lässt</h2>
 
   <p>
     Jeder Guide braucht 'ne Anti-Liste. Diese Rosés haben wir probiert —
     und bereut.
   </p>
 
-  <h3>❌ Dornfelder Rosé — €2,19 (Aldi & Co.)</h3>
+  <h3><Icon name="x-circle" size={18} color="var(--color-primary)" /> Dornfelder Rosé — €2,19 (Aldi & Co.)</h3>
   <p>
     Billig. Süß. Schmeckt nach Traubensaft mit Alkohol. Der Dornfelder ist
     eigentlich eine Rotwein-Traube — als Rosé verliert er alles was ihn
     interessant macht und behält nur die Süße. Für €2,19 kriegst du genau was du bezahlst.
   </p>
 
-  <h3>❌ Jeder Rosé mit „lieblich" auf dem Etikett</h3>
+  <h3><Icon name="x-circle" size={18} color="var(--color-primary)" /> Jeder Rosé mit „lieblich" auf dem Etikett</h3>
   <p>
     <strong>„Lieblich" ist Code für „Zucker".</strong> Ein guter Rosé ist trocken — oder
     maximal halbtrocken. Wenn da „lieblich" draufsteht, kaufst du im Prinzip
     'ne Mischung aus Wein und Limo. Ohne die Kohlensäure die das erträglich machen würde.
   </p>
 
-  <h3>❌ Tetra-Pak-Rosé unter €2</h3>
+  <h3><Icon name="x-circle" size={18} color="var(--color-primary)" /> Tetra-Pak-Rosé unter €2</h3>
   <p>
     Wir verstehen den Reiz. €1,99 für 'nen Liter Rosé — das ist billiger als Wasser.
     Aber das ist auch kein Wein. Das ist ein industrielles Produkt das technisch
@@ -142,7 +143,7 @@ const frontmatter = {
     Kauf den Aldi Catalunya für €3,99. Das sind €2 mehr für tausendmal mehr Genuss.
   </p>
 
-  <h3>❌ „White Zinfandel" (wenn du ihn in Deutschland findest)</h3>
+  <h3><Icon name="x-circle" size={18} color="var(--color-primary)" /> „White Zinfandel" (wenn du ihn in Deutschland findest)</h3>
   <p>
     Der White Zinfandel ist DER Grund warum Amerikaner denken Rosé sei süß.
     Zuckerbombe, null Struktur, schmeckt nach Erdbeer-Limo. In Deutschland
@@ -151,7 +152,7 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🧠 Die 5 Rosé-Regeln fürs nächste Supermarkt-Regal</h2>
+  <h2><Icon name="lightbulb" size={18} color="var(--color-cta)" /> Die 5 Rosé-Regeln fürs nächste Supermarkt-Regal</h2>
 
   <ol>
     <li><strong>Trocken > alles.</strong> Guter Rosé ist trocken. Halbtrocken geht zur Not. Lieblich ist Zucker.</li>
@@ -164,7 +165,7 @@ const frontmatter = {
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
   <p style="font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.03em;">
-    🍷 Dein Lieblings-Rosé hat's nicht in die Liste geschafft? Schick ihn rüber — wir testen alles.
+    <Icon name="wine" size={20} color="var(--color-primary)" /> Dein Lieblings-Rosé hat's nicht in die Liste geschafft? Schick ihn rüber — wir testen alles.
     Nächste Woche: 8 Weine die du NIEMALS kaufen solltest — und womit du sie ersetzt.
   </p>
 </ArticleLayout>

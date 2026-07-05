@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 
 const articles = [
   {
@@ -101,7 +102,7 @@ const articles = [
   <section class="wrapper" style="padding-bottom: 3rem;">
     <div class="brutal-card" style="border-color: var(--color-cta); box-shadow: 6px 6px 0 0 var(--color-cta);">
       <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
-        <span style="font-size: 1.75rem;">🏆</span>
+        <span style="font-size: 1.75rem;"><Icon name="trophy" size={22} color="var(--color-cta)" /></span>
         <h2 style="margin: 0; font-size: 1.5rem; color: var(--color-cta);">Top 3 der Woche</h2>
         <span style="font-family: var(--font-display); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.6;">
           Blind verkostet. Kein Bullshit.
@@ -111,7 +112,7 @@ const articles = [
       <div style="display: grid; gap: 1rem;">
         <!-- #1 -->
         <div style="display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; padding-bottom: 1rem; border-bottom: 2px solid var(--color-surface);">
-          <span style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--color-cta); line-height: 1;">🥇</span>
+          <span style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--color-cta); line-height: 1;"><span style="font-family: var(--font-display); font-weight: 700; color: var(--color-cta); font-size: 1.1em;">1.</span></span>
           <div>
             <h3 style="font-size: 1.1rem; margin: 0 0 0.15rem;">Riesling Scheurebe</h3>
             <p style="font-size: 0.85rem; margin: 0; opacity: 0.7;">€4,99 — Lidl</p>
@@ -122,7 +123,7 @@ const articles = [
 
         <!-- #2 -->
         <div style="display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; padding-bottom: 1rem; border-bottom: 2px solid var(--color-surface);">
-          <span style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: #c0c0c0; line-height: 1;">🥈</span>
+          <span style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: #c0c0c0; line-height: 1;"><span style="font-family: var(--font-display); font-weight: 700; color: #c0c0c0; font-size: 1.1em;">2.</span></span>
           <div>
             <h3 style="font-size: 1.1rem; margin: 0 0 0.15rem;">Catalunya Rosé</h3>
             <p style="font-size: 0.85rem; margin: 0; opacity: 0.7;">€3,99 — Aldi</p>
@@ -133,7 +134,7 @@ const articles = [
 
         <!-- #3 -->
         <div style="display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center;">
-          <span style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: #cd7f32; line-height: 1;">🥉</span>
+          <span style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: #cd7f32; line-height: 1;"><span style="font-family: var(--font-display); font-weight: 700; color: #cd7f32; font-size: 1.1em;">3.</span></span>
           <div>
             <h3 style="font-size: 1.1rem; margin: 0 0 0.15rem;">Casato dei Medici Chianti</h3>
             <p style="font-size: 0.85rem; margin: 0; opacity: 0.7;">€8,99 — Lidl</p>
@@ -210,7 +211,7 @@ const articles = [
       </p>
       <div style="margin-top: 1.5rem;">
         <span style="font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em;">
-          🍷 F*ck Nice Wine.
+          <Icon name="wine" size={20} color="var(--color-primary)" /> F*ck Nice Wine.
         </span>
       </div>
     </div>

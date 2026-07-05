@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import Icon from '../../components/Icon.astro';
 
 const frontmatter = {
   title: 'Aldi vs. Lidl vs. Edeka — wo kaufst du den besten Wein?',
@@ -21,13 +22,13 @@ const frontmatter = {
   </p>
 
   <blockquote>
-    ⚠️ Spoiler: Lidl dominiert. Aber Aldi und Edeka haben ihre Nischen. Lies weiter bevor du
+    <Icon name="warning-circle" size={18} color="var(--color-cta)" /> Spoiler: Lidl dominiert. Aber Aldi und Edeka haben ihre Nischen. Lies weiter bevor du
     dein Geld falsch ausgibst.
   </blockquote>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🏆 Lidl — Der Discounter-Wein-König</h2>
+  <h2><Icon name="trophy" size={22} color="var(--color-cta)" /> Lidl — Der Discounter-Wein-König</h2>
 
   <p>
     <strong>Kein Wettbewerb.</strong> Lidl hat seit 2018 jedes Jahr „Discounter des Jahres" 
@@ -41,7 +42,7 @@ const frontmatter = {
     auf die gleiche Plempe klebt.
   </p>
 
-  <h3>🥇 Lidl's Stärken</h3>
+  <h3><span style="font-family: var(--font-display); font-weight: 700; color: var(--color-cta); font-size: 1.1em;">1.</span> Lidl's Stärken</h3>
   <ul>
     <li><strong>Italienische Weine:</strong> Chianti, Greco di Tufo, Primitivo — Lidls 
     Italien-Regal ist das beste im deutschen Discount. Punkt.</li>
@@ -60,7 +61,7 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🥈 Aldi — Der unterschätzte Underdog</h2>
+  <h2><span style="font-family: var(--font-display); font-weight: 700; color: #c0c0c0; font-size: 1.1em;">2.</span> Aldi — Der unterschätzte Underdog</h2>
 
   <p>
     Aldi hat keinen „Discounter des Jahres"-Award. Aber Aldi hat etwas das Lidl nicht hat: 
@@ -68,7 +69,7 @@ const frontmatter = {
     im Regal hat, ist Aldi zuverlässig „gut genug" — und das quer durch alle Kategorien.
   </p>
 
-  <h3>🥇 Aldi's Stärken</h3>
+  <h3><span style="font-family: var(--font-display); font-weight: 700; color: var(--color-cta); font-size: 1.1em;">1.</span> Aldi's Stärken</h3>
   <ul>
     <li><strong>Rosé:</strong> Der Catalunya Rosé für €3,99 ist der beste Wein unter €4 
     in Deutschland. Keine Übertreibung.</li>
@@ -87,7 +88,7 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🥉 Edeka — Der Premium-Player</h2>
+  <h2><span style="font-family: var(--font-display); font-weight: 700; color: #cd7f32; font-size: 1.1em;">3.</span> Edeka — Der Premium-Player</h2>
 
   <p>
     Edeka ist kein Discounter. Edeka ist ein Supermarkt mit Weinabteilung. Und das 
@@ -95,7 +96,7 @@ const frontmatter = {
     Dafür kriegst du aber auch Sachen die Aldi und Lidl nie im Regal hätten.
   </p>
 
-  <h3>🥇 Edekas Stärken</h3>
+  <h3><span style="font-family: var(--font-display); font-weight: 700; color: var(--color-cta); font-size: 1.1em;">1.</span> Edekas Stärken</h3>
   <ul>
     <li><strong>Deutsche Spitzenweine:</strong> Kloster Eberbach, VDP-Winzer, 
     Spätburgunder aus Baden — das findest du nur hier.</li>
@@ -114,7 +115,7 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>📊 Die Tabelle: Wer gewinnt wo?</h2>
+  <h2><Icon name="chart-bar" size={18} color="var(--color-primary)" /> Die Tabelle: Wer gewinnt wo?</h2>
 
   <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem;">
     <thead>
@@ -127,37 +128,37 @@ const frontmatter = {
     <tbody>
       <tr style="border-bottom: 1px solid var(--color-surface);">
         <td style="padding: 0.75rem 0.5rem;"><strong>Italienische Weine</strong></td>
-        <td style="padding: 0.75rem 0.5rem;">Lidl 🥇</td>
+        <td style="padding: 0.75rem 0.5rem;">Lidl <span style="font-family: var(--font-display); font-weight: 700; color: var(--color-cta); font-size: 1.1em;">1.</span></td>
         <td style="padding: 0.75rem 0.5rem;">Unschlagbare Auswahl, faire Preise</td>
       </tr>
       <tr style="border-bottom: 1px solid var(--color-surface);">
         <td style="padding: 0.75rem 0.5rem;"><strong>Weißwein (deutsch)</strong></td>
-        <td style="padding: 0.75rem 0.5rem;">Edeka 🥇</td>
+        <td style="padding: 0.75rem 0.5rem;">Edeka <span style="font-family: var(--font-display); font-weight: 700; color: var(--color-cta); font-size: 1.1em;">1.</span></td>
         <td style="padding: 0.75rem 0.5rem;">Kloster Eberbach, VDP, beste Qualität</td>
       </tr>
       <tr style="border-bottom: 1px solid var(--color-surface);">
         <td style="padding: 0.75rem 0.5rem;"><strong>Rosé</strong></td>
-        <td style="padding: 0.75rem 0.5rem;">Aldi 🥇</td>
+        <td style="padding: 0.75rem 0.5rem;">Aldi <span style="font-family: var(--font-display); font-weight: 700; color: var(--color-cta); font-size: 1.1em;">1.</span></td>
         <td style="padding: 0.75rem 0.5rem;">Bester Preis, Provence-Qualität</td>
       </tr>
       <tr style="border-bottom: 1px solid var(--color-surface);">
         <td style="padding: 0.75rem 0.5rem;"><strong>Schaumwein/Sekt</strong></td>
-        <td style="padding: 0.75rem 0.5rem;">Lidl 🥇</td>
+        <td style="padding: 0.75rem 0.5rem;">Lidl <span style="font-family: var(--font-display); font-weight: 700; color: var(--color-cta); font-size: 1.1em;">1.</span></td>
         <td style="padding: 0.75rem 0.5rem;">Crémant, Winzersekt, alles unter €8</td>
       </tr>
       <tr style="border-bottom: 1px solid var(--color-surface);">
         <td style="padding: 0.75rem 0.5rem;"><strong>Unter €5</strong></td>
-        <td style="padding: 0.75rem 0.5rem;">Lidl 🥇</td>
+        <td style="padding: 0.75rem 0.5rem;">Lidl <span style="font-family: var(--font-display); font-weight: 700; color: var(--color-cta); font-size: 1.1em;">1.</span></td>
         <td style="padding: 0.75rem 0.5rem;">Beste Qualität im Billig-Segment</td>
       </tr>
       <tr style="border-bottom: 1px solid var(--color-surface);">
         <td style="padding: 0.75rem 0.5rem;"><strong>Über €10 (Premium)</strong></td>
-        <td style="padding: 0.75rem 0.5rem;">Edeka 🥇</td>
+        <td style="padding: 0.75rem 0.5rem;">Edeka <span style="font-family: var(--font-display); font-weight: 700; color: var(--color-cta); font-size: 1.1em;">1.</span></td>
         <td style="padding: 0.75rem 0.5rem;">Auswahl die Aldi/Lidl nicht haben</td>
       </tr>
       <tr>
         <td style="padding: 0.75rem 0.5rem;"><strong>Gesamtsieger</strong></td>
-        <td style="padding: 0.75rem 0.5rem;"><strong>Lidl 🏆</strong></td>
+        <td style="padding: 0.75rem 0.5rem;"><strong>Lidl <Icon name="trophy" size={22} color="var(--color-cta)" /></strong></td>
         <td style="padding: 0.75rem 0.5rem;">4 von 6 Kategorien gewonnen</td>
       </tr>
     </tbody>
@@ -165,7 +166,7 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🧠 Das Fazit in 3 Sätzen</h2>
+  <h2><Icon name="lightbulb" size={18} color="var(--color-cta)" /> Das Fazit in 3 Sätzen</h2>
 
   <ol>
     <li><strong>Lidl für alles unter €10.</strong> Keiner macht bessere Weine im Discount-Segment. Geh zu Lidl für deinen Alltagswein.</li>
@@ -176,7 +177,7 @@ const frontmatter = {
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
   <p style="font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.03em;">
-    🍷 Du hast 'nen heißen Tipp den wir verpasst haben? Schick ihn rüber. 
+    <Icon name="wine" size={20} color="var(--color-primary)" /> Du hast 'nen heißen Tipp den wir verpasst haben? Schick ihn rüber. 
     Nächste Woche: Wein für Pizza — 5 Flaschen die besser sind als dein Standard-Chianti.
   </p>
 </ArticleLayout>

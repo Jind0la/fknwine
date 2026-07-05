@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import Icon from '../../components/Icon.astro';
 
 const frontmatter = {
   title: 'Die 10 besten Weine unter €10 im Supermarkt — Juli 2026',
@@ -22,12 +23,12 @@ const frontmatter = {
   </p>
 
   <blockquote>
-    ⚠️ Kein Wein-Snob-Gelaber. Keine „Noten von nasser Schieferplatte". Nur: Schmeckt. Kostet wenig. Kauf das.
+    <Icon name="warning-circle" size={18} color="var(--color-cta)" /> Kein Wein-Snob-Gelaber. Keine „Noten von nasser Schieferplatte". Nur: Schmeckt. Kostet wenig. Kauf das.
   </blockquote>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🌿 Weißweine</h2>
+  <h2><Icon name="wine" size={20} color="var(--color-primary)" /> Weißweine</h2>
 
   <h3>1. Riesling Scheurebe — €4,99 (Lidl)</h3>
   <p>
@@ -74,7 +75,7 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🍷 Rotweine</h2>
+  <h2><Icon name="wine" size={20} color="var(--color-primary)" /> Rotweine</h2>
 
   <h3>4. Casato dei Medici Chianti — €8,99 (Lidl)</h3>
   <p>
@@ -134,7 +135,7 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🥂 Rosé &amp; Schaumwein</h2>
+  <h2><Icon name="wine" size={20} color="var(--color-primary)" /> Rosé &amp; Schaumwein</h2>
 
   <h3>8. Aldi Catalunya Rosé — €3,99 (Aldi)</h3>
   <p>
@@ -174,7 +175,7 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🚫 Was du NICHT kaufen solltest</h2>
+  <h2><Icon name="prohibit" size={18} color="var(--color-primary)" /> Was du NICHT kaufen solltest</h2>
 
   <p>Jede Liste braucht eine Anti-Liste. Diese Weine haben wir getestet — kauf sie nicht:</p>
 
@@ -195,7 +196,7 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🧠 So navigierst du ein Supermarkt-Weinregal in 30 Sekunden</h2>
+  <h2><Icon name="lightbulb" size={18} color="var(--color-cta)" /> So navigierst du ein Supermarkt-Weinregal in 30 Sekunden</h2>
 
   <ol>
     <li><strong>Ignorier die Etiketten.</strong> Schönes Etikett ≠ guter Wein. Die hässlichsten Flaschen sind oft die besten.</li>
@@ -208,7 +209,7 @@ const frontmatter = {
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
   <p style="font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.03em;">
-    🍷 Hast du einen Geheimtipp den wir testen sollen? Schick ihn uns — wir probieren alles.
+    <Icon name="wine" size={20} color="var(--color-primary)" /> Hast du einen Geheimtipp den wir testen sollen? Schick ihn uns — wir probieren alles.
     Nächste Woche: Aldi vs. Lidl — der große Discounter-Wein-Vergleich.
   </p>
 </ArticleLayout>

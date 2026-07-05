@@ -1,6 +1,7 @@
 ---
 import Layout from './Layout.astro';
 import type { CollectionEntry } from 'astro:content';
+import Icon from '../components/Icon.astro';
 
 // Static article template — will be replaced by content collections later
 interface ArticleFrontmatter {
@@ -64,7 +65,7 @@ const frontmatter: ArticleFrontmatter = {
         style="border: 3px solid var(--color-cta); padding: 1.5rem; text-align: center; box-shadow: 4px 4px 0 0 var(--color-cta);"
       >
         <p style="margin: 0 0 0.75rem; font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 0.9rem;">
-          🍷 Kein Bock auf Wein-Snobs?
+          <Icon name="wine" size={20} color="var(--color-primary)" /> Kein Bock auf Wein-Snobs?
         </p>
         <p style="margin: 0 0 1rem; font-size: 0.9rem;">
           Jeden Freitag eine ehrliche Wein-Empfehlung in deine Inbox.

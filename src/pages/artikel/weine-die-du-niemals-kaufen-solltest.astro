@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import Icon from '../../components/Icon.astro';
 
 const frontmatter = {
   title: '8 Weine die du NIEMALS kaufen solltest — und was du stattdessen trinkst',
@@ -23,13 +24,13 @@ const frontmatter = {
   </p>
 
   <blockquote>
-    ⚠️ Ein guter Wein muss NICHT teuer sein. Aber ein schlechter Wein kann teuer SEIN.
+    <Icon name="warning-circle" size={18} color="var(--color-cta)" /> Ein guter Wein muss NICHT teuer sein. Aber ein schlechter Wein kann teuer SEIN.
     Preis ist kein Qualitäts-Garant — besonders nicht im Supermarkt.
   </blockquote>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>❌ 1. „Barrique"-Weine unter €5</h2>
+  <h2><Icon name="x-circle" size={18} color="var(--color-primary)" /> 1. „Barrique"-Weine unter €5</h2>
 
   <p>
     „Im Barrique gereift" klingt edel. Bei €4,99 ist es Betrug. Echtes Barrique —
@@ -39,14 +40,14 @@ const frontmatter = {
     nicht nach Wein.
   </p>
 
-  <p><strong>👆 Stattdessen:</strong> Syrah Peloponnes (€4,99, Lidl). Der braucht kein Fake-Holz. Würzig, pfeffrig, echt.</p>
+  <p><strong><Icon name="arrow-bend-up-right" size={16} color="var(--color-primary)" /> Stattdessen:</strong> Syrah Peloponnes (€4,99, Lidl). Der braucht kein Fake-Holz. Würzig, pfeffrig, echt.</p>
   <a href="https://www.lidl.de/p/syrah-peloponnes-pge-trocken-rotwein-2024/p100269055" class="brutal-btn" style="font-size: 0.85rem; padding: 0.5rem 1rem;">
     Syrah Peloponnes bei Lidl →
   </a>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>❌ 2. Jeder Wein mit Tier auf dem Etikett (bei Penny & Co.)</h2>
+  <h2><Icon name="x-circle" size={18} color="var(--color-primary)" /> 2. Jeder Wein mit Tier auf dem Etikett (bei Penny & Co.)</h2>
 
   <p>
     Känguru, Adler, Löwe, Pinguin — die Discounter haben 'nen ganzen Zoo im Weinregal.
@@ -55,11 +56,11 @@ const frontmatter = {
     Ausnahme: Der Penny-VDP-Wein. Aber da ist das Tier auch nicht das Verkaufsargument.
   </p>
 
-  <p><strong>👆 Stattdessen:</strong> Aldi Catalunya Rosé (€3,99, Aldi). Hässliches Etikett, großartiger Wein.</p>
+  <p><strong><Icon name="arrow-bend-up-right" size={16} color="var(--color-primary)" /> Stattdessen:</strong> Aldi Catalunya Rosé (€3,99, Aldi). Hässliches Etikett, großartiger Wein.</p>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>❌ 3. Französischer Wein unter €5</h2>
+  <h2><Icon name="x-circle" size={18} color="var(--color-primary)" /> 3. Französischer Wein unter €5</h2>
 
   <p>
     Frankreich macht großartigen Wein. Aber nicht für €5. Die Produktionskosten in
@@ -68,14 +69,14 @@ const frontmatter = {
     abgefüllt wurde und nur das Etikett französisch ist. Egal was: Es wird enttäuschen.
   </p>
 
-  <p><strong>👆 Stattdessen:</strong> Für unter €5: Italien oder Spanien. Montepulciano d'Abruzzo (€4,99, Lidl). Gleicher Preis, echte Qualität.</p>
+  <p><strong><Icon name="arrow-bend-up-right" size={16} color="var(--color-primary)" /> Stattdessen:</strong> Für unter €5: Italien oder Spanien. Montepulciano d'Abruzzo (€4,99, Lidl). Gleicher Preis, echte Qualität.</p>
   <a href="https://www.lidl.de/p/dieci-nove-dieci-montepulciano-d-abruzzo-doc-trocken-rotwein-2024/p100350799" class="brutal-btn" style="font-size: 0.85rem; padding: 0.5rem 1rem;">
     Montepulciano d'Abruzzo bei Lidl →
   </a>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>❌ 4. „Lieblich" auf dem Etikett + unter €3</h2>
+  <h2><Icon name="x-circle" size={18} color="var(--color-primary)" /> 4. „Lieblich" auf dem Etikett + unter €3</h2>
 
   <p>
     Das ist kein Wein. Das ist Traubensaft der vergessen hat dass er Wein werden wollte.
@@ -84,11 +85,11 @@ const frontmatter = {
     Grundzutat — der Wein — von vornherein Schrott war.
   </p>
 
-  <p><strong>👆 Stattdessen:</strong> Doppio Passo Primitivo (€7,99, Rewe/Edeka). Halbtrocken, ja. Aber echter Wein aus echten Trauben.</p>
+  <p><strong><Icon name="arrow-bend-up-right" size={16} color="var(--color-primary)" /> Stattdessen:</strong> Doppio Passo Primitivo (€7,99, Rewe/Edeka). Halbtrocken, ja. Aber echter Wein aus echten Trauben.</p>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>❌ 5. Tetra-Pak-Wein (1L für €1,99)</h2>
+  <h2><Icon name="x-circle" size={18} color="var(--color-primary)" /> 5. Tetra-Pak-Wein (1L für €1,99)</h2>
 
   <p>
     „Aber der schmeckt doch gar nicht so schlecht!" — doch, tut er. Du hast dich nur dran gewöhnt.
@@ -97,14 +98,14 @@ const frontmatter = {
     kriegst du Wein der tatsächlich nach Trauben schmeckt.
   </p>
 
-  <p><strong>👆 Stattdessen:</strong> Riesling Scheurebe (€4,99, Lidl). Drei Euro mehr, dreitausendmal besser.</p>
+  <p><strong><Icon name="arrow-bend-up-right" size={16} color="var(--color-primary)" /> Stattdessen:</strong> Riesling Scheurebe (€4,99, Lidl). Drei Euro mehr, dreitausendmal besser.</p>
   <a href="https://www.lidl.de/p/riesling-scheurebe-nahe-qba-halbtrocken-weisswein-2024/p100233942" class="brutal-btn" style="font-size: 0.85rem; padding: 0.5rem 1rem;">
     Riesling Scheurebe bei Lidl →
   </a>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>❌ 6. Supermarkt-Merlot unter €7</h2>
+  <h2><Icon name="x-circle" size={18} color="var(--color-primary)" /> 6. Supermarkt-Merlot unter €7</h2>
 
   <p>
     Merlot ist die meistgehasste Rebsorte unter Wein-Snobs — und im Supermarkt-Segment unter €7
@@ -112,14 +113,14 @@ const frontmatter = {
     entweder einen guten Winzer (teuer) oder er ist 'ne Enttäuschung. Unter €7: Finger weg.
   </p>
 
-  <p><strong>👆 Stattdessen:</strong> Mezquiriz Tempranillo Navarra (€6,99, Lidl). Spanisch. Holz. Charakter. Alles was Merlot verspricht und nicht hält.</p>
+  <p><strong><Icon name="arrow-bend-up-right" size={16} color="var(--color-primary)" /> Stattdessen:</strong> Mezquiriz Tempranillo Navarra (€6,99, Lidl). Spanisch. Holz. Charakter. Alles was Merlot verspricht und nicht hält.</p>
   <a href="https://www.lidl.de/p/mezquiriz-tempranillo-tinto-roble-navarra-do-trocken-rotwein-2022/p100033109" class="brutal-btn" style="font-size: 0.85rem; padding: 0.5rem 1rem;">
     Tempranillo Navarra bei Lidl →
   </a>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>❌ 7. Sekt unter €5</h2>
+  <h2><Icon name="x-circle" size={18} color="var(--color-primary)" /> 7. Sekt unter €5</h2>
 
   <p>
     Billig-Sekt ist 'ne der grausamsten Erfindungen der Getränkeindustrie. Der schmeckt
@@ -127,14 +128,14 @@ const frontmatter = {
     und der Kater kommt garantiert noch während du trinkst. Es gibt keinen guten Sekt unter €5.
   </p>
 
-  <p><strong>👆 Stattdessen:</strong> Lidl Crémant de Bordeaux (€8,99, Lidl). Champagner-Methode, echter Geschmack, €9 statt €35.</p>
+  <p><strong><Icon name="arrow-bend-up-right" size={16} color="var(--color-primary)" /> Stattdessen:</strong> Lidl Crémant de Bordeaux (€8,99, Lidl). Champagner-Methode, echter Geschmack, €9 statt €35.</p>
   <a href="https://www.lidl.de/p/dulong-cremant-de-bordeaux-aop-brut-schaumwein/p100261918" class="brutal-btn" style="font-size: 0.85rem; padding: 0.5rem 1rem;">
     Crémant de Bordeaux bei Lidl →
   </a>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>❌ 8. Alles was du nur kaufst weil's im Angebot ist</h2>
+  <h2><Icon name="x-circle" size={18} color="var(--color-primary)" /> 8. Alles was du nur kaufst weil's im Angebot ist</h2>
 
   <p>
     „Reduziert von €9,99 auf €5,99" — klingt nach Schnäppchen. Ist es aber nur wenn der Wein
@@ -143,11 +144,11 @@ const frontmatter = {
     und du denkst du hast ein Geschäft gemacht. In Wahrheit war der Wein nie mehr als €5,99 wert.
   </p>
 
-  <p><strong>👆 Stattdessen:</strong> Kauf nur Weine die du KENNST oder die in unserer Bestenliste stehen. Der „Angebot"-Sticker ist Marketing, nicht Qualität.</p>
+  <p><strong><Icon name="arrow-bend-up-right" size={16} color="var(--color-primary)" /> Stattdessen:</strong> Kauf nur Weine die du KENNST oder die in unserer Bestenliste stehen. Der „Angebot"-Sticker ist Marketing, nicht Qualität.</p>
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>📊 Die Tabelle: 8 Fehlkäufe → 8 bessere Alternativen</h2>
+  <h2><Icon name="chart-bar" size={18} color="var(--color-primary)" /> Die Tabelle: 8 Fehlkäufe → 8 bessere Alternativen</h2>
 
   <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem;">
     <thead>
@@ -212,7 +213,7 @@ const frontmatter = {
 
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
-  <h2>🧠 Die goldene Regel</h2>
+  <h2><Icon name="lightbulb" size={18} color="var(--color-cta)" /> Die goldene Regel</h2>
 
   <p style="font-size: 1.15rem; text-align: center; padding: 1rem 0;">
     <strong>Ein schlechter Wein zum halben Preis ist immer noch ein schlechter Wein.</strong><br />
@@ -222,7 +223,7 @@ const frontmatter = {
   <hr style="border: none; border-top: 3px solid var(--color-primary);" />
 
   <p style="font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.03em;">
-    🍷 Hast du 'ne Wein-Falle entdeckt die wir übersehen haben? Schick sie uns — wir warnen alle.
+    <Icon name="wine" size={20} color="var(--color-primary)" /> Hast du 'ne Wein-Falle entdeckt die wir übersehen haben? Schick sie uns — wir warnen alle.
     Nächste Woche: Wein-Trends 2026 — was kommt, was bleibt, was kannst du vergessen?
   </p>
 </ArticleLayout>
