@@ -44,6 +44,15 @@ const frontmatter: ArticleFrontmatter = {
       </time>
     </header>
 
+    <!-- Hero Image -->
+    {Astro.props.heroImage && (
+      <img
+        src={Astro.props.heroImage}
+        alt={frontmatter.title}
+        style="width: 100%; height: auto; border: 3px solid var(--color-primary); box-shadow: 6px 6px 0 0 var(--color-primary); margin-bottom: 2rem;"
+      />
+    )}
+
     <!-- Article Content -->
     <div class="article-content">
       <slot />
@@ -79,26 +88,42 @@ const frontmatter: ArticleFrontmatter = {
 
 <style>
   .article-content p {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
     font-size: 1.05rem;
   }
   .article-content h2 {
     font-size: 1.5rem;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     margin-bottom: 0.75rem;
   }
   .article-content h3 {
     font-size: 1.2rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     margin-bottom: 0.5rem;
   }
   .article-content ul,
   .article-content ol {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
     padding-left: 1.5rem;
   }
   .article-content li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+  .article-content hr {
+    margin: 1.5rem 0;
+  }
+  .article-content blockquote {
+    margin: 1.25rem 0;
+  }
+  .article-content img {
+    width: 100%;
+    height: auto;
+    border: 3px solid var(--color-primary);
+    box-shadow: 4px 4px 0 0 var(--color-primary);
+    margin: 1.5rem 0;
+  }
+  .article-content table {
+    margin: 1rem 0;
   }
   .article-content a {
     color: var(--color-cta);
