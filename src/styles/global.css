@@ -225,3 +225,54 @@ a:hover {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+
+/* === Responsive Article Cards === */
+.article-card {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 0;
+}
+
+.article-card .card-img-wrap {
+  display: block;
+}
+
+.article-card .card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-right: 3px solid var(--color-primary);
+  min-height: 140px;
+}
+
+.article-card .card-body {
+  display: block;
+  padding: 1.25rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 520px) {
+  .article-card {
+    grid-template-columns: 1fr;
+  }
+
+  .article-card .card-img-wrap img {
+    border-right: none;
+    border-bottom: 3px solid var(--color-primary);
+    max-height: 200px;
+    min-height: auto;
+  }
+
+  .article-card .card-body {
+    padding: 1rem;
+  }
+
+  .article-card .card-body h3 {
+    font-size: 1.1rem;
+  }
+
+  .article-card .card-body p {
+    font-size: 0.85rem;
+  }
+}
