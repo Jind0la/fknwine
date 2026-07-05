@@ -236,28 +236,28 @@ const articles = [
   .hero-bg::before {
     content: '';
     position: absolute;
-    top: -20%;
-    right: -5%;
-    width: 45%;
-    height: 80%;
-    background: radial-gradient(ellipse at 60% 40%, rgba(160, 25, 50, 0.15) 0%, transparent 70%);
-    border-radius: 60% 40% 55% 45% / 40% 55% 45% 60%;
-    transform: rotate(-12deg);
-    filter: blur(30px);
+    top: -15%;
+    right: -8%;
+    width: 50%;
+    height: 85%;
+    background: radial-gradient(ellipse at 55% 35%, rgba(180, 25, 45, 0.25) 0%, rgba(140, 20, 35, 0.12) 30%, transparent 65%);
+    border-radius: 55% 45% 50% 50% / 45% 50% 55% 50%;
+    transform: rotate(-15deg);
+    filter: blur(18px);
     animation: stain-breathe 8s ease-in-out infinite;
   }
 
   .hero-bg::after {
     content: '';
     position: absolute;
-    bottom: -15%;
-    left: -8%;
-    width: 35%;
-    height: 60%;
-    background: radial-gradient(ellipse at 30% 50%, rgba(100, 15, 30, 0.2) 0%, transparent 65%);
-    border-radius: 45% 55% 60% 40% / 55% 40% 45% 60%;
-    transform: rotate(8deg);
-    filter: blur(35px);
+    bottom: -10%;
+    left: -10%;
+    width: 40%;
+    height: 55%;
+    background: radial-gradient(ellipse at 35% 55%, rgba(150, 20, 35, 0.28) 0%, rgba(100, 15, 25, 0.1) 25%, transparent 60%);
+    border-radius: 50% 50% 55% 45% / 45% 55% 50% 50%;
+    transform: rotate(10deg);
+    filter: blur(20px);
   }
 
   @keyframes stain-breathe {
@@ -268,12 +268,12 @@ const articles = [
   /* Drip accent */
   .hero-deco {
     position: absolute;
-    top: 3rem;
-    right: 2rem;
-    width: 4px;
-    height: 120px;
-    background: linear-gradient(to bottom, rgba(196, 30, 58, 0.4), rgba(196, 30, 58, 0.05) 80%, transparent);
-    border-radius: 0 0 2px 2px;
+    top: 2rem;
+    right: 3rem;
+    width: 5px;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(196, 30, 58, 0.6), rgba(180, 25, 45, 0.2) 70%, transparent);
+    border-radius: 0 0 3px 3px;
     pointer-events: none;
     animation: drip 4s ease-in-out infinite;
     transform-origin: top;
@@ -282,11 +282,11 @@ const articles = [
   .hero-deco::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: -6px;
-    width: 16px;
-    height: 16px;
-    background: radial-gradient(circle, rgba(196, 30, 58, 0.35) 0%, transparent 70%);
+    bottom: -4px;
+    left: -8px;
+    width: 21px;
+    height: 21px;
+    background: radial-gradient(circle, rgba(196, 30, 58, 0.5) 0%, rgba(160, 20, 40, 0.2) 40%, transparent 70%);
     border-radius: 50%;
     animation: drip-dot 4s ease-in-out infinite;
   }
