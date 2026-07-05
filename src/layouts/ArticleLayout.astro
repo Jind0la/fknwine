@@ -1,9 +1,6 @@
 ---
 import Layout from './Layout.astro';
-import type { CollectionEntry } from 'astro:content';
-import Icon from '../components/Icon.astro';
 
-// Static article template — will be replaced by content collections later
 interface ArticleFrontmatter {
   title: string;
   date: string;
@@ -17,9 +14,56 @@ const frontmatter: ArticleFrontmatter = {
   description: Astro.props.description || '',
   tags: Astro.props.tags || [],
 };
+
+const siteUrl = 'https://fknwine.pages.dev';
+const slug = Astro.url?.pathname?.replace(/\/$/, '') || '';
+const canonicalURL = `${siteUrl}${slug}`;
+const ogImage = Astro.props.heroImage
+  ? `${siteUrl}${Astro.props.heroImage}`
+  : `${siteUrl}/og-default.png`;
+
+// BlogPosting JSON-LD
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: frontmatter.title,
+  description: frontmatter.description,
+  image: ogImage,
+  datePublished: frontmatter.date,
+  dateModified: frontmatter.date,
+  author: {
+    '@type': 'Organization',
+    name: 'FKN Wine',
+    url: siteUrl,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'FKN Wine',
+    url: siteUrl,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteUrl}/favicon.svg`,
+    },
+  },
+  url: canonicalURL,
+  inLanguage: 'de',
+  keywords: frontmatter.tags.join(', '),
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonicalURL,
+  },
+};
 ---
 
-<Layout title={frontmatter.title} description={frontmatter.description}>
+<Layout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  canonicalURL={canonicalURL}
+  ogImage={ogImage}
+  publishedTime={frontmatter.date}
+  modifiedTime={frontmatter.date}
+  articleSchema={articleSchema}
+>
   <article class="wrapper" style="padding-top: 3rem; padding-bottom: 4rem; max-width: 750px;">
     <!-- Article Header -->
     <header style="margin-bottom: 2rem;">
@@ -65,7 +109,7 @@ const frontmatter: ArticleFrontmatter = {
         style="border: 3px solid var(--color-cta); padding: 1.5rem; text-align: center; box-shadow: 4px 4px 0 0 var(--color-cta);"
       >
         <p style="margin: 0 0 0.75rem; font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 0.9rem;">
-          <Icon name="wine" size={20} color="var(--color-primary)" /> Kein Bock auf Wein-Snobs?
+          Kein Bock auf Wein-Snobs?
         </p>
         <p style="margin: 0 0 1rem; font-size: 0.9rem;">
           Jeden Freitag eine ehrliche Wein-Empfehlung in deine Inbox.
@@ -88,7 +132,6 @@ const frontmatter: ArticleFrontmatter = {
 </Layout>
 
 <style is:global>
-  /* Ensure button text is readable — override any cascade issues */
   .article-content .brutal-btn,
   a.brutal-btn {
     color: #0a0a0a !important;

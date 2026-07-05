@@ -1,0 +1,25 @@
+# FKN Wine — LLMs.txt
+
+> Ehrliche Wein-Empfehlungen ohne Snob-Getue. Supermarkt-Weine, Discounter-Flaschen — getestet, bewertet, kein Bullshit.
+
+## Articles
+
+- [Wein für den Grillabend — 7 Flaschen die jeder Mannschaftstrinker feiert](https://fknwine.pages.dev/artikel/wein-fuer-grillabend/)
+- [Die 10 besten Weine unter €10 im Supermarkt — Juli 2026](https://fknwine.pages.dev/artikel/beste-weine-unter-10-euro-supermarkt/)
+- [Rosé-Guide — Welcher schmeckt und welcher ist überteuerte Zuckerpampe](https://fknwine.pages.dev/artikel/rose-guide-supermarkt/)
+- [Aldi vs. Lidl vs. Edeka — wo kaufst du den besten Wein?](https://fknwine.pages.dev/artikel/aldi-lidl-edeka-wein-vergleich/)
+- [8 Weine die du NIEMALS kaufen solltest — und was du stattdessen trinkst](https://fknwine.pages.dev/artikel/weine-die-du-niemals-kaufen-solltest/)
+- [6 Wein-Mythen an die du glaubst — die komplett falsch sind](https://fknwine.pages.dev/artikel/wein-mythen-die-falsch-sind/)
+- [Wein für Pizza — 5 Flaschen die besser sind als dein Standard-Chianti](https://fknwine.pages.dev/artikel/wein-fuer-pizza/)
+
+## About
+
+FKN Wine ist ein autonomer Affiliate-Wein-Blog für Deutsche die Wein trinken ohne Snob-Getue.
+Voice: direkt, anti-elitär, "F*ck Nice Wine". Kein Sommelier-Jargon.
+Alle Wein-Empfehlungen mit Preisen, Stores und direkten Links.
+Design: Neubrutalist (Space Grotesk + Inter, Dark Mode).
+
+## Optional
+
+- [RSS Feed](https://fknwine.pages.dev/rss.xml)
+- [Sitemap](https://fknwine.pages.dev/sitemap-0.xml)

@@ -4,9 +4,48 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
+  canonicalURL?: string;
+  ogImage?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  articleSchema?: Record<string, unknown>;
 }
 
-const { title, description } = Astro.props;
+const {
+  title,
+  description,
+  canonicalURL = 'https://fknwine.pages.dev',
+  ogImage = 'https://fknwine.pages.dev/og-default.png',
+  publishedTime,
+  modifiedTime,
+  articleSchema,
+} = Astro.props;
+
+const fullTitle = `${title} — FKN Wine`;
+const siteUrl = 'https://fknwine.pages.dev';
+
+// Base JSON-LD: Organization + WebSite (every page)
+const baseSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'FKN Wine',
+    url: siteUrl,
+    logo: `${siteUrl}/favicon.svg`,
+    description: 'Ehrliche Wein-Empfehlungen ohne Snob-Getue. Supermarkt-Weine, Discounter-Flaschen — getestet, bewertet, kein Bullshit.',
+    foundingDate: '2026',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'FKN Wine',
+    url: siteUrl,
+    description: 'Ehrliche Wein-Empfehlungen ohne Snob-Getue. Supermarkt-Weine blind verkostet.',
+    inLanguage: 'de',
+  },
+];
+
+const schema = articleSchema ? [...baseSchema, articleSchema] : baseSchema;
 ---
 
 <!doctype html>
@@ -15,17 +54,33 @@ const { title, description } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <title>{title} — FKN Wine</title>
+    <title>{fullTitle}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://fknwine.pages.dev/og-default.png" />
+    <meta property="og:type" content={publishedTime ? 'article' : 'website'} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="FKN Wine" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Article Meta -->
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
   </head>
   <body>
     <header class="wrapper" style="padding-top: 2rem; padding-bottom: 1rem;">
