@@ -1,0 +1,115 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import { articles, getAllTags } from '../../data/articles';
+
+const siteUrl = 'https://fknwine.pages.dev';
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Alle Artikel — FKN Wine',
+  description: 'Alle Wein-Artikel von FKN Wine. Supermarkt-Weine, Discounter-Tests, Food-Pairing — ehrlich, direkt, kein Bullshit.',
+  url: `${siteUrl}/artikel`,
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: articles.length,
+    itemListElement: articles.map((a, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${siteUrl}/artikel/${a.slug}`,
+      name: a.title,
+    })),
+  },
+};
+---
+
+<Layout
+  title="Alle Artikel"
+  description="Alle Wein-Artikel von FKN Wine. Supermarkt-Weine, Discounter-Tests, Food-Pairing — ehrlich, direkt, kein Bullshit."
+  canonicalURL={`${siteUrl}/artikel`}
+  ogImage={`${siteUrl}/og-default.png`}
+  articleSchema={collectionSchema}
+>
+  <section class="wrapper" style="padding-top: 4rem; padding-bottom: 4rem; max-width: 850px;">
+    <!-- Breadcrumb -->
+    <nav style="margin-bottom: 2rem;" aria-label="Brotkrumen">
+      <a
+        href="/"
+        style="font-family: var(--font-display); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text); text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;"
+      >
+        <Icon name="arrow-left" size={16} color="var(--color-cta)" /> Startseite
+      </a>
+      <span style="font-family: var(--font-display); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary); margin: 0 0.5rem;">/</span>
+      <span style="font-family: var(--font-display); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-cta);">Alle Artikel</span>
+    </nav>
+
+    <!-- Header -->
+    <div style="margin-bottom: 2.5rem;">
+      <h1 style="font-size: clamp(1.75rem, 4vw, 2.25rem); margin: 0 0 0.5rem;">
+        Alle Artikel
+      </h1>
+      <p style="font-size: 1.1rem; opacity: 0.8; max-width: 600px;">
+        {articles.length} Artikel — von Supermarkt-Tests über Food-Pairing bis zu Wein-Mythen. Immer ehrlich, immer direkt.
+      </p>
+    </div>
+
+    <!-- Article Cards -->
+    <div style="display: grid; gap: 1.5rem;">
+      {
+        articles.map((article) => (
+          <article class="brutal-card brutal-shadow-hover" style="cursor: pointer; padding: 0; overflow: hidden; display: grid; grid-template-columns: 180px 1fr; gap: 0;">
+            <a
+              href={`/artikel/${article.slug}`}
+              style="text-decoration: none; color: inherit; display: block;"
+              aria-label={article.title}
+            >
+              <img
+                src={article.image}
+                alt={article.title}
+                style="width: 100%; height: 100%; object-fit: cover; border-right: 3px solid var(--color-primary); min-height: 140px;"
+                loading="lazy"
+              />
+            </a>
+            <a href={`/artikel/${article.slug}`} style="text-decoration: none; color: inherit; display: block; padding: 1.25rem;">
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+                {article.tags.map((tag) => (
+                  <span
+                    onclick={`event.stopPropagation(); window.location.href='/tags/${tag}'`}
+                    style="font-family: var(--font-display); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.5rem; background: var(--color-primary); color: #ffffff; text-decoration: none; position: relative; z-index: 1; cursor: pointer;"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <h3 style="font-size: 1.3rem; margin: 0.25rem 0 0.25rem;">
+                {article.title}
+              </h3>
+              <p style="font-size: 0.9rem; margin: 0.25rem 0 0.5rem;">
+                {article.excerpt}
+              </p>
+              <span style="font-family: var(--font-display); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-cta);">
+                Weiterlesen →
+              </span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Tag Cloud -->
+    <div style="margin-top: 4rem; padding-top: 2rem; border-top: 3px solid var(--color-surface);">
+      <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">Nach Thema filtern</h3>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        {getAllTags().map((t) => (
+          <a
+            href={`/tags/${t}`}
+            style="font-family: var(--font-display); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.3rem 0.6rem; background: var(--color-primary); color: #ffffff; text-decoration: none;"
+          >
+            {t}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
