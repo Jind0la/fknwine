@@ -69,9 +69,12 @@ const articleSchema = {
     <header style="margin-bottom: 2rem;">
       <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
         {frontmatter.tags.map((tag: string) => (
-          <span style="font-family: var(--font-display); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.5rem; border: 2px solid var(--color-primary); color: var(--color-primary);">
+          <a
+            href={`/tags/${tag}`}
+            style="font-family: var(--font-display); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.5rem; background: var(--color-primary); color: #ffffff; text-decoration: none;"
+          >
             {tag}
-          </span>
+          </a>
         ))}
       </div>
       <h1 style="font-size: clamp(2rem, 5vw, 2.75rem); margin: 0 0 0.5rem;">
@@ -79,7 +82,7 @@ const articleSchema = {
       </h1>
       <time
         datetime={frontmatter.date}
-        style="font-family: var(--font-display); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary);"
+        style="font-family: var(--font-display); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #e05560;"
       >
         {new Date(frontmatter.date).toLocaleDateString('de-DE', {
           year: 'numeric',

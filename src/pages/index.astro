@@ -1,65 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
-
-const articles = [
-  {
-    title: 'Wein für den Grillabend — 7 Flaschen die jeder Mannschaftstrinker feiert',
-    slug: 'wein-fuer-grillabend',
-    date: '2026-07-07',
-    excerpt: 'Grillen ohne guten Wein ist wie Bratwurst ohne Senf. Die 7 besten Grill-Weine aus dem Supermarkt — alle unter €10.',
-    tags: ['Food-Pairing', 'Rotwein', 'Sommer'],
-    image: '/artikel-grillen.jpg',
-  },
-  {
-    title: 'Die 10 besten Weine unter €10 im Supermarkt',
-    slug: 'beste-weine-unter-10-euro-supermarkt',
-    date: '2026-07-06',
-    excerpt: 'Wir haben 47 Supermarkt-Weine getestet. Hier sind die einzigen 10 die du kaufen solltest — null Gelaber, null Punkte-Skala.',
-    tags: ['Supermarkt', 'Rotwein', 'Weißwein'],
-    image: '/artikel-supermarkt.jpg',
-  },
-  {
-    title: 'Rosé-Guide — Welcher schmeckt und welcher ist überteuerte Zuckerpampe',
-    slug: 'rose-guide-supermarkt',
-    date: '2026-07-08',
-    excerpt: '12 Supermarkt-Rosés blind getestet. Die 6 besten — und die 4 die du NIEMALS kaufen solltest.',
-    tags: ['Rosé', 'Supermarkt', 'Sommer'],
-    image: '/artikel-rose.jpg',
-  },
-  {
-    title: 'Aldi vs. Lidl vs. Edeka — wo kaufst du den besten Wein?',
-    slug: 'aldi-lidl-edeka-wein-vergleich',
-    date: '2026-07-04',
-    excerpt: 'Discounter-Wein kann scheiße sein. Kann aber auch geil sein. Hier ist welcher Supermarkt für welchen Wein-Typ am besten funktioniert.',
-    tags: ['Discounter', 'Vergleich'],
-    image: '/artikel-discounter.jpg',
-  },
-  {
-    title: '8 Weine die du NIEMALS kaufen solltest — und was du stattdessen trinkst',
-    slug: 'weine-die-du-niemals-kaufen-solltest',
-    date: '2026-07-09',
-    excerpt: 'Jeder Supermarkt hat Wein-Fallen. 8 Fehlkäufe die du stehen lässt — plus die Alternativen die besser schmecken.',
-    tags: ['Supermarkt', 'Anti-Liste', 'Sparen'],
-    image: '/artikel-niemals.jpg',
-  },
-  {
-    title: '6 Wein-Mythen an die du glaubst — die komplett falsch sind',
-    slug: 'wein-mythen-die-falsch-sind',
-    date: '2026-07-10',
-    excerpt: 'Teuer = besser? Schraubverschluss = billig? Rosé = nur für Frauen? Die größten Wein-Lügen — zerstört.',
-    tags: ['Mythen', 'Einsteiger', 'Guide'],
-    image: '/artikel-mythen.jpg',
-  },
-  {
-    title: 'Wein für Pizza — 5 Flaschen die besser sind als dein Standard-Chianti',
-    slug: 'wein-fuer-pizza',
-    date: '2026-06-28',
-    excerpt: 'Chianti zur Pizza ist langweilig. Wir haben fünf Alternativen die deine TK-Salami aufs nächste Level bringen.',
-    tags: ['Food-Pairing', 'Rotwein'],
-    image: '/artikel-pizza.jpg',
-  },
-];
+import { articles } from '../data/articles';
 ---
 
 <Layout
@@ -94,7 +36,7 @@ const articles = [
 
       <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
         <a href="#articles" class="brutal-btn">Zum ersten Artikel</a>
-        <a href="#about" class="brutal-btn brutal-btn--inverse">Was ist FKN Wine?</a>
+        <a href="/about" class="brutal-btn brutal-btn--inverse">Was ist FKN Wine?</a>
       </div>
     </div>
 
@@ -152,7 +94,7 @@ const articles = [
   <section id="articles" class="wrapper" style="padding-bottom: 4rem;">
     <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem;">
       <h2 style="margin: 0; font-size: 1.75rem;">Neueste Artikel</h2>
-      <span style="font-family: var(--font-display); font-size: 0.8rem; text-transform: uppercase; color: var(--color-primary); letter-spacing: 0.05em;">
+      <span style="font-family: var(--font-display); font-size: 0.8rem; text-transform: uppercase; color: #e05560; letter-spacing: 0.05em;">
         Frisch aus der Flasche
       </span>
     </div>
@@ -160,10 +102,11 @@ const articles = [
     <div style="display: grid; gap: 1.5rem;">
       {
         articles.map((article) => (
-          <article class="brutal-card brutal-shadow-hover" style="cursor: pointer; padding: 0; overflow: hidden;">
+          <article class="brutal-card brutal-shadow-hover" style="cursor: pointer; padding: 0; overflow: hidden; display: grid; grid-template-columns: 180px 1fr; gap: 0;">
             <a
               href={`/artikel/${article.slug}`}
-              style="text-decoration: none; color: inherit; display: grid; grid-template-columns: 180px 1fr; gap: 0;"
+              style="text-decoration: none; color: inherit; display: block;"
+              aria-label={article.title}
             >
               <img
                 src={article.image}
@@ -171,26 +114,27 @@ const articles = [
                 style="width: 100%; height: 100%; object-fit: cover; border-right: 3px solid var(--color-primary); min-height: 140px;"
                 loading="lazy"
               />
-              <div style="padding: 1.25rem;">
-                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
-                  {article.tags.map((tag) => (
-                    <span
-                      style="font-family: var(--font-display); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.5rem; border: 2px solid var(--color-primary); color: var(--color-primary);"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <h3 style="font-size: 1.3rem; margin: 0.25rem 0 0.25rem;">
-                  {article.title}
-                </h3>
-                <p style="font-size: 0.9rem; margin: 0.25rem 0 0.5rem;">
-                  {article.excerpt}
-                </p>
-                <span style="font-family: var(--font-display); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-cta);">
-                  Weiterlesen →
-                </span>
+            </a>
+            <a href={`/artikel/${article.slug}`} style="text-decoration: none; color: inherit; display: block; padding: 1.25rem;">
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+                {article.tags.map((tag) => (
+                  <span
+                    onclick={`event.stopPropagation(); window.location.href='/tags/${tag}'`}
+                    style="font-family: var(--font-display); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.5rem; background: var(--color-primary); color: #ffffff; text-decoration: none; position: relative; z-index: 1; cursor: pointer;"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
+              <h3 style="font-size: 1.3rem; margin: 0.25rem 0 0.25rem;">
+                {article.title}
+              </h3>
+              <p style="font-size: 0.9rem; margin: 0.25rem 0 0.5rem;">
+                {article.excerpt}
+              </p>
+              <span style="font-family: var(--font-display); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-cta);">
+                Weiterlesen →
+              </span>
             </a>
           </article>
         ))

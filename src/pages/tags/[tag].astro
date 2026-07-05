@@ -1,0 +1,102 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import { articles, getAllTags, getArticlesByTag, tagMeta } from '../../data/articles';
+
+export function getStaticPaths() {
+  return getAllTags().map((tag) => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+const tagArticles = getArticlesByTag(tag);
+const meta = tagMeta[tag] || { emoji: '🍷', description: `Artikel zum Thema ${tag}` };
+const title = `${meta.emoji} ${tag} — FKN Wine`;
+---
+
+<Layout
+  title={title}
+  description={meta.description}
+  canonicalURL={`https://fknwine.pages.dev/tags/${tag}`}
+  ogImage="https://fknwine.pages.dev/og-default.png"
+>
+  <section class="wrapper" style="padding-top: 4rem; padding-bottom: 4rem; max-width: 850px;">
+    <!-- Back link -->
+    <a
+      href="/"
+      style="font-family: var(--font-display); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text); text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem; margin-bottom: 2rem;"
+    >
+      <Icon name="arrow-left" size={16} color="var(--color-cta)" /> Alle Artikel
+    </a>
+
+    <!-- Header -->
+    <div style="margin-bottom: 2.5rem;">
+      <h1 style="font-size: clamp(1.75rem, 4vw, 2.25rem); margin: 0 0 0.5rem;">
+        {meta.emoji} {tag}
+      </h1>
+      <p style="font-size: 1.1rem; opacity: 0.8; max-width: 600px;">
+        {meta.description}
+      </p>
+      <span style="font-family: var(--font-display); font-size: 0.8rem; text-transform: uppercase; color: var(--color-cta); letter-spacing: 0.05em;">
+        {tagArticles.length} {tagArticles.length === 1 ? 'Artikel' : 'Artikel'}
+      </span>
+    </div>
+
+    <!-- Article Cards -->
+    <div style="display: grid; gap: 1.5rem;">
+      {
+        tagArticles.map((article) => (
+          <article class="brutal-card brutal-shadow-hover" style="cursor: pointer; padding: 0; overflow: hidden; display: grid; grid-template-columns: 180px 1fr; gap: 0;">
+            <a
+              href={`/artikel/${article.slug}`}
+              style="text-decoration: none; color: inherit; display: block;"
+              aria-label={article.title}
+            >
+              <img
+                src={article.image}
+                alt={article.title}
+                style="width: 100%; height: 100%; object-fit: cover; border-right: 3px solid var(--color-primary); min-height: 140px;"
+                loading="lazy"
+              />
+            </a>
+            <a href={`/artikel/${article.slug}`} style="text-decoration: none; color: inherit; display: block; padding: 1.25rem;">
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+                {article.tags.map((t) => (
+                  <span
+                    onclick={`event.stopPropagation(); window.location.href='/tags/${t}'`}
+                    style={`font-family: var(--font-display); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.5rem; background: ${t === tag ? 'var(--color-cta)' : 'var(--color-primary)'}; color: #0a0a0a; text-decoration: none; position: relative; z-index: 1; cursor: pointer;`}
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <h3 style="font-size: 1.3rem; margin: 0.25rem 0 0.25rem;">
+                {article.title}
+              </h3>
+              <p style="font-size: 0.9rem; margin: 0.25rem 0 0.5rem;">
+                {article.excerpt}
+              </p>
+              <span style="font-family: var(--font-display); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-cta);">
+                Weiterlesen →
+              </span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- All Tags Navigation -->
+    <div style="margin-top: 4rem; padding-top: 2rem; border-top: 3px solid var(--color-surface);">
+      <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">Alle Themen</h3>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        {getAllTags().map((t) => (
+          <a
+            href={`/tags/${t}`}
+            style={`font-family: var(--font-display); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.3rem 0.6rem; background: ${t === tag ? 'var(--color-cta)' : 'var(--color-primary)'}; color: #0a0a0a; text-decoration: none;`}
+          >
+            {t}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

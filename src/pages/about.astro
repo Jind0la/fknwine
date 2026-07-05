@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+
+const siteUrl = 'https://fknwine.pages.dev';
+
+const aboutSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'Über FKN Wine',
+  description: 'FKN Wine — ehrliche Wein-Empfehlungen ohne Snob-Getue. Supermarkt-Weine, Discounter-Flaschen, blind verkostet.',
+  url: `${siteUrl}/about`,
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'FKN Wine',
+    url: siteUrl,
+    description: 'FKN Wine testet Supermarkt-Weine und gibt direkte Kaufempfehlungen ohne Sommelier-Jargon.',
+    foundingDate: '2026',
+    slogan: 'F*ck Nice Wine.',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: 'hey@fknwine.de',
+    },
+  },
+};
+---
+
+<Layout
+  title="Über FKN Wine"
+  description="Was hinter FKN Wine steckt — ehrliche Wein-Empfehlungen ohne Snob-Getue. Supermarkt-Weine blind verkostet."
+  canonicalURL={`${siteUrl}/about`}
+  ogImage={`${siteUrl}/og-default.png`}
+  articleSchema={aboutSchema}
+>
+  <section class="wrapper" style="padding-top: 4rem; padding-bottom: 4rem; max-width: 750px;">
+    <!-- Header -->
+    <h1 style="font-size: clamp(2rem, 5vw, 2.5rem); margin-bottom: 2rem;">
+      F*ck Nice <span style="color: var(--color-primary);">Wine.</span>
+    </h1>
+
+    <!-- Manifest -->
+    <div class="brutal-card" style="margin-bottom: 2rem;">
+      <h2 style="font-size: 1.5rem; margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">
+        <Icon name="wine" size={24} color="var(--color-primary)" />
+        Wofür wir stehen
+      </h2>
+      <p>
+        Wein soll schmecken — nicht kompliziert sein. Du brauchst kein Sommelier-Zertifikat um guten Wein zu finden.
+        Du brauchst nur jemanden der dir ehrlich sagt: <strong>„Kauf den. Der ist geil."</strong>
+      </p>
+      <p>
+        FKN Wine ist der Anti-Snob-Wein-Blog. Wir testen was du tatsächlich kaufst: Supermarkt-Weine, Discounter-Flaschen,
+        den €5-Rosé von Aldi und die €8-Flasche aus dem Lidl-Regal.
+      </p>
+      <p>
+        Keine €80-Bordeaux-Empfehlungen. Kein „Noten von nasser Schieferplatte"-Gelaber.
+        Nur direkte, ehrliche Kaufempfehlungen mit Preis und Store.
+      </p>
+    </div>
+
+    <!-- Method -->
+    <div class="brutal-card" style="margin-bottom: 2rem;">
+      <h2 style="font-size: 1.5rem; margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">
+        <Icon name="trophy" size={24} color="var(--color-cta)" />
+        Wie wir testen
+      </h2>
+      <p>
+        <strong>Blind.</strong> Jede Flasche wird ohne Etikett verkostet. Kein Marken-Bias, kein Preis-Bias.
+        Wenn die €4-Flasche von Aldi besser schmeckt als der €12-Wein — dann sagen wir das.
+      </p>
+      <p>
+        <strong>Nur Supermarkt/Discounter.</strong> Kein Fachhandel. Kein Wein-Abo. Nur Flaschen die du morgen beim Einkaufen mitnehmen kannst.
+      </p>
+      <p>
+        <strong>Keine Punkte-Skala.</strong> „92 Parker-Punkte" sagt dir nichts. „Schmeckt geil, kostet €7, kauf bei Lidl" schon.
+      </p>
+    </div>
+
+    <!-- Why -->
+    <div class="brutal-card" style="margin-bottom: 2rem;">
+      <h2 style="font-size: 1.5rem; margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">
+        <Icon name="lightbulb" size={24} color="var(--color-cta)" />
+        Warum's das braucht
+      </h2>
+      <p>
+        Die Wein-Welt ist voller Gatekeeping. Sommeliers die mit Fachbegriffen um sich werfen.
+        Wein-Magazine die dir €30-Flaschen empfehlen. Blogs die „man könnte" und „es bietet sich an" schreiben ohne je eine klare Entscheidung zu treffen.
+      </p>
+      <p>
+        Das ist Bullshit. Wein ist ein Genussmittel — kein Statussymbol. Die beste Flasche ist die die dir schmeckt,
+        nicht die die am meisten kostet.
+      </p>
+      <p>
+        FKN Wine ist die Stimme für Leute die Wein mögen aber die Wein-Szene nicht ertragen.
+        Direkt. Ehrlich. Manchmal vulgär. Immer nützlich.
+      </p>
+    </div>
+
+    <!-- CTA -->
+    <div style="border: 3px solid var(--color-cta); padding: 2rem; text-align: center; box-shadow: 6px 6px 0 0 var(--color-cta);">
+      <h2 style="font-size: 1.3rem; margin: 0 0 1rem;">Bereit für echten Wein?</h2>
+      <a href="/" class="brutal-btn" style="border-color: var(--color-cta);">
+        Zu den Empfehlungen →
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+  .brutal-card h2 + p {
+    margin-top: 0.75rem;
+  }
+</style>
