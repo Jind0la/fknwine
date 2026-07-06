@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Fast geschafft!"
+  description="Check deine Mails — wir haben dir eine Bestätigungsmail geschickt. Nur noch ein Klick, dann bist du dabei."
+  canonicalURL="https://fknwine.com/drin"
+  ogImage="https://fknwine.pages.dev/og-default.png"
+>
+  <section class="wrapper" style="padding-top: 6rem; padding-bottom: 6rem; text-align: center; max-width: 600px;">
+    
+    <!-- Icon -->
+    <div style="font-size: 4rem; margin-bottom: 1.5rem;">📨</div>
+
+    <!-- Headline -->
+    <h1 style="font-size: clamp(2rem, 5vw, 2.5rem); margin: 0 0 1rem;">
+      Check deine <span style="color: var(--color-cta);">Mails.</span>
+    </h1>
+
+    <!-- Body -->
+    <p style="font-size: 1.1rem; line-height: 1.7; max-width: 480px; margin: 0 auto 1rem;">
+      Wir haben dir gerade eine Bestätigungsmail geschickt. <strong>Nur noch ein Klick auf den Link</strong>, 
+      dann bist du offiziell dabei.
+    </p>
+
+    <p style="font-size: 0.95rem; line-height: 1.6; max-width: 380px; margin: 0 auto 2rem; opacity: 0.7;">
+      Kein Mail bekommen? Check den Spam-Ordner. Oder warte 'ne Minute — manchmal braucht's ein bisschen.
+    </p>
+
+    <!-- CTA -->
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="/" class="brutal-btn">Zurück zur Startseite</a>
+    </div>
+
+    <!-- Subtle note -->
+    <p style="margin-top: 2rem; font-size: 0.8rem; color: color-mix(in srgb, var(--color-text) 40%, transparent);">
+      Du hast dich nicht angemeldet? Dann ignorier die Mail einfach. Kein Stress.
+    </p>
+
+  </section>
+</Layout>

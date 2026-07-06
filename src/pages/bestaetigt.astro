@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Bestätigt!"
+  description="Deine Newsletter-Anmeldung ist bestätigt. Jeden Freitag eine ehrliche Wein-Empfehlung von FKN Wine."
+  canonicalURL="https://fknwine.com/bestaetigt"
+  ogImage="https://fknwine.pages.dev/og-default.png"
+>
+  <section class="wrapper" style="padding-top: 6rem; padding-bottom: 6rem; text-align: center; max-width: 600px;">
+    
+    <!-- Icon -->
+    <div style="font-size: 4rem; margin-bottom: 1.5rem;">🍷</div>
+
+    <!-- Headline -->
+    <h1 style="font-size: clamp(2rem, 5vw, 2.5rem); margin: 0 0 1rem;">
+      Drin. <span style="color: var(--color-primary);">Richtig drin.</span>
+    </h1>
+
+    <!-- Body -->
+    <p style="font-size: 1.1rem; line-height: 1.7; max-width: 480px; margin: 0 auto 2rem;">
+      Deine Anmeldung ist bestätigt. Jeden Freitag schicken wir dir eine ehrliche Wein-Empfehlung — 
+      kein Sommelier-Gelaber, kein Snob-Getue. Nur: <strong>„Kauf den, der ist geil."</strong>
+    </p>
+
+    <!-- CTA -->
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="/" class="brutal-btn">Zurück zur Startseite</a>
+      <a href="/artikel" class="brutal-btn brutal-btn--inverse">Alle Artikel lesen</a>
+    </div>
+
+    <!-- Subtle note -->
+    <p style="margin-top: 2rem; font-size: 0.8rem; color: color-mix(in srgb, var(--color-text) 40%, transparent);">
+      Kein Bock mehr? Jede Mail hat einen Abmelde-Link. Null Drama.
+    </p>
+
+  </section>
+</Layout>
+
+<style is:global>
+  /* Ensure CTA buttons have the right text color */
+  .brutal-btn--inverse {
+    color: var(--color-text) !important;
+  }
+</style>
