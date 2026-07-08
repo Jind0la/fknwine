@@ -19,13 +19,13 @@
 
 ### 1. Weißwein-Special — "Die 8 besten Weißweine unter €10"
 **Tags:** Weißwein, Supermarkt, Bestenliste, Sommer
-**Wann:** JETZT (KW 28)
+**Wann:** ✅ ERLEDIGT (KW 28, 2026-07-11)
 **Warum:** Größte Content-Lücke. Riesling, Grauburgunder, Sauvignon Blanc — alle aus dem Supermarkt.
 **SEO:** "weißwein supermarkt test", "bester weißwein unter 10 euro", "riesling lidl aldi"
 
 ### 2. Sekt & Prosecco — "Supermarkt-Sekt: Welcher prickelt und welcher ist süße Plörre?"
 **Tags:** Guide, Supermarkt, Sommer, Sparen
-**Wann:** KW 29
+**Wann:** ✅ ERLEDIGT (KW 29, 2026-07-09)
 **Warum:** Sommer = Sekt-Saison. Hochzeiten, Geburtstage, Balkonien. 0 Content aktuell.
 **SEO:** "sekt supermarkt test", "bester prosecco discounter", "sekt unter 5 euro"
 

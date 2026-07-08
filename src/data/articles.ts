@@ -12,6 +12,22 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: 'Supermarkt-Sekt & Prosecco: Welcher prickelt und welcher ist süße Plörre?',
+    slug: 'sekt-prosecco-supermarkt-test',
+    date: '2026-07-09',
+    excerpt: '6 Sekte und Proseccos aus dem Supermarkt die wirklich schmecken — plus die 3 Kategorien die du NIEMALS kaufen solltest. Vom €2,99-Sekt bis zum DOCG-Prosecco.',
+    tags: ['Guide', 'Supermarkt', 'Sommer', 'Sparen', 'Einsteiger'],
+    image: '/artikel-sekt-prosecco.jpg',
+  },
+  {
+    title: 'Die 8 besten Weißweine unter €10 im Supermarkt',
+    slug: 'beste-weissweine-unter-10-euro',
+    date: '2026-07-11',
+    excerpt: '8 Weißweine unter €10 von Lidl, Aldi, Rewe und Edeka. Vom €4,99-Riesling bis zum Statement-Greco — FKN-verifiziert.',
+    tags: ['Weißwein', 'Supermarkt', 'Bestenliste', 'Sommer', 'Guide', 'Einsteiger'],
+    image: '/artikel-weisswein-special.jpg',
+  },
+  {
     title: 'Wein für den Grillabend — 7 Flaschen die jeder Mannschaftstrinker feiert',
     slug: 'wein-fuer-grillabend',
     date: '2026-07-07',
@@ -57,7 +73,7 @@ export const articles: Article[] = [
     date: '2026-07-10',
     excerpt: 'Teuer = besser? Schraubverschluss = billig? Rosé = nur für Frauen? Die größten Wein-Lügen — zerstört.',
     tags: ['Guide', 'Mythen', 'Einsteiger'],
-    image: '/artikel-mythen.jpg',
+    image: '/artikel-mythen-neo.jpg',
   },
   {
     title: 'Wein für Pizza — 5 Flaschen die besser sind als dein Standard-Chianti',
