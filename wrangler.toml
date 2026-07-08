@@ -1,0 +1,7 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "fknwine"
+pages_build_output_dir = "dist"
+compatibility_date = "2025-07-08"
+
+# Cloudflare Pages liest diese Config bei GitHub-Integration
+# Build-Command (npm run build) wird via package.json auto-detected
