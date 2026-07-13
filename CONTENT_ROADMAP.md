@@ -31,7 +31,7 @@
 
 ### 3. Wein-Fehler die jeder macht — "7 Wein-Fehler die deinen Wein ruinieren"
 **Tags:** Einsteiger, Guide, Mythen
-**Wann:** KW 30
+**Wann:** ✅ ERLEDIGT (KW 29, 2026-07-14)
 **Warum:** Evergreen-Content. Teilbar, hohe Verweildauer. Komplementär zum Mythen-Artikel.
 **SEO:** "wein fehler", "wein richtig lagern", "wein temperatur", "welches weinglas"
 

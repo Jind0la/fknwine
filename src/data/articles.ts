@@ -12,6 +12,14 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: '7 Wein-Fehler die deinen Wein ruinieren — und wie du sie in 30 Sekunden behebst',
+    slug: 'wein-fehler-die-deinen-wein-ruinieren',
+    date: '2026-07-14',
+    excerpt: 'Du machst garantiert mindestens 3 dieser 7 Wein-Fehler. Lagerung, Temperatur, Glas, Handhaltung — jeder einzelne davon macht deinen Wein schlechter. So behebst du sie in 30 Sekunden.',
+    tags: ['Einsteiger', 'Guide', 'Mythen'],
+    image: '/artikel-wein-fehler.jpg',
+  },
+  {
     title: 'Supermarkt-Sekt & Prosecco: Welcher prickelt und welcher ist süße Plörre?',
     slug: 'sekt-prosecco-supermarkt-test',
     date: '2026-07-09',
