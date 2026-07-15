@@ -12,6 +12,14 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: 'Welcher Wein zu Carbonara, Bolognese & Co? — 7 Weine die deine Pasta aufs nächste Level bringen',
+    slug: 'wein-fuer-pasta',
+    date: '2026-07-16',
+    excerpt: 'Chianti zur Pasta ist nicht falsch — aber langweilig. 7 Supermarkt-Weine für 7 Pasta-Klassiker, von Carbonara bis Vongole, alle unter €10.',
+    tags: ['Food-Pairing', 'Rotwein', 'Weißwein', 'Einsteiger'],
+    image: '/artikel-pasta.jpg',
+  },
+  {
     title: '7 Wein-Fehler die deinen Wein ruinieren — und wie du sie in 30 Sekunden behebst',
     slug: 'wein-fehler-die-deinen-wein-ruinieren',
     date: '2026-07-14',

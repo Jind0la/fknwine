@@ -37,7 +37,7 @@
 
 ### 4. Wein für Pasta — "Welcher Wein zu Carbonara, Bolognese & Co?"
 **Tags:** Food-Pairing, Rotwein, Weißwein, Einsteiger
-**Wann:** KW 31
+**Wann:** ✅ ERLEDIGT (KW 29, 2026-07-16)
 **Warum:** Pizza-Artikel läuft gut. Pasta ist die logische Erweiterung. Höheres Suchvolumen.
 **SEO:** "wein zu pasta", "wein zu carbonara", "welcher wein zu bolognese"
 

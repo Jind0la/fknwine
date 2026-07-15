@@ -55,3 +55,29 @@
 | 2026-07-12 | 16:04 | Growth (Likes) | — | — | Liked: @hedyundolaf (3 Tweets: Wein-Spruch 3❤️, Dame-Herz-Wein 1❤️, Goethe-Quote 1❤️) |
 | 2026-07-12 | 16:04 | Growth (Follows) | — | — | Followed: @hedyundolaf, @SaalbachAxel, @maternus, @joukesp, @Spaetburgunder, @DerKeiler, @DaBeckVino, @LanguagesCat (8 new from x_search Account-Discovery) |
 | 2026-07-12 | 16:04 | Growth (Quote) | — | — | Skipped (Dashboard: 6/7 Quote-Tweets bei 0 Likes, 0 Engagement in 8h) |
+| 2026-07-13 | 09:01 | Growth (Follows) | — | Followed: @PigottRiesling, @E_Boeminghaus, @mityataits, @niwenburg, @WeingutKoegler (5 new from x_search Account-Discovery) |
+| 2026-07-13 | 09:01 | Growth (Likes) | — | Liked: @TorstenBremert (Wein+Sonnenuntergang 27❤️), @Dende75 (Sommer Wein 45❤️), @grapelive (Riesling Kabinett), @?(Kids schlafen Wein 5❤️) |
+| 2026-07-13 | 09:01 | Growth (Quote) | — | Skipped (Dashboard: 6/7 Quote-Tweets bei 0 Likes, 0 Engagement) |
+| 2026-07-13 | 12:02 | Growth (Follows) | — | Followed: @moselfinewines, @JosefReuscher, @winzervonbaden, @SummeroRiesling, @WinesofGermany (5 new from x_search Account-Discovery) |
+| 2026-07-13 | 12:02 | Growth (Likes) | — | Liked: @Ginzawinax (Spätburgunder 34❤️), @MrsBroccoli3 (Grauburgunder), @moselfinewines (Mosel vineyard 9❤️), @JosefReuscher (Goldtröpfchen) |
+| 2026-07-13 | 12:02 | Growth (Quote) | — | Skipped (Dashboard: 6/7 Quote-Tweets bei 0 Likes, 0 Engagement) |
+| 2026-07-13 | 12:02 | Growth (Verify) | — | Following: 60 total, 27 wine-relevant |
+| 2026-07-13 | 15:01 | Growth (Follows) | — | Followed: @derWeinblog_de, @Wernervino, @Weingut_Uebel, @weingut_richter, @Weinperle, @drunkenmonday, @The_WineBarn, @Rentmeister_Fix, @clautemoney (9 new from x_search Account-Discovery + xurl search) |
+| 2026-07-13 | 15:01 | Growth (Likes) | — | Liked: @Rentmeister_Fix (Grauburgunder), @clautemoney (Grauburgunder), @CurseMa76 (Grauburgunder), @_PrivatePress (Silvaner/Mehltau) — 4 Wein-Tweets |
+| 2026-07-13 | 15:01 | Growth (Quote) | — | Skipped (Dashboard: 6/7 Quote-Tweets bei 0 Likes) |
+| 2026-07-13 | 18:07 | Growth (Follows) | — | Followed: @falstaff, @SahneSpeck, @BauerWilli_org, @Kaiserschmarrn2, @svone_SGE, @MooreDividends (6 new from x_search Account-Discovery) |
+| 2026-07-13 | 18:07 | Growth (Likes) | — | Liked: @grapelive (Riesling Kabinett), @svone_SGE (Aldi Weissburgunder), @HirrscherVince (Silvaner), @bazonline (Weisswein Sommer-Tipps) |
+| 2026-07-13 | 18:07 | Growth (Quote) | — | Skipped (Dashboard: 6/7 Quote-Tweets bei 0 Likes) |
+| 2026-07-14 | 06:01 | Thread (5) | 2076880644718653638 | Wein-Mythen: 5 Lügen die dich Geld kosten |
+| 2026-07-14 | 06:01 | Growth (Likes) | — | Liked: @nicoleh87843924 (Rotwein), @winepairing_ai (BBQ-Wein), @highroller32661 (Rotwein 5❤️), @bazonline (Weisswein-Tipps) |
+| 2026-07-14 | 06:01 | Growth (Follows) | — | Followed: @weinliebhaber, @WEIN_Genuss, @bonvinitas, @ProWein, @pfalzweinfeste, @WeinfestMap, @RheinhessenNews (7 new) |
+| 2026-07-14 | 06:01 | Growth (Quote) | — | Skipped (Dashboard: 6/7 Quote-Tweets bei 0 Likes, dead strategy) |
+| 2026-07-14 | 07:06 | Post (Hot Take) | 2076925687554793579 | Anti-Snob: Hoer auf dich zu entschuldigen |
+| 2026-07-14 | 07:06 | Growth (Follows) | — | Followed: @GermanWineUSA, @weinmesseberlin, @Weinkehr (3 new) |
+| 2026-07-14 | 07:06 | Growth (Likes) | — | Liked: @Gelulia1 (Rotwein 4❤️), @DaHolter (Rotwein 1❤️) |
+| 2026-07-14 | 07:06 | Growth (Quote) | — | Skipped (Dashboard: 6/7 Quote-Tweets bei 0 Likes) |
+| 2026-07-14 | 12:01 | Post (Hot Take) | 2076971393007120737 | Shock Stat: Aldi-Wein Medaillen vs Weingüter |
+| 2026-07-14 | 12:01 | Growth (Likes) | — | Liked: @mariposabunte (Grauburgunder 5❤️), @AJN64358998 (Grauburgunder 36❤️), @juicygiles (Grauburgunder 2❤️), @PhilipLeButt (Grauburgunder 1❤️), @FrauPatriotin (Wein-Abend 5❤️), @AlexanderMai26 (2 Tweets: Rotwein-Abend 0❤️+0❤️) |
+| 2026-07-14 | 12:01 | Growth (Follows) | — | Followed: @mariposabunte, @AJN64358998, @juicygiles, @PhilipLeButt, @FrauPatriotin, @AlexanderMai26, @nummer_zwei (7 new from xurl search Grauburgunder/Rotwein) |
+| 2026-07-14 | 12:01 | Growth (Quote) | — | Skipped (Dashboard: 6/7 Quote-Tweets bei 0 Likes, account dead) |
+| 2026-07-14 | 15:24 | Growth (Likes) | — | — | Liked: chrivoo (Silvaner), _PrivatePress (Silvaner-Mehltau), Knipser-Riesling (17❤️), Proschwitz-1 (8❤️), Proschwitz-2 (5❤️), Riesling-Recos (2❤️) |
