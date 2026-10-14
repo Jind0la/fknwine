@@ -11,18 +11,23 @@ interface Props {
   articleSchema?: Record<string, unknown>;
 }
 
+// Single source of truth: astro.config.mjs `site` → Astro.site
+const siteUrl = (Astro.site ?? new URL('https://fknwine.com')).origin;
+// Cloudflare Pages liefert Seiten mit Trailing Slash (308 von ohne → mit).
+// Canonical muss die ausgelieferte URL sein, nicht die weiterleitende.
+const canonicalPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+
 const {
   title,
   description,
-  canonicalURL = 'https://fknwine.pages.dev',
-  ogImage = 'https://fknwine.pages.dev/og-default.png',
+  canonicalURL = new URL(canonicalPath, siteUrl).href,
+  ogImage = `${siteUrl}/og-default.png`,
   publishedTime,
   modifiedTime,
   articleSchema,
 } = Astro.props;
 
 const fullTitle = `${title} — FKN Wine`;
-const siteUrl = 'https://fknwine.pages.dev';
 
 // Base JSON-LD: Organization + WebSite (every page)
 const baseSchema = [

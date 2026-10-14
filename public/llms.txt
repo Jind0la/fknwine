@@ -4,23 +4,28 @@
 
 ## Articles
 
-- [Alle Artikel](https://fknwine.pages.dev/artikel)
-- [Wein für den Grillabend — 7 Flaschen die jeder Mannschaftstrinker feiert](https://fknwine.pages.dev/artikel/wein-fuer-grillabend/)
-- [Die 10 besten Weine unter €10 im Supermarkt — Juli 2026](https://fknwine.pages.dev/artikel/beste-weine-unter-10-euro-supermarkt/)
-- [Rosé-Guide — Welcher schmeckt und welcher ist überteuerte Zuckerpampe](https://fknwine.pages.dev/artikel/rose-guide-supermarkt/)
-- [Aldi vs. Lidl vs. Edeka — wo kaufst du den besten Wein?](https://fknwine.pages.dev/artikel/aldi-lidl-edeka-wein-vergleich/)
-- [8 Weine die du NIEMALS kaufen solltest — und was du stattdessen trinkst](https://fknwine.pages.dev/artikel/weine-die-du-niemals-kaufen-solltest/)
-- [6 Wein-Mythen an die du glaubst — die komplett falsch sind](https://fknwine.pages.dev/artikel/wein-mythen-die-falsch-sind/)
-- [Wein für Pizza — 5 Flaschen die besser sind als dein Standard-Chianti](https://fknwine.pages.dev/artikel/wein-fuer-pizza/)
+- [Alle Artikel](https://fknwine.com/artikel)
+- [Welcher Wein zu Carbonara, Bolognese & Co? — 7 Weine die deine Pasta aufs nächste Level bringen](https://fknwine.com/artikel/wein-fuer-pasta/)
+- [7 Wein-Fehler die deinen Wein ruinieren — und wie du sie in 30 Sekunden behebst](https://fknwine.com/artikel/wein-fehler-die-deinen-wein-ruinieren/)
+- [Die 8 besten Weißweine unter €10 im Supermarkt](https://fknwine.com/artikel/beste-weissweine-unter-10-euro/)
+- [6 Wein-Mythen an die du glaubst — die komplett falsch sind](https://fknwine.com/artikel/wein-mythen-die-falsch-sind/)
+- [Supermarkt-Sekt & Prosecco: Welcher prickelt und welcher ist süße Plörre?](https://fknwine.com/artikel/sekt-prosecco-supermarkt-test/)
+- [8 Weine die du NIEMALS kaufen solltest — und was du stattdessen trinkst](https://fknwine.com/artikel/weine-die-du-niemals-kaufen-solltest/)
+- [Rosé-Guide — Welcher schmeckt und welcher ist überteuerte Zuckerpampe](https://fknwine.com/artikel/rose-guide-supermarkt/)
+- [Wein für den Grillabend — 7 Flaschen die jeder Mannschaftstrinker feiert](https://fknwine.com/artikel/wein-fuer-grillabend/)
+- [Die 10 besten Weine unter €10 im Supermarkt](https://fknwine.com/artikel/beste-weine-unter-10-euro-supermarkt/)
+- [Aldi vs. Lidl vs. Edeka — wo kaufst du den besten Wein?](https://fknwine.com/artikel/aldi-lidl-edeka-wein-vergleich/)
+- [Wein für Pizza — 5 Flaschen die besser sind als dein Standard-Chianti](https://fknwine.com/artikel/wein-fuer-pizza/)
 
 ## About
 
-FKN Wine ist ein autonomer Affiliate-Wein-Blog für Deutsche die Wein trinken ohne Snob-Getue.
+FKN Wine ist ein Affiliate-Wein-Blog für Deutsche die Wein trinken ohne Snob-Getue.
 Voice: direkt, anti-elitär, "F*ck Nice Wine". Kein Sommelier-Jargon.
 Alle Wein-Empfehlungen mit Preisen, Stores und direkten Links.
 Design: Neubrutalist (Space Grotesk + Inter, Dark Mode).
+Betreiber: Nimar Moradbakhti, Bochum · Impressum: https://fknwine.com/impressum
 
 ## Optional
 
-- [RSS Feed](https://fknwine.pages.dev/rss.xml)
-- [Sitemap](https://fknwine.pages.dev/sitemap-0.xml)
+- [RSS Feed](https://fknwine.com/rss.xml)
+- [Sitemap](https://fknwine.com/sitemap-0.xml)

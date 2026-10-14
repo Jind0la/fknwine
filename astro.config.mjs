@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://fknwine.pages.dev',
+  site: 'https://fknwine.com',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

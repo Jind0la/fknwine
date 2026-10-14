@@ -1,5 +1,24 @@
 # AGENTS.md — FKN Wine
 
+## Projekt-Betrieb (verbindlich)
+
+- **War Room:** `docs/WAR_ROOM.md` — vor der Arbeit lesen, nach der Arbeit
+  eigenen Teil aktualisieren. Unter ~150 Zeilen halten (Arbeitsgedächtnis,
+  kein Session-Protokoll).
+- **Zwischenstands-Pflicht:** bei Tasks >5 Tool-Calls mindestens ein
+  Zwischenstand im War Room, bevor das Endergebnis gemeldet wird.
+- Projektordner: `~/Workspace/projects/19-fknwine` (Desktop-Projekt `fknwine`).
+
+### Domain-Regel (Root-Cause-Fix 2026-10-14)
+
+- Die Live-Domain ist **https://fknwine.com**. Die einzig erlaubte Quelle ist
+  `site` in `astro.config.mjs` → alles andere leitet daraus ab
+  (`Astro.site`, Canonical per Default aus `Astro.url.pathname`).
+- **Nie `pages.dev` oder eine Domain hartcodieren** — genau das hat Canonical,
+  og:url, JSON-LD, Sitemap und RSS auf die Preview-Domain gedreht.
+- Canonicals brauchen den **Trailing Slash**: Cloudflare Pages leitet `/x`
+  per 308 auf `/x/` um.
+
 ## Projekt-Kontext
 
 FKN Wine ist ein autonomer Affiliate-Wein-Blog. Zielgruppe: Deutsche die Wein trinken ohne Snob-Getue.

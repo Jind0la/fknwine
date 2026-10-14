@@ -2,14 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 
-const siteUrl = 'https://fknwine.pages.dev';
+const siteUrl = (Astro.site ?? new URL('https://fknwine.com')).origin;
 
 const aboutSchema = {
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
   name: 'Über FKN Wine',
   description: 'FKN Wine — ehrliche Wein-Empfehlungen ohne Snob-Getue. Supermarkt-Weine, Discounter-Flaschen, blind verkostet.',
-  url: `${siteUrl}/about`,
+  url: `${siteUrl}/about/`,
   mainEntity: {
     '@type': 'Organization',
     name: 'FKN Wine',
@@ -29,7 +29,6 @@ const aboutSchema = {
 <Layout
   title="Über FKN Wine"
   description="Was hinter FKN Wine steckt — ehrliche Wein-Empfehlungen ohne Snob-Getue. Supermarkt-Weine blind verkostet."
-  canonicalURL={`${siteUrl}/about`}
   ogImage={`${siteUrl}/og-default.png`}
   articleSchema={aboutSchema}
 >

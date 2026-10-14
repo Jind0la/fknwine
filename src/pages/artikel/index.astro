@@ -3,21 +3,21 @@ import Layout from '../../layouts/Layout.astro';
 import Icon from '../../components/Icon.astro';
 import { articles, getAllTags } from '../../data/articles';
 
-const siteUrl = 'https://fknwine.pages.dev';
+const siteUrl = (Astro.site ?? new URL('https://fknwine.com')).origin;
 
 const collectionSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'Alle Artikel — FKN Wine',
   description: 'Alle Wein-Artikel von FKN Wine. Supermarkt-Weine, Discounter-Tests, Food-Pairing — ehrlich, direkt, kein Bullshit.',
-  url: `${siteUrl}/artikel`,
+  url: `${siteUrl}/artikel/`,
   mainEntity: {
     '@type': 'ItemList',
     numberOfItems: articles.length,
     itemListElement: articles.map((a, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      url: `${siteUrl}/artikel/${a.slug}`,
+      url: `${siteUrl}/artikel/${a.slug}/`,
       name: a.title,
     })),
   },
@@ -27,7 +27,6 @@ const collectionSchema = {
 <Layout
   title="Alle Artikel"
   description="Alle Wein-Artikel von FKN Wine. Supermarkt-Weine, Discounter-Tests, Food-Pairing — ehrlich, direkt, kein Bullshit."
-  canonicalURL={`${siteUrl}/artikel`}
   ogImage={`${siteUrl}/og-default.png`}
   articleSchema={collectionSchema}
 >

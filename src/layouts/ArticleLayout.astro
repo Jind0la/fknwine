@@ -15,9 +15,9 @@ const frontmatter: ArticleFrontmatter = {
   tags: Astro.props.tags || [],
 };
 
-const siteUrl = 'https://fknwine.pages.dev';
-const slug = Astro.url?.pathname?.replace(/\/$/, '') || '';
-const canonicalURL = `${siteUrl}${slug}`;
+const siteUrl = (Astro.site ?? new URL('https://fknwine.com')).origin;
+const canonicalPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonicalURL = `${siteUrl}${canonicalPath}`;
 const ogImage = Astro.props.heroImage
   ? `${siteUrl}${Astro.props.heroImage}`
   : `${siteUrl}/og-default.png`;
