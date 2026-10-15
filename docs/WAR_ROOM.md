@@ -69,7 +69,7 @@
 | ~~Canonical-Fix deployen~~ | Era | **erledigt 15.10.** | live verifiziert auf fknwine.com |
 | X-Reaktivierung @FKNWine | Era | Recon läuft | Zugang klären: kein OAuth-Token für @FKNWine vorhanden (xurl hat nur @NMoradbakhti) |
 | ~~GSC-Property für fknwine.com~~ | Era | **erledigt 15.10.** | Property verifiziert, Sitemap eingereicht |
-| Indexierung der 11 Artikel nachhalten | Era | offen | in ~1 Woche Index-Stand neu erheben (`~/.hermes/scripts/gsc.py inspect`); „Indexierung beantragen" ist UI-only (Nimar) |
+| Indexierung der 11 Artikel nachhalten | Era | **Wächter läuft** | Cron `a8a57aadcd03` (Mo 09:00, no_agent) prüft wöchentlich und meldet nur bei Änderung; Rest per `~/.hermes/scripts/gsc.py inspect`. „Indexierung beantragen" ist UI-only (Nimar) |
 | Newsletter-Kanal | offen | Formular zeigt auf `buttondown.com/nimar` | Buttondown-Account auf fknwine umziehen oder Ziel bestätigen |
 
 ## Entscheidungen
