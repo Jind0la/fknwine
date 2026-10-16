@@ -7,6 +7,13 @@
 
 ## Aktueller Stand
 
+- `2026-10-16` — **Deep Research: Affiliate vs. Sponsoring → Sequenz-Entscheidung.** Affiliate zuerst
+  (kein Audience-Gate; WSJ $20/Club + 10 % via Impact, Wine.com $50/PICKED, Vinesse $40, Firstleaf
+  via FlexOffers 8–10,4 %; Shops 4–12 %; Amazon 0 %). Sponsoring erst ab ~1–2k engaged Subs
+  (SponsorGap: <5k-CPM $50–150; beehiiv-Netzwerk real nur $2–6 CPM; Paved 50k = irrelevant).
+  Display: Mediavine Journey ab 1k Sessions, Raptive 25k pv. **Newsletter (beehiiv) = Brücke:
+  Affiliate jetzt, Sponsor-Asset später.** Nächstes: geführte Konto-Runde FlexOffers → Impact → Awin.
+  Details: KB `prj-fknwine-monetarisierung.md` §11.
 - `2026-10-16` — **Nach dem Live-Gang selbständig weiter: X-Relaunch, Winc-Review, OG-Bild, Analytics-Fund.**
   X: 19 Alt-Tweets (DE) gelöscht, 3 EN-Posts live (Ankündigung, WTSO-Achaval-Deal, Anti-Snob-Take);
   **Bio/Website-Feld offen** — OAuth2 darf den Profile-Endpoint nicht (403), 60-Sek-Task für Nimar im Browser.
@@ -18,15 +25,10 @@
 - `2026-10-16` — **EN-Relaunch gebaut (Branch `feat/en-relaunch`) — Preview offen.**
   Auf Nimars Go („alles selbständig machen"): neue EN-Struktur (Home / Deals / Wine Clubs /
   Guides / Legal), Content-Collections (`clubs`, `guides`), Merchant-Registry
-  `src/data/merchants.ts` (ein Affiliate-Swap-Point), Deal-Feed mit 4 hand-geprüften Deals
-  (WTSO-Takeover 12/$120, WTSO-Flash Legón 94 pts, Wine.com-Code `HAUNT20`, Firstleaf-Intro),
-  Firstleaf-Review + Guide „How to test a wine club without getting burned",
-  `_redirects` für Alt-URLs, DE-Artikel entfernt (bleiben in Git-History).
-  Verifiziert: Build grün (12 Seiten), Desktop 1440 + Mobile 390 per CDP ohne Overflow,
-  Screenshots gesichtet. Newsletter-Formular + Analytics bewusst noch unverkabelt
-  (Formular sagt es ehrlich). Nach Gary-Vee-Check (X-Recherche): Copy-Feinschliff —
-  Trust-Karte „sag es, wenn du etwas nicht geprüft hast", About-Regel „No one's palate
-  is wrong", Achaval-Ferrer-Detail präzisiert (keine unbelegten Preis-Claims).
+  `src/data/merchants.ts` (ein Affiliate-Swap-Point), Deal-Feed, Firstleaf-Review + Guide
+  „How to test a wine club without getting burned", `_redirects` für Alt-URLs, DE-Artikel raus
+  (Git-History). Verifiziert: Build grün, Desktop + Mobile ohne Overflow. Newsletter-Formular
+  bewusst unverkabelt (sagt es ehrlich). Gary-Vee-Check → Copy-Feinschliff.
   **Live seit 16.10. nachmittags:** Merge `7a4b39a..ff2b215` (FF) → Deploy durch;
   Live-Checks grün (neue Seiten 200; Alt-URLs 301: `/artikel/*`→`/`, `/impressum/`→
   `/imprint/`, `/datenschutz/`→`/privacy/`); GSC-Sitemap `sitemap-index.xml`
