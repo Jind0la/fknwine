@@ -9,6 +9,17 @@
 
 ## Aktueller Stand
 
+- `2026-10-16` (Era) — **X-Zugang @FKNWine steht und ist schreib-verifiziert.**
+  Das Konto existiert seit 08.07.2026 (id `2074768137501675520`, 19 Posts),
+  war aber in `~/.xurl` nicht vertreten (nur App-only-Bearer + OAuth2 für
+  @NMoradbakhti). Fix: OAuth2-Flow `xurl auth oauth2 FKNWine --app my-app`
+  (Browser, Callback localhost:8080) — Nimar hat sich im Comet als @FKNWine
+  eingeloggt und autorisiert. App `my-app` beantragt **alle Write-Scopes**
+  (`tweet.write`, `media.write`, `dm.write` …). **Verifiziert:** `xurl -u FKNWine
+  /2/users/me` → @FKNWine; post → `2111057054030839850` → delete → „Could not
+  find post". **Kein 402/Billing-Blocker.** Aufruf-Muster: `xurl -u FKNWine …`.
+  Hinweis: `xurl -i` gibt es nicht; Buffer-Problem — Output per `> /tmp/…log`
+  umleiten, dann lesen.
 - `2026-10-16` (Era) — **„Indexierung beantragen" ist gefahren: 10 von 14 URLs,
   dann machte Google das Tageskontingent zu.** Der UI-Schritt wurde nicht an
   Nimar delegiert, sondern **direkt im Comet-Browser per CDP** (Port 9222)
