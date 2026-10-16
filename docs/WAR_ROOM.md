@@ -9,6 +9,27 @@
 
 ## Aktueller Stand
 
+- `2026-10-16` (Era) — **Host-Konsolidierung ist live (Cloudflare-Zone, nicht
+  Repo).** Cause zuerst gemessen, dann gefixt: Die Zone hatte
+  `always_use_https: off`, das Dynamic-Redirect-Ruleset war **leer**, Page Rules
+  leer und im Repo gibt es **kein** `_redirects`/`functions/` — der
+  `http://fknwine.com` → 301 → `https://fknwine.pages.dev/`-Redirect kam also
+  von Pages' eigenem Edge-Verhalten, nicht aus der Zone. Fix in der Zone
+  `fknwine.com` (ID `51e9dc8462690929e186758bf3a0916a`, Account
+  `Nimarm@me.com`):
+  (1) `always_use_https` → **on** — damit wird der Apex-Scheme-Upgrade
+  same-host gemacht und Pages sieht den HTTP-Request nie:
+  `http://fknwine.com/*` → 301 → `https://fknwine.com/*`.
+  (2) Redirect Rule im Phase-Entrypoint `http_request_dynamic_redirect`
+  (Ruleset `30e169d45fd2438597cf86c203273c90`, jetzt Version 5):
+  `http.host eq "www.fknwine.com"` → 301 auf
+  `concat("https://fknwine.com", http.request.uri.path)`, Query erhalten.
+  **Verifiziert (curl):** http-Apex 301 same-host mit Pfad, `www` http+https
+  301 auf Apex (Pfad + Query erhalten, **1 Hop**), Apex https 200, Sitemap
+  listet ausschließlich `https://fknwine.com`. Lehre: `http.scheme` ist in
+  dieser Ruleset-Phase **kein gültiges Feld** (API 20127) — der ganze
+  Ruleset-PUT fällt dann durch; Scheme-Upgrade gehört über
+  `always_use_https`, nicht in die Regel.
 - `2026-10-16` (Era) — **Index-Check: noch nichts indexiert, und der wahre
   Bremsklotz ist gefunden.** Stand heute (URL-Inspection, 14 URLs):
   **0 indexiert**, 1 „Duplikat", 4 „Gecrawlt – zurzeit nicht indexiert"
@@ -139,14 +160,19 @@
 - [ ] **Deploy hängt an Cloudflare Pages GitHub-Integration** — kein Wrangler-Token
       auf der Maschine, Deployment nicht aus der CLI heraus prüfbar. Verifikation
       läuft nur über den Live-Check nach dem Push.
-- [ ] **Drei Hosts liefern dieselbe Seite** — `fknwine.pages.dev` (200),
-      `www.fknwine.com` (200), `http://fknwine.com` → 301 auf pages.dev.
-      Folge: Startseite ist in GSC ein „Duplikat" mit
-      `googleCanonical = pages.dev` → blockiert die Indexierung. Fix gehört in
-      die **Cloudflare-Zone** (Redirect Rules: `fknwine.pages.dev/*` und
-      `www.fknwine.com/*` → `https://fknwine.com/$1`, 301). Cloudflare-Zugang
-      (API-Token oder Connector) fehlt noch — per Pages-Function nachweislich
-      NICHT lösbar (s. Fehlschläge).
+- [x] **Drei Hosts lieferten dieselbe Seite** — erledigt 16.10. in der
+      Cloudflare-Zone: `always_use_https: on` + Redirect Rule
+      `www.fknwine.com` → `https://fknwine.com` (301). `www` und `http` sind
+      damit same-host auf den Apex konsolidiert (1 Hop, Pfad + Query erhalten).
+      **Rest offen:** `fknwine.pages.dev` liefert weiterhin 200 — der
+      `*.pages.dev`-Alias gehört zu Cloudflares Pages-Zone, ein Redirect dafür
+      ist aus der eigenen Zone **nicht** setzbar. Solange Google `pages.dev`
+      als kanonisch wählt, ist die Startseite ein „Duplikat". Kein
+      Pages-Function-Workaround (s. Fehlschläge) — Entdopplung läuft über das
+      Canonical-Tag im HTML (`https://fknwine.com/`) plus Re-Crawl.
+      Zone-Zugang ist jetzt da: Account `Nimarm@me.com`
+      (`ab7100d2d421801bb797f15c4c953208`), Zone
+      `51e9dc8462690929e186758bf3a0916a`.
 - [ ] X: **kein Zugang zu @FKNWine** über die vorhandenen Credentials
       (`~/.xurl/auth.yml` kennt nur `NMoradbakhti`). Posten als FKN Wine ist
       damit aktuell nicht automatisierbar — Zugang muss von Nimar kommen.
@@ -162,17 +188,21 @@
       auf fknwine.com (erledigt 15.10.).
 - [x] Google Search Console: Property `https://fknwine.com/` verifiziert,
       Sitemap eingereicht (erledigt 15.10.).
-- [ ] Index-Stand nachhalten: Startseite + 11 Artikel (Stand 15.10.: 0
-      indexiert, 1 gecrawlt-nicht-indexiert, 2 gefunden-nicht-indexiert,
-      9 unbekannt) — in ~1 Woche erneut prüfen, dann Google-Urteil lesen
+- [ ] Index-Stand nachhalten: Startseite + 11 Artikel (Stand 16.10.: 0
+      indexiert, 1 „Duplikat" [Startseite, `googleCanonical = pages.dev`],
+      4 gecrawlt-nicht-indexiert, 2 gefunden-nicht-indexiert,
+      7 unbekannt) — in ~1 Woche erneut prüfen, dann Google-Urteil lesen
       (`~/.hermes/scripts/gsc.py inspect <property> <url>`).
+- [x] Cloudflare-Zugang ist da (Account `Nimarm@me.com`) — Zonen-Redirects für
+      `www` + `http` sind live (erledigt 16.10., s. Aktueller Stand).
+- [ ] **Priorität (nur Nimar, GSC-UI):** „Indexierung beantragen" für Startseite
+      + 11 Artikel — die API kann das nicht. Vorher lohnt der Re-Crawl-Check:
+      der „Duplikat"-Befund der Startseite stammt aus dem Crawl vom 15.10.
+      **vor** dem Host-Fix; ein neuer Crawl sollte `fknwine.com` als kanonisch
+      lesen. Dann Wächter auf den nächsten Montag warten lassen.
 - [ ] Optional: Domain-Property `sc-domain:fknwine.com` anlegen (deckt www +
-      http + Subdomains) — braucht einen DNS-TXT-Record in der
-      Cloudflare-Zone (Zugang fehlt noch).
-- [ ] **Priorität:** Cloudflare-Zugang klären (Zonen-Redirects für
-      `pages.dev` + `www`) — erst danach ist mit Indexierung zu rechnen.
-      Danach in GSC „Indexierung beantragen" für Startseite + 11 Artikel (UI,
-      nur Nimar) und den Wächter auf den nächsten Montag warten lassen.
+      http + Subdomains) — braucht nur noch einen DNS-TXT-Record; Zone-Zugang
+      ist vorhanden (TXT via API setzbar, Token via `gsc.py token`).
 - [ ] X-Zugang @FKNWine klären, dann Redaktionsplan reaktivieren
       (`data/x-posts.md` + `data/CONTENT_ROADMAP.md` sind die Vorlage) (Era + Nimar).
 - [ ] Newsletter-Ziel (`buttondown.com/nimar` vs. fknwine) entscheiden (Nimar).
