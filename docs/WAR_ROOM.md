@@ -7,6 +7,17 @@
 
 ## Aktueller Stand
 
+- `2026-10-16` — **Content-Welle 3: 3 neue Club-Reviews + 2 Data-Guides (Branch `feat/content-wave-3`, Preview offen).**
+  **Neu:** *Naked Wines* ($40/Monat in eigenes Wein-Wallet, bis 60 % Angel-Preis, Kündigung nur per Telefon/Mail — kein Self-Service),
+  *Gold Medal Wine Club* (3 Stufen ab $49/Sendung, Versand extra, „cancel anytime" erst **nach** der ersten Sendung; läuft über Awin 59079),
+  *Wine Access* (Discovery ~$25/Flasche, Connoisseurs ~$75, Collector's $250–400 — gleicher Preis, ein Klick Unterschied).
+  **Guides:** „How to actually cancel a wine club" (Kündigungs-Ladder über 6 Clubs) + „The real price per bottle: six wine clubs in one table".
+  Alle Zahlen am 16.10. an den Merchant-Seiten gelesen; keine Tasting-Claims, „Checked"-Datum überall.
+  **Root-Fix:** die neuen 4-Spalten-Tabellen schoben die Seite auf 390 px in den Horizontal-Overflow →
+  rehype-Plugin `src/lib/rehype-table-wrap.mjs` wrappt jede Markdown-Tabelle in einen Scroll-Container
+  (braucht `@astrojs/markdown-remark` — Astro 7 installiert es nicht mehr per Default). Verifiziert: Build grün,
+  20 Seiten; auf allen neuen Seiten 390 px `docScrollWidth == 390` und Tabellen scrollen **im** Wrapper statt die Seite zu schieben.
+  Clubs-Index-„Queue"-Text angepasst (Naked Wines + Wine Access waren dort angekündigt → jetzt live).
 - `2026-10-16` — **Awin: Bewerbung APPROVED (Minuten nach Absenden!) + erste Programm-Bewerbungen raus.** Publisher **FKN Wine, ID 3126259** aktiv (Congrats-Mail 22:23). **Beworben:** Gold Medal Wine Club (59079), ONEHOPE Wine (39702), Parcelle Wine (94853) — alle „Bewerbung offen/sent"; Personal Wine (39786) öffnet kein Modal (später erneut). **Profil 100%:** Avatar = ✱-Marke (upload via Klick aufs Profilbild), Adresse auf „Mauritiusstraße" korrigiert (gespeichert). **Nimar-Part offen: Telefonnummer** (Kontaktdetails-Feld ist leer). **Awin-Eigenheiten:** Validation-Mail mit Template-Bug („on the %s platform") und Aktivierungslink → „Ungültiger Aktivierungscode" (E-Mail-Validierung fehlgeschlagen, Konto aber voll nutzbar; ggf. Support-Ticket). Merchant 59079 = **Gold Medal Wine Club**, NICHT CWC (alte Notiz korrigiert). CWC-Affiliate läuft NICHT über Awin-US (Suche findet ihn nicht).
 - `2026-10-16` — **X-Cadence gestartet + Awin-Bewerbung bis Step 4/4 gefahren („Lets go").** **X:** 2 Posts live — Malbec-Takeover (mit Link) + CWC-Fine-Print (Text) mit Link als Reply. **Lehre: Standalone-Link-Posts → 403 „not permitted" bei jungem Account; Links als Reply auf den eigenen Post posten (funktioniert zuverlässig).** **Awin:** Publisher-Bewerbung gefüllt bis **Verification** — Company „FKN Wine" (info@fknwine.com, Tax Residency Germany; Passwort → `~/.hermes/secrets/awin-password.txt`), Primary Region **US**, Promotional Type **Editorial Content** (primary), Space `https://fknwine.com` + Beschreibung, Sektor **Wine, Spirits & Tobacco**, Adresse Bochum. **Nimar-Part offen:** Telefonnummer + 18+/T&C-Häkchen + „Join Our Network" (Tab offen in Comet) + ggf. **$1–5 refundable** Karten-Verifizierung. Review 24–48 h. Details: Awin nutzt Angular-Material-UI (IDs statt names; Checkboxen per DOM-`.click()` erreichbar, Accordions brauchen echte CDP-Klicks).
 - `2026-10-16` — **Newsletter-Issue #01 gebaut (Draft) + Test-Mail zugestellt.** „Issue #1: A $10 Malbec and the fine print we actually read" (+ Subtitle/Preview „Real deals, verified terms, zero sommelier theater."): Intro, WTSO-Achaval-Takeover (12 Fl. / $120, bis 18.10.), Legón RdD $17.99 (94 pts), Kalifornien-Club-Kleingedrucktes (Signature + $40–80 Reship), Wochenliste (Winc/Firstleaf/HAUNT20), „checked 16.10."-Hinweis + Affiliate-Disclosure. **Test-Mail an info@fknwine.com** (Forward → Gmail-Kopie) — Betreff `[TEST] Issue #1 …`, in Gmail angekommen ✓; Desktop+Mobile-Render geprüft. **Draft-Link:** `https://fknwine.beehiiv.com/p/issue-1-a-10-malbec-and-the-fine-print-we-actually-read?draft=true`. **Nicht publiziert** — Issue #01 soll rausgehen, wenn die ersten echten Abos da sind. **Branding (Nimar-Vorgabe 16.10.):** Byline = **„FKN Wine"** (Guest-Author; Nimar-Autor entfernt; Avatar = eigene ✱-Marke: schwarzer Kreis + weißes Asterisk aus dem Logo — Text-Logo wäre bei 24px unlesbar, Default-Kreis war beehiivs grauer Platzhalter), Body-Signatur + Welcome-Mail-Signatur = „— FKN Wine" (Welcome neu publiziert); Test-Mails v2 (19:33 UTC) + v3 mit Avatar (19:41 UTC) zugestellt ✓. **Impressum/Privacy/Terms behalten den Operator-Namen** (Pflicht — bleibt). **Composer-Lehren** (Skill `beehiiv-newsletter`): Titel+Subtitle sind **Textareas** (nur via native Setter setzen — blindes execCommand-Tippen verkorkste den Titel); Subject im Email-Step erbt vom Titel; „Send test email" im Preview-Chevron-Panel; Byline über Element-Toolbar → „Authors"; Guest-Author via `/guest_authors`.
@@ -114,16 +125,14 @@
   per OAuth-Code von Nimar (Scopes `webmasters` + `siteverification`). Property
   `https://fknwine.com/` per FILE verifiziert (Owner `nimarny@googlemail.com`);
   `public/google35b2017bd84955fa.html` — **nie löschen**. Sitemap eingereicht (0 Fehler).
-- `2026-10-14` — **Projekt aus dem Archiv geholt und wieder verankert.** Repo
-  `Jind0la/fknwine` (public) nach `~/Workspace/projects/19-fknwine` geklont,
-  Desktop-Projekt `fknwine` (p_881c6f4f) + KB-Notiz `prj-fknwine` + dieser War Room.
+- `2026-10-14` — **Projekt aus dem Archiv geholt und wieder verankert.** Repo `Jind0la/fknwine` (public) geklont nach `~/Workspace/projects/19-fknwine`, Desktop-Projekt `fknwine` (p_881c6f4f) + KB-Notiz `prj-fknwine` + dieser War Room.
 
 ## Laufende Tasks
 
 | Task | Wer | Status | Nächster Schritt |
 |---|---|---|---|
 | Affiliate-Konten | Era | **FKN Wine, ID 3126259 aktiv** — Bewerbungen raus: Gold Medal (59079), ONEHOPE (39702), Parcelle (94853); Personal Wine offen | Telefon bei Awin nachtragen (Nimar); Personal Wine erneut; Antworten der Merchant-Programme abwarten; CWC-Affiliate über deren Website prüfen |
-| EN-Relaunch | Era | **Live (16.10.)** | beehiiv → X-Cadence → Content-Welle 2 |
+| EN-Relaunch | Era | **Live (16.10.)** | Content-Welle 3 (3 Clubs + 2 Guides) auf `feat/content-wave-3` → Preview-Blick, dann Merge |
 | Newsletter-Plattform | Era | **Flow live + E2E getestet** (beehiiv: Embed, Welcome-Mail, Footer) | Erste Ausgabe schreiben; Cadence aufsetzen |
 | Index-Stand | Era | Wächter + Nachzug auf neue URLs umgestellt | Sitemap eingereicht; Cron `92efc5307dea` meldet selbst, wenn alle 9 neuen URLs beantragt sind → dann löschen |
 

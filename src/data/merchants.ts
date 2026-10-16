@@ -19,8 +19,11 @@ export const merchants = {
   winecom: { name: 'Wine.com', url: 'https://www.wine.com/', affiliate: null },
   winc: { name: 'Winc', url: 'https://www.winc.com/', affiliate: null },
   cawineclub: { name: 'The California Wine Club', url: 'https://cawineclub.com/', affiliate: null },
+  nakedwines: { name: 'Naked Wines', url: 'https://www.nakedwines.com/', affiliate: null },
+  goldmedal: { name: 'Gold Medal Wine Club', url: 'https://goldmedalwineclub.com/', affiliate: null },
+  wineaccess: { name: 'Wine Access', url: 'https://www.wineaccess.com/', affiliate: null },
   // Kandidaten für die nächste Welle (Programme laufen – siehe War Room):
-  // CWC via Awin (Merchant 59079), WineExpress via Impact-Direktlink; totalwine, vivino, winensiders, wsjwine …
+  // Gold Medal läuft über Awin (Merchant 59079); WineExpress via Impact-Direktlink; totalwine, vivino, winensiders, wsjwine …
 } satisfies Record<string, Merchant>;
 
 export type MerchantId = keyof typeof merchants;

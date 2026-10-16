@@ -188,6 +188,17 @@ a:hover {
   box-shadow: 4px 4px 0 0 var(--color-primary);
   margin: 1.5rem 0;
 }
+/* Scroll-Hülle für breite Tabellen (rehype-table-wrap): nur die Tabelle
+   scrollt horizontal, nie die Seite. */
+.article-content .table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0;
+  max-width: 100%;
+}
+.article-content .table-scroll table {
+  margin: 0;
+}
 .article-content table {
   width: 100%;
   border-collapse: collapse;
