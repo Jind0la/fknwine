@@ -79,55 +79,37 @@
   Revert-Versuch am ungültigen Flag `-q` scheiterte), Live-Verifikation:
   alle 10 geprüften URLs wieder 200, Canonical intakt, Verifikationsdatei
   erreichbar.
-- `2026-10-15` (Era) — **Canonical-Fix ist live.** `fix/canonical-domain` per
-  Fast-Forward nach `main` gemergt (`58d5cc9..6b6b904`) und gepusht; Cloudflare
-  Pages hat ~45 s später gebaut. Live verifiziert per curl auf `/`, `/artikel/`,
-  `/artikel/wein-fuer-pasta/`, `/impressum/`: Canonical und `og:url` stehen auf
-  `https://fknwine.com/…` mit Trailing Slash; `robots.txt` zeigt
-  `Sitemap: https://fknwine.com/sitemap-0.xml`, Sitemap listet 33 URLs.
-  **Neuer Befund DNS:** Nameserver sind `lady/terry.ns.cloudflare.com`, Mail
-  läuft über Cloudflare Email Routing (`route1-3.mx.cloudflare.net`,
-  SPF `_spf.mx.cloudflare.net`) — Registrar bleibt IONOS SE, die *Zone* liegt
-  aber bei Cloudflare. Damit ist ein DNS-TXT-Record für die GSC-Domain-Property
-  über Cloudflare möglich (nicht über IONOS).
-- `2026-10-15` (Era) — **Google Search Console ist aufgesetzt und die Property
-  verifiziert.** Ablauf: (1) Der Login-Blocker wurde per OAuth-Code von Nimar
-  gelöst (Vault-Prompt geht über Telegram nicht, Automations-Browser ist
-  headless); dafür die Scopes `webmasters` + `siteverification` in der
-  google-workspace-OAuth-Liste ergänzt. (2) Beide APIs waren im Cloud-Projekt
-  `1064311637568` **deaktiviert** → von Nimar aktiviert. Achtung Lehre: meine
-  erste „API ist aktiv"-Prüfung per unauthentifiziertem Request war ein
-  Fehlschluss — 401 sagt nichts über den API-Status. (3) Property
-  `https://fknwine.com/` angelegt und per FILE-Methode verifiziert
-  (Owner: `nimarny@googlemail.com`); Datei `public/google35b2017bd84955fa.html`
-  liegt im Repo — **nie löschen**, sonst verliert die Property die Bestätigung.
-  (4) Sitemap `https://fknwine.com/sitemap-0.xml` eingereicht (isPending,
-  0 Fehler). (5) Index-Stand-Erhebung: Startseite „Gecrawlt – zurzeit nicht
-  indexiert" (letzter Crawl 06.05.2026, `googleCanonical` = fknwine.com ✓),
-  2 Artikel „Gefunden – zurzeit nicht indexiert", 9 Artikel dem Index
-  unbekannt — genau der Schaden, den die Canonical-Drift angerichtet hat.
+- `2026-10-15` (Era) — **Canonical-Drift behoben und live.** Root Cause:
+  `site: 'https://fknwine.pages.dev'` in `astro.config.mjs` **plus** 19
+  hartcodierte `pages.dev`-Stellen → Canonical, `og:url`, JSON-LD, Sitemap und
+  RSS zeigten alle auf die Preview-Domain; Google wurde damit gesagt „die echte
+  Version ist pages.dev". Fix: eine Quelle (`site` → `Astro.site`), Canonical
+  aus `Astro.url.pathname` mit Trailing Slash (Pages leitet `/x` → `/x/` per
+  308), `robots.txt`/`llms.txt` auf fknwine.com. Verifiziert: Build grün
+  (33 Seiten), **0 Treffer** `pages.dev` in `dist/`, 33 Canonicals auf
+  fknwine.com; Merge `58d5cc9..6b6b904` (FF) + Live-curl.
+  **DNS-Befund:** Zone liegt bei Cloudflare (`lady/terry.ns.cloudflare.com`),
+  Mail über Cloudflare Email Routing — Registrar ist nur IONOS. Ein DNS-TXT für
+  die GSC-Domain-Property ist damit über Cloudflare möglich (nicht über IONOS).
+- `2026-10-15` (Era) — **Google Search Console aufgesetzt, Property
+  verifiziert.** Login-Blocker per OAuth-Code von Nimar gelöst (Scopes
+  `webmasters` + `siteverification` ergänzt — Vault-Prompt geht über Telegram
+  nicht, Automations-Browser ist headless). Beide APIs waren im Cloud-Projekt
+  `1064311637568` **deaktiviert** → von Nimar aktiviert. **Lehre:** meine
+  „API ist aktiv"-Prüfung per unauthentifiziertem Request war ein Fehlschluss —
+  401 sagt nichts über den API-Status. Property `https://fknwine.com/` per
+  FILE verifiziert (Owner `nimarny@googlemail.com`); Datei
+  `public/google35b2017bd84955fa.html` liegt im Repo — **nie löschen**, sonst
+  verliert die Property die Bestätigung. Sitemap eingereicht (0 Fehler).
+  Erhebung: Startseite „Gecrawlt – zurzeit nicht indexiert" (Crawl 06.05.,
+  `googleCanonical` = fknwine.com ✓), 2 „Gefunden", 9 unbekannt.
   **Cloudflare-Eigenheit:** Pages strippt `.html` und leitet per 308 auf die
-  endungslose URL um; Google folgt dem und akzeptiert die Verifikation.
-- `2026-10-14` (Era) — **Projekt aus dem Archiv geholt und wieder ankerbar gemacht.**
-  Kontext: Bis heute gab es **keinen** Projektordner, keine KB-Notiz und keinen
-  Memory-Eintrag zu fknwine.com — die Site lief unbemerkt weiter. Nimar fragte an,
-  Era hat live verifiziert und das Projekt aufgesetzt: Repo `Jind0la/fknwine`
-  (public) nach `~/Workspace/projects/19-fknwine` geklont, Desktop-Projekt
-  `fknwine` (p_881c6f4f) angelegt, Aufguss der beiden SEO-Befunde (Canonical-Drift)
-  und dieses War Room.
-- `2026-10-14` (Era) — **Canonical-Drift behoben (Branch `fix/canonical-domain`).**
-  Root Cause: `site: 'https://fknwine.pages.dev'` in `astro.config.mjs` **plus**
-  19 hartcodierte `pages.dev`-Stellen in Layouts/Pages/robots/llms/feed → Canonical,
-  og:url, JSON-LD, Sitemap und RSS zeigten alle auf die Pages.dev-Preview-Domain.
-  Google wurde damit gesagt: „die echte Version ist pages.dev" — die Custom Domain
-  hätte sich selbst aus dem Index gedrückt.
-  Fix: eine Quelle (`site` → `Astro.site`), Canonical per Default aus
-  `Astro.url.pathname` abgeleitet (mit Trailing Slash, weil Cloudflare Pages
-  `/x` → `/x/` per 308 umleitet), `robots.txt`/`llms.txt` auf fknwine.com,
-  `llms.txt` zusätzlich auf alle 11 Artikel + Impressum-Link vervollständigt.
-  Verifiziert: Build grün (33 Seiten), **0 Treffer** `pages.dev` in `dist/`,
-  alle 33 Canonicals auf `fknwine.com` mit Trailing Slash, Sitemap/RSS/JSON-LD
-  konsistent, lokal 200er auf /, /artikel/, /impressum/, /rss.xml, /sitemap-0.xml.
+  endungslose URL um; Google akzeptiert die Verifikation trotzdem.
+- `2026-10-14` (Era) — **Projekt aus dem Archiv geholt und wieder verankert.**
+  Es gab **keinen** Projektordner, keine KB-Notiz, keinen Memory-Eintrag — die
+  Site lief seit Juli unbemerkt. Repo `Jind0la/fknwine` (public) nach
+  `~/Workspace/projects/19-fknwine` geklont, Desktop-Projekt `fknwine`
+  (p_881c6f4f) + KB-Notiz + dieser War Room angelegt.
 - `2026-07-16` (Nimar/IONOS) — Whois-Privacy-Anfrage zu fknwine.com
   („Business opportunities", `designing.solutions@genaidesign.info`), **nie
   beantwortet**. Liegt als HTML in `~/Downloads/`.
