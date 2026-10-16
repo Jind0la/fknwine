@@ -130,6 +130,10 @@
 - **EN-Pivot entschieden (Nimars Go, 16.10.):** Deals + Data + Voice auf EN/US;
   Konzept KB `prj-fknwine-monetarisierung`. Ablauf: Branch → Live-Preview → Merge
   (kein Merge ohne Preview-Blick). X Premium bewusst aufgeschoben („erst wenn nötig").
+- **Mail-Footer-Adresse bleibt vorerst die Bochum-Anschrift** (Nimar-Entscheid, 16.10.):
+  Pflichtfeld in kommerziellen Mails (CAN-SPAM + beehiiv); steht ohnehin schon öffentlich
+  im Impressum der Website. Wechsel auf Postfach/US-Virtual-Mailbox erst, wenn die Marke
+  Umsätze macht (dann ggf. zusammen mit einer LLC).
 - **Look bleibt, Inhalt neu:** Neubrutalist-Optik behalten (Wiedererkennung);
   DE-Artikel ersetzt (Git-History), Struktur + Texte EN. Keine Fake-Reviews —
   „Checked"-Daten überall.
