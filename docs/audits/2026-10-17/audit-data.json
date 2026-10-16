@@ -1,0 +1,179 @@
+{
+  "summary": {
+    "health_score": 80,
+    "business_type": "Publisher / affiliate content site (wine deals + wine club reviews, EN/US)",
+    "audited": "2026-10-17",
+    "urls_crawled": 19,
+    "method": "hermes-seo plugin (45 skills): 10 specialist role audits in parallel over a 19-page crawl, evidence-verified; key claims re-checked by hand against live HTTP responses",
+    "top_findings": [
+      "Internal link graph is two dead-end islands: all 9 club/guide spokes have zero contextual out-links, /deals/ links straight to merchants and never to a club review",
+      "No HSTS header and hashed assets revalidate on every visit (cache-control: max-age=0, must-revalidate)",
+      "/subscribed/ is indexable, orphaned and listed in the sitemap",
+      "Schema is Entity-blind: Organization has no sameAs/@id and uses an SVG favicon as logo; Article has no image",
+      "Search intent is under-served: no ranked 'best wine clubs' page, all six reviews open with a hedged 'Depends…' verdict"
+    ],
+    "quick_wins": [
+      "public/_headers: HSTS + max-age=31536000, immutable for /_astro/*",
+      "noindex + sitemap-filter for /subscribed/",
+      "Template-level 'Related' links (reviews <-> guides) + a club block on /deals/",
+      "Meta descriptions trimmed to <160 chars via one helper in Layout",
+      "Deal links renamed 'Get this deal at WTSO →' (agent-usable link names)",
+      "llms.txt refreshed (it still lists 7 pages, one club review)"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 82,
+      "what_works": [
+        "All 19 canonicals = https://fknwine.com/<path>/ with trailing slash",
+        "Unique titles + descriptions; single-hop redirects (http→https, www→apex, no-slash→slash, legacy German URLs)",
+        "X-Content-Type-Options: nosniff + Referrer-Policy on every response; valid cert (GTS WE1)",
+        "Real 404 status; HTTP/2 + Brotli; TTFB ≈ 0.11 s; one 13.6 KB render-blocking CSS, no framework JS"
+      ],
+      "findings": [
+        { "title": "HSTS missing", "severity": "Medium", "description": "curl -sSI https://fknwine.com/ returns nosniff + referrer-policy but no strict-transport-security; no public/_headers in the repo. VERIFIED BY HAND.", "recommendation": "Add public/_headers with Strict-Transport-Security." },
+        { "title": "No immutable caching on hashed assets", "severity": "Medium", "description": "/_astro/Layout.<hash>.css and the woff2 fonts return cache-control: public, max-age=0, must-revalidate despite content-hashed filenames. VERIFIED BY HAND.", "recommendation": "/_headers: max-age=31536000, immutable for /_astro/*." },
+        { "title": "/subscribed/ indexable and in the sitemap", "severity": "Low", "description": "Thank-you page returns 200, has a canonical and no robots meta, and is listed in sitemap-0.xml. VERIFIED BY HAND.", "recommendation": "noindex + exclude from the sitemap." },
+        { "title": "Sitemap has no lastmod", "severity": "Low", "description": "<loc> only on all 19 URLs.", "recommendation": "Emit real per-page dates from the content frontmatter (lastChecked / updated)." },
+        { "title": "Robots Sitemap: points at the child sitemap", "severity": "Low", "description": "Declaration is sitemap-0.xml, not sitemap-index.xml.", "recommendation": "Reference the index." },
+        { "title": "6 meta descriptions >160 chars, 3 titles >60", "severity": "Low", "description": "Worst: /wine-clubs/wine-access/ desc 272; /guides/how-to-cancel-a-wine-club/ title 74. VERIFIED BY HAND.", "recommendation": "Add a length-capping helper in Layout; shorten the long titles." }
+      ]
+    },
+    {
+      "name": "Content Quality / E-E-A-T",
+      "score": 80,
+      "what_works": [
+        "ai_pattern_score 0, filler_score 0 — the voice is genuinely human",
+        "Exceptional disclosure, imprint and dating discipline ('checked <date>' everywhere)",
+        "Non-templated metadata, low site risk"
+      ],
+      "findings": [
+        { "title": "No named author or credentials (Expertise)", "severity": "High", "description": "/about/ names nobody; only /imprint/ names the legal owner. All Article JSON-LD author = Organization.", "recommendation": "Decide the byline question (brand rule says 'FKN Wine', not Nimar) and add a real 'how we test' page." },
+        { "title": "No first-hand experience signals (Experience)", "severity": "High", "description": "'we have NOT tested' appears on 5 pages; every review fact is the club's own claim re-quoted.", "recommendation": "Actually run one cancellation flow and publish it with screenshots." },
+        { "title": "Thin hubs", "severity": "Medium", "description": "/guides/ is 196 words (thin-content flag); /deals/ 369, /about/ 376, home 506. Only reviews (666–1,052w) and guides (586–692w) are substantial.", "recommendation": "Add comparison/methodology prose to the hubs." },
+        { "title": "Almost no contextual internal linking", "severity": "Medium", "description": "Guides and reviews each have exactly 1 inbound (their hub) and no cross-links. Confirmed independently by the cluster role.", "recommendation": "Related-links blocks (fixed in this pass)." },
+        { "title": "Rigid review template, reused sentences", "severity": "Medium", "description": "All 6 reviews share the identical H2 set; 'cancel anytime' on 13 pages.", "recommendation": "Vary structure per review as the collection grows." },
+        { "title": "Breadth gap", "severity": "Medium", "description": "Only 9 editorial pages; no 'best of' master comparison, no state-shipping guide, no retailer hubs.", "recommendation": "Content wave 4." },
+        { "title": "CONTENT_ROADMAP.md describes an old German supermarket blog", "severity": "Info", "description": "The in-repo roadmap is unrelated to the live English site.", "recommendation": "Delete or rewrite." }
+      ]
+    },
+    {
+      "name": "On-Page / SXO",
+      "score": 75,
+      "what_works": [
+        "Above-the-fold answers on every review; check-dates everywhere",
+        "Honest-limitation disclosure is a genuine trust moat",
+        "The cancel guide is differentiated from first-party FAQ SERPs"
+      ],
+      "findings": [
+        { "title": "Hedged verdicts on all six reviews", "severity": "High", "description": "Every review opens with a 'Depends…' badge (Firstleaf 'Depends who you are', Wine Access 'Depends on your budget'), so the first scanned element reads as a non-answer on an 'is X worth it' SERP.", "recommendation": "Make the verdict decisive while keeping the honesty (fixed in this pass)." },
+        { "title": "Dead-end guides", "severity": "High", "description": "The price-per-bottle guide compares six clubs and links to none of their reviews; the cancel guide likewise. Lost conversion at peak intent.", "recommendation": "Link each table row / step to the matching review (fixed in this pass)." },
+        { "title": "No ranked 'Best Wine Clubs' page", "severity": "High", "description": "The comparison SERP is owned by ranked listicles; /wine-clubs/ is a flat unranked list with no 'best for' framing.", "recommendation": "Add a ranked/'pick by situation' layer to the hub." },
+        { "title": "Gift buyer persona unserved", "severity": "Low", "description": "Persona scores: cautious joiner 85, deal hunter 84, gift buyer 59.", "recommendation": "A gift page." }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 72,
+      "what_works": [
+        "Valid, server-rendered JSON-LD on all 19 pages; plugin validator clean",
+        "Organization + WebSite everywhere; AboutPage on /about/; Article on the 9 editorial pages",
+        "Correctly omitted FAQPage (rich results retired) and Product/Review ratings (brand forbids invented ratings)"
+      ],
+      "findings": [
+        { "title": "Organization logo is an SVG favicon", "severity": "High", "description": "'logo':'https://fknwine.com/favicon.svg' — Google wants a raster logo ≥112×112.", "recommendation": "Serve a 512×512 PNG (fixed in this pass)." },
+        { "title": "No sameAs / no @id entity linking", "severity": "High", "description": "Organization has no sameAs despite linking x.com/FKNWine in nav, footer and about.", "recommendation": "Add @id + sameAs + @graph (fixed in this pass)." },
+        { "title": "Article has no image", "severity": "High", "description": "Article = headline/description/url/dates/author/publisher only, though og-default.png exists.", "recommendation": "Add image (fixed in this pass)." },
+        { "title": "publisher is an inline stub without logo", "severity": "Medium", "description": "No logo on the publisher node.", "recommendation": "Reference the Organization @id." },
+        { "title": "No CollectionPage/ItemList on the hubs; no BreadcrumbList site-wide", "severity": "Medium", "description": "The three hub pages carry only Organization+WebSite.", "recommendation": "Breadcrumbs added in this pass; ItemList as next step." },
+        { "title": "Organization emitted 3× per article page without @id", "severity": "Medium", "description": "Standalone + author + publisher, no @graph → duplicate-entity risk.", "recommendation": "@graph with shared @id (fixed in this pass)." }
+      ]
+    },
+    {
+      "name": "Performance (Core Web Vitals)",
+      "score": 93,
+      "what_works": [
+        "LCP 0.42 s (home) / 0.44 s (club review) cold, Slow-4G + 4× CPU — text LCP, no image dependency",
+        "CLS 0.00 throttled; 0 long tasks; 0 KB framework JS; DOM 115–174 elements",
+        "Cold throttled weight: home 9 req / 75.0 KB; HTML br 4,337 B; 0 <img> tags site-wide",
+        "font-display: swap on 10/10 faces; only 2 latin subsets actually fetched"
+      ],
+      "findings": [
+        { "title": "Hashed assets revalidate every visit", "severity": "Medium", "description": "CSS + both fonts return 304 on repeat visits (see Technical).", "recommendation": "immutable caching (fixed in this pass)." },
+        { "title": "No font preload", "severity": "Low", "description": "preload_check score 50, preload_hints 0; fonts take 417–553 ms throttled.", "recommendation": "Preload the 2 latin woff2." },
+        { "title": "One render-blocking stylesheet", "severity": "Low", "description": "3.7 KB br external CSS.", "recommendation": "build.inlineStylesheets: 'always'." },
+        { "title": "No field data available", "severity": "Info", "description": "PSI rate-limited (HTTP 429) and no CrUX API key — the 93 is a lab synthesis, not Lighthouse.", "recommendation": "Wire a PSI/Google API key for field CWV." }
+      ]
+    },
+    {
+      "name": "Visual / Mobile",
+      "score": 78,
+      "what_works": [
+        "Value proposition and both CTAs visible without scrolling on desktop and mobile",
+        "No contrast failures (off-white/dark 19.4:1, yellow/dark 13.7:1, white/red badge 5.8:1)",
+        "Zero page-level horizontal overflow on all 12 viewports (independently re-verified)"
+      ],
+      "findings": [
+        { "title": "Undersized tap targets", "severity": "High", "description": "Nav links 44–85×20px, footer 38–68×20px, product CTAs 143×41px, the nav 'X' 9×20px; 17/17 tappables undersized on /deals/ mobile.", "recommendation": "Min 44px hit area (fixed in this pass)." },
+        { "title": "Bare-text 'X' as the X/Twitter nav icon", "severity": "High", "description": "DOM is <a class='nav-link' title='FKN Wine on X'>X</a> — reads as a close button. VERIFIED BY HAND.", "recommendation": "Real SVG glyph (fixed in this pass)." },
+        { "title": "Wide table clipped on mobile with no scroll cue", "severity": "Medium", "description": "Table 447px inside a ~342px wrapper; the 4th column is cut with no fade/hint.", "recommendation": "Add a scroll affordance; consider a stacked layout under 480px." },
+        { "title": "Sub-14px labels widely used", "severity": "Medium", "description": "11.2px eyebrow pills, 12px badges, 12.8px meta, 13.6px nav/footer (46 elements under 14px on /wine-clubs/ mobile).", "recommendation": "Raise the smallest sizes to ≥13px, nav/footer to 14px." }
+      ]
+    },
+    {
+      "name": "AI Search / Agentic readiness",
+      "score": 78,
+      "what_works": [
+        "Lighthouse Agentic Browsing 3/3 mobile and 3/3 desktop (local v13.5.0 run); Agent-UX heuristic 100/100; 0 hard P0 fails",
+        "Raw HTML == rendered DOM on /deals/ and /wine-clubs/ (text similarity 1.000) — fully server-rendered",
+        "agent-accessibility-tree passes all 33 axe rules; unknown URLs return real 404s",
+        "The 'checked <date>' pattern plus hard sourced numbers is genuinely quotable"
+      ],
+      "findings": [
+        { "title": "PerplexityBot blocked at root", "severity": "High", "description": "robots.txt: 'User-agent: PerplexityBot / Disallow: /'. PerplexityBot is a SEARCH crawler, so the site is removed from Perplexity answers, while llms.txt simultaneously invites LLMs and Content-Signal says search=yes. VERIFIED BY HAND.", "recommendation": "Owner decision — align the policy (allow search/reference agents, keep training blocked)." },
+        { "title": "Five outbound deal links all named 'Get this deal →'", "severity": "High", "description": "wtso ×2, wine.com, firstleaf, winc — the merchant is only in an adjacent span, so an agent cannot tell the targets apart. VERIFIED BY HAND.", "recommendation": "Unique, descriptive link names (fixed in this pass)." },
+        { "title": "Content-Signal only in the '*' group", "severity": "Medium", "description": "The named AI groups never read the signal, contradicting llms.txt.", "recommendation": "Owner decision with the robots policy." },
+        { "title": "Newsletter form not agent-usable", "severity": "Medium", "description": "beehiiv loader injects client-side: 0 forms/inputs/iframes in raw or rendered DOM (the <noscript> fallback link is present).", "recommendation": "Keep the fallback; a native form is optional." },
+        { "title": "llms.txt is stale", "severity": "Medium", "description": "Lists 7 pages and 1 of 6 club reviews, omitting the strongest asset (the price-per-bottle table). VERIFIED BY HAND.", "recommendation": "Regenerate from the sitemap (fixed in this pass)." },
+        { "title": "Split brand entity", "severity": "Medium", "description": "Machine string 'FKN Wine' vs human 'F*CK NICE WINE'; not linked by sameAs/@id.", "recommendation": "Entity linking (fixed in this pass)." }
+      ]
+    },
+    {
+      "name": "Sitemap / Information Architecture",
+      "score": 80,
+      "what_works": [
+        "Sitemap↔crawl parity 19 = 19; every sitemap URL returns 200 directly (no redirects, no slash variants)",
+        "Valid XML, no deprecated priority/changefreq, shallow URL depth (max 2), consistent trailing slashes",
+        "Global nav/footer reachability; hubs link to children and children link back"
+      ],
+      "findings": [
+        { "title": "/subscribed/ indexable, orphaned and in the sitemap", "severity": "Medium", "description": "Zero internal inbound links; no noindex mechanism exists in Layout.astro. VERIFIED BY HAND.", "recommendation": "Fixed in this pass." },
+        { "title": "No lastmod", "severity": "Medium", "description": "Bare sitemap() integration.", "recommendation": "Next step." },
+        { "title": "No sibling/related links between reviews and guides", "severity": "Low", "description": "/deals/ links to zero club reviews.", "recommendation": "Fixed in this pass." }
+      ]
+    },
+    {
+      "name": "Topic Cluster / Internal Linking",
+      "score": 65,
+      "what_works": [
+        "Two clean hub edges exist: /wine-clubs/ → 6 reviews, /guides/ → 3 guides",
+        "Nav and footer make every page globally reachable"
+      ],
+      "findings": [
+        { "title": "Two dead-end islands plus a stranded deals page", "severity": "High", "description": "All 9 spokes are dead ends (0 contextual out-links beyond one breadcrumb); /subscribed/ is a true orphan; /deals/ is linked contextually only from home and routes straight out to firstleaf.com, winc.com, wine.com, wtso.com — leaking users and link equity off-site.", "recommendation": "Mesh the islands (fixed in this pass)." },
+        { "title": "No pillar pages", "severity": "Medium", "description": "/wine-clubs/ and /guides/ are bare indexes; the price-per-bottle guide is the latent pillar of the guides cluster.", "recommendation": "Add comparison/methodology prose to the hubs." },
+        { "title": "Content gaps", "severity": "Medium", "description": "Ranked: (1) recurring dated 'best wine deals this month' round-up, (2) 'best wine club for [gifting/budget/beginners]' use-case hubs, (3) 'are wine clubs worth it / vs Costco', (4) intro-offer & promo-code comparison, (5) cancellation fees by club.", "recommendation": "Content wave 4." }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      { "name": "Phase 1: Shipped in this pass", "timeframe": "2026-10-17", "items": ["HSTS + immutable caching (_headers)", "noindex + sitemap-filter /subscribed/", "Related-links mesh (reviews <-> guides) + club block on /deals/", "Decisive verdicts on all 6 reviews", "Schema @graph: @id, sameAs, raster logo, Article image", "Nav 'X' icon + 44px tap targets", "Meta-description length cap + llms.txt refresh", "Descriptive deal-link names", "robots Sitemap: -> sitemap-index.xml"] },
+      { "name": "Phase 2: This week", "timeframe": "Week 1", "items": ["Sitemap lastmod from content dates", "Font preload + inlineStylesheets", "Ranked 'best wine clubs' layer on the hub", "One real tested cancellation flow with screenshots"] },
+      { "name": "Phase 3: Content & authority", "timeframe": "Month 1", "items": ["Content wave 4 (Wine Insiders, WSJ Wine, Plonk)", "Dated monthly deal round-up", "Use-case hubs (gifting, budget, beginners)", "'How we test' methodology page"] },
+      { "name": "Phase 4: Monitoring", "timeframe": "Ongoing", "items": ["Wire a PSI/CrUX API key for field Core Web Vitals", "Index coverage watch", "Re-run this audit monthly with hermes-seo drift"] }
+    ]
+  },
+  "artifacts": { "findings_dir": "findings/", "screenshots_dir": "screenshots/" }
+}
