@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config';
+---
+
+<Layout
+  title="Terms of Service"
+  description="Terms of service for fknwine.com: 21+, how our deal checks work, affiliate disclosure, and the rules behind the honesty."
+>
+  <section class="wrapper" style="padding-top: 3rem; padding-bottom: 4rem; max-width: 720px;">
+    <h1 style="font-size: clamp(1.9rem, 5.5vw, 2.6rem);">Terms of Service</h1>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">1. Who we are</h2>
+    <p>
+      fknwine.com („FKN Wine", „we") is an independent wine deals and reviews publication
+      operated by Nimar Moradbakhti<br />
+      Mauritiusstr. 4a<br />
+      44789 Bochum, Germany<br />
+      Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">2. Who may use this site</h2>
+    <p>
+      Adults only. You must be of legal drinking age in your jurisdiction (21+ in the United
+      States). We don't target minors and we don't sell alcohol — we link to licensed merchants
+      who verify age themselves.
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">3. What we publish — and what we don't promise</h2>
+    <p>
+      We verify prices, offers and terms at the merchant on the „Checked" date shown on every
+      deal. Prices and availability change; the merchant's own page is always the binding
+      source. We don't publish tasting notes for wines we haven't tasted, and opinions are
+      marked as opinions. Nothing on this site is financial, legal, or professional advice.
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">4. Affiliate links</h2>
+    <p>
+      Some outbound links earn us a commission at no extra cost to you — see our
+      <a href="/disclosure/">Disclosure</a>. Commissions never change verdicts: if a deal is
+      bad, we say so (or don't publish it). Sponsored placements, when they exist, are clearly
+      labeled, and sponsors never get to dictate review verdicts.
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">5. Third-party offers</h2>
+    <p>
+      Deals, discounts and codes are provided by third-party merchants. Their terms, shipping
+      rules, age verification and return policies apply. We are not the seller and not a party
+      to your purchase.
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">6. Intellectual property</h2>
+    <p>
+      All content is © FKN Wine unless noted. You may quote with attribution and a link; bulk
+      republication needs our written permission.
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">7. Liability</h2>
+    <p>
+      We work to keep everything accurate, but this site is provided „as is", without
+      warranties. To the extent permitted by law, we are not liable for decisions or damages
+      arising from use of this site or of third-party offers linked here. Mandatory statutory
+      liability (e.g. under German law) remains unaffected.
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">8. Changes</h2>
+    <p>
+      We may update these terms; the date below shows the current version. Continued use after
+      changes means you accept them.
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">9. Contact</h2>
+    <p>Questions: <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+
+    <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.6;">Last updated: October 16, 2026</p>
+  </section>
+</Layout>
