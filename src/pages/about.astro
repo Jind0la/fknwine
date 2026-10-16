@@ -1,113 +1,129 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
+import { SITE } from '../config';
 
 const siteUrl = (Astro.site ?? new URL('https://fknwine.com')).origin;
 
 const aboutSchema = {
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
-  name: 'Über FKN Wine',
-  description: 'FKN Wine — ehrliche Wein-Empfehlungen ohne Snob-Getue. Supermarkt-Weine, Discounter-Flaschen, blind verkostet.',
+  name: 'About FKN Wine',
+  description:
+    'FKN Wine — wine deals and honest buying guides. We check the fine print, we don\'t fake reviews.',
   url: `${siteUrl}/about/`,
   mainEntity: {
     '@type': 'Organization',
     name: 'FKN Wine',
     url: siteUrl,
-    description: 'FKN Wine testet Supermarkt-Weine und gibt direkte Kaufempfehlungen ohne Sommelier-Jargon.',
+    description: 'Wine deals, judged honestly. No sommelier act, no fake reviews.',
     foundingDate: '2026',
     slogan: 'F*ck Nice Wine.',
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer support',
-      email: 'hey@fknwine.com',
+      email: SITE.email,
     },
   },
 };
 ---
 
 <Layout
-  title="Über FKN Wine"
-  description="Was hinter FKN Wine steckt — ehrliche Wein-Empfehlungen ohne Snob-Getue. Supermarkt-Weine blind verkostet."
-  ogImage={`${siteUrl}/og-default.png`}
+  title="About"
+  description="What FKN Wine is and how we work: deals checked by hand, no fake reviews, opinions marked as opinions."
   articleSchema={aboutSchema}
 >
-  <section class="wrapper" style="padding-top: 4rem; padding-bottom: 4rem; max-width: 750px;">
-    <!-- Header -->
-    <h1 style="font-size: clamp(2rem, 5vw, 2.5rem); margin-bottom: 2rem;">
+  <section class="wrapper" style="padding-top: 3rem; padding-bottom: 4rem; max-width: 750px;">
+    <h1 style="font-size: clamp(2rem, 6vw, 3rem);">
       F*ck Nice <span style="color: var(--color-primary);">Wine.</span>
     </h1>
 
-    <!-- Manifest -->
-    <div class="brutal-card" style="margin-bottom: 2rem;">
-      <h2 style="font-size: 1.5rem; margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">
-        <Icon name="wine" size={24} color="var(--color-primary)" />
-        Wofür wir stehen
-      </h2>
+    <p style="font-size: 1.1rem;">
+      Buying wine is annoying. The labels are noise, the prices are a lottery, and the people
+      explaining it to you somehow always sound like they're selling something.
+    </p>
+    <p>
+      FKN Wine exists to cut through that. We find wine deals that are actually good, read the
+      fine print other sites skip, and tell you what's worth your money — in plain language,
+      with dates and numbers.
+    </p>
+
+    <h2 style="font-size: 1.4rem; margin-top: 2.5rem;">The rules we play by</h2>
+
+    <div class="rule">
+      <h3><Icon name="check-circle" size={18} color="var(--color-cta)" /> Deals are checked by hand</h3>
       <p>
-        Wein soll schmecken — nicht kompliziert sein. Du brauchst kein Sommelier-Zertifikat um guten Wein zu finden.
-        Du brauchst nur jemanden der dir ehrlich sagt: <strong>„Kauf den. Der ist geil."</strong>
-      </p>
-      <p>
-        FKN Wine ist der Anti-Snob-Wein-Blog. Wir testen was du tatsächlich kaufst: Supermarkt-Weine, Discounter-Flaschen,
-        den €5-Rosé von Aldi und die €8-Flasche aus dem Lidl-Regal.
-      </p>
-      <p>
-        Keine €80-Bordeaux-Empfehlungen. Kein „Noten von nasser Schieferplatte"-Gelaber.
-        Nur direkte, ehrliche Kaufempfehlungen mit Preis und Store.
+        Before something lands on the deals page, we verify it on the merchant's own site and print
+        the date we checked. Wine deals expire fast — the date tells you how fresh the page is.
       </p>
     </div>
 
-    <!-- Method -->
-    <div class="brutal-card" style="margin-bottom: 2rem;">
-      <h2 style="font-size: 1.5rem; margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">
-        <Icon name="trophy" size={24} color="var(--color-cta)" />
-        Wie wir testen
-      </h2>
+    <div class="rule">
+      <h3><Icon name="check-circle" size={18} color="var(--color-cta)" /> No fake reviews</h3>
       <p>
-        <strong>Blind.</strong> Jede Flasche wird ohne Etikett verkostet. Kein Marken-Bias, kein Preis-Bias.
-        Wenn die €4-Flasche von Aldi besser schmeckt als der €12-Wein — dann sagen wir das.
-      </p>
-      <p>
-        <strong>Nur Supermarkt/Discounter.</strong> Kein Fachhandel. Kein Wein-Abo. Nur Flaschen die du morgen beim Einkaufen mitnehmen kannst.
-      </p>
-      <p>
-        <strong>Keine Punkte-Skala.</strong> „92 Parker-Punkte" sagt dir nichts. „Schmeckt geil, kostet €7, kauf bei Lidl" schon.
+        We don't invent tasting notes, we don't pretend we sipped something we didn't, and we don't
+        run "10 best" lists pulled from thin air. When something is an opinion, it's marked as one.
+        When it's a number, it comes from a source you can check.
       </p>
     </div>
 
-    <!-- Why -->
-    <div class="brutal-card" style="margin-bottom: 2rem;">
-      <h2 style="font-size: 1.5rem; margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">
-        <Icon name="lightbulb" size={24} color="var(--color-cta)" />
-        Warum's das braucht
-      </h2>
+    <div class="rule">
+      <h3><Icon name="check-circle" size={18} color="var(--color-cta)" /> If it's not worth it, we say so</h3>
       <p>
-        Die Wein-Welt ist voller Gatekeeping. Sommeliers die mit Fachbegriffen um sich werfen.
-        Wein-Magazine die dir €30-Flaschen empfehlen. Blogs die „man könnte" und „es bietet sich an" schreiben ohne je eine klare Entscheidung zu treffen.
-      </p>
-      <p>
-        Das ist Bullshit. Wein ist ein Genussmittel — kein Statussymbol. Die beste Flasche ist die die dir schmeckt,
-        nicht die die am meisten kostet.
-      </p>
-      <p>
-        FKN Wine ist die Stimme für Leute die Wein mögen aber die Wein-Szene nicht ertragen.
-        Direkt. Ehrlich. Manchmal vulgär. Immer nützlich.
+        A wine club that's a bad deal for most people gets a bad verdict. A cheap bottle that
+        punches above its price gets its flowers. We'd rather be useful than positive.
       </p>
     </div>
 
-    <!-- CTA -->
-    <div style="border: 3px solid var(--color-cta); padding: 2rem; text-align: center; box-shadow: 6px 6px 0 0 var(--color-cta);">
-      <h2 style="font-size: 1.3rem; margin: 0 0 1rem;">Bereit für echten Wein?</h2>
-      <a href="/" class="brutal-btn" style="border-color: var(--color-cta);">
-        Zu den Empfehlungen →
-      </a>
+    <div class="rule">
+      <h3><Icon name="check-circle" size={18} color="var(--color-cta)" /> Reader-supported, openly</h3>
+      <p>
+        FKN Wine is free to read. When we use links that earn us a commission, we say so —
+        <a href="/disclosure/">the full disclosure is here</a>. Commissions never change the price
+        you pay, and they never buy a verdict.
+      </p>
     </div>
+
+    <h2 style="font-size: 1.4rem; margin-top: 2.5rem;">Who's behind this</h2>
+    <p>
+      A tiny independent operation from Bochum, Germany — obsessed with wine value, allergic to
+      snobbery. You can reach us at
+      <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or on
+      <a href={SITE.x} target="_blank" rel="noopener noreferrer">X (@FKNWine)</a>.
+    </p>
+
+    <div class="brutal-card" style="margin-top: 2rem;">
+      <p style="margin: 0;">
+        <strong>21+ only.</strong> We write about wine; we don't sell it. Every merchant we link
+        to runs its own age checks and handles its own shipping rules — as it should be.
+        Enjoy responsibly.
+      </p>
+    </div>
+
+    <p style="margin-top: 2rem; font-family: var(--font-display); font-weight: 700; text-transform: uppercase;">
+      <Icon name="wine" size={20} color="var(--color-primary)" /> F*ck Nice Wine.
+    </p>
   </section>
 </Layout>
 
-<style is:global>
-  .brutal-card h2 + p {
-    margin-top: 0.75rem;
+<style>
+  .rule {
+    border-left: 4px solid var(--color-primary);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .rule h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0 0 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .rule p {
+    margin: 0;
+    font-size: 0.95rem;
   }
 </style>

@@ -1,29 +1,23 @@
 # FKN Wine — LLMs.txt
 
-> Ehrliche Wein-Empfehlungen ohne Snob-Getue. Supermarkt-Weine, Discounter-Flaschen — getestet, bewertet, kein Bullshit.
+> Wine deals and honest buying guides. We check the fine print — price per bottle, commitment, cancel terms — and we don't fake reviews.
 
-## Articles
+## Pages
 
-- [Alle Artikel](https://fknwine.com/artikel)
-- [Welcher Wein zu Carbonara, Bolognese & Co? — 7 Weine die deine Pasta aufs nächste Level bringen](https://fknwine.com/artikel/wein-fuer-pasta/)
-- [7 Wein-Fehler die deinen Wein ruinieren — und wie du sie in 30 Sekunden behebst](https://fknwine.com/artikel/wein-fehler-die-deinen-wein-ruinieren/)
-- [Die 8 besten Weißweine unter €10 im Supermarkt](https://fknwine.com/artikel/beste-weissweine-unter-10-euro/)
-- [6 Wein-Mythen an die du glaubst — die komplett falsch sind](https://fknwine.com/artikel/wein-mythen-die-falsch-sind/)
-- [Supermarkt-Sekt & Prosecco: Welcher prickelt und welcher ist süße Plörre?](https://fknwine.com/artikel/sekt-prosecco-supermarkt-test/)
-- [8 Weine die du NIEMALS kaufen solltest — und was du stattdessen trinkst](https://fknwine.com/artikel/weine-die-du-niemals-kaufen-solltest/)
-- [Rosé-Guide — Welcher schmeckt und welcher ist überteuerte Zuckerpampe](https://fknwine.com/artikel/rose-guide-supermarkt/)
-- [Wein für den Grillabend — 7 Flaschen die jeder Mannschaftstrinker feiert](https://fknwine.com/artikel/wein-fuer-grillabend/)
-- [Die 10 besten Weine unter €10 im Supermarkt](https://fknwine.com/artikel/beste-weine-unter-10-euro-supermarkt/)
-- [Aldi vs. Lidl vs. Edeka — wo kaufst du den besten Wein?](https://fknwine.com/artikel/aldi-lidl-edeka-wein-vergleich/)
-- [Wein für Pizza — 5 Flaschen die besser sind als dein Standard-Chianti](https://fknwine.com/artikel/wein-fuer-pizza/)
+- [Home](https://fknwine.com/)
+- [All deals](https://fknwine.com/deals/)
+- [Wine clubs, judged](https://fknwine.com/wine-clubs/)
+- [Firstleaf review](https://fknwine.com/wine-clubs/firstleaf/)
+- [Guides](https://fknwine.com/guides/)
+- [How to test a wine club without getting burned](https://fknwine.com/guides/how-to-test-a-wine-club/)
+- [Disclosure](https://fknwine.com/disclosure/)
 
 ## About
 
-FKN Wine ist ein Affiliate-Wein-Blog für Deutsche die Wein trinken ohne Snob-Getue.
-Voice: direkt, anti-elitär, "F*ck Nice Wine". Kein Sommelier-Jargon.
-Alle Wein-Empfehlungen mit Preisen, Stores und direkten Links.
-Design: Neubrutalist (Space Grotesk + Inter, Dark Mode).
-Betreiber: Nimar Moradbakhti, Bochum · Impressum: https://fknwine.com/impressum
+FKN Wine is an independent, reader-supported site about wine value: deals, fine print, and honest
+verdicts. Content is based on verifiable information (offers, terms, published ratings); opinions
+are marked as opinions. No fabricated reviews, no invented tastings.
+Operator: Nimar Moradbakhti, Bochum, Germany · Imprint: https://fknwine.com/imprint/
 
 ## Optional
 

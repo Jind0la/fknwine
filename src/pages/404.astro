@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 — Page not found" description="This page took the last exit. Here's the way back.">
+  <section class="wrapper" style="padding-top: 4rem; padding-bottom: 4rem; max-width: 640px;">
+    <p style="font-family: var(--font-display); font-weight: 700; color: var(--color-primary); font-size: 1.2rem;">
+      404
+    </p>
+    <h1 style="font-size: clamp(2rem, 6vw, 3rem);">This page took the last exit.</h1>
+    <p style="font-size: 1.05rem;">
+      Whatever was here — it's gone, moved, or never existed. The good stuff is still one click
+      away:
+    </p>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+      <a href="/deals/" class="brutal-btn">Today's deals →</a>
+      <a href="/wine-clubs/" class="brutal-btn brutal-btn--inverse">Wine clubs, judged</a>
+      <a href="/guides/" class="brutal-btn brutal-btn--inverse">Guides</a>
+    </div>
+  </section>
+</Layout>

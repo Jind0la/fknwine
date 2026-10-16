@@ -7,15 +7,24 @@
 
 ## Aktueller Stand
 
-- `2026-10-16` — **Monetarisierungs-Konzept steht — Entscheidungsvorlage für Nimar.**
+- `2026-10-16` — **EN-Relaunch gebaut (Branch `feat/en-relaunch`) — Preview offen.**
+  Auf Nimars Go („alles selbständig machen"): neue EN-Struktur (Home / Deals / Wine Clubs /
+  Guides / Legal), Content-Collections (`clubs`, `guides`), Merchant-Registry
+  `src/data/merchants.ts` (ein Affiliate-Swap-Point), Deal-Feed mit 4 hand-geprüften Deals
+  (WTSO-Takeover 12/$120, WTSO-Flash Legón 94 pts, Wine.com-Code `HAUNT20`, Firstleaf-Intro),
+  Firstleaf-Review + Guide „How to test a wine club without getting burned",
+  `_redirects` für Alt-URLs, DE-Artikel entfernt (bleiben in Git-History).
+  Verifiziert: Build grün (12 Seiten), Desktop 1440 + Mobile 390 per CDP ohne Overflow,
+  Screenshots gesichtet. Newsletter-Formular + Analytics bewusst noch unverkabelt
+  (Formular sagt es ehrlich). **Nächster Schritt: Nimar-Blick auf Preview → Merge → Deploy.**
+- `2026-10-16` — **Monetarisierungs-Konzept steht — Go erteilt, Umsetzung läuft.**
   Auftrag: „Geld mit Domain + Accounts verdienen", Markt frei wählbar. Recherche
-  (Markt, Affiliate-Ökonomie, X-Realität) → **Empfehlung EN/US-Pivot**: „Deals + Data +
-  Voice" auf fknwine.com. Zahlen: US-Weinmarkt >$115 Mrd.; Wein-Clubs $20–50/Signup,
-  Shops 4–12 %, **Amazon-Alkohol 0 %**; X zahlt selbst fast nichts (Original Content
-  Rewards: 500 verif. Follower + 500k verif. Impressions/90 T.; Mini-Payouts). Altstand:
+  (Markt, Affiliate-Ökonomie, X-Realität) → **EN/US-Pivot**: „Deals + Data + Voice".
+  Zahlen: US-Weinmarkt >$115 Mrd.; Wein-Clubs $20–50/Signup, Shops 4–12 %,
+  **Amazon-Alkohol 0 %**; X zahlt selbst fast nichts (Original Content Rewards:
+  500 verif. Follower + 500k verif. Impressions/90 T.; Mini-Payouts). Altstand:
   kein Geld-Pfad (0 Affiliate-Links), kein Analytics, kein Publikum, X tot (1 Follower).
-  Doc: KB `prj-fknwine-monetarisierung` (+ `prj-fknwine` aktualisiert). **Nichts umgebaut —
-  wartet auf Go; Preview-Pflicht bleibt.**
+  Doc: KB `prj-fknwine-monetarisierung` (+ `prj-fknwine` aktualisiert).
 - `2026-10-16` — **Host-Konsolidierung live (Cloudflare-Zone, nicht Repo).**
   `always_use_https: on` + Redirect Rule `www.fknwine.com` → `https://fknwine.com`
   (301, Pfad+Query, 1 Hop). Verifiziert per curl: http-Apex 301 same-host, www
@@ -37,7 +46,8 @@
   erst einen Live-Test bis ~4 Min). Offen (4): wein-mythen, weine-die-du-niemals,
   aldi-lidl-edeka, impressum → Nachzug: `~/.hermes/scripts/fknwine-gsc/` (State
   `~/.hermes/state/fknwine_gsc_requests.json`, Cron `92efc5307dea` täglich 09:30,
-  verstummt selbst; **löschen, wenn alles beantragt ist**). Details: KB `prj-fknwine`.
+  verstummt selbst; **löschen, wenn alles beantragt ist** — nach Relaunch nur noch
+  begrenzt sinnvoll, Alt-URLs gehen per `_redirects` auf `/`). Details: KB `prj-fknwine`.
 - `2026-10-16` — **Index-Check: 0 indexiert; Bremsklotz gefunden.** URL-Inspection
   (14 URLs): 0 indexiert, 1 „Duplikat", 4 „Gecrawlt – zurzeit nicht indexiert"
   (Crawls 15.10. 09:56–10:53 CEST, also nach dem Canonical-Fix), 5 „Gefunden – zurzeit
@@ -77,17 +87,18 @@
 
 | Task | Wer | Status | Nächster Schritt |
 |---|---|---|---|
-| EN-Pivot „Deals + Data + Voice" | Era + Nimar | **Wartet auf Go** | Nach Go: Preview → Live, Affiliate-Konten (Awin/FlexOffers/Impact), X Premium, Content-Welle 1 |
-| Index-Stand nachhalten | Era | **Wächter läuft** | Cron `a8a57aadcd03` (Mo 09:00); bei EN-Relaunch nur noch begrenzt relevant |
-| Newsletter-Kanal | offen | Alt-Formular zeigt auf `buttondown.com/nimar` | EN-Neustart ersetzt es (eigene Plattform, Konzept §5) |
+| EN-Relaunch (Branch `feat/en-relaunch`) | Era | **Preview offen** | Nimar-Blick (Pane) → Merge → Deploy → Konten/Newsletter/X-Cadence (geführt) |
+| Newsletter-Plattform | Nimar + Era | offen (Alt-Formular ersetzt) | Nach Merge: beehiiv-Signup geführt (Nimar ~5 Min) → Endpoint in `src/config.ts` |
+| Index-Stand/Altsysteme | Era | Wächter läuft | Nach Deploy: `sitemap-index.xml` in GSC einreichen; Cron `92efc5307dea` abwickeln |
 
 ## Entscheidungen
 
-- **Empfehlung aus der Monetarisierungs-Analyse (16.10., offen):** EN/US-Pivot statt
-  DE-Altbestand — Markt war laut Auftrag frei wählbar, Alt-Artikel laut Nimar verzichtbar;
-  Konzept in KB `prj-fknwine-monetarisierung`. Bis zum Go gilt: kein Umbau ohne Preview.
-- **Kein Redesign, kein Umbau** (alter Auftrag: Betrieb, nicht Look). Neubrutalist-Optik
-  und die 11 Artikel bleiben, bis der Pivot entschieden ist.
+- **EN-Pivot entschieden (Nimars Go, 16.10.):** Deals + Data + Voice auf EN/US;
+  Konzept KB `prj-fknwine-monetarisierung`. Ablauf: Branch → Live-Preview → Merge
+  (kein Merge ohne Preview-Blick). X Premium bewusst aufgeschoben („erst wenn nötig").
+- **Look bleibt, Inhalt neu:** Neubrutalist-Optik behalten (Wiedererkennung);
+  DE-Artikel ersetzt (Git-History), Struktur + Texte EN. Keine Fake-Reviews —
+  „Checked"-Daten überall.
 - **Eine Domain-Quelle statt 19 Hardcodes** (`astro.config.mjs site` → `Astro.site`).
 - **Canonical mit Trailing Slash**, weil Cloudflare Pages ohne Slash per 308 umleitet.
 - **AI-Crawler bleiben gesperrt** (`robots.txt`), obwohl `llms.txt` sie einlädt — bewusst
@@ -107,18 +118,20 @@
 - [x] **Drei Hosts lieferten dieselbe Seite** — erledigt 16.10. in der Zone.
       **Rest offen:** `fknwine.pages.dev` liefert weiterhin 200 (Cloudflares Pages-Zone,
       Redirect nicht setzbar); Entdopplung über Canonical-Tag + Re-Crawl.
-- [ ] Newsletter-Formular postet an `buttondown.com/nimar` — Marken-Bruch, ungeklärt
-      (wird durch EN-Neustart obsolet, falls Go kommt).
-- [ ] GSC steht, aber **kein Analytics** → Traffic-/Kanalzahlen fehlen (Fix im Pivot: §8).
-- [ ] Artikel-Preise/Bestände Stand Juli 2026 (Affiliate-Phase nie gestartet).
+- [ ] Newsletter-/Analytics-Wiring fehlt noch (bewusst): Endpoint + cookieless Analytics
+      kommen beim Launch-Schritt (geführt mit Nimar).
+- [ ] GSC steht, aber **kein Analytics** → Traffic-/Kanalzahlen fehlen (Fix: Launch-Schritt).
+- [ ] og-default.png zeigt noch den DE-Stand — neues EN-OG-Bild als Design-Task offen.
 
 ## Nächste Schritte
 
-- [ ] **Go/No-Go für den EN-Pivot einholen** (Vorlage: KB `prj-fknwine-monetarisierung`;
-      Nimar-Aufwand ≈10 Min: Go, Konten-Freigaben, X Premium). Danach Setup-Woche mit Preview.
-- [ ] Index-Stand nachhalten: Startseite + 11 Artikel in ~1 Woche erneut prüfen
-      (`~/.hermes/scripts/gsc.py inspect <property> <url>`); Re-Crawl-Urteil lesen.
-- [ ] **Cron `92efc5307dea` (GSC-Nachzug) löschen, sobald alle 14 URLs beantragt sind.**
+- [ ] **Merge nach Nimar-Blick auf die Preview → Deploy.** Danach: GSC-Sitemap
+      (`sitemap-index.xml`) einreichen; Affiliate-Konten mit Nimar (Awin → FlexOffers →
+      Impact, geführt + W-8BEN); Newsletter-Plattform (beehiiv) verkabeln; X-Profil-Politur
+      + Cadence-Start (ohne Follow-Churn); Content-Welle 2 (mehr Clubs, Coupons,
+      „best under $15").
+- [ ] Index-Stand beobachten: nach Relaunch neue URLs in GSC prüfen
+      (`~/.hermes/scripts/gsc.py inspect <property> <url>`); Wächter-Cron `a8a57aadcd03`
+      (Mo 09:00) meldet Änderungen.
+- [ ] **Cron `92efc5307dea` (GSC-Nachzug) löschen, sobald alle 14 Alt-URLs beantragt sind.**
 - [ ] Optional: Domain-Property `sc-domain:fknwine.com` (nur DNS-TXT nötig).
-- [ ] X-Zugang steht → Redaktionsplan **nach Pivot-Go** reaktivieren (Konzept §5/§7:
-      Cadence ohne Follow-Churn; `data/x-posts.md` + `data/CONTENT_ROADMAP.md` als Vorlage).

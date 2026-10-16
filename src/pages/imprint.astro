@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config';
+---
+
+<Layout title="Imprint" description="Legal notice (Impressum) for fknwine.com.">
+  <section class="wrapper" style="padding-top: 3rem; padding-bottom: 4rem; max-width: 720px;">
+    <h1 style="font-size: clamp(1.9rem, 5.5vw, 2.6rem);">Imprint</h1>
+    <p style="font-size: 0.95rem; opacity: 0.7;">
+      Legal notice pursuant to § 5 DDG (German Digital Services Act) — also known as Impressum.
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">Provider</h2>
+    <p>
+      Nimar Moradbakhti<br />
+      Mauritiusstr. 4a<br />
+      44789 Bochum<br />
+      Germany
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">Contact</h2>
+    <p>Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">Responsible for content</h2>
+    <p>Nimar Moradbakhti, address as above.</p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">Liability for content</h2>
+    <p>
+      The contents of this site were created with care. However, we cannot guarantee that all
+      information — especially prices, offers, and terms of third-party merchants — is complete,
+      accurate, or current at all times. Deals and prices are dated on the page; always verify at
+      the merchant before purchasing.
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">Liability for links</h2>
+    <p>
+      This site contains links to external websites. We have no influence over their content; the
+      respective provider is responsible. No legal violations were apparent at the time of
+      linking. If we become aware of one, we will remove the link.
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">Copyright</h2>
+    <p>
+      Content on this site is protected by copyright. Reproduction or redistribution requires
+      written permission.
+    </p>
+
+    <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.6;">As of: October 2026</p>
+  </section>
+</Layout>

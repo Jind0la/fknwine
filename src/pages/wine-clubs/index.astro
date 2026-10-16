@@ -1,0 +1,120 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const clubs = (await getCollection('clubs')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout
+  title="Wine Clubs, Judged"
+  description="Wine club reviews based on the paperwork: real price per bottle, commitment, cancel terms, shipping. No fake tastings."
+>
+  <section class="wrapper" style="padding-top: 3rem; padding-bottom: 4rem;">
+    <h1 style="font-size: clamp(2rem, 6vw, 3rem);">Wine clubs, judged</h1>
+    <p style="max-width: 660px;">
+      Wine clubs live and die on one number: the price per bottle <em>after</em> the intro offer.
+      We read the fine print on every club — price, commitment, cancel terms, shipping — and
+      print it here. No tasting theatrics, no "exclusive" nonsense. Just what it actually costs.
+    </p>
+
+    <div class="clubs-list">
+      {
+        clubs.map((club) => (
+          <a href={`/wine-clubs/${club.id}/`} class="brutal-card brutal-shadow-hover club-card">
+            <div class="club-top">
+              <span class="verdict-chip">{club.data.verdictLabel}</span>
+              <span class="club-price">{club.data.priceFrom}</span>
+            </div>
+            <h2>{club.data.name}</h2>
+            <p>{club.data.summary}</p>
+            <div class="club-facts">
+              <span>
+                <strong>Per bottle:</strong> {club.data.perBottle}
+              </span>
+              <span>
+                <strong>Commitment:</strong> {club.data.commitment}
+              </span>
+            </div>
+            <span class="teaser-more">Read the full review →</span>
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="brutal-card" style="margin-top: 2.5rem; max-width: 700px;">
+      <h2 style="font-size: 1.2rem; margin-top: 0;">Why so few reviews?</h2>
+      <p style="margin: 0; font-size: 0.9rem;">
+        Because we check the terms on the merchant's own site before publishing — and we re-check
+        before every update. More clubs are in the queue (Bright Cellars, Wine Insiders, Winc,
+        WSJ Wine). We publish when the paperwork is done, not before.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .clubs-list {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .club-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    max-width: 760px;
+  }
+
+  .club-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+
+  .verdict-chip {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.6rem;
+    background: var(--color-cta);
+    color: var(--color-bg);
+  }
+
+  .club-price {
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+
+  .club-card h2 {
+    margin: 0 0 0.4rem;
+    font-size: 1.4rem;
+  }
+
+  .club-card p {
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .club-facts {
+    display: grid;
+    gap: 0.25rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.9rem;
+    opacity: 0.85;
+  }
+
+  .teaser-more {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-cta);
+  }
+</style>

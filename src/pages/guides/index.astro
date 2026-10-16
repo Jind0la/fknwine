@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const guides = (await getCollection('guides')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout
+  title="Guides"
+  description="Buying guides that do the math: wine clubs, price-per-bottle, deal traps. Verifiable numbers, opinions marked as opinions."
+>
+  <section class="wrapper" style="padding-top: 3rem; padding-bottom: 4rem;">
+    <h1 style="font-size: clamp(2rem, 6vw, 3rem);">Guides</h1>
+    <p style="max-width: 640px;">
+      The math behind the marketing. How wine clubs actually price, how to read a deal, and when
+      to walk away. Numbers verified against the source, dates included.
+    </p>
+
+    <div class="guides-list">
+      {
+        guides.map((guide) => (
+          <a href={`/guides/${guide.id}/`} class="brutal-card brutal-shadow-hover guide-card">
+            <span class="guide-cat">{guide.data.category}</span>
+            <h2>{guide.data.title}</h2>
+            <p>{guide.data.description}</p>
+            <span class="guide-more">Read it →</span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .guides-list {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .guide-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    max-width: 760px;
+  }
+
+  .guide-cat {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.5rem;
+    background: var(--color-primary);
+    color: #fff;
+  }
+
+  .guide-card h2 {
+    margin: 0.75rem 0 0.4rem;
+    font-size: 1.3rem;
+  }
+
+  .guide-card p {
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .guide-more {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-cta);
+  }
+</style>

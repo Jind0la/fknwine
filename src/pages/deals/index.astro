@@ -1,0 +1,40 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import DealCard from '../../components/DealCard.astro';
+import { deals } from '../../data/deals';
+---
+
+<Layout
+  title="All Wine Deals"
+  description="Every wine deal we've checked by hand — flash sales, intro offers, promo codes. Dates included, fine print included."
+>
+  <section class="wrapper" style="padding-top: 3rem; padding-bottom: 4rem;">
+    <h1 style="font-size: clamp(2rem, 6vw, 3rem);">All deals</h1>
+    <p style="max-width: 640px;">
+      Every deal on this page was checked by hand on the date shown. Wine deals expire fast —
+      if a price is gone, it's gone. That's why we print the date.
+    </p>
+
+    <div class="deals-grid" style="margin-top: 2rem;">
+      {deals.map((deal) => <DealCard deal={deal} />)}
+    </div>
+
+    <div class="brutal-card" style="margin-top: 2.5rem; max-width: 700px;">
+      <h2 style="font-size: 1.2rem; margin-top: 0;">How this page works</h2>
+      <p style="margin: 0; font-size: 0.9rem;">
+        We only list deals we can verify on the merchant's own site — no "up to 70% off" marketing
+        math. Flash-sale prices (like WTSO) can change within hours; promo codes have expiry dates.
+        When a deal dies, it comes off the page. Want them in your inbox instead?
+        <a href="/#newsletter">Join the Deal Sheet.</a>
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .deals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+</style>

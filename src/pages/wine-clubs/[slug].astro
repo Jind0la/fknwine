@@ -1,0 +1,240 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { outUrl, merchants } from '../../data/merchants';
+
+export async function getStaticPaths() {
+  const clubs = await getCollection('clubs');
+  return clubs.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const data = entry.data;
+
+const siteUrl = (Astro.site ?? new URL('https://fknwine.com')).origin;
+const pageUrl = `${siteUrl}/wine-clubs/${entry.id}/`;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: `${data.name} Review — Wine Club Fine Print, Checked`,
+  description: data.summary,
+  url: pageUrl,
+  datePublished: data.lastChecked,
+  dateModified: data.lastChecked,
+  inLanguage: 'en',
+  author: { '@type': 'Organization', name: 'FKN Wine', url: siteUrl },
+  publisher: { '@type': 'Organization', name: 'FKN Wine', url: siteUrl },
+};
+
+const merchant = data.merchantId ? merchants[data.merchantId] : null;
+const ctaUrl = data.merchantId ? outUrl(data.merchantId) : null;
+
+const facts: Array<[string, string]> = [
+  ['Price', data.priceFrom],
+  ['Per bottle', data.perBottle],
+  ['Commitment', data.commitment],
+  ['Cancellation', data.cancelTerms],
+  ['Ships to', data.shipsTo],
+];
+---
+
+<Layout
+  title={`${data.name} Review — checked ${data.lastChecked}`}
+  description={data.summary}
+  publishedTime={data.lastChecked}
+  modifiedTime={data.lastChecked}
+  articleSchema={articleSchema}
+>
+  <article class="wrapper" style="padding-top: 3rem; padding-bottom: 4rem; max-width: 800px;">
+    <a href="/wine-clubs/" class="back-link">← All club reviews</a>
+
+    <header style="margin-top: 1.5rem;">
+      <div class="review-top">
+        <span class="verdict-chip">{data.verdictLabel}</span>
+        <span class="checked-note">Checked {data.lastChecked}</span>
+      </div>
+      <h1 style="font-size: clamp(2rem, 6vw, 3rem); margin: 0.75rem 0 0.5rem;">{data.name}</h1>
+      <p style="font-size: 1.1rem; margin: 0;">{data.summary}</p>
+    </header>
+
+    <!-- === QUICK FACTS === -->
+    <section class="brutal-card facts-box">
+      <h2 style="font-size: 1.1rem; margin-top: 0;">The facts (as of {data.lastChecked})</h2>
+      <dl class="facts-list">
+        {
+          facts.map(([label, value]) => (
+            <div class="fact-row">
+              <dt>{label}</dt>
+              <dd>{value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <!-- === PROS / CONS === -->
+    <section class="proscons">
+      <div class="brutal-card pros-box">
+        <h2 style="font-size: 1.1rem; margin-top: 0;">Worth it because</h2>
+        <ul>
+          {data.pros.map((p) => <li>{p}</li>)}
+        </ul>
+      </div>
+      <div class="brutal-card cons-box">
+        <h2 style="font-size: 1.1rem; margin-top: 0;">But know this</h2>
+        <ul>
+          {data.cons.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <!-- === CONTENT === -->
+    <section class="article-content" style="margin-top: 2.5rem;">
+      <Content />
+    </section>
+
+    <!-- === CTA === -->
+    {
+      ctaUrl && merchant && (
+        <section class="brutal-card cta-box">
+          <h2 style="font-size: 1.2rem; margin-top: 0;">Try it yourself</h2>
+          <p style="font-size: 0.95rem;">
+            {data.priceFrom}. Everything above is from {merchant.name}'s own site — verify the
+            terms at checkout before you pay.
+          </p>
+          <a class="brutal-btn" href={ctaUrl} target="_blank" rel="noopener nofollow">
+            Go to {merchant.name} →
+          </a>
+          <p class="cta-small">
+            Link goes to {merchant.name}. See how we handle links on our <a href="/disclosure/">disclosure page</a>.
+          </p>
+        </section>
+      )
+    }
+  </article>
+</Layout>
+
+<style>
+  .back-link {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: color-mix(in srgb, var(--color-text) 70%, transparent);
+  }
+
+  .back-link:hover {
+    color: var(--color-cta);
+  }
+
+  .review-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .verdict-chip {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.7rem;
+    background: var(--color-cta);
+    color: var(--color-bg);
+  }
+
+  .checked-note {
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+
+  .facts-box {
+    margin-top: 2rem;
+  }
+
+  .facts-list {
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .fact-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-fkn-gray);
+  }
+
+  .fact-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .fact-row dt {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-cta);
+  }
+
+  .fact-row dd {
+    margin: 0;
+    font-size: 0.92rem;
+  }
+
+  .proscons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.75rem;
+  }
+
+  .pros-box {
+    border-color: #4caf50;
+  }
+
+  .cons-box {
+    border-color: var(--color-primary);
+  }
+
+  .pros-box ul,
+  .cons-box ul {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .pros-box li,
+  .cons-box li {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .cta-box {
+    margin-top: 2.5rem;
+    border-color: var(--color-cta);
+    box-shadow: 6px 6px 0 0 var(--color-cta);
+  }
+
+  .cta-small {
+    font-size: 0.78rem;
+    opacity: 0.6;
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 520px) {
+    .fact-row {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
+</style>

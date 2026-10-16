@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { SITE, AFFILIATE_LIVE } from '../config';
 
 interface Props {
   title: string;
@@ -14,7 +15,6 @@ interface Props {
 // Single source of truth: astro.config.mjs `site` → Astro.site
 const siteUrl = (Astro.site ?? new URL('https://fknwine.com')).origin;
 // Cloudflare Pages liefert Seiten mit Trailing Slash (308 von ohne → mit).
-// Canonical muss die ausgelieferte URL sein, nicht die weiterleitende.
 const canonicalPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 
 const {
@@ -29,6 +29,13 @@ const {
 
 const fullTitle = `${title} — FKN Wine`;
 
+const nav = [
+  { href: '/deals/', label: 'Deals' },
+  { href: '/wine-clubs/', label: 'Wine Clubs' },
+  { href: '/guides/', label: 'Guides' },
+  { href: '/about/', label: 'About' },
+];
+
 // Base JSON-LD: Organization + WebSite (every page)
 const baseSchema = [
   {
@@ -37,7 +44,8 @@ const baseSchema = [
     name: 'FKN Wine',
     url: siteUrl,
     logo: `${siteUrl}/favicon.svg`,
-    description: 'Ehrliche Wein-Empfehlungen ohne Snob-Getue. Supermarkt-Weine, Discounter-Flaschen — getestet, bewertet, kein Bullshit.',
+    description:
+      'Wine deals and honest buying guides. We check the fine print — no fake reviews, no sommelier act.',
     foundingDate: '2026',
   },
   {
@@ -45,8 +53,8 @@ const baseSchema = [
     '@type': 'WebSite',
     name: 'FKN Wine',
     url: siteUrl,
-    description: 'Ehrliche Wein-Empfehlungen ohne Snob-Getue. Supermarkt-Weine blind verkostet.',
-    inLanguage: 'de',
+    description: 'Wine deals, judged honestly. Great wine doesn\'t have to cost $40.',
+    inLanguage: 'en',
   },
 ];
 
@@ -54,7 +62,7 @@ const schema = articleSchema ? [...baseSchema, articleSchema] : baseSchema;
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -71,7 +79,7 @@ const schema = articleSchema ? [...baseSchema, articleSchema] : baseSchema;
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="FKN Wine" />
 
     <!-- Twitter -->
@@ -90,17 +98,27 @@ const schema = articleSchema ? [...baseSchema, articleSchema] : baseSchema;
   </head>
   <body>
     <header class="wrapper" style="padding-top: 2rem; padding-bottom: 1rem;">
-      <nav style="display: flex; justify-content: space-between; align-items: center;">
-        <a
-          href="/"
-          style="font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text); text-decoration: none;"
-        >
+      <nav class="site-nav">
+        <a href="/" class="brand">
           FKN<span style="color: var(--color-primary);">.</span>WINE
         </a>
-        <div style="display: flex; gap: 1.5rem;">
-          <a href="/artikel" style="font-family: var(--font-display); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text); text-decoration: none;">Artikel</a>
-          <a href="/about" style="font-family: var(--font-display); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text); text-decoration: none;">About</a>
-          <a href="https://x.com/FKNWine" target="_blank" rel="noopener noreferrer" style="font-family: var(--font-display); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text); text-decoration: none;" title="FKN Wine auf X">X</a>
+        <div class="nav-links">
+          {
+            nav.map((item) => (
+              <a href={item.href} class="nav-link">
+                {item.label}
+              </a>
+            ))
+          }
+          <a
+            href={SITE.x}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="nav-link"
+            title="FKN Wine on X"
+          >
+            X
+          </a>
         </div>
       </nav>
     </header>
@@ -109,16 +127,113 @@ const schema = articleSchema ? [...baseSchema, articleSchema] : baseSchema;
       <slot />
     </main>
 
-    <footer class="wrapper" style="padding-top: 4rem; padding-bottom: 2rem; border-top: 3px solid var(--color-surface); margin-top: 4rem;">
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-        <p style="font-size: 0.85rem; color: color-mix(in srgb, var(--color-text) 70%, transparent);">
-          © 2026 FKN Wine. F*ck Nice Wine.
+    <footer class="wrapper site-footer">
+      <div class="footer-top">
+        <p class="footer-brand">
+          © 2026 FKN Wine. F*ck Nice Wine.<br />
+          <span class="footer-small">21+ only. Enjoy responsibly.</span>
         </p>
-        <div style="display: flex; gap: 1.5rem;">
-          <a href="/impressum" style="font-size: 0.85rem; color: color-mix(in srgb, var(--color-text) 70%, transparent); text-decoration: none;">Impressum</a>
-          <a href="/datenschutz" style="font-size: 0.85rem; color: color-mix(in srgb, var(--color-text) 70%, transparent); text-decoration: none;">Datenschutz</a>
+        <div class="footer-links">
+          <a href="/about/">About</a>
+          <a href="/disclosure/">Disclosure</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/imprint/">Imprint</a>
         </div>
       </div>
+      {
+        AFFILIATE_LIVE && (
+          <p class="footer-small footer-disclosure">
+            FKN Wine is reader-supported: when you buy through links on this site, we may earn a
+            commission. It never changes the price you pay.
+          </p>
+        )
+      }
     </footer>
   </body>
 </html>
+
+<style>
+  .site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .nav-link:hover {
+    color: var(--color-cta);
+  }
+
+  .site-footer {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    border-top: 3px solid var(--color-surface);
+    margin-top: 4rem;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-brand {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .footer-small {
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 0.85rem;
+    color: color-mix(in srgb, var(--color-text) 70%, transparent);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-cta);
+  }
+
+  .footer-disclosure {
+    margin-top: 1rem;
+    max-width: 700px;
+  }
+</style>

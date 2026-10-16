@@ -1,0 +1,116 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const data = entry.data;
+
+const siteUrl = (Astro.site ?? new URL('https://fknwine.com')).origin;
+const pageUrl = `${siteUrl}/guides/${entry.id}/`;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: data.title,
+  description: data.description,
+  url: pageUrl,
+  datePublished: data.updated,
+  dateModified: data.updated,
+  inLanguage: 'en',
+  author: { '@type': 'Organization', name: 'FKN Wine', url: siteUrl },
+  publisher: { '@type': 'Organization', name: 'FKN Wine', url: siteUrl },
+};
+---
+
+<Layout
+  title={data.title}
+  description={data.description}
+  publishedTime={data.updated}
+  modifiedTime={data.updated}
+  articleSchema={articleSchema}
+>
+  <article class="wrapper" style="padding-top: 3rem; padding-bottom: 4rem; max-width: 760px;">
+    <a href="/guides/" class="back-link">← All guides</a>
+
+    <header style="margin-top: 1.5rem;">
+      <div class="guide-top">
+        <span class="guide-cat">{data.category}</span>
+        <span class="updated-note">Updated {data.updated}</span>
+      </div>
+      <h1 style="font-size: clamp(1.9rem, 5.5vw, 2.8rem); margin: 0.75rem 0 0.5rem;">
+        {data.title}
+      </h1>
+      <p style="font-size: 1.05rem; margin: 0;">{data.description}</p>
+    </header>
+
+    <section class="article-content" style="margin-top: 2rem;">
+      <Content />
+    </section>
+  </article>
+</Layout>
+
+<style>
+  .back-link {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: color-mix(in srgb, var(--color-text) 70%, transparent);
+  }
+
+  .back-link:hover {
+    color: var(--color-cta);
+  }
+
+  .guide-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .guide-cat {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.7rem;
+    background: var(--color-primary);
+    color: #fff;
+  }
+
+  .updated-note {
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+
+  .article-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .article-content :global(th),
+  .article-content :global(td) {
+    border: 2px solid var(--color-surface);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+
+  .article-content :global(th) {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    color: var(--color-cta);
+  }
+</style>

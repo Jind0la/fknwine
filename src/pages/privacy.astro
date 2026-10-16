@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config';
+---
+
+<Layout
+  title="Privacy Policy"
+  description="Privacy policy for FKN Wine: what data we process, why, and your rights. No tracking cookies."
+>
+  <section class="wrapper" style="padding-top: 3rem; padding-bottom: 4rem; max-width: 720px;">
+    <h1 style="font-size: clamp(1.9rem, 5.5vw, 2.6rem);">Privacy Policy</h1>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">1. Who is responsible</h2>
+    <p>
+      Nimar Moradbakhti<br />
+      Mauritiusstr. 4a<br />
+      44789 Bochum, Germany<br />
+      Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">2. Hosting</h2>
+    <p>
+      This site is hosted on <strong>Cloudflare Pages</strong> (Cloudflare, Inc., USA).
+      Cloudflare processes technically necessary data (IP address, browser type, timestamps) to
+      deliver and protect the site (Art. 6(1)(f) GDPR — legitimate interest). Cloudflare is
+      certified under the EU-US Data Privacy Framework.
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">3. Cookies &amp; tracking</h2>
+    <p>
+      FKN Wine itself sets <strong>no tracking cookies</strong>. No Google Analytics, no ad
+      pixels. Cloudflare may set technically necessary cookies for security and delivery (e.g.
+      <code>__cf_bm</code>); these need no consent (Art. 6(1)(f) GDPR).
+    </p>
+    <p>
+      If we introduce privacy-friendly, cookieless analytics later, this page will say so before
+      it goes live.
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">4. Newsletter</h2>
+    <p>
+      When our email list opens: signup uses a double opt-in process (confirm link in your inbox),
+      your address is used only to send the newsletter, and every email contains an unsubscribe
+      link. The email service provider used will be named here before the list opens. Legal basis:
+      your consent (Art. 6(1)(a) GDPR); you can withdraw it anytime.
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">5. External links (incl. affiliate links)</h2>
+    <p>
+      We link to external shops and services. Once you follow a link, the destination site's own
+      privacy policy applies. Some outbound links may be affiliate links (see our
+      <a href="/disclosure/">Disclosure</a>).
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">6. Your rights</h2>
+    <p>
+      Under the GDPR you have the right to access, rectification, erasure, restriction of
+      processing, data portability, and objection (Art. 15–21 GDPR). You can lodge a complaint
+      with a supervisory authority (Art. 77 GDPR) — for us: the State Commissioner for Data
+      Protection and Freedom of Information of North Rhine-Westphalia, Germany.
+    </p>
+
+    <h2 style="font-size: 1.2rem; margin-top: 2rem;">7. Changes</h2>
+    <p>
+      If our setup changes (e.g. analytics or newsletter provider), this page is updated before
+      the change goes live. The version on this page is always the current one.
+    </p>
+
+    <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.6;">Last updated: October 2026</p>
+  </section>
+</Layout>

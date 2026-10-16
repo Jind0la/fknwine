@@ -1,25 +1,27 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import Icon from '../components/Icon.astro';
-import { articles } from '../data/articles';
+import DealCard from '../components/DealCard.astro';
+import NewsletterForm from '../components/NewsletterForm.astro';
+import { deals } from '../data/deals';
+
+const clubs = (await getCollection('clubs'))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 1);
+
+const topDeals = deals.slice(0, 4);
 ---
 
 <Layout
-  title="F*ck Nice Wine"
-  description="FKN Wine — ehrliche Wein-Empfehlungen ohne Snob-Getue. Welcher Supermarkt-Wein ist wirklich gut? Find's raus."
+  title="Wine Deals, Judged Honestly"
+  description="Great wine doesn't have to cost $40. We hunt the deals, read the fine print, and tell you what's actually worth your money — no sommelier act, no fake reviews."
 >
   <!-- === HERO === -->
-  <section class="wrapper hero-section" style="padding-top: 4rem; padding-bottom: 6rem; position: relative; overflow: hidden;">
-    <div style="display: grid; gap: 1rem; max-width: 800px; position: relative; z-index: 1;">
-      <!-- Eyebrow -->
-      <span
-        class="brutal-border"
-        style="display: inline-block; padding: 0.35rem 0.75rem; font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--color-primary); color: var(--color-fkn-white); width: fit-content;"
-      >
-        Kein Snob. Kein Bullshit.
-      </span>
+  <section class="wrapper hero">
+    <div class="hero-inner">
+      <span class="hero-eyebrow">No snobs. No bullshit. No fake reviews.</span>
 
-      <h1 style="margin: 0;">
+      <h1>
         F*CK
         <br />
         NICE
@@ -27,167 +29,261 @@ import { articles } from '../data/articles';
         <span style="color: var(--color-primary);">WINE</span>
       </h1>
 
-      <p style="font-size: 1.2rem; max-width: 600px; margin-top: 0.5rem;">
-        Du willst geilen Wein trinken ohne dafür ein Sommelier-Zertifikat zu brauchen?
-        Wir sagen dir was du kaufen sollst — und warum der €7-Wein von Aldi besser ist als die €25-Flasche aus dem Fachhandel.
+      <p class="hero-sub">
+        Great wine doesn't have to cost $40. And you don't need a sommelier certificate to find
+        it. We hunt the deals, read the fine print, and tell you what's actually worth your
+        money.
       </p>
 
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
-        <a href="#articles" class="brutal-btn">Zum ersten Artikel</a>
-        <a href="/about" class="brutal-btn brutal-btn--inverse">Was ist FKN Wine?</a>
+      <div class="hero-ctas">
+        <a href="/deals/" class="brutal-btn">See today's deals →</a>
+        <a href="/wine-clubs/" class="brutal-btn brutal-btn--inverse">Wine clubs, judged →</a>
       </div>
-    </div>
 
+      <p class="hero-note">
+        Every deal on this site is checked by hand. Dates included — so you know how fresh it is.
+      </p>
+    </div>
   </section>
 
-  <!-- === TOP 3 DER WOCHE === -->
+  <!-- === TRUST STRIP === -->
   <section class="wrapper" style="padding-bottom: 3rem;">
-    <div class="brutal-card" style="border-color: var(--color-cta); box-shadow: 6px 6px 0 0 var(--color-cta);">
-      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
-        <span style="font-size: 1.75rem;"><Icon name="trophy" size={22} color="var(--color-cta)" /></span>
-        <h2 style="margin: 0; font-size: 1.5rem; color: var(--color-cta);">Top 3 der Woche</h2>
-        <span style="font-family: var(--font-display); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.6;">
-          Blind verkostet. Kein Bullshit.
-        </span>
+    <div class="trust-grid">
+      <div class="brutal-card trust-card">
+        <h3>We check the fine print</h3>
+        <p>Intro prices, auto-renewals, shipping states, cancel terms. We read it so you don't have to.</p>
       </div>
-
-      <div style="display: grid; gap: 1rem;">
-        <!-- #1 -->
-        <div style="display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; padding-bottom: 1rem; border-bottom: 2px solid var(--color-surface);">
-          <span style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--color-cta); line-height: 1;"><span style="font-family: var(--font-display); font-weight: 700; color: var(--color-cta); font-size: 1.1em;">1.</span></span>
-          <div>
-            <h3 style="font-size: 1.1rem; margin: 0 0 0.15rem;">Riesling Scheurebe</h3>
-            <p style="font-size: 0.85rem; margin: 0; opacity: 0.7;">€4,99 — Lidl</p>
-            <p style="font-size: 0.9rem; margin: 0.25rem 0 0; font-style: italic;">"Bester Wein unter €5. Punkt. Mirabelle, Pfirsich, null künstlich."</p>
-          </div>
-          <a href="/artikel/beste-weine-unter-10-euro-supermarkt" class="brutal-btn" style="font-size: 0.75rem; padding: 0.4rem 0.75rem; white-space: nowrap;">Zum Artikel</a>
-        </div>
-
-        <!-- #2 -->
-        <div style="display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; padding-bottom: 1rem; border-bottom: 2px solid var(--color-surface);">
-          <span style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: #c0c0c0; line-height: 1;"><span style="font-family: var(--font-display); font-weight: 700; color: #c0c0c0; font-size: 1.1em;">2.</span></span>
-          <div>
-            <h3 style="font-size: 1.1rem; margin: 0 0 0.15rem;">Catalunya Rosé</h3>
-            <p style="font-size: 0.85rem; margin: 0; opacity: 0.7;">€3,99 — Aldi</p>
-            <p style="font-size: 0.9rem; margin: 0.25rem 0 0; font-style: italic;">"Der beste Wein unter €4. Trocken, Erdbeere, trinkbar wie Wasser."</p>
-          </div>
-          <a href="/artikel/beste-weine-unter-10-euro-supermarkt" class="brutal-btn" style="font-size: 0.75rem; padding: 0.4rem 0.75rem; white-space: nowrap;">Zum Artikel</a>
-        </div>
-
-        <!-- #3 -->
-        <div style="display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center;">
-          <span style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: #cd7f32; line-height: 1;"><span style="font-family: var(--font-display); font-weight: 700; color: #cd7f32; font-size: 1.1em;">3.</span></span>
-          <div>
-            <h3 style="font-size: 1.1rem; margin: 0 0 0.15rem;">Casato dei Medici Chianti</h3>
-            <p style="font-size: 0.85rem; margin: 0; opacity: 0.7;">€8,99 — Lidl</p>
-            <p style="font-size: 0.9rem; margin: 0.25rem 0 0; font-style: italic;">"Echter Chianti aus der Toskana. Der Wein zu Pizza, Pasta und Netflix."</p>
-          </div>
-          <a href="/artikel/beste-weine-unter-10-euro-supermarkt" class="brutal-btn" style="font-size: 0.75rem; padding: 0.4rem 0.75rem; white-space: nowrap;">Zum Artikel</a>
-        </div>
+      <div class="brutal-card trust-card">
+        <h3>We don't fake reviews</h3>
+        <p>No made-up tastings. No "notes of wet slate". Deals, verifiable data, and opinions marked as opinions.</p>
+      </div>
+      <div class="brutal-card trust-card">
+        <h3>We'll tell you to skip it</h3>
+        <p>If something isn't worth your money, we say so — and tell you what's better.</p>
       </div>
     </div>
   </section>
 
-  <!-- === ARTICLES === -->
-  <section id="articles" class="wrapper" style="padding-bottom: 4rem;">
-    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem;">
-      <h2 style="margin: 0; font-size: 1.75rem;">Neueste Artikel</h2>
-      <span style="font-family: var(--font-display); font-size: 0.8rem; text-transform: uppercase; color: #e05560; letter-spacing: 0.05em;">
-        Frisch aus der Flasche
-      </span>
+  <!-- === DEALS === -->
+  <section class="wrapper" style="padding-bottom: 3rem;">
+    <div class="section-head">
+      <h2>Live deals</h2>
+      <span class="section-note">Checked by hand. Updated as they change.</span>
     </div>
 
-    <div style="display: grid; gap: 1.5rem;">
-      {
-        articles.map((article) => (
-          <article class="brutal-card brutal-shadow-hover article-card" style="cursor: pointer; padding: 0; overflow: hidden;">
-            <a
-              href={`/artikel/${article.slug}`}
-              class="card-img-wrap"
-              aria-label={article.title}
-            >
-              <img
-                src={article.image}
-                alt={article.title}
-                loading="lazy"
-              />
-            </a>
-            <a href={`/artikel/${article.slug}`} class="card-body">
-              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
-                {article.tags.map((tag) => (
-                  <span
-                    onclick={`event.stopPropagation(); window.location.href='/tags/${tag}'`}
-                    style="font-family: var(--font-display); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.5rem; background: var(--color-primary); color: #ffffff; text-decoration: none; position: relative; z-index: 1; cursor: pointer;"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <h3 style="font-size: 1.3rem; margin: 0.25rem 0 0.25rem;">
-                {article.title}
-              </h3>
-              <p style="font-size: 0.9rem; margin: 0.25rem 0 0.5rem;">
-                {article.excerpt}
-              </p>
-              <span style="font-family: var(--font-display); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-cta);">
-                Weiterlesen →
-              </span>
-            </a>
-          </article>
-        ))
-      }
+    <div class="deals-grid">
+      {topDeals.map((deal) => <DealCard deal={deal} />)}
+    </div>
+
+    <div style="margin-top: 1.5rem;">
+      <a href="/deals/" class="brutal-btn brutal-btn--inverse">All deals →</a>
     </div>
   </section>
 
-  <!-- === ABOUT === -->
-  <section id="about" class="wrapper" style="padding-bottom: 4rem;">
-    <div class="brutal-card" style="max-width: 700px;">
-      <h2 style="font-size: 1.75rem; margin-top: 0;">Was ist FKN Wine?</h2>
-      <p>
-        Wein muss nicht teuer sein um geil zu schmecken. Und du musst kein Weinkenner sein um den richtigen Wein zu finden.
-        FKN Wine ist für Leute die Bock auf Wein haben — aber null Bock auf die Wein-Snob-Kultur.
-      </p>
-      <p>
-        Wir testen Supermarkt-Weine, Discounter-Flaschen und alles was du im Alltag tatsächlich kaufst.
-        Keine €80-Bordeaux-Empfehlungen. Kein "Noten von nasser Schieferplatte"-Gelaber.
-        Nur: <strong>Schmeckt geil. Kost €8. Kauf das.</strong>
-      </p>
-      <div style="margin-top: 1.5rem;">
-        <span style="font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em;">
-          <Icon name="wine" size={20} color="var(--color-primary)" /> F*ck Nice Wine.
-        </span>
-      </div>
+  <!-- === CLUBS === -->
+  <section class="wrapper" style="padding-bottom: 3rem;">
+    <div class="section-head">
+      <h2>Wine clubs, judged</h2>
+      <span class="section-note">The paperwork, not the landing page.</span>
+    </div>
+
+    {
+      clubs.map((club) => (
+        <a href={`/wine-clubs/${club.id}/`} class="club-teaser brutal-card brutal-shadow-hover">
+          <div class="club-teaser-top">
+            <span class="verdict-chip">{club.data.verdictLabel}</span>
+            <span class="club-price">{club.data.priceFrom}</span>
+          </div>
+          <h3>{club.data.name}</h3>
+          <p>{club.data.summary}</p>
+          <span class="teaser-more">Read the full review →</span>
+        </a>
+      ))
+    }
+
+    <div style="margin-top: 1.5rem;">
+      <a href="/wine-clubs/" class="brutal-btn brutal-btn--inverse">All club reviews →</a>
     </div>
   </section>
 
   <!-- === NEWSLETTER === -->
-  <section class="wrapper" style="padding-bottom: 2rem;">
-    <div
-      style="border: 3px solid var(--color-cta); padding: 2rem; text-align: center; box-shadow: 6px 6px 0 0 var(--color-cta); max-width: 600px; margin: 0 auto;"
-    >
-      <h2 style="font-size: 1.5rem; margin: 0 0 0.5rem;">Kein Bock zu suchen?</h2>
-      <p style="margin: 0 0 1rem; font-size: 1rem;">Jeden Freitag eine Wein-Empfehlung die dich nicht nervt. Kein Gelaber, kein Spam — nur: „Kauf den, der ist geil."</p>
-      <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
-        <form action="https://buttondown.com/api/emails/embed-subscribe/nimar" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/nimar', 'popupwindow')" style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
-          <input
-            type="email"
-            name="email"
-            placeholder="deine@email.de"
-            required
-            style="padding: 0.75rem 1rem; border: 3px solid var(--color-text); background: var(--color-surface); color: var(--color-text); font-family: var(--font-sans); font-size: 0.95rem; min-width: 200px;"
-          />
-          <button class="brutal-btn" type="submit" style="border-color: var(--color-cta);">
-            Anmelden
-          </button>
-        </form>
-      </div>
+  <section id="newsletter" class="wrapper" style="padding-bottom: 3rem;">
+    <div class="newsletter-box">
+      <h2>The Deal Sheet</h2>
+      <p class="newsletter-sub">
+        One email. The best wine deals we found this week + one bottle worth your money.
+        No spam, unsubscribe anytime.
+      </p>
+      <NewsletterForm />
+    </div>
+  </section>
+
+  <!-- === ABOUT TEASER === -->
+  <section class="wrapper" style="padding-bottom: 4rem;">
+    <div class="brutal-card" style="max-width: 700px;">
+      <h2 style="font-size: 1.5rem; margin-top: 0;">What is FKN Wine?</h2>
+      <p>
+        We're not sommeliers and we don't play one on the internet. We're the site that tells you
+        which wine deal is actually good, which club deserves your money, and which $15 bottle
+        beats the $40 one — with the fine print included.
+      </p>
+      <a href="/about/" class="brutal-btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">How we work →</a>
     </div>
   </section>
 </Layout>
 
 <style>
-  /* Hero: clean black, no background image */
-  .hero-section {
-    background-color: var(--color-bg);
+  .hero {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .hero-inner {
+    display: grid;
+    gap: 1rem;
+    max-width: 800px;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--color-primary);
+    color: var(--color-fkn-white);
+    width: fit-content;
+  }
+
+  .hero-sub {
+    font-size: 1.2rem;
+    max-width: 640px;
+    margin-top: 0.5rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  .hero-note {
+    font-size: 0.85rem;
+    opacity: 0.65;
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .trust-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--color-cta);
+  }
+
+  .trust-card p {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .section-head h2 {
+    margin: 0;
+    font-size: 1.75rem;
+  }
+
+  .section-note {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: color-mix(in srgb, var(--color-text) 60%, transparent);
+  }
+
+  .deals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .club-teaser {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    max-width: 700px;
+  }
+
+  .club-teaser-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+
+  .verdict-chip {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.6rem;
+    background: var(--color-cta);
+    color: var(--color-bg);
+  }
+
+  .club-price {
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+
+  .club-teaser h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.3rem;
+  }
+
+  .club-teaser p {
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .teaser-more {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-cta);
+  }
+
+  .newsletter-box {
+    border: 3px solid var(--color-cta);
+    box-shadow: 6px 6px 0 0 var(--color-cta);
+    padding: 2rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .newsletter-box h2 {
+    font-size: 1.6rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .newsletter-sub {
+    margin: 0 0 1rem;
   }
 </style>

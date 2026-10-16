@@ -189,7 +189,23 @@ a:hover {
   margin: 1.5rem 0;
 }
 .article-content table {
+  width: 100%;
+  border-collapse: collapse;
   margin: 1rem 0;
+}
+.article-content th,
+.article-content td {
+  border: 2px solid var(--color-surface);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-size: 0.9rem;
+}
+.article-content th {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  color: var(--color-cta);
 }
 .article-content a {
   color: var(--color-cta);

@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config';
+---
+
+<Layout
+  title="Disclosure"
+  description="How FKN Wine makes money, how we handle links, and the rules we follow. Full transparency, no asterisks."
+>
+  <section class="wrapper" style="padding-top: 3rem; padding-bottom: 4rem; max-width: 720px;">
+    <h1 style="font-size: clamp(1.9rem, 5.5vw, 2.6rem);">Disclosure</h1>
+    <p style="font-size: 1.05rem;">
+      The short version: FKN Wine is free, and when we use links that earn us a commission, we
+      say so. Here's the long version.
+    </p>
+
+    <h2 style="font-size: 1.3rem; margin-top: 2.25rem;">How we make money</h2>
+    <p>
+      FKN Wine is reader-supported. That means we may earn a commission when you buy something
+      through links on this site (like wine club signups or shop offers). This costs you nothing
+      extra — in most cases you pay exactly the same price, sometimes less when a link carries a
+      deal.
+    </p>
+    <p>
+      <strong>What commissions never do:</strong> buy a verdict. If something isn't worth your
+      money, we say so, whether or not it pays us. A bad deal with a good commission is still a
+      bad deal — and it's not on this site.
+    </p>
+
+    <h2 style="font-size: 1.3rem; margin-top: 2.25rem;">How we mark links</h2>
+    <ul>
+      <li>
+        Links that can earn us a commission are marked internally as
+        <em>sponsored</em> links and are covered by this disclosure page, as required by the
+        FTC's endorsement guidelines.
+      </li>
+      <li>Links we don't earn from are just links.</li>
+      <li>We never write "up to X% off" marketing math. Prices on our pages are the prices we verified on the merchant's site, with the date we checked them.</li>
+    </ul>
+
+    <h2 style="font-size: 1.3rem; margin-top: 2.25rem;">What we don't do</h2>
+    <ul>
+      <li>We don't invent tastings, scores, or test results. Our content is based on verifiable information (offers, terms, published ratings) and on opinions that are clearly written as opinions.</li>
+      <li>We don't sell reviews, rankings, or verdicts.</li>
+      <li>We don't hide the fine print. Reading it is literally what this site is for.</li>
+    </ul>
+
+    <h2 style="font-size: 1.3rem; margin-top: 2.25rem;">Alcohol</h2>
+    <p>
+      FKN Wine is written for adults 21 and older. We don't sell alcohol and we don't advertise
+      to anyone under 21. Merchants we link to are responsible for their own age verification and
+      shipping laws. Enjoy responsibly — and if alcohol isn't your thing, that's completely fine
+      too.
+    </p>
+
+    <h2 style="font-size: 1.3rem; margin-top: 2.25rem;">Questions</h2>
+    <p>
+      Mail us: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. We answer honestly.
+    </p>
+
+    <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.6;">Last updated: October 2026</p>
+  </section>
+</Layout>
