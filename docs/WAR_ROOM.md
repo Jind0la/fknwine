@@ -10,7 +10,8 @@
 - `2026-10-16` — **Mail fknwine.com gelöst:** info@/hey@ → nimarm@me.com (iCloud) *plus* Kopie an
   nimarny@gmail.com via CF Email-Worker `fkn-mail-router` (Regel-Ziel = max. 1 Adresse; Worker
   forwardet an beide). E2E getestet (IONOS→info@→Gmail-Inbox ✓). Era liest die Kopie per API →
-  bearbeitet Anfragen selbständig. Offen: Senden als info@ (SMTP) später.
+  bearbeitet Anfragen selbständig. **Senden als info@/hey@ live via Resend** (Domain verifiziert
+  16.10., EU-Region; Skript `~/.hermes/scripts/fkn_send.py`; Resend-Empfangs-MX bewusst nicht gesetzt).
 - `2026-10-16` — **Deep Research: Affiliate vs. Sponsoring → Sequenz-Entscheidung.** Affiliate zuerst
   (kein Audience-Gate; WSJ $20/Club + 10 % via Impact, Wine.com $50/PICKED, Vinesse $40, Firstleaf
   via FlexOffers 8–10,4 %; Shops 4–12 %; Amazon 0 %). Sponsoring erst ab ~1–2k engaged Subs
