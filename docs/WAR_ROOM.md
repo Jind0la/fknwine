@@ -7,6 +7,16 @@
 
 ## Aktueller Stand
 
+- `2026-10-16` — **Affiliate-Ablehnungen: FlexOffers + Impact declined (Site zu jung/klein).**
+  FlexOffers: Application + Traffic Source declined (19:18 CEST) — nur Textbaustein („does not meet
+  our current needs or is in conflict with a policy"), KEIN konkreter Grund. Impact: Marketplace-Zugriff
+  declined (19:34) — Mail verlinkt nur den Partner-Vertrag; Dashboard: „qualifizieren sich derzeit
+  nicht"; Konto bleibt nutzbar via Direkt-Brand-Links + Einladungen. **Root-Cause-Annahme:** Site
+  1 Tag nach EN-Relaunch, ~0 Traffic (10 Besuche/30 T.), ~13 Seiten — beide Netze gaten auf Substanz.
+  **Maßnahmen:** Anfrage an support@flexoffers.com (spezifischer Grund + Reconsideration-Kriterien) ✓;
+  Impact-Ticket **#897752** (Compliance/Marketplace Approval; Antwort 5–7 Werktage) ✓ — versehentlich
+  2 Tickets, Duplikat **#897753** per Reply auf merge/close beantragt ✓. **Nächster Hebel:** Content
+  + Traffic (2–4 Wochen), dann Re-Apply; Awin + Skimlinks/Sovrn + Direkt-Programme als Alternativen.
 - `2026-10-16` — **FlexOffers-Registrierung abgeschickt** (Konto 1565967, Username info@fknwine.com;
   Traffic Source „Website – FKN Wine" + Beschreibung angelegt; Site per **DNS-TXT** verifiziert,
   Token bleibt drin). Review 2–5 Werktage → dann Programmanträge (Firstleaf/Winc) im Dashboard;
@@ -106,7 +116,8 @@
 
 | Task | Wer | Status | Nächster Schritt |
 |---|---|---|---|
-| EN-Relaunch | Era | **Live (16.10.)** | Konten geführt (Awin/FlexOffers/Impact) → beehiiv → X-Cadence → Content-Welle 2 |
+| Affiliate-Konten | Era | **FlexOffers + Impact abgelehnt** (16.10.) | Support-Anfragen laufen (FlexOffers-Mail; Impact #897752, Duplikat #897753 geschlossen) → nach Content/Traffic-Push (2–4 Wo.) Re-Apply; dann Awin/Skimlinks prüfen |
+| EN-Relaunch | Era | **Live (16.10.)** | beehiiv → X-Cadence → Content-Welle 2 |
 | Newsletter-Plattform | Nimar + Era | offen (Alt-Formular ersetzt) | beehiiv-Signup geführt (Nimar ~5 Min) → Endpoint in `src/config.ts` |
 | Index-Stand | Era | Wächter + Nachzug auf neue URLs umgestellt | Sitemap eingereicht; Cron `92efc5307dea` meldet selbst, wenn alle 9 neuen URLs beantragt sind → dann löschen |
 
@@ -144,10 +155,11 @@
 
 ## Nächste Schritte
 
-- [ ] **Nach dem Live-Gang:** Affiliate-Konten mit Nimar geführt (Awin → FlexOffers →
-      Impact; W-8BEN); Newsletter-Plattform (beehiiv) verkabeln; X-Profil-Politur
-      + Cadence-Start (ohne Follow-Churn); Content-Welle 2 (mehr Clubs, Coupons,
-      „best under $15").
+- [ ] **Affiliate-Pfad (nach den Ablehnungen):** Support-Antworten abwarten (FlexOffers-Mail,
+      Impact #897752) → genannten Grund fixen; parallel Content + Traffic aufbauen
+      (Welle 2: mehr Clubs, Coupons, „best under $15"); dann Re-Apply FlexOffers/Impact + Awin;
+      Skimlinks/Sovrn & Direkt-Programme als gated-freie Alternativen prüfen. Newsletter
+      (beehiiv) verkabeln; X-Cadence läuft an (ohne Follow-Churn).
 - [ ] Index-Stand beobachten: neue URLs in GSC (`~/.hermes/scripts/gsc.py inspect
       <property> <url>`); Wächter-Cron `a8a57aadcd03` (Mo 09:00) meldet Änderungen.
 - [ ] **Cron `92efc5307dea` (GSC-Nachzug, jetzt auf neue URLs) meldet selbst, wenn
