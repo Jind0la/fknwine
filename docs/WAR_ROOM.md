@@ -7,6 +7,14 @@
 
 ## Aktueller Stand
 
+- `2026-10-16` — **Monetarisierungs-Analyse läuft (Nimar-Auftrag: „Geld mit Domain + Accounts verdienen", Markt frei wählbar).**
+  Befund: kein Geld-Pfad (keine Affiliate-Links, kein Analytics, 0 indexiert), X praktisch tot
+  (1 Follower, 248 Impressions all time), DE-Supermarkt-Nische monetarisiert kaum (Aldi/Lidl
+  haben kein Affiliate-Programm) + schrumpfender Markt. **Recherche-These: EN/US-Pivot** —
+  US-Weinmarkt ~$115 Mrd. (2025), Wein-Clubs zahlen $20–50/Signup, Online-Shops 4–12 %,
+  Amazon zahlt für Alkohol 0 %. X-Monetarisierung 2026 geprüft (Original Content Rewards:
+  hohe Hürden, Mini-Payouts → keine Einnahme-Säule). **Nächster Schritt:** Konzept-Doc in KB,
+  dann Entscheidungsvorlage für Nimar.
 - `2026-10-16` — **Host-Konsolidierung live (Cloudflare-Zone, nicht Repo).**
   `always_use_https: on` + Redirect Rule `www.fknwine.com` → `https://fknwine.com`
   (301, Pfad+Query, 1 Hop). Verifiziert per curl: http-Apex 301 same-host, www
