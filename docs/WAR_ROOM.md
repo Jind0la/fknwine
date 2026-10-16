@@ -13,6 +13,8 @@
   **Cloudflare Web Analytics läuft bereits** für fknwine.com (cookieless; „kein Analytics"-Befund war falsch →
   Privacy-Seite präzisiert). Neu live: **Winc-Review** (`/wine-clubs/winc/`, inkl. „Bright Cellars ist in Winc
   aufgegangen" + $100-Intro-Deal) und **neues EN-OG-Bild** (`og-default.png` über echten Browser gerendert).
+  Neuer Cron **FKN Deals-Refresh** (Mo 10:00, deliver local): prüft die Deals wöchentlich am Merchant und
+  aktualisiert `deals.ts` nur bei grünem Build — Content-Ops direkt auf main (kein Preview-Gate; Nimar-Veto offen).
 - `2026-10-16` — **EN-Relaunch gebaut (Branch `feat/en-relaunch`) — Preview offen.**
   Auf Nimars Go („alles selbständig machen"): neue EN-Struktur (Home / Deals / Wine Clubs /
   Guides / Legal), Content-Collections (`clubs`, `guides`), Merchant-Registry
