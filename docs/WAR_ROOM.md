@@ -1,32 +1,28 @@
 # War Room — FKN Wine
 
 > Arbeits-Log des Projekts. Versioniert in Git, gepflegt von Hermes (Orchestratorin).
-> Grundsatz: **Der Raum ist Teil der Team-Intelligenz.** Fehlschläge und
-> Entscheidungen sind genauso wertvoll wie Erfolge.
->
-> **Verdichtungs-Regel:** Datei unter ~150 Zeilen halten. Am Ende jeder Session
-> abgeschlossene Tasks entfernen, alte Einträge (>2 Wochen) kürzen.
+> Grundsatz: **Der Raum ist Teil der Team-Intelligenz** — Fehlschläge und Entscheidungen
+> sind so wertvoll wie Erfolge. **Verdichtungs-Regel:** unter ~150 Zeilen halten;
+> am Session-Ende abgeschlossene Tasks entfernen, Einträge >2 Wochen kürzen.
 
 ## Aktueller Stand
 
 - `2026-10-16` — **Host-Konsolidierung live (Cloudflare-Zone, nicht Repo).**
   `always_use_https: on` + Redirect Rule `www.fknwine.com` → `https://fknwine.com`
   (301, Pfad+Query, 1 Hop). Verifiziert per curl: http-Apex 301 same-host, www
-  http+https → Apex, Apex https 200, Sitemap nur `https://fknwine.com`.
-  Zone `fknwine.com` (`51e9dc8462690929e186758bf3a0916a`), Account `Nimarm@me.com`
-  (`ab7100d2d421801bb797f15c4c953208`). Der frühere `http://fknwine.com` → 301 →
-  `pages.dev`-Redirect kam aus Pages' Edge-Verhalten, nicht aus der Zone (die hatte
-  `always_use_https: off`, leeres Dynamic-Redirect-Ruleset, Page Rules leer).
+  http+https → Apex, Apex https 200, Sitemap nur `https://fknwine.com`. Zone
+  `fknwine.com` (`51e9dc8462690929e186758bf3a0916a`), Account `Nimarm@me.com`
+  (`ab7100d2d421801bb797f15c4c953208`). Der frühere `http→pages.dev`-Redirect kam aus
+  Pages' Edge-Verhalten (Zone: `always_use_https: off`, leeres Ruleset, Page Rules leer).
   **Lehre:** `http.scheme` ist in dieser Ruleset-Phase kein gültiges Feld (API 20127),
-  der ganze Ruleset-PUT fällt durch — Scheme-Upgrade gehört über `always_use_https`.
-- `2026-10-16` — **X-Zugang @FKNWine steht und ist schreib-verifiziert.** Konto
-  existiert seit 08.07.2026 (id `2074768137501675520`, 19 Posts), war aber nicht in
-  `~/.xurl` (nur App-only-Bearer + OAuth2 für @NMoradbakhti). Fix:
-  `xurl auth oauth2 FKNWine --app my-app` (Browser, Callback localhost:8080), App
-  beantragt alle Write-Scopes. Verifiziert: `xurl -u FKNWine /2/users/me` → @FKNWine;
-  post → `2111057054030839850` → delete → „Could not find post". Kein 402/Billing-
-  Blocker. Aufruf: `xurl -u FKNWine …`. **Lehren:** `xurl -i` gibt es nicht;
-  Buffer-Problem → Output per `> /tmp/…log` umleiten.
+  der ganze Ruleset-PUT fällt durch — Scheme-Upgrade über `always_use_https`.
+- `2026-10-16` — **X-Zugang @FKNWine steht und ist schreib-verifiziert.** Konto seit
+  08.07.2026 (id `2074768137501675520`, 19 Posts), war nicht in `~/.xurl` (nur
+  App-only-Bearer + OAuth2 für @NMoradbakhti). Fix: `xurl auth oauth2 FKNWine
+  --app my-app` (Browser, Callback localhost:8080), App hat alle Write-Scopes.
+  Verifiziert: `xurl -u FKNWine /2/users/me` → @FKNWine; post `2111057054030839850`
+  → delete → „Could not find post"; kein 402/Billing-Blocker. **Lehren:** Aufruf
+  `xurl -u FKNWine …`; `xurl -i` gibt es nicht; Buffer-Problem → Output per `> /tmp/…log`.
 - `2026-10-16` — **„Indexierung beantragen" gefahren: 10 von 14 URLs, dann machte
   Google das Tageskontingent zu.** Direkt im Comet-Browser per CDP (Port 9222):
   Suchfeld füllen → Enter → Prüfung abwarten → Button per echtem Maus-Event
@@ -58,14 +54,13 @@
   sollte pages.dev + www per 301 auf fknwine.com konsolidieren (Logik vorher mit
   Node gegen 8 Fälle getestet, Preview grün). In Produktion **Redirect-Loop auf
   fknwine.com selbst** (`curl -L`: 50 Redirects), weil Pages Functions bei einer
-  Custom Domain `context.request.url` weiterhin mit `pages.dev`-Host sieht — die
-  eigene Domain matchte mit. Rollback per `git revert` (`df1a627`; erster Versuch
-  scheiterte am ungültigen Flag `-q`), Live-Verifikation: alle 10 geprüften URLs
-  wieder 200, Canonical intakt. **Lehren:** (1) Host-basierte Redirects nie aus
-  einer Pages-Function ableiten; (2) öffentlich erst ausrollen, wenn ein
-  Zonen-Feature testbar ist — Logik-Test + grünes Preview beweisen
-  Produktionsverhalten bei hostabhängigem Verhalten nicht; (3) `git revert` kennt
-  kein `-q`.
+  Custom Domain `context.request.url` weiterhin mit `pages.dev`-Host sieht. Rollback
+  per `git revert` (`df1a627`; erster Versuch scheiterte am ungültigen Flag `-q`),
+  Live-Verifikation: alle 10 geprüften URLs wieder 200, Canonical intakt.
+  **Lehren:** (1) Host-basierte Redirects nie aus einer Pages-Function ableiten;
+  (2) öffentlich erst ausrollen, wenn ein Zonen-Feature testbar ist — Logik-Test +
+  grünes Preview beweisen hostabhängiges Produktionsverhalten nicht; (3) `git revert`
+  kennt kein `-q`.
 - `2026-10-15` — **Canonical-Drift behoben und live.** Root Cause:
   `site: 'https://fknwine.pages.dev'` in `astro.config.mjs` **plus** 19 hartcodierte
   `pages.dev`-Stellen → Canonical, `og:url`, JSON-LD, Sitemap und RSS zeigten auf die
@@ -84,19 +79,16 @@
   APIs im Cloud-Projekt `1064311637568` waren deaktiviert → von Nimar aktiviert.
   **Lehre:** die „API ist aktiv"-Prüfung per unauthentifiziertem Request war ein
   Fehlschluss — 401 sagt nichts über den API-Status. Property `https://fknwine.com/`
-  per FILE verifiziert (Owner `nimarny@googlemail.com`); Datei
-  `public/google35b2017bd84955fa.html` liegt im Repo — **nie löschen**, sonst
-  verliert die Property die Bestätigung. Sitemap eingereicht (0 Fehler).
-  **Cloudflare-Eigenheit:** Pages strippt `.html` und leitet per 308 auf die
-  endungslose URL; Google akzeptiert die Verifikation trotzdem.
+  per FILE verifiziert (Owner `nimarny@googlemail.com`); `public/google35b2017bd84955fa.html`
+  liegt im Repo — **nie löschen** (Property-Bestätigung). Sitemap eingereicht (0 Fehler).
+  **Cloudflare-Eigenheit:** Pages strippt `.html` + 308 auf die endungslose URL; GSC ok.
 - `2026-10-14` — **Projekt aus dem Archiv geholt und wieder verankert.** Es gab
   keinen Projektordner, keine KB-Notiz, keinen Memory-Eintrag — die Site lief seit
   Juli unbemerkt. Repo `Jind0la/fknwine` (public) nach
-  `~/Workspace/projects/19-fknwine` geklont, Desktop-Projekt `fknwine`
-  (p_881c6f4f) + KB-Notiz `prj-fknwine` + dieser War Room angelegt.
+  `~/Workspace/projects/19-fknwine` geklont, Desktop-Projekt `fknwine` (p_881c6f4f)
+  + KB-Notiz `prj-fknwine` + dieser War Room angelegt.
 - `2026-07-16` (Nimar/IONOS) — Whois-Privacy-Anfrage zu fknwine.com („Business
-  opportunities", `designing.solutions@genaidesign.info`), **nie beantwortet**;
-  liegt als HTML in `~/Downloads/`.
+  opportunities"), **nie beantwortet**; liegt als HTML in `~/Downloads/`.
 
 ## Laufende Tasks
 
@@ -119,12 +111,10 @@
 
 ## Fehlschläge & Korrekturen
 
-- **Projekt-Wissen war verloren** (kein Eintrag trotz live-Site, X-Account,
-  12 Commits) → korrigiert durch War Room, KB-Note `prj-fknwine`, Desktop-Projekt.
-- **Host-Konsolidierung per Pages Function → Redirect-Schleife** (Details + Lehren
-  s. Aktueller Stand 16.10.).
-- **Erste Canonical-Version ohne Trailing Slash** — nachgezogen (s. Aktueller Stand
-  15.10.).
+- **Projekt-Wissen war verloren** (kein Eintrag trotz live-Site, X-Account, 12 Commits) →
+  korrigiert durch War Room, KB-Note `prj-fknwine`, Desktop-Projekt.
+- **Host-Redirect per Pages Function → Redirect-Schleife** und **erste Canonical-Version
+  ohne Trailing Slash** — Details + Lehren in „Aktueller Stand".
 
 ## Known Limitations (Gap-Liste)
 
