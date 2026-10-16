@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { SITE, AFFILIATE_LIVE } from '../config';
+import { SITE, AFFILIATE_LIVE, NEWSLETTER } from '../config';
 
 interface Props {
   title: string;
@@ -153,6 +153,9 @@ const schema = articleSchema ? [...baseSchema, articleSchema] : baseSchema;
         )
       }
     </footer>
+
+    <!-- beehiiv: UTM-Attribution für das Newsletter-Formular -->
+    <script is:inline async src={NEWSLETTER.attributionSrc}></script>
   </body>
 </html>
 

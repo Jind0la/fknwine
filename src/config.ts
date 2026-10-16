@@ -10,9 +10,16 @@ export const SITE = {
   email: 'info@fknwine.com',
 } as const;
 
-// Newsletter: Endpoint wird beim Launch gesetzt (Provider-Wiring-Schritt).
-// Solange null, zeigt das Formular ehrlich an, dass die Liste noch nicht offen ist.
-export const NEWSLETTER_ENDPOINT: string | null = null;
+// Newsletter: beehiiv (Embed-Formular "Website – fknwine.com").
+// Der Loader rendert das Formular inline an der Stelle des Script-Tags
+// (siehe components/NewsletterForm.astro). Attribution forwarded UTMs.
+export const NEWSLETTER = {
+  provider: 'beehiiv',
+  formId: '35163977-6b86-4c93-bcfb-af796f96929c',
+  loaderSrc: 'https://subscribe-forms.beehiiv.com/v3/loader.js',
+  attributionSrc: 'https://subscribe-forms.beehiiv.com/attribution.js',
+  subscribePage: 'https://fknwine.beehiiv.com/subscribe',
+} as const;
 
 // Analytics: bewusst noch nichts eingebaut (cookieless geplant, z.B. Cloudflare Web Analytics).
 export const ANALYTICS: { provider: string | null; token: string | null } = {

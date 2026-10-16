@@ -1,38 +1,23 @@
 ---
-import { NEWSLETTER_ENDPOINT, SITE } from '../config';
-
-const endpoint = NEWSLETTER_ENDPOINT;
+import { NEWSLETTER } from '../config';
 ---
 
 <div class="nl-wrap">
-  <form
-    class="nl-form"
-    action={endpoint ?? '#'}
-    method="post"
-    onsubmit={endpoint ? undefined : 'return false;'}
-  >
-    <label class="visually-hidden" for="nl-email">Email</label>
-    <input
-      id="nl-email"
-      type="email"
-      name="email"
-      placeholder="you@email.com"
-      required
-      autocomplete="email"
-    />
-    <button class="brutal-btn" type="submit">Join the list</button>
-  </form>
-  {
-    !endpoint && (
-      <p class="nl-note">
-        The list opens with the first deal drop — until then,{' '}
-        <a href={SITE.x} target="_blank" rel="noopener noreferrer">
-          follow @FKNWine on X
-        </a>
-        .
-      </p>
-    )
-  }
+  <div class="nl-embed">
+    <script
+      async
+      src={NEWSLETTER.loaderSrc}
+      data-beehiiv-form={NEWSLETTER.formId}
+      is:inline></script>
+  </div>
+  <noscript>
+    <p class="nl-note">
+      JavaScript off? No problem —{' '}
+      <a href={NEWSLETTER.subscribePage} target="_blank" rel="noopener noreferrer">
+        subscribe on our beehiiv page
+      </a>.
+    </p>
+  </noscript>
 </div>
 
 <style>
@@ -40,21 +25,8 @@ const endpoint = NEWSLETTER_ENDPOINT;
     max-width: 560px;
   }
 
-  .nl-form {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .nl-form input {
-    flex: 1;
-    min-width: 220px;
-    padding: 0.75rem 1rem;
-    border: 3px solid var(--color-text);
-    background: var(--color-surface);
-    color: var(--color-text);
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
+  .nl-embed {
+    min-height: 120px;
   }
 
   .nl-note {
