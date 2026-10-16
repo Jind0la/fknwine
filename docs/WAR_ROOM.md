@@ -7,6 +7,8 @@
 
 ## Aktueller Stand
 
+- `2026-10-16` — **Newsletter ist live verdrahtet (beehiiv).** Konto (info@fknwine.com), Publication „FKN Wine" (Logo + Thumbnail drin); Handle **fknwine.beehiiv.com**, Sender **fknwine@mail.beehiiv.com** (Custom Domain = Paid → später). Embed-Formular (ID `35163977-6b86-4c93-bcfb-af796f96929c`): Header aus, dunkel integriert (Button-Farb-Controls per CDP nicht erreichbar — ggf. nachziehen). Site: `NEWSLETTER`-Config + Embed (`NewsletterForm.astro`) + Attribution (`Layout.astro`) auf Branch `feat/content-wave-2` (Preview-Pane offen). **E2E getestet:** Submit über die Site → 1 aktiver Subscriber (info@fknwine.com als Test). Trial 14 Tage Pro (ohne KK) → danach Free (bis 2.500 Abos). **WineExpress: gestorben** (Impact-Marketplace-Gate) — CWC via Awin bleibt der Weg.
+- `2026-10-16` — **Content-Welle gestartet (bewusst nicht erst Montag).** Erster Baustein: **California-Wine-Club-Review** auf Branch `feat/content-wave-2` (Build grün, 15 Seiten; Preview-Pane offen; Merchant `cawineclub` in `merchants.ts` + Schema). Programm-Recherche: **CWC läuft über Awin** (Merchant 59079), **WineExpress über Impact-Direktlink** (campaign-promo-signup — trotz Marketplace-Sperre nutzbar; Bewerbung vorbereitet, Nimar-Part: Passwort + Handynr.). **beehiiv**: Free-Plan reicht (0 $, 2.500 Abos) — Signup-Formular vorbefüllt (info@fknwine.com), Nimar-Part: Passwort + Terms; danach übernimmt Era (Verify, Setting, Formular-Verdrahtung). Content-Kadenz: Richtwert 2–4 Site-Stücke + 3–5 X-Posts pro Woche, Preview-Gate bleibt.
 - `2026-10-16` — **Affiliate-Ablehnungen: FlexOffers + Impact declined (Site zu jung/klein).**
   FlexOffers: Application + Traffic Source declined (19:18 CEST) — nur Textbaustein („does not meet
   our current needs or is in conflict with a policy"), KEIN konkreter Grund. Impact: Marketplace-Zugriff
@@ -118,7 +120,7 @@
 |---|---|---|---|
 | Affiliate-Konten | Era | **FlexOffers + Impact abgelehnt** (16.10.) | Support-Anfragen laufen (FlexOffers-Mail; Impact #897752, Duplikat #897753 geschlossen) → nach Content/Traffic-Push (2–4 Wo.) Re-Apply; dann Awin/Skimlinks prüfen |
 | EN-Relaunch | Era | **Live (16.10.)** | beehiiv → X-Cadence → Content-Welle 2 |
-| Newsletter-Plattform | Nimar + Era | offen (Alt-Formular ersetzt) | beehiiv-Signup geführt (Nimar ~5 Min) → Endpoint in `src/config.ts` |
+| Newsletter-Plattform | Nimar + Era | **live verdrahtet (beehiiv)** — Preview offen | Nach Nimar-Blick mergen → live; Welcome-Mails später |
 | Index-Stand | Era | Wächter + Nachzug auf neue URLs umgestellt | Sitemap eingereicht; Cron `92efc5307dea` meldet selbst, wenn alle 9 neuen URLs beantragt sind → dann löschen |
 
 ## Entscheidungen
