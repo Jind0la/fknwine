@@ -9,6 +9,32 @@
 
 ## Aktueller Stand
 
+- `2026-10-16` (Era) — **Index-Check: noch nichts indexiert, und der wahre
+  Bremsklotz ist gefunden.** Stand heute (URL-Inspection, 14 URLs):
+  **0 indexiert**, 1 „Duplikat", 4 „Gecrawlt – zurzeit nicht indexiert"
+  (Crawls am 15.10. zwischen 09:56 und 10:53 CEST, also *nach* dem
+  Canonical-Fix), 5 „Gefunden – zurzeit nicht indexiert", 4 „unbekannt".
+  Sitemap-Report von Google: **33 eingereicht / 0 indexiert**.
+  Die gute Nachricht: bei den gecrawlten Artikeln steht `googleCanonical` und
+  `userCanonical` jeweils korrekt auf der fknwine.com-URL — der Fix greift.
+  Der Befund: die Startseite ist ein **Duplikat mit
+  `googleCanonical = https://fknwine.pages.dev/`**, weil drei Hosts dieselbe
+  Seite ausliefern: `fknwine.pages.dev` (200), `www.fknwine.com` (200) und
+  `http://fknwine.com` → 301 auf **pages.dev**. Solange Google pages.dev als
+  Original wertet, bleibt die Custom Domain im Index draußen.
+- `2026-10-16` (Era) — **Eigener Fehler: Host-Redirect per Pages-Function
+  zerlegte die Live-Seite (≈4 Min Ausfall), sauber zurückgerollt.**
+  Versuch: `functions/_middleware.js` sollte `fknwine.pages.dev` und
+  `www.fknwine.com` per 301 auf fknwine.com konsolidieren (Logik vorher mit
+  Node gegen 8 Fälle getestet — alle grün, Preview-Deployment lief). In
+  Produktion entstand dann ein **Redirect-Loop auf fknwine.com selbst**
+  (`curl -L`: 50 Redirects), weil Cloudflare Pages Functions bei einer
+  Custom-Domain offenbar `context.request.url` weiterhin mit dem
+  `pages.dev`-Hostnamen sehen — meine Bedingung traf also auch für
+  fknwine.com zu. Rollback per `git revert` (`df1a627`, nachdem der erste
+  Revert-Versuch am ungültigen Flag `-q` scheiterte), Live-Verifikation:
+  alle 10 geprüften URLs wieder 200, Canonical intakt, Verifikationsdatei
+  erreichbar.
 - `2026-10-15` (Era) — **Canonical-Fix ist live.** `fix/canonical-domain` per
   Fast-Forward nach `main` gemergt (`58d5cc9..6b6b904`) und gepusht; Cloudflare
   Pages hat ~45 s später gebaut. Live verifiziert per curl auf `/`, `/artikel/`,
@@ -90,6 +116,19 @@
 - **Projekt-Wissen war verloren.** Es gab keinerlei Projekt-Eintrag, obwohl die
   Site live ist, ein X-Account existiert und 12 Commits Arbeit drinstecken.
   Korrektur: dieses War Room, KB-Note `prj-fknwine`, Desktop-Projekt `fknwine`.
+- **Host-Konsolidierung per Pages Function endet in einer Redirect-Schleife.**
+  `functions/_middleware.js` mit Host-Vergleich auf `context.request.url` ist
+  bei Custom Domains unbrauchbar: Pages scheint für Requests auf fknwine.com
+  weiterhin den `pages.dev`-Hostnamen in die Request-URL zu schreiben, damit
+  matcht die eigene Domain mit → Endlosschleife. **Lehre: Host-basierte
+  Redirects nie aus einer Pages-Function ableiten.** Richtig ist ein
+  Zone-Level-Redirect (Cloudflare Redirect Rules / Bulk Redirects) in der
+  fknwine.com-Zone — dafür fehlt der Cloudflare-Zugang. Zweite Lehre: Auf
+  einer öffentlichen Seite erst dann etwas ausrollen, wenn ein Zonen-Feature
+  sauber testbar ist; ein *Logik*-Test und ein grünes Preview-Deployment
+  beweisen das Produktionsverhalten bei hostabhängigem Verhalten nicht.
+  Dritte Lehre: `git revert` kennt kein `-q` — der erste Rollback-Versuch lief
+  ins Leere, während die Seite down war (Flag-Fehler kostete ~2 Minuten).
 - **Erste Canonical-Version war noch nicht korrekt**: Canonical ohne Trailing
   Slash (`/artikel/wein-fuer-pasta`), die Live-URL aber mit. Nachgezogen:
   `canonicalPath`-Helper in `Layout.astro` + `ArticleLayout.astro`, explizite
@@ -100,8 +139,14 @@
 - [ ] **Deploy hängt an Cloudflare Pages GitHub-Integration** — kein Wrangler-Token
       auf der Maschine, Deployment nicht aus der CLI heraus prüfbar. Verifikation
       läuft nur über den Live-Check nach dem Push.
-- [ ] `pages.dev`-Hostname bleibt parallel erreichbar (kein 301 auf fknwine.com).
-      Canonical regelt das für Google, ein Host-Redirect wäre trotzdem sauber.
+- [ ] **Drei Hosts liefern dieselbe Seite** — `fknwine.pages.dev` (200),
+      `www.fknwine.com` (200), `http://fknwine.com` → 301 auf pages.dev.
+      Folge: Startseite ist in GSC ein „Duplikat" mit
+      `googleCanonical = pages.dev` → blockiert die Indexierung. Fix gehört in
+      die **Cloudflare-Zone** (Redirect Rules: `fknwine.pages.dev/*` und
+      `www.fknwine.com/*` → `https://fknwine.com/$1`, 301). Cloudflare-Zugang
+      (API-Token oder Connector) fehlt noch — per Pages-Function nachweislich
+      NICHT lösbar (s. Fehlschläge).
 - [ ] X: **kein Zugang zu @FKNWine** über die vorhandenen Credentials
       (`~/.xurl/auth.yml` kennt nur `NMoradbakhti`). Posten als FKN Wine ist
       damit aktuell nicht automatisierbar — Zugang muss von Nimar kommen.
@@ -124,6 +169,10 @@
 - [ ] Optional: Domain-Property `sc-domain:fknwine.com` anlegen (deckt www +
       http + Subdomains) — braucht einen DNS-TXT-Record in der
       Cloudflare-Zone (Zugang fehlt noch).
+- [ ] **Priorität:** Cloudflare-Zugang klären (Zonen-Redirects für
+      `pages.dev` + `www`) — erst danach ist mit Indexierung zu rechnen.
+      Danach in GSC „Indexierung beantragen" für Startseite + 11 Artikel (UI,
+      nur Nimar) und den Wächter auf den nächsten Montag warten lassen.
 - [ ] X-Zugang @FKNWine klären, dann Redaktionsplan reaktivieren
       (`data/x-posts.md` + `data/CONTENT_ROADMAP.md` sind die Vorlage) (Era + Nimar).
 - [ ] Newsletter-Ziel (`buttondown.com/nimar` vs. fknwine) entscheiden (Nimar).
