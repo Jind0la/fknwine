@@ -1,7 +1,12 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import DealCard from '../../components/DealCard.astro';
 import { deals } from '../../data/deals';
+
+// Die Deals-Seite verlinkte früher direkt zu den Merchants und nie zu einer
+// Club-Review — Cluster-Audit 17.10.2026: Sackgasse + Link-Equity-Leak.
+const clubs = (await getCollection('clubs')).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <Layout
@@ -20,6 +25,26 @@ import { deals } from '../../data/deals';
     </div>
 
     <div class="brutal-card" style="margin-top: 2.5rem; max-width: 700px;">
+      <h2 style="font-size: 1.2rem; margin-top: 0;">Not sure a club is worth joining?</h2>
+      <p style="font-size: 0.9rem;">
+        Intro offers are the easy part. Before you subscribe anywhere, read what the club actually
+        charges per bottle after the intro — and how you get out again:
+      </p>
+      <ul style="font-size: 0.9rem; padding-left: 1.2rem; margin-bottom: 0.75rem;">
+        {clubs.map((club) => (
+          <li>
+            <a href={`/wine-clubs/${club.id}/`}>
+              {club.data.name} — {club.data.perBottle}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p style="margin: 0; font-size: 0.9rem;">
+        <a href="/guides/wine-club-price-per-bottle/">All six clubs, side by side →</a>
+      </p>
+    </div>
+
+    <div class="brutal-card" style="margin-top: 1.5rem; max-width: 700px;">
       <h2 style="font-size: 1.2rem; margin-top: 0;">How this page works</h2>
       <p style="margin: 0; font-size: 0.9rem;">
         We only list deals we can verify on the merchant's own site — no "up to 70% off" marketing

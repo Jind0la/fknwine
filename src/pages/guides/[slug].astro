@@ -14,8 +14,8 @@ const data = entry.data;
 const siteUrl = (Astro.site ?? new URL('https://fknwine.com')).origin;
 const pageUrl = `${siteUrl}/guides/${entry.id}/`;
 
+// Autor/Publisher/Bild setzt das Layout zentral über @id-Referenzen.
 const articleSchema = {
-  '@context': 'https://schema.org',
   '@type': 'Article',
   headline: data.title,
   description: data.description,
@@ -23,9 +23,19 @@ const articleSchema = {
   datePublished: data.updated,
   dateModified: data.updated,
   inLanguage: 'en',
-  author: { '@type': 'Organization', name: 'FKN Wine', url: siteUrl },
-  publisher: { '@type': 'Organization', name: 'FKN Wine', url: siteUrl },
 };
+
+const breadcrumb = [
+  { name: 'Home', url: '/' },
+  { name: 'Guides', url: '/guides/' },
+  { name: data.title, url: `/guides/${entry.id}/` },
+];
+
+// Interne Verlinkung: Guides führten nirgends hin (Cluster-Audit).
+const allGuides = await getCollection('guides');
+const otherGuides = allGuides
+  .filter((guide) => guide.id !== entry.id)
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <Layout
@@ -34,6 +44,7 @@ const articleSchema = {
   publishedTime={data.updated}
   modifiedTime={data.updated}
   articleSchema={articleSchema}
+  breadcrumb={breadcrumb}
 >
   <article class="wrapper" style="padding-top: 3rem; padding-bottom: 4rem; max-width: 760px;">
     <a href="/guides/" class="back-link">← All guides</a>
@@ -51,6 +62,31 @@ const articleSchema = {
 
     <section class="article-content" style="margin-top: 2rem;">
       <Content />
+    </section>
+
+    <section class="related">
+      <div class="brutal-card related-box">
+        <h2 style="font-size: 1.1rem; margin-top: 0;">The club reviews behind this</h2>
+        <p style="font-size: 0.9rem; margin-bottom: 0.5rem">
+          Every number on this page comes from a review where we read the terms on the club's own
+          site.
+        </p>
+        <a href="/wine-clubs/">All wine club reviews →</a>
+      </div>
+      {
+        otherGuides.length > 0 && (
+          <div class="brutal-card related-box">
+            <h2 style="font-size: 1.1rem; margin-top: 0;">Read next</h2>
+            <ul>
+              {otherGuides.map((guide) => (
+                <li>
+                  <a href={`/guides/${guide.id}/`}>{guide.data.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
     </section>
   </article>
 </Layout>
@@ -91,6 +127,27 @@ const articleSchema = {
   .updated-note {
     font-size: 0.8rem;
     opacity: 0.6;
+  }
+
+  .related {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+
+  .related-box ul {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .related-box li {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .related-box a {
+    color: var(--color-cta);
   }
 
   .article-content :global(table) {

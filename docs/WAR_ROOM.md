@@ -26,6 +26,26 @@
   **Voll-Audit fknwine.com gestartet:** 10 Rollen parallel (technical, content, schema, sitemap,
   performance, visual, geo, agentic, sxo, cluster); Evidenz = `~/.hermes/cache/scratch/fknwine-audit/`
   (`crawl/` 19 Seiten als JSON, `findings/*.md`). Gesperrt bleiben Google-API/OAuth-Routen und alle Paidanbieter.
+  **Ergebnis: SEO-Health 80/100** (Technical 82, Content 80, On-Page 75, Schema 72, Performance 93,
+  Visual 78, AI/Agentic 78, Sitemap/IA 80, Cluster 65). Report + Action-Plan: `audit-data.json`,
+  `FULL-AUDIT-REPORT.md` im Audit-Ordner. **Wichtig: die Rollen sind Selbstauskünfte** — ich habe die
+  Kernbefunde selbst nachgeprüft; eine Behauptung war falsch („Startseite hat 3 H1" → sie hat **1**).
+  Ebenfalls korrigiert: `og-default.png` ist **EN** (die alte Notiz „noch DE-Stand" war falsch).
+- `2026-10-17` — **SEO-Audit-Fixes Welle 1 auf `fix/seo-audit-wave1` (Preview offen, Merge offen).**
+  Umgesetzt und im Build verifiziert: (1) `public/_headers` → **HSTS** + `immutable` für `/_astro/*`
+  (vorher revalidierte jeder Besuch CSS und Fonts); (2) `/subscribed/` bekommt `noindex` und fliegt per
+  Sitemap-Filter raus (Sitemap 19 → 18); (3) **Schema-@graph** mit `@id`, `sameAs: x.com/FKNWine`,
+  Raster-Logo (`logo-512.png` statt SVG-Favicon), `Article.image`, `BreadcrumbList`, Autor/Publisher als
+  `@id`-Referenz; (4) `robots.txt` → `Sitemap: sitemap-index.xml`; (5) **interne Verlinkung gemesht** —
+  Club-Reviews ↔ Guides, Deals-Seite → alle 6 Reviews (die 9 Spokes waren Sackgassen);
+  (6) **Verdicts entschieden** statt „Depends …" auf allen 6 Reviews; (7) Meta-Beschreibungen ≤155 Zeichen
+  (ein Clamp-Helper im Layout) und Titel ≤52; (8) Deal-Links heißen jetzt „Get this deal at WTSO →"
+  (Agenten konnten 5 identische Linknamen nicht unterscheiden); (9) Nav-X ist ein SVG-Icon, alle
+  Header-/Button-Touch-Ziele ≥44 px, Tabellen sind fokussierbar + scrollen sichtbar; (10) `llms.txt` auf
+  den echten Stand gebracht (19 statt 7 Seiten).
+  **Offen für Nimar (bewusste Entscheidung, nicht eigenmächtig geändert):** `robots.txt` blockt
+  PerplexityBot — das ist ein **Such**-Crawler, die Seite fehlt damit in Perplexity-Antworten, obwohl
+  `llms.txt` KI-Systeme einlädt und Content-Signal `search=yes` sagt.
 - `2026-10-16` — **Awin: Bewerbung APPROVED + erste Programm-Bewerbungen raus.** Publisher **FKN Wine, ID 3126259** aktiv.
   **Beworben:** Gold Medal Wine Club (59079), ONEHOPE Wine (39702), Parcelle Wine (94853); Personal Wine (39786) öffnet kein Modal.
   **Profil 100 %** (Avatar ✱-Marke, Adresse Mauritiusstraße); **Nimar-Part offen: Telefonnummer**. Awin-Eigenheiten:

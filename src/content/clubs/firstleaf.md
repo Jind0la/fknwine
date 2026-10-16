@@ -1,7 +1,7 @@
 ---
 name: Firstleaf
 verdict: depends
-verdictLabel: "Depends who you are"
+verdictLabel: "Worth trying at $7.50 — decide again at $16.50"
 summary: "Personalized wine club. The $44.95 intro box is a genuinely cheap way to test it — after that you're paying ~$16.50 a bottle and the algorithm picks, not you."
 priceFrom: "$44.95 first box (6 bottles)"
 perBottle: "~$7.50 intro · ~$16.50 after"

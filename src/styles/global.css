@@ -105,7 +105,12 @@ a:hover {
 }
 
 .brutal-btn {
-  display: inline-block;
+  /* inline-flex + min-height: jeder Button-Variante (auch mit kleinerem
+     Inline-Padding) erreicht die 44px-Touch-Zielhöhe (Audit 17.10.2026). */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
   font-family: var(--font-display);
   font-weight: 700;
   text-transform: uppercase;
@@ -195,6 +200,25 @@ a:hover {
   -webkit-overflow-scrolling: touch;
   margin: 1rem 0;
   max-width: 100%;
+  /* Sichtbarer Hinweis, dass hier horizontal gescrollt werden kann —
+     ohne ihn war die 4. Spalte auf Mobile einfach abgeschnitten. */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-cta) var(--color-surface);
+  border-right: 3px solid var(--color-cta);
+  padding-right: 0.25rem;
+}
+.article-content .table-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.article-content .table-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-cta);
+}
+.article-content .table-scroll::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+.article-content .table-scroll:focus-visible {
+  outline: 3px solid var(--color-cta);
+  outline-offset: 2px;
 }
 .article-content .table-scroll table {
   margin: 0;

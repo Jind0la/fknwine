@@ -29,8 +29,14 @@ const href = outUrl(deal.merchantId);
     <span class="deal-meta">
       Checked {deal.checked}{deal.expires ? ` · Ends ${deal.expires}` : ''}
     </span>
-    <a class="brutal-btn deal-btn" href={href} target="_blank" rel="noopener nofollow">
-      Get this deal →
+    <a
+      class="brutal-btn deal-btn"
+      href={href}
+      target="_blank"
+      rel="noopener nofollow"
+      aria-label={`Get this deal at ${deal.merchantLabel} (opens in a new tab)`}
+    >
+      Get this deal at {deal.merchantLabel} →
     </a>
   </div>
 </article>

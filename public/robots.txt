@@ -39,4 +39,4 @@ User-agent: YouBot
 Disallow: /
 
 # Allow our own content
-Sitemap: https://fknwine.com/sitemap-0.xml
+Sitemap: https://fknwine.com/sitemap-index.xml

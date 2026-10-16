@@ -1,7 +1,7 @@
 ---
 name: Naked Wines
 verdict: depends
-verdictLabel: "Depends how you drink"
+verdictLabel: "Great if you'll spend $40 a month — pointless if you won't"
 summary: "The club where you fund the winemakers: $40 a month into your own wine account, Angel-only prices up to 60% off, cancel anytime. The catch isn't the price — it's the prepaid rhythm it asks you to keep."
 priceFrom: "$40/month into your wine account"
 perBottle: "Up to 60% off Angel-only prices (member price, not a rotating sale)"

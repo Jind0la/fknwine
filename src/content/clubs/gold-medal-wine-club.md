@@ -1,7 +1,7 @@
 ---
 name: Gold Medal Wine Club
 verdict: depends
-verdictLabel: "Depends — especially for gifting"
+verdictLabel: "Solid for gifting and tradition — shipping is extra"
 summary: "The old-school wine-of-the-month club, done cleanly: three tiers from $49 a shipment, your choice of bottle count and cadence, cancel anytime. Straightforward and flexible — but shipping is extra and the first shipment is the real commitment."
 priceFrom: "From $49 per shipment (Gold)"
 perBottle: "From ~$24.50/bottle at the Gold 2-bottle base — before shipping"

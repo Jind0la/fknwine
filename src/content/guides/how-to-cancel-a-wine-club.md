@@ -1,6 +1,6 @@
 ---
-title: "How to actually cancel a wine club (what each one makes you do)"
-description: "Every club says 'cancel anytime'. Almost none say how. We read the cancellation terms on six clubs and ranked them from a button in your account to picking up the phone."
+title: "How to actually cancel a wine club"
+description: "Every club says 'cancel anytime'. Almost none say how. We read the terms on six clubs and ranked them from a button in your account to picking up the phone."
 category: Guide
 updated: "2026-10-16"
 order: 20

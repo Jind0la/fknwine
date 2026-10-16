@@ -1,0 +1,18 @@
+# Cloudflare Pages Header
+# Quelle: SEO-Audit 17.10.2026 (Befunde: HSTS fehlte, gehashte Assets
+# wurden bei jedem Besuch revalidiert).
+
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Vite/Astro-Assets tragen einen Content-Hash im Dateinamen → unveränderlich.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Statische Bilder (og-default, Logo, Favicon) ändern sich selten.
+/*.png
+  Cache-Control: public, max-age=604800
+/*.ico
+  Cache-Control: public, max-age=604800
+/*.svg
+  Cache-Control: public, max-age=604800

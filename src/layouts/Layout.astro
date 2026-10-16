@@ -2,6 +2,11 @@
 import '../styles/global.css';
 import { SITE, AFFILIATE_LIVE, NEWSLETTER } from '../config';
 
+interface Crumb {
+  name: string;
+  url: string;
+}
+
 interface Props {
   title: string;
   description: string;
@@ -10,6 +15,10 @@ interface Props {
   publishedTime?: string;
   modifiedTime?: string;
   articleSchema?: Record<string, unknown>;
+  /** Danke-/Utility-Seiten aus dem Index halten (SEO-Audit 17.10.2026). */
+  noindex?: boolean;
+  /** Brotkrumen ab der Startseite; wird als BreadcrumbList ausgegeben. */
+  breadcrumb?: Crumb[];
 }
 
 // Single source of truth: astro.config.mjs `site` → Astro.site
@@ -25,9 +34,25 @@ const {
   publishedTime,
   modifiedTime,
   articleSchema,
+  noindex = false,
+  breadcrumb,
 } = Astro.props;
 
 const fullTitle = `${title} — FKN Wine`;
+
+// Meta-Beschreibungen über ~155 Zeichen werden von Google abgeschnitten.
+// Ein Helper statt Handarbeit in 19 Dateien (SEO-Audit 17.10.2026: sechs
+// Seiten lagen über 160 Zeichen, die längste bei 272).
+function clampDescription(text: string, max = 155): string {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max);
+  const lastSpace = cut.lastIndexOf(' ');
+  const stem = cut.slice(0, lastSpace > max * 0.6 ? lastSpace : max);
+  return `${stem.replace(/[,;:.\u2014\-\s]+$/, '')}…`;
+}
+
+const metaDescription = clampDescription(description);
 
 const nav = [
   { href: '/deals/', label: 'Deals' },
@@ -36,29 +61,73 @@ const nav = [
   { href: '/about/', label: 'About' },
 ];
 
-// Base JSON-LD: Organization + WebSite (every page)
-const baseSchema = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'FKN Wine',
-    url: siteUrl,
-    logo: `${siteUrl}/favicon.svg`,
-    description:
-      'Wine deals and honest buying guides. We check the fine print — no fake reviews, no sommelier act.',
-    foundingDate: '2026',
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'FKN Wine',
-    url: siteUrl,
-    description: 'Wine deals, judged honestly. Great wine doesn\'t have to cost $40.',
-    inLanguage: 'en',
-  },
-];
+// --- Strukturierte Daten ---------------------------------------------------
+// Ein @graph mit stabilen @id-Ankern: Organisation und WebSite werden einmal
+// definiert und von Artikel/Krumen referenziert. Vorher stand die Organization
+// dreimal ohne @id auf jeder Artikelseite (Duplicate-Entity-Risiko), das Logo
+// war ein SVG-Favicon und die Verknüpfung zum X-Profil fehlte komplett.
+const ORGANIZATION_ID = `${siteUrl}/#organization`;
+const WEBSITE_ID = `${siteUrl}/#website`;
 
-const schema = articleSchema ? [...baseSchema, articleSchema] : baseSchema;
+const organizationNode = {
+  '@type': 'Organization',
+  '@id': ORGANIZATION_ID,
+  name: 'FKN Wine',
+  alternateName: 'F*ck Nice Wine',
+  url: `${siteUrl}/`,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${siteUrl}/logo-512.png`,
+    width: 512,
+    height: 512,
+    caption: 'FKN Wine',
+  },
+  image: { '@id': `${siteUrl}/#logo` },
+  description:
+    'Wine deals and honest buying guides. We check the fine print — no fake reviews, no sommelier act.',
+  sameAs: [SITE.x],
+  foundingDate: '2026',
+};
+
+const websiteNode = {
+  '@type': 'WebSite',
+  '@id': WEBSITE_ID,
+  name: 'FKN Wine',
+  url: `${siteUrl}/`,
+  description: "Wine deals, judged honestly. Great wine doesn't have to cost $40.",
+  inLanguage: 'en',
+  publisher: { '@id': ORGANIZATION_ID },
+};
+
+const articleNode = articleSchema
+  ? {
+      ...articleSchema,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalURL },
+      author: { '@id': ORGANIZATION_ID },
+      publisher: { '@id': ORGANIZATION_ID },
+      isPartOf: { '@id': WEBSITE_ID },
+      image: ogImage,
+    }
+  : null;
+
+const breadcrumbNode =
+  breadcrumb && breadcrumb.length > 0
+    ? {
+        '@type': 'BreadcrumbList',
+        '@id': `${canonicalURL}#breadcrumb`,
+        itemListElement: breadcrumb.map((crumb, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: crumb.name,
+          item: new URL(crumb.url, siteUrl).href,
+        })),
+      }
+    : null;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [organizationNode, websiteNode, ...(articleNode ? [articleNode] : []), ...(breadcrumbNode ? [breadcrumbNode] : [])],
+};
 ---
 
 <!doctype html>
@@ -66,17 +135,19 @@ const schema = articleSchema ? [...baseSchema, articleSchema] : baseSchema;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
     <title>{fullTitle}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="alternate" type="application/rss+xml" title="FKN Wine" href={`${siteUrl}/rss.xml`} />
 
     <!-- Impact.com Site-Verifizierung (Affiliate-Netzwerk) — nicht löschen -->
     <meta name="impact-site-verification" value="997f3122-d42e-44f0-afe7-c1e5b1ef835c" />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={metaDescription} />
     <meta property="og:type" content={publishedTime ? 'article' : 'website'} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImage} />
@@ -89,7 +160,7 @@ const schema = articleSchema ? [...baseSchema, articleSchema] : baseSchema;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@FKNWine" />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImage} />
 
     <!-- Article Meta -->
@@ -101,7 +172,7 @@ const schema = articleSchema ? [...baseSchema, articleSchema] : baseSchema;
   </head>
   <body>
     <header class="wrapper" style="padding-top: 2rem; padding-bottom: 1rem;">
-      <nav class="site-nav">
+      <nav class="site-nav" aria-label="Main">
         <a href="/" class="brand">
           FKN<span style="color: var(--color-primary);">.</span>WINE
         </a>
@@ -117,10 +188,22 @@ const schema = articleSchema ? [...baseSchema, articleSchema] : baseSchema;
             href={SITE.x}
             target="_blank"
             rel="noopener noreferrer"
-            class="nav-link"
+            class="nav-link nav-link--icon"
             title="FKN Wine on X"
+            aria-label="FKN Wine on X (opens in a new tab)"
           >
-            X
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              ></path>
+            </svg>
           </a>
         </div>
       </nav>
@@ -169,6 +252,9 @@ const schema = articleSchema ? [...baseSchema, articleSchema] : baseSchema;
   }
 
   .brand {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 1.5rem;
@@ -180,13 +266,20 @@ const schema = articleSchema ? [...baseSchema, articleSchema] : baseSchema;
 
   .nav-links {
     display: flex;
-    gap: 1.25rem;
+    gap: 0.35rem;
+    align-items: center;
     flex-wrap: wrap;
   }
 
   .nav-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    /* knappes Padding, damit die vier Labels plus X-Icon auf 390px in EINER
+       Zeile bleiben (vorher rutschte das X allein in eine zweite Zeile) */
+    padding: 0 0.5rem;
     font-family: var(--font-display);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -194,8 +287,28 @@ const schema = articleSchema ? [...baseSchema, articleSchema] : baseSchema;
     text-decoration: none;
   }
 
+  .nav-link--icon {
+    min-width: 44px;
+    justify-content: center;
+  }
+
   .nav-link:hover {
     color: var(--color-cta);
+  }
+
+  /* Schmale Telefone: die vier Labels plus X-Icon müssen in EINE Zeile passen
+     (das Wrapper-Padding frisst ~48px). 13,6px ist die ursprüngliche
+     Nav-Größe der Seite — keine Regression, nur weniger Luft.
+     Muss NACH den .nav-link-Regeln stehen, sonst überschreibt die Basis sie. */
+  @media (max-width: 480px) {
+    .nav-links {
+      gap: 0.15rem;
+    }
+
+    .nav-link {
+      font-size: 0.85rem;
+      padding: 0 0.35rem;
+    }
   }
 
   .site-footer {
@@ -225,12 +338,16 @@ const schema = articleSchema ? [...baseSchema, articleSchema] : baseSchema;
 
   .footer-links {
     display: flex;
-    gap: 1.5rem;
+    gap: 0.5rem;
     flex-wrap: wrap;
   }
 
   .footer-links a {
-    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 0.5rem;
+    font-size: 0.9rem;
     color: color-mix(in srgb, var(--color-text) 70%, transparent);
     text-decoration: none;
   }

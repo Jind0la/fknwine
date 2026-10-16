@@ -1,7 +1,7 @@
 ---
 name: The California Wine Club
 verdict: depends
-verdictLabel: "Depends what you're paying for"
+verdictLabel: "Buy it for discovery, not for cheap bottles"
 summary: "A discovery club: every month a different small California winery, hand-picked, with tasting notes. From $49 a shipment for two bottles, cancel anytime, and a 'Love It' guarantee on paper. This is curation, not bargain hunting."
 priceFrom: "from $49 per shipment (base: 2 bottles)"
 perBottle: "~$24.50 a bottle at the base tier — plus shipping"

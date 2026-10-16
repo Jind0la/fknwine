@@ -15,21 +15,46 @@ const data = entry.data;
 const siteUrl = (Astro.site ?? new URL('https://fknwine.com')).origin;
 const pageUrl = `${siteUrl}/wine-clubs/${entry.id}/`;
 
+// Autor/Publisher/Bild setzt das Layout zentral über @id-Referenzen
+// (SEO-Audit 17.10.2026: vorher stand die Organization dreimal ohne @id
+// auf jeder Artikelseite, und Article hatte kein image).
 const articleSchema = {
-  '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: `${data.name} Review — Wine Club Fine Print, Checked`,
+  headline: `${data.name} review: the fine print, checked`,
   description: data.summary,
   url: pageUrl,
   datePublished: data.lastChecked,
   dateModified: data.lastChecked,
   inLanguage: 'en',
-  author: { '@type': 'Organization', name: 'FKN Wine', url: siteUrl },
-  publisher: { '@type': 'Organization', name: 'FKN Wine', url: siteUrl },
 };
 
 const merchant = data.merchantId ? merchants[data.merchantId] : null;
 const ctaUrl = data.merchantId ? outUrl(data.merchantId) : null;
+
+// Meta-Beschreibung: bewusst aus den harten Fakten gebaut statt die (lange)
+// summary zu nehmen — die lief bei sechs Seiten über Googles Anzeigegrenze.
+const metaDescription = `${data.name} reviewed from the paperwork: ${data.priceFrom}, ${data.perBottle}. Commitment, cancel terms and shipping — checked ${data.lastChecked}.`;
+
+const breadcrumb = [
+  { name: 'Home', url: '/' },
+  { name: 'Wine clubs, judged', url: '/wine-clubs/' },
+  { name: data.name, url: `/wine-clubs/${entry.id}/` },
+];
+
+// Interne Verlinkung: die 9 Spokes waren vorher Sackgassen (Cluster-Audit).
+const allClubs = await getCollection('clubs');
+const siblings = allClubs
+  .filter((club) => club.id !== entry.id)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const relatedGuides = [
+  {
+    href: '/guides/wine-club-price-per-bottle/',
+    label: 'What six wine clubs really cost per bottle',
+  },
+  { href: '/guides/how-to-cancel-a-wine-club/', label: 'How to actually cancel a wine club' },
+];
 
 const facts: Array<[string, string]> = [
   ['Price', data.priceFrom],
@@ -41,11 +66,12 @@ const facts: Array<[string, string]> = [
 ---
 
 <Layout
-  title={`${data.name} Review — checked ${data.lastChecked}`}
-  description={data.summary}
+  title={`${data.name} review, checked`}
+  description={metaDescription}
   publishedTime={data.lastChecked}
   modifiedTime={data.lastChecked}
   articleSchema={articleSchema}
+  breadcrumb={breadcrumb}
 >
   <article class="wrapper" style="padding-top: 3rem; padding-bottom: 4rem; max-width: 800px;">
     <a href="/wine-clubs/" class="back-link">← All club reviews</a>
@@ -93,6 +119,32 @@ const facts: Array<[string, string]> = [
     <!-- === CONTENT === -->
     <section class="article-content" style="margin-top: 2.5rem;">
       <Content />
+    </section>
+
+    <!-- === RELATED (interne Verlinkung) === -->
+    <section class="related">
+      <div class="brutal-card related-box">
+        <h2 style="font-size: 1.1rem; margin-top: 0;">Compare before you buy</h2>
+        <ul>
+          {relatedGuides.map((guide) => (
+            <li>
+              <a href={guide.href}>{guide.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="brutal-card related-box">
+        <h2 style="font-size: 1.1rem; margin-top: 0;">Other clubs we read the fine print on</h2>
+        <ul>
+          {siblings.map((club) => (
+            <li>
+              <a href={`/wine-clubs/${club.id}/`}>
+                {club.data.name} — {club.data.priceFrom}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
 
     <!-- === CTA === -->
@@ -216,6 +268,27 @@ const facts: Array<[string, string]> = [
   .cons-box li {
     font-size: 0.9rem;
     margin-bottom: 0.4rem;
+  }
+
+  .related {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+
+  .related-box ul {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .related-box li {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .related-box a {
+    color: var(--color-cta);
   }
 
   .cta-box {

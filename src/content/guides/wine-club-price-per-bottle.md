@@ -1,6 +1,6 @@
 ---
-title: "The real price per bottle: six wine clubs in one table"
-description: "Intro prices are designed to hide one number: what you pay per bottle after the intro. Here's that number for six clubs, side by side — and why the cheapest headline is often the priciest bottle."
+title: "The real price per bottle: six wine clubs"
+description: "Intro prices hide the number that matters: what you pay per bottle after the intro. Six clubs, side by side — and why the cheapest headline is often the priciest bottle."
 category: Data
 updated: "2026-10-16"
 order: 30
@@ -14,12 +14,15 @@ So we did the boring thing and put the real numbers in one table. **Price per bo
 
 | Club | Headline | What you actually pay per bottle | Notes |
 |---|---|---|---|
-| **Firstleaf** | $44.95 for 6 bottles | **~$7.50** intro → **~$16.50** ongoing | $99 per 6-bottle shipment after the intro |
-| **Winc** | $100 off your first 4 orders | **~$16–20** at member pricing | always-on 20% member discount |
-| **The California Wine Club** | from $49 per shipment | **~$24.50** | 2 bottles at base; shipping extra |
-| **Gold Medal Wine Club** | from $49 per shipment | **~$24.50+** | Gold 2-bottle base; shipping extra, scales with tier |
-| **Wine Access** | $150 per shipment | **~$25** (Discovery) → **~$75** (Connoisseurs) | Discovery is 6 bottles; Connoisseurs is 2 for the same $150 |
-| **Naked Wines** | $40/month + up to 60% off | *member price, spent from your $40/month wallet* | not a per-shipment club — you fund an account |
+| **[Firstleaf](/wine-clubs/firstleaf/)** | $44.95 for 6 bottles | **~$7.50** intro → **~$16.50** ongoing | $99 per 6-bottle shipment after the intro |
+| **[Winc](/wine-clubs/winc/)** | $100 off your first 4 orders | **~$16–20** at member pricing | always-on 20% member discount |
+| **[The California Wine Club](/wine-clubs/california-wine-club/)** | from $49 per shipment | **~$24.50** | 2 bottles at base; shipping extra |
+| **[Gold Medal Wine Club](/wine-clubs/gold-medal-wine-club/)** | from $49 per shipment | **~$24.50+** | Gold 2-bottle base; shipping extra, scales with tier |
+| **[Wine Access](/wine-clubs/wine-access/)** | $150 per shipment | **~$25** (Discovery) → **~$75** (Connoisseurs) | Discovery is 6 bottles; Connoisseurs is 2 for the same $150 |
+| **[Naked Wines](/wine-clubs/naked-wines/)** | $40/month + up to 60% off | *member price, spent from your $40/month wallet* | not a per-shipment club — you fund an account |
+
+Every row links to the review it came from — the full terms, the cancellation mechanism and the
+caveats we could not check are all on those pages.
 
 Two clubs sit under $20 a bottle. Four sit at $24 and up. That gap is the entire decision.
 

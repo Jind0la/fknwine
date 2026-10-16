@@ -4,6 +4,10 @@
 // breiter als ihr Container werden und schiebt dann die GANZE Seite in den
 // horizontalen Overflow — auf 390px sieht man nur noch den halben Text.
 // Der Wrapper lässt nur die Tabelle selbst scrollen, das Layout bleibt heil.
+//
+// Zusätzlich bekommt der Wrapper role/aria-label/tabindex: die breite Tabelle
+// war auf Mobile abgeschnitten und ohne Tastatur-/Screenreader-Zugang
+// (SEO-Audit 17.10.2026, Rolle "visual").
 export default function rehypeTableWrap() {
   return (tree) => {
     const walk = (node) => {
@@ -13,7 +17,12 @@ export default function rehypeTableWrap() {
           return {
             type: 'element',
             tagName: 'div',
-            properties: { className: ['table-scroll'] },
+            properties: {
+              className: ['table-scroll'],
+              role: 'region',
+              tabIndex: 0,
+              'aria-label': 'Table — scroll horizontally to see all columns',
+            },
             children: [child],
           };
         }

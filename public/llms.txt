@@ -1,25 +1,39 @@
 # FKN Wine — LLMs.txt
 
-> Wine deals and honest buying guides. We check the fine print — price per bottle, commitment, cancel terms — and we don't fake reviews.
+> Wine deals and honest buying guides. We check the fine print — price per bottle, commitment, cancel terms — and we don't fake reviews. Every price and term carries the date we checked it.
 
-## Pages
+## Club reviews (the paperwork, not the landing page)
+
+- [Firstleaf](https://fknwine.com/wine-clubs/firstleaf/) — $44.95 first box (6 bottles), ~$16.50 a bottle after
+- [Winc](https://fknwine.com/wine-clubs/winc/) — ~$16–20 a bottle at member pricing
+- [The California Wine Club](https://fknwine.com/wine-clubs/california-wine-club/) — from $49 per shipment, ~$24.50 a bottle
+- [Naked Wines](https://fknwine.com/wine-clubs/naked-wines/) — $40/month into your own wine account
+- [Gold Medal Wine Club](https://fknwine.com/wine-clubs/gold-medal-wine-club/) — from $49 per shipment, three tiers
+- [Wine Access](https://fknwine.com/wine-clubs/wine-access/) — $150 per shipment; ~$25 (Discovery) to ~$75 (Connoisseurs) a bottle
+
+## Guides
+
+- [The real price per bottle: six wine clubs](https://fknwine.com/guides/wine-club-price-per-bottle/) — what each club costs per bottle after the intro
+- [How to actually cancel a wine club](https://fknwine.com/guides/how-to-cancel-a-wine-club/) — the cancellation mechanism for each of the six clubs
+- [How to test a wine club without getting burned](https://fknwine.com/guides/how-to-test-a-wine-club/) — the 5-minute pre-join checklist
+
+## Hubs
 
 - [Home](https://fknwine.com/)
-- [All deals](https://fknwine.com/deals/)
+- [All deals](https://fknwine.com/deals/) — flash sales, intro offers, promo codes, each with its check date
 - [Wine clubs, judged](https://fknwine.com/wine-clubs/)
-- [Firstleaf review](https://fknwine.com/wine-clubs/firstleaf/)
 - [Guides](https://fknwine.com/guides/)
-- [How to test a wine club without getting burned](https://fknwine.com/guides/how-to-test-a-wine-club/)
-- [Disclosure](https://fknwine.com/disclosure/)
 
 ## About
 
 FKN Wine is an independent, reader-supported site about wine value: deals, fine print, and honest
 verdicts. Content is based on verifiable information (offers, terms, published ratings); opinions
-are marked as opinions. No fabricated reviews, no invented tastings.
+are marked as opinions. When we have not tested something ourselves, the page says so.
+No fabricated reviews, no invented tastings.
 Operator: Nimar Moradbakhti, Bochum, Germany · Imprint: https://fknwine.com/imprint/
 
 ## Optional
 
 - [RSS Feed](https://fknwine.com/rss.xml)
-- [Sitemap](https://fknwine.com/sitemap-0.xml)
+- [Sitemap](https://fknwine.com/sitemap-index.xml)
+- [Disclosure](https://fknwine.com/disclosure/)

@@ -1,7 +1,7 @@
 ---
 name: Wine Access
 verdict: depends
-verdictLabel: "Depends on your budget"
+verdictLabel: "Take Discovery at ~$25 a bottle — skip the top tiers"
 summary: "Editorially-loved curation across three clubs from $150 a shipment — Discovery is the sane entry at ~$25 a bottle, with free shipping and 10% off everything. Past that, the tiers get serious fast: Connoisseurs is ~$75 a bottle, Collector's is $250–400 for a single bottle."
 priceFrom: "$150 per shipment (Discovery: 6 bottles, 4×/year)"
 perBottle: "~$25 (Discovery) · ~$75 (Connoisseurs) · $250–400 for one bottle (Collector's)"

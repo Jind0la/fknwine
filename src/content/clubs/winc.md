@@ -1,7 +1,7 @@
 ---
 name: Winc
 verdict: depends
-verdictLabel: "Depends how you drink"
+verdictLabel: "Fine at $16–20 a bottle — skip below that"
 summary: "The club that absorbed Bright Cellars. Strong intro math ($100 off over your first 4 orders) — ongoing, members average ~$16–20 a bottle with an always-on 20% discount and free shipping."
 priceFrom: "$100 off over your first 4 orders"
 perBottle: "~$16–20 at member pricing"
