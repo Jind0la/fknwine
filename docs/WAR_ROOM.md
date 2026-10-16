@@ -7,21 +7,18 @@
 
 ## Aktueller Stand
 
-- `2026-10-16` — **Mail fknwine.com gelöst:** info@/hey@ → nimarm@me.com (iCloud) *plus* Kopie an
-  nimarny@gmail.com via CF Email-Worker `fkn-mail-router` (Regel-Ziel = max. 1 Adresse; Worker
-  forwardet an beide). E2E getestet (IONOS→info@→Gmail-Inbox ✓). Era liest die Kopie per API →
-  bearbeitet Anfragen selbständig. **Senden als info@/hey@ live via Resend** (Domain verifiziert
-  16.10., EU-Region; Skript `~/.hermes/scripts/fkn_send.py`; Resend-Empfangs-MX bewusst nicht gesetzt).
-- `2026-10-16` — **Deep Research: Affiliate vs. Sponsoring → Sequenz-Entscheidung.** Affiliate zuerst
-  (kein Audience-Gate; WSJ $20/Club + 10 % via Impact, Wine.com $50/PICKED, Vinesse $40, Firstleaf
-  via FlexOffers 8–10,4 %; Shops 4–12 %; Amazon 0 %). Sponsoring erst ab ~1–2k engaged Subs
-  (SponsorGap: <5k-CPM $50–150; beehiiv-Netzwerk real nur $2–6 CPM; Paved 50k = irrelevant).
-  Display: Mediavine Journey ab 1k Sessions, Raptive 25k pv. **Newsletter (beehiiv) = Brücke:
-  Affiliate jetzt, Sponsor-Asset später.** Nächstes: geführte Konto-Runde FlexOffers → Impact → Awin.
-  Details: KB `prj-fknwine-monetarisierung.md` §11.
+- `2026-10-16` — **FlexOffers-Registrierung abgeschickt** (Konto 1565967, Username info@fknwine.com;
+  Traffic Source „Website – FKN Wine" + Beschreibung angelegt; Site per **DNS-TXT** verifiziert,
+  Token bleibt drin). Review 2–5 Werktage → dann Programmanträge (Firstleaf/Winc) im Dashboard;
+  **Impact + Awin** stehen noch aus. Falle: MUI-Inputs brauchen echtes CDP-Tippen (Input.insertText),
+  sonst bleibt der Save-Button disabled. Bestätigungs-Mails kamen bei info@ an (Era liest mit).
+- `2026-10-16` — **Mail gelöst + Senden live:** info@/hey@ → nimarm@me.com + Gmail-Kopie (CF-Worker
+  `fkn-mail-router`); Senden als info@/hey@ via Resend (`~/.hermes/scripts/fkn_send.py`). **Affiliate-
+  vs-Sponsoring-Entscheid: Sequenz** (Affiliate sofort; Sponsoring ab ~1–2k engaged Subs; Newsletter
+  = Brücke) — Details KB §11. Konto-Runde: FlexOffers ✓ → Impact → Awin als Nächstes.
 - `2026-10-16` — **Nach dem Live-Gang selbständig weiter: X-Relaunch, Winc-Review, OG-Bild, Analytics-Fund.**
   X: 19 Alt-Tweets (DE) gelöscht, 3 EN-Posts live (Ankündigung, WTSO-Achaval-Deal, Anti-Snob-Take);
-  **Bio/Website-Feld offen** — OAuth2 darf den Profile-Endpoint nicht (403), 60-Sek-Task für Nimar im Browser.
+  Bio/Website-Feld **erledigt** (OAuth2 konnte den Profile-Endpoint nicht — Nimar hat's im Browser eingetragen, verifiziert).
   **Cloudflare Web Analytics läuft bereits** für fknwine.com (cookieless; „kein Analytics"-Befund war falsch →
   Privacy-Seite präzisiert). Neu live: **Winc-Review** (`/wine-clubs/winc/`, inkl. „Bright Cellars ist in Winc
   aufgegangen" + $100-Intro-Deal) und **neues EN-OG-Bild** (`og-default.png` über echten Browser gerendert).
