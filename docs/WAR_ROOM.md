@@ -19,7 +19,11 @@
   (Formular sagt es ehrlich). Nach Gary-Vee-Check (X-Recherche): Copy-Feinschliff —
   Trust-Karte „sag es, wenn du etwas nicht geprüft hast", About-Regel „No one's palate
   is wrong", Achaval-Ferrer-Detail präzisiert (keine unbelegten Preis-Claims).
-  **Nächster Schritt: Nimar-Blick auf Preview → Merge → Deploy.**
+  **Live seit 16.10. nachmittags:** Merge `7a4b39a..ff2b215` (FF) → Deploy durch;
+  Live-Checks grün (neue Seiten 200; Alt-URLs 301: `/artikel/*`→`/`, `/impressum/`→
+  `/imprint/`, `/datenschutz/`→`/privacy/`); GSC-Sitemap `sitemap-index.xml`
+  eingereicht. Index-Wächter (`gsc_index_watch.py`) + Nachzug-Cron `92efc5307dea`
+  auf die neuen URLs umgestellt.
 - `2026-10-16` — **Monetarisierungs-Konzept steht — Go erteilt, Umsetzung läuft.**
   Auftrag: „Geld mit Domain + Accounts verdienen", Markt frei wählbar. Recherche
   (Markt, Affiliate-Ökonomie, X-Realität) → **EN/US-Pivot**: „Deals + Data + Voice".
@@ -90,9 +94,9 @@
 
 | Task | Wer | Status | Nächster Schritt |
 |---|---|---|---|
-| EN-Relaunch (Branch `feat/en-relaunch`) | Era | **Preview offen** | Nimar-Blick (Pane) → Merge → Deploy → Konten/Newsletter/X-Cadence (geführt) |
-| Newsletter-Plattform | Nimar + Era | offen (Alt-Formular ersetzt) | Nach Merge: beehiiv-Signup geführt (Nimar ~5 Min) → Endpoint in `src/config.ts` |
-| Index-Stand/Altsysteme | Era | Wächter läuft | Nach Deploy: `sitemap-index.xml` in GSC einreichen; Cron `92efc5307dea` abwickeln |
+| EN-Relaunch | Era | **Live (16.10.)** | Konten geführt (Awin/FlexOffers/Impact) → beehiiv → X-Cadence → Content-Welle 2 |
+| Newsletter-Plattform | Nimar + Era | offen (Alt-Formular ersetzt) | beehiiv-Signup geführt (Nimar ~5 Min) → Endpoint in `src/config.ts` |
+| Index-Stand | Era | Wächter + Nachzug auf neue URLs umgestellt | Sitemap eingereicht; Cron `92efc5307dea` meldet selbst, wenn alle 9 neuen URLs beantragt sind → dann löschen |
 
 ## Entscheidungen
 
@@ -128,13 +132,13 @@
 
 ## Nächste Schritte
 
-- [ ] **Merge nach Nimar-Blick auf die Preview → Deploy.** Danach: GSC-Sitemap
-      (`sitemap-index.xml`) einreichen; Affiliate-Konten mit Nimar (Awin → FlexOffers →
-      Impact, geführt + W-8BEN); Newsletter-Plattform (beehiiv) verkabeln; X-Profil-Politur
+- [ ] **Nach dem Live-Gang:** Affiliate-Konten mit Nimar geführt (Awin → FlexOffers →
+      Impact; W-8BEN); Newsletter-Plattform (beehiiv) verkabeln; X-Profil-Politur
       + Cadence-Start (ohne Follow-Churn); Content-Welle 2 (mehr Clubs, Coupons,
       „best under $15").
-- [ ] Index-Stand beobachten: nach Relaunch neue URLs in GSC prüfen
-      (`~/.hermes/scripts/gsc.py inspect <property> <url>`); Wächter-Cron `a8a57aadcd03`
-      (Mo 09:00) meldet Änderungen.
-- [ ] **Cron `92efc5307dea` (GSC-Nachzug) löschen, sobald alle 14 Alt-URLs beantragt sind.**
+- [ ] Index-Stand beobachten: neue URLs in GSC (`~/.hermes/scripts/gsc.py inspect
+      <property> <url>`); Wächter-Cron `a8a57aadcd03` (Mo 09:00) meldet Änderungen.
+- [ ] **Cron `92efc5307dea` (GSC-Nachzug, jetzt auf neue URLs) meldet selbst, wenn
+      alle beantragt sind → dann löschen.**
+- [ ] og-default.png: EN-Version erstellen (Design-Task).
 - [ ] Optional: Domain-Property `sc-domain:fknwine.com` (nur DNS-TXT nötig).
