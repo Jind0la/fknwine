@@ -7,6 +7,7 @@
 
 ## Aktueller Stand
 
+- `2026-10-16` — **Content-Welle gestartet (bewusst nicht erst Montag).** Erster Baustein: **California-Wine-Club-Review** auf Branch `feat/content-wave-2` (Build grün, 15 Seiten; Preview-Pane offen; Merchant `cawineclub` in `merchants.ts` + Schema). Programm-Recherche: **CWC läuft über Awin** (Merchant 59079), **WineExpress über Impact-Direktlink** (campaign-promo-signup — trotz Marketplace-Sperre nutzbar; Bewerbung vorbereitet, Nimar-Part: Passwort + Handynr.). **beehiiv**: Free-Plan reicht (0 $, 2.500 Abos) — Signup-Formular vorbefüllt (info@fknwine.com), Nimar-Part: Passwort + Terms; danach übernimmt Era (Verify, Setting, Formular-Verdrahtung). Content-Kadenz: Richtwert 2–4 Site-Stücke + 3–5 X-Posts pro Woche, Preview-Gate bleibt.
 - `2026-10-16` — **Affiliate-Ablehnungen: FlexOffers + Impact declined (Site zu jung/klein).**
   FlexOffers: Application + Traffic Source declined (19:18 CEST) — nur Textbaustein („does not meet
   our current needs or is in conflict with a policy"), KEIN konkreter Grund. Impact: Marketplace-Zugriff
