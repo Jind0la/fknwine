@@ -18,8 +18,9 @@ export const merchants = {
   wtso: { name: 'WTSO', url: 'https://www.wtso.com/', affiliate: null },
   winecom: { name: 'Wine.com', url: 'https://www.wine.com/', affiliate: null },
   winc: { name: 'Winc', url: 'https://www.winc.com/', affiliate: null },
-  // Kandidaten für die nächste Welle (Programme erst nach Site-Launch beantragbar):
-  // totalwine, vivino, winensiders, wsjwine … (Bright Cellars ist in Winc aufgegangen)
+  cawineclub: { name: 'The California Wine Club', url: 'https://cawineclub.com/', affiliate: null },
+  // Kandidaten für die nächste Welle (Programme laufen – siehe War Room):
+  // CWC via Awin (Merchant 59079), WineExpress via Impact-Direktlink; totalwine, vivino, winensiders, wsjwine …
 } satisfies Record<string, Merchant>;
 
 export type MerchantId = keyof typeof merchants;
