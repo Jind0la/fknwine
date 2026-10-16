@@ -17,8 +17,9 @@ export const merchants = {
   firstleaf: { name: 'Firstleaf', url: 'https://www.firstleaf.com/', affiliate: null },
   wtso: { name: 'WTSO', url: 'https://www.wtso.com/', affiliate: null },
   winecom: { name: 'Wine.com', url: 'https://www.wine.com/', affiliate: null },
+  winc: { name: 'Winc', url: 'https://www.winc.com/', affiliate: null },
   // Kandidaten für die nächste Welle (Programme erst nach Site-Launch beantragbar):
-  // totalwine, vivino, brightcellars, winensiders, wsjwine …
+  // totalwine, vivino, winensiders, wsjwine … (Bright Cellars ist in Winc aufgegangen)
 } satisfies Record<string, Merchant>;
 
 export type MerchantId = keyof typeof merchants;

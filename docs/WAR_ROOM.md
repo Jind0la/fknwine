@@ -7,6 +7,12 @@
 
 ## Aktueller Stand
 
+- `2026-10-16` — **Nach dem Live-Gang selbständig weiter: X-Relaunch, Winc-Review, OG-Bild, Analytics-Fund.**
+  X: 19 Alt-Tweets (DE) gelöscht, 3 EN-Posts live (Ankündigung, WTSO-Achaval-Deal, Anti-Snob-Take);
+  **Bio/Website-Feld offen** — OAuth2 darf den Profile-Endpoint nicht (403), 60-Sek-Task für Nimar im Browser.
+  **Cloudflare Web Analytics läuft bereits** für fknwine.com (cookieless; „kein Analytics"-Befund war falsch →
+  Privacy-Seite präzisiert). Neu live: **Winc-Review** (`/wine-clubs/winc/`, inkl. „Bright Cellars ist in Winc
+  aufgegangen" + $100-Intro-Deal) und **neues EN-OG-Bild** (`og-default.png` über echten Browser gerendert).
 - `2026-10-16` — **EN-Relaunch gebaut (Branch `feat/en-relaunch`) — Preview offen.**
   Auf Nimars Go („alles selbständig machen"): neue EN-Struktur (Home / Deals / Wine Clubs /
   Guides / Legal), Content-Collections (`clubs`, `guides`), Merchant-Registry

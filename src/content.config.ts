@@ -14,7 +14,7 @@ const clubs = defineCollection({
     commitment: z.string(),
     cancelTerms: z.string(),
     shipsTo: z.string(),
-    merchantId: z.enum(['firstleaf', 'wtso', 'winecom']).optional(),
+    merchantId: z.enum(['firstleaf', 'wtso', 'winecom', 'winc']).optional(),
     lastChecked: z.string(),
     pros: z.array(z.string()),
     cons: z.array(z.string()),

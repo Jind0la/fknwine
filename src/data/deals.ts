@@ -3,7 +3,7 @@
 
 export interface Deal {
   id: string;
-  merchantId: 'firstleaf' | 'wtso' | 'winecom';
+  merchantId: 'firstleaf' | 'wtso' | 'winecom' | 'winc';
   merchantLabel: string;
   title: string;
   detail: string;
@@ -65,6 +65,18 @@ export const deals: Deal[] = [
     detail:
       '$7.50 a bottle to test if a personalized club beats your supermarket run. After that $99 per shipment (~$16.50 a bottle). No commitment — cancel anytime.',
     price: '$44.95 · 6 bottles',
+    badge: 'INTRO OFFER',
+    checked: 'Oct 16, 2026',
+    category: 'club',
+  },
+  {
+    id: 'winc-100-off-intro',
+    merchantId: 'winc',
+    merchantLabel: 'Winc',
+    title: 'Winc: $100 off over your first 4 orders',
+    detail:
+      'The current intro offer for new members — spread across four shipments, on top of the always-on 20% member discount and free shipping. Packs available without a membership if you want to taste first.',
+    price: '$100 off',
     badge: 'INTRO OFFER',
     checked: 'Oct 16, 2026',
     category: 'club',
