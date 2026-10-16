@@ -9,6 +9,29 @@
 
 ## Aktueller Stand
 
+- `2026-10-16` (Era) — **„Indexierung beantragen" ist gefahren: 10 von 14 URLs,
+  dann machte Google das Tageskontingent zu.** Der UI-Schritt wurde nicht an
+  Nimar delegiert, sondern **direkt im Comet-Browser per CDP** (Port 9222)
+  erledigt: Suchfeld füllen → Enter → Prüfung abwarten → Button
+  „INDEXIERUNG BEANTRAGEN" per **echtem Maus-Event**
+  (`Input.dispatchMouseEvent`) klicken → Live-Test abwarten →
+  Bestätigungsdialog. **Beantragt (10):** Startseite, `/artikel/`,
+  `beste-weine-unter-10-euro-supermarkt`, `beste-weissweine-unter-10-euro`,
+  `rose-guide-supermarkt`, `sekt-prosecco-supermarkt-test`,
+  `wein-fehler-die-deinen-wein-ruinieren`, `wein-fuer-grillabend`,
+  `wein-fuer-pasta`, `wein-fuer-pizza` — jede mit dem echten Dialog
+  „Indexierung wurde beantragt … einer bevorzugten Crawling-Warteschlange
+  hinzugefügt". **Offen (4, Kontingent):** `wein-mythen-die-falsch-sind`,
+  `weine-die-du-niemals-kaufen-solltest`, `aldi-lidl-edeka-wein-vergleich`,
+  `impressum`. Nachzug als Skript-Job `~/.hermes/scripts/fknwine-gsc/`
+  (State `~/.hermes/state/fknwine_gsc_requests.json`, Cron `92efc5307dea`
+  täglich 09:30, `no_agent`), der sich selbst stilllegt, sobald alles
+  beantragt ist. **Lehren:** (1) `element.click()` per JS zündet in der
+  GSC-App **nicht** — echte Mouse-Events nutzen; (2) der GSC-Flow startet
+  intern immer erst einen **Live-Test** (bis ~4 Min), der Ergebnis-Dialog
+  kommt erst danach; (3) Comets AX-Baum liefert 0 Elemente → nur CDP führt
+  zum Ziel; (4) das Tageskontingent ist real und klein (~10/Tag), also
+  wichtigste URLs zuerst.
 - `2026-10-16` (Era) — **Host-Konsolidierung ist live (Cloudflare-Zone, nicht
   Repo).** Cause zuerst gemessen, dann gefixt: Die Zone hatte
   `always_use_https: off`, das Dynamic-Redirect-Ruleset war **leer**, Page Rules
@@ -195,11 +218,13 @@
       (`~/.hermes/scripts/gsc.py inspect <property> <url>`).
 - [x] Cloudflare-Zugang ist da (Account `Nimarm@me.com`) — Zonen-Redirects für
       `www` + `http` sind live (erledigt 16.10., s. Aktueller Stand).
-- [ ] **Priorität (nur Nimar, GSC-UI):** „Indexierung beantragen" für Startseite
-      + 11 Artikel — die API kann das nicht. Vorher lohnt der Re-Crawl-Check:
-      der „Duplikat"-Befund der Startseite stammt aus dem Crawl vom 15.10.
-      **vor** dem Host-Fix; ein neuer Crawl sollte `fknwine.com` als kanonisch
-      lesen. Dann Wächter auf den nächsten Montag warten lassen.
+- [x] **„Indexierung beantragen" (GSC-UI, per Comet/CDP erledigt 16.10.):** 10
+      von 14 URLs beantragt, die letzten 4 zog das Google-Tageskontingent. Der
+      Nachzug läuft automatisch (Cron `92efc5307dea`, täglich 09:30) und
+      verstummt, sobald alles durch ist — **danach den Job löschen.**
+- [ ] Re-Crawl-Urteil lesen, sobald Google neu gecrawlt hat: der
+      „Duplikat"-Befund der Startseite stammt aus dem Crawl vom 15.10. **vor**
+      dem Host-Fix; ein neuer Crawl sollte `fknwine.com` als kanonisch lesen.
 - [ ] Optional: Domain-Property `sc-domain:fknwine.com` anlegen (deckt www +
       http + Subdomains) — braucht nur noch einen DNS-TXT-Record; Zone-Zugang
       ist vorhanden (TXT via API setzbar, Token via `gsc.py token`).
