@@ -32,7 +32,7 @@ order: 10
 | First box (6 bottles) | $44.95 | **~$7.50** |
 | Every shipment after | $99 | **~$16.50** |
 
-The intro box is the honest hook: 6 bottles for the price of 3 average ones. The real question is the second shipment. At ~$16.50 a bottle, Firstleaf competes with decent liquor-store bottles — not with your $8 supermarket run. If you drink $15–20 wine and hate shopping for it, the math can work. If you're happy with cheap supermarket bottles, the club is an experiment, not a home.
+The intro box is the honest hook: 6 bottles for the price of 3 average ones. The real question is the second shipment. At ~$16.50 a bottle, Firstleaf competes with decent liquor-store bottles — not with your $8 supermarket run. If you drink $15–20 wine and hate shopping for it, the math can work. If you're happy with cheap supermarket bottles, treat it as an experiment — not a new weekly habit.
 
 ## The fine print we read
 

@@ -16,7 +16,10 @@
   `_redirects` für Alt-URLs, DE-Artikel entfernt (bleiben in Git-History).
   Verifiziert: Build grün (12 Seiten), Desktop 1440 + Mobile 390 per CDP ohne Overflow,
   Screenshots gesichtet. Newsletter-Formular + Analytics bewusst noch unverkabelt
-  (Formular sagt es ehrlich). **Nächster Schritt: Nimar-Blick auf Preview → Merge → Deploy.**
+  (Formular sagt es ehrlich). Nach Gary-Vee-Check (X-Recherche): Copy-Feinschliff —
+  Trust-Karte „sag es, wenn du etwas nicht geprüft hast", About-Regel „No one's palate
+  is wrong", Achaval-Ferrer-Detail präzisiert (keine unbelegten Preis-Claims).
+  **Nächster Schritt: Nimar-Blick auf Preview → Merge → Deploy.**
 - `2026-10-16` — **Monetarisierungs-Konzept steht — Go erteilt, Umsetzung läuft.**
   Auftrag: „Geld mit Domain + Accounts verdienen", Markt frei wählbar. Recherche
   (Markt, Affiliate-Ökonomie, X-Realität) → **EN/US-Pivot**: „Deals + Data + Voice".

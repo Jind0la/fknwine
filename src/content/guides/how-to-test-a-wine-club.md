@@ -21,7 +21,7 @@ Real example (checked Oct 16, 2026):
 
 That's not a hidden fee — it's stated. But the jump from $7.50 to $16.50 is where the economics live. The club can still be worth it at $16.50 — just *decide* at $16.50, not at $7.50.
 
-**Rule:** divide the ongoing price by the bottle count, then ask yourself: "would I buy this bottle at the store for this?" If the answer is no, the club is entertainment, not a deal.
+**Rule:** divide the ongoing price by the bottle count, then ask yourself: "would I buy this bottle at the store for that price?" If the answer is no, the club is entertainment, not a deal.
 
 ## Trap 2: The fine print that isn't on the landing page
 

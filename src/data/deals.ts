@@ -23,7 +23,7 @@ export const deals: Deal[] = [
     merchantLabel: 'WTSO',
     title: 'Achaval Ferrer Winery Takeover — 12 bottles for $120',
     detail:
-      'Mendoza legend, build your own case. Free shipping included. $10 a bottle for wine that normally starts around $20+.',
+      'Achaval Ferrer is one of Mendoza\'s best-known Malbec producers — 12 bottles for $120 with free shipping. That\'s $10 a bottle while the takeover runs.',
     price: '$120 · 12 bottles',
     badge: 'WINERY TAKEOVER',
     expires: 'Oct 18, 2026',
