@@ -1,0 +1,278 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const clubs = (await getCollection('clubs')).sort((a, b) => a.data.order - b.data.order);
+
+const breadcrumb = [
+  { name: 'Home', url: '/' },
+  { name: 'How we test', url: '/how-we-test/' },
+];
+---
+
+<Layout
+  title="How we test a wine club"
+  description="Our method: we read the merchant's own landing page, help centre and terms of service, compare them against each other, and print the date. Here is the checklist — and the limits."
+  breadcrumb={breadcrumb}
+>
+  <article class="wrapper" style="padding-top: 3rem; padding-bottom: 4rem; max-width: 780px;">
+    <a href="/about/" class="back-link">← About FKN Wine</a>
+
+    <header style="margin-top: 1.5rem;">
+      <h1 style="font-size: clamp(2rem, 6vw, 3rem); margin: 0.75rem 0 0.5rem;">How we test a wine club</h1>
+      <p style="font-size: 1.1rem; margin: 0;">
+        We don't have a tasting room and we're not sommeliers. What we do is read the paperwork —
+        the merchant's own pages — and hold it against the promises on their homepage. Here is the
+        method, so you can judge the result.
+      </p>
+    </header>
+
+    <section class="article-content" style="margin-top: 2.5rem;">
+      <h2 id="what-we-read">What we actually read</h2>
+
+      <p>For every club review we open the club's <strong>own</strong> sources, in this order:</p>
+
+      <ol>
+        <li><strong>The landing page.</strong> The headline price, the intro offer, the numbers they want you to see.</li>
+        <li><strong>The help centre.</strong> This is where the operational truth lives: the exact steps to cancel, the cut-off before a shipment, the fees nobody puts in the hero image.</li>
+        <li><strong>The terms of service.</strong> The legally binding version of the same claims — and the place where "free shipping always" can quietly become "a shipping charge of $9 may apply".</li>
+      </ol>
+
+      <p>
+        Then we compare three against each other. <strong>The disagreements are the story.</strong> They're
+        not rare, and they're not typos — they're how these businesses are priced.
+      </p>
+
+      <h2 id="what-we-found">What that turned up (real examples)</h2>
+
+      <p>Three findings from the current reviews, all quoted from the clubs' own pages:</p>
+
+      <ul>
+        <li>
+          <strong>Firstleaf sells "no fees, no commitments" — and charges a $25 restocking fee.</strong>
+          The membership page says no fees. The help centre, under rescheduling, says: "There is a
+          <strong>$25 restocking fee</strong> for any orders cancelled that are processed and/or shipped."
+        </li>
+        <li>
+          <strong>Winc advertises "Free Shipping, always" — while its terms say otherwise.</strong>
+          The membership banner promises free shipping. The terms of service read: "A shipping charge of
+          <strong>$9 may apply</strong> based on the size of your order."
+        </li>
+        <li>
+          <strong>Firstleaf's guarantee is credit that dies when you leave.</strong> The homepage says
+          they'll credit you for a bottle you don't like. The help centre adds the part that matters:
+          "<strong>Credits expire when a membership is cancelled or terminated.</strong>"
+        </li>
+      </ul>
+
+      <p>
+        None of that is hidden, exactly. All of it is in writing, on the club's own site. It just isn't
+        on the page you land on.
+      </p>
+
+      <h2 id="checklist">The checklist we run on every club</h2>
+
+      <p>Eight questions, all answerable from the club's own documentation:</p>
+
+      <ol>
+        <li><strong>Price per bottle after the intro</strong> — not the intro. Divide the ongoing price by the bottle count.</li>
+        <li><strong>What the ongoing shipment costs in total</strong>, and what's excluded from it.</li>
+        <li><strong>Shipping.</strong> Included, flat, or "may apply"? Free above a threshold? Alaska and Hawaii?</li>
+        <li><strong>The contract minimum.</strong> Is there a first shipment you can't get out of?</li>
+        <li><strong>The cancellation mechanism.</strong> A button in the account, an email, or a phone line?</li>
+        <li><strong>The cut-off.</strong> How many days before a shipment must you act? This is the deadline that actually costs people money.</li>
+        <li><strong>Fees on the way out.</strong> Restocking, cancellation, reship — and whether a credit balance survives the cancellation.</li>
+        <li><strong>Where they ship.</strong> The definitive state list from the terms, not the "most states" from the marketing.</li>
+      </ol>
+
+      <h2 id="what-we-dont-do">What we don't do — and why we say so</h2>
+
+      <ul>
+        <li>
+          <strong>We don't taste the wine.</strong> We have no tasting notes, no scores, and no opinion
+          about whether a bottle is good. Anyone who tells you a club's wine is great without drinking
+          it is writing fiction — and a review built on invented tasting notes is worse than no review.
+        </li>
+        <li>
+          <strong>We haven't bought from these clubs yet.</strong> That means we can't describe what the
+          cancel button looks like once you're inside a member account, or how long a refund actually
+          takes. Every review says this out loud where it applies. When we do buy and test a flow end to
+          end, the review gets updated and the date changes.
+        </li>
+        <li>
+          <strong>We don't rank wine by score.</strong> There's no honest numeric rating to publish, so we
+          don't publish one — and we don't add rating markup to the site that would imply we did.
+        </li>
+      </ul>
+
+      <h2 id="dates">Dates, sources and corrections</h2>
+
+      <p>
+        Every price and term on this site carries the date we read it. Prices move; terms get rewritten;
+        intro offers expire. If a number looks old, it probably is — and we'd rather you knew the date
+        than trusted a number without one.
+      </p>
+
+      <p>
+        If we get something wrong, we fix the page and change the date rather than quietly editing it.
+        Tell us at <a href="mailto:info@fknwine.com">info@fknwine.com</a> and we'll check it against the
+        source.
+      </p>
+
+      <h2 id="checked">What we've checked, by club</h2>
+
+      <div class="table-scroll" role="region" tabindex="0" aria-label="Table — scroll horizontally to see all columns">
+        <table>
+          <thead>
+            <tr>
+              <th>Club</th>
+              <th>Checked</th>
+              <th>Sources read</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              clubs.map((club) => (
+                <tr>
+                  <td>
+                    <a href={`/wine-clubs/${club.id}/`}>{club.data.name}</a>
+                  </td>
+                  <td>{club.data.lastChecked}</td>
+                  <td>Landing page · help centre · terms</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="who">Who we are</h2>
+
+      <p>
+        FKN Wine is an independent, reader-supported wine site — not a wine merchant, not a club, and
+        not a sommelier. We earn a commission if you buy through some of our links, which never changes
+        the price you pay; how we handle that is on our <a href="/disclosure/">disclosure page</a>. The
+        operator responsible for this site is named in the <a href="/imprint/">imprint</a>.
+      </p>
+
+      <p>
+        Our whole angle, in one sentence: <strong>the deal is in the fine print, so we read it and you
+        don't have to.</strong>
+      </p>
+    </section>
+
+    <section class="related">
+      <div class="brutal-card related-box">
+        <h2 style="font-size: 1.1rem; margin-top: 0;">See the method at work</h2>
+        <ul>
+          {clubs.slice(0, 4).map((club) => (
+            <li>
+              <a href={`/wine-clubs/${club.id}/`}>{club.data.name} review</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="brutal-card related-box">
+        <h2 style="font-size: 1.1rem; margin-top: 0;">The paperwork, distilled</h2>
+        <ul>
+          <li><a href="/guides/wine-club-price-per-bottle/">What six clubs really cost per bottle</a></li>
+          <li><a href="/guides/how-to-cancel-a-wine-club/">How to actually cancel a wine club</a></li>
+          <li><a href="/guides/how-to-test-a-wine-club/">The 5-minute pre-join checklist</a></li>
+        </ul>
+      </div>
+    </section>
+  </article>
+</Layout>
+
+<style>
+  .back-link {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: color-mix(in srgb, var(--color-text) 70%, transparent);
+  }
+
+  .back-link:hover {
+    color: var(--color-cta);
+  }
+
+  .article-content h2 {
+    font-size: 1.4rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .article-content p {
+    font-size: 1rem;
+  }
+
+  .article-content ul,
+  .article-content ol {
+    padding-left: 1.4rem;
+  }
+
+  .article-content li {
+    margin-bottom: 0.6rem;
+    line-height: 1.55;
+  }
+
+  .article-content a {
+    color: var(--color-cta);
+  }
+
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+    margin: 1rem 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-cta) var(--color-surface);
+    border-right: 3px solid var(--color-cta);
+    padding-right: 0.25rem;
+  }
+
+  .table-scroll table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+  }
+
+  .table-scroll th,
+  .table-scroll td {
+    border: 2px solid var(--color-surface);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+
+  .table-scroll th {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    color: var(--color-cta);
+  }
+
+  .related {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+
+  .related-box ul {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .related-box li {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .related-box a {
+    color: var(--color-cta);
+  }
+</style>

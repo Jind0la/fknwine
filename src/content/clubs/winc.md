@@ -6,10 +6,10 @@ summary: "The club that absorbed Bright Cellars. Strong intro math ($100 off ove
 priceFrom: "$100 off over your first 4 orders"
 perBottle: "~$16–20 at member pricing"
 commitment: "None — skip, pause, or cancel anytime (their terms)"
-cancelTerms: "Self-service: skip, swap bottles, cancel (their claim — we haven't tested the flow yet)"
+cancelTerms: "Self-service skip/pause/cancel — but the terms require notice at least 3 days before a shipment"
 shipsTo: "Most US states — check the state selector before you get attached"
 merchantId: winc
-lastChecked: "2026-10-16"
+lastChecked: "2026-10-17"
 pros:
   - "The intro is the good part: $100 off spread over your first 4 orders, on top of the standard member discount"
   - "20% off every bottle and pack, always — visible in the prices, not a 'sale' that comes and goes"
@@ -21,7 +21,11 @@ cons:
   - "~$16–20 a bottle is liquor-store money — not your supermarket run"
   - "Many of the wines are Winc's own in-house brands ('you won't find them anywhere else'). Great for their margins, fewer famous labels for you"
   - "'The Internet's #1 Wine Club' is their marketing line — we quote it, we don't certify it"
-  - "We have NOT tested the cancellation flow — we say that out loud instead of pretending"
+  - "The membership banner says \"Free Shipping always\". The terms of service say: \"A shipping charge of $9 may apply based on the size of your order.\" Both are Winc's own words"
+  - "Wine prices range from $13 to $75 a bottle (their terms). The \"~$16–20 average\" hides a very wide spread"
+  - "There's a third product to watch: **Winc Insider Access** auto-charges $59.95 a month as member credits unless you skip at least 3 days before your enrolment date"
+  - "The terms require you to notify them at least **3 days before a shipment** to skip or cancel — miss it and the box ships"
+  - "We have NOT bought from them, so we can't describe the flow from inside a member account — we say that out loud instead of pretending"
 order: 20
 ---
 
@@ -41,6 +45,16 @@ If you're here because you searched for Bright Cellars: it's a Winc membership n
 | Member discount | **20% off everything, always** | visible in listed prices (e.g. $16.80 vs $21 reg.) |
 
 The math to run: **would you pay $16–20 a bottle at the store for wines someone else picked?** If yes, Winc is a convenience play with a strong first year — the $100 intro carries the first four orders, then you're at member pricing. If you're a $8 supermarket drinker, this is not your club — genuinely.
+
+## What the terms of service add (the part the banner leaves out)
+
+Two claims on the membership page and the same two claims in the terms — except the terms say something different:
+
+1. **"Free Shipping always" vs. "A shipping charge of $9 may apply."** The banner is unambiguous. The terms of service read: *"A shipping charge of $9 may apply based on the size of your order."* Both sentences are Winc's. Which one shows up on your invoice depends on your order size.
+2. **The 3-day rule.** *"Please notify us at least 3 days prior to any shipment to update your account information, payment method, change your address, skip a shipment, or to cancel your membership."* Skipping is self-service — but "self-service" still has a deadline, and one full business day of slack is not the same as "anytime".
+3. **Watch the second product.** *Winc Insider Access* enrols you automatically when you buy anything and opt in, and then charges **$59.95 a month** as member credits unless you skip at least three days before your enrolment date. The credits are real money — but member-credit purchases are *"non-refundable and not cancellable"* per the same terms.
+
+None of this is buried in a dark corner: it's on winc.com, in the terms of service. It just isn't on the page with the wine photos.
 
 ## The fine print we read
 
@@ -64,6 +78,6 @@ The math to run: **would you pay $16–20 a bottle at the store for wines someon
 
 ## What we checked (and what we didn't)
 
-**Checked on 2026-10-16** against winc.com (membership pages + activation FAQ): intro offer, pricing model, member discount, shipping language, skip/cancel language, and the Bright Cellars migration details. Prices and terms change — the date above tells you how fresh this is, and we re-check before updates.
+**Checked on 2026-10-17** against winc.com (membership pages, the activation FAQ and the terms of service): intro offer, pricing model, member discount, the "$9 may apply" shipping clause, the 3-day notice rule, the Insider Access auto-charge, the member-credit terms, and the Bright Cellars migration details. Our method is on [how we test](/how-we-test/). Prices and terms change — the date above tells you how fresh this is, and we re-check before updates.
 
-**Not checked:** we did not taste these wines, and we have not tested the cancellation flow ourselves. When we do, this page gets updated — that's the deal with our readers.
+**Not checked:** we did not taste these wines, and we have not created an account, so we can't describe the flow from inside a member account or how a refund lands in practice. When we do, this page gets updated — that's the deal with our readers.

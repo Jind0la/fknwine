@@ -28,6 +28,10 @@
 - [How to actually cancel a wine club](https://fknwine.com/guides/how-to-cancel-a-wine-club/) — the cancellation mechanism for each of the six clubs
 - [How to test a wine club without getting burned](https://fknwine.com/guides/how-to-test-a-wine-club/) — the 5-minute pre-join checklist
 
+## Method
+
+- [How we test a wine club](https://fknwine.com/how-we-test/) — we read the club's own landing page, help centre and terms of service, compare them against each other, and print the check date. We do not taste the wine and we have not bought from the clubs; where that limits a claim, the review says so.
+
 ## Hubs
 
 - [Home](https://fknwine.com/)

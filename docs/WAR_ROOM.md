@@ -32,17 +32,25 @@
 - `2026-10-17` — **SEO-Audit-Fixes Welle 1 gemergt + live (`4b490a7`), an der Live-Seite verifiziert:**
   HSTS aktiv (`max-age=31536000; includeSubDomains`), gehashte `/_astro/*`-Assets `immutable`,
   Sitemap 19 → 18 URLs (kein `/subscribed/` mehr), `/subscribed/` `noindex`. Details im Eintrag unten.
-- `2026-10-16` — **Content-Welle 3 gemergt + live (Nimar-Go „über die ganze Seite und merge").**
-  Neu: 3 Club-Reviews — *Naked Wines* ($40/Monat ins eigene Wein-Wallet, bis 60 % Angel-Preis,
-  Kündigung nur per Telefon/Mail), *Gold Medal Wine Club* (3 Stufen ab $49/Sendung, Versand extra;
-  „cancel anytime" erst **nach** der ersten Sendung; läuft über Awin 59079), *Wine Access*
-  (Discovery ~$25/Flasche, Connoisseurs ~$75, Collector's $250–400) — plus 2 Guides
-  („How to actually cancel a wine club", „The real price per bottle: six wine clubs in one table").
-  Zahlen am 16.10. an den Merchant-Seiten gelesen, keine Tasting-Claims, „Checked"-Datum überall.
-  **Root-Fix:** die neuen 4-Spalten-Tabellen schoben die Seite auf 390 px in den Horizontal-Overflow →
-  `src/lib/rehype-table-wrap.mjs` wrappt jede Markdown-Tabelle in einen Scroll-Container (braucht
-  `@astrojs/markdown-remark` — Astro 7 liefert es nicht mehr per Default). Merge `21304a4` (FF),
-  Deploy verifiziert: 5 neue URLs 200, Sitemap 14 → 19 URLs, Canonical mit Trailing Slash; Branch gelöscht.
+- `2026-10-17` — **E-E-A-T-Lücke geschlossen: Methoden-Seite + erstmals echte Erst-Hand-Funde (`/how-we-test/`).**
+  Die Lücke aus dem Audit war „kein Autor, keine eigene Erfahrung". Statt Erfahrung zu behaupten, habe ich
+  die Clubs **selbst nachgelesen** — Landingpage, **Hilfe-Center und AGB** — und die Widersprüche gefunden:
+  Firstleaf wirbt mit „no fees" und hat laut Hilfe-Center eine **$25 restocking fee**; Winc wirbt mit
+  „Free Shipping always", die AGB sagen **„A shipping charge of $9 may apply"**; Firstleafs Gutschrift
+  **verfällt bei Kündigung** („credits expire when a membership is cancelled"); Winc hat eine
+  **3-Tage-Frist** für Skip/Cancel plus den Auto-Abrechner *Insider Access* ($59.95/Monat); Wine Access
+  ist die Ausnahme — **keine Restocking-Gebühr, kein Rückgabe-Limit**, aber Cut-off „one full business day"
+  und eine konkrete 35-Staaten-Liste. **Neu:** `/how-we-test/` (Methode, 8-Punkte-Checkliste, was wir
+  nicht tun, Korrektur-Policy), verlinkt von jedem Review, beiden Guides, About und Footer; 3 Reviews
+  inhaltlich korrigiert/erweitert (Firstleaf-Planmatrix mit 4 Stufen inkl. „plus shipping", Winc-AGB,
+  Wine Access-AGB). **Ehrlich bleibt:** wir haben die Clubs **nicht gekauft** — steht so auf jeder Seite.
+  Ausdrücklich als Markenentscheidung dokumentiert, dass wir unter „FKN Wine" statt unter einem
+  Personen-Byline schreiben (die Haftung steht im Impressum).
+- `2026-10-16` — **Content-Welle 3 gemergt + live (`21304a4`).** 3 neue Club-Reviews (Naked Wines,
+  Gold Medal Wine Club, Wine Access) + 2 Guides (Kündigungs-Ladder, Preis/Flasche-Vergleich);
+  Zahlen an den Merchant-Seiten gelesen, keine Tasting-Claims. **Root-Fix:** breite Markdown-Tabellen
+  schoben die Seite auf 390 px in den Overflow → `src/lib/rehype-table-wrap.mjs` wrappt sie in einen
+  Scroll-Container (braucht `@astrojs/markdown-remark`). Deploy verifiziert (Sitemap 14 → 19 URLs).
 - `2026-10-16` — **SEO-Plugin `hermes-seo` installiert (45 Skills; Community-Port von claude-seo, MIT, via X-Post @tonysimons).**
   Quelle `github.com/yuzushi-dev/hermes-seo` → Kopie nach `~/.hermes/plugins/hermes-seo`,
   `hermes plugins enable` + Runtime-Setup (`hermes seo setup`: eigenes venv **plus** Playwright/Chromium) →

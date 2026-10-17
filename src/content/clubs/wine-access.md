@@ -6,10 +6,10 @@ summary: "Editorially-loved curation across three clubs from $150 a shipment —
 priceFrom: "$150 per shipment (Discovery: 6 bottles, 4×/year)"
 perBottle: "~$25 (Discovery) · ~$75 (Connoisseurs) · $250–400 for one bottle (Collector's)"
 commitment: "None — cancel anytime (their terms); pause shipments easily"
-cancelTerms: "Self-service: Account → Account Settings → \"Skip or Cancel\" — the clearest cancel path of the clubs we've read"
+cancelTerms: "Self-service: Account → Account Settings → \"Skip or Cancel\". The terms add a cut-off: cancel or skip at least one full business day before a shipment goes out"
 shipsTo: "Most US states — verify at checkout; wine shipping is state-regulated"
 merchantId: wineaccess
-lastChecked: "2026-10-16"
+lastChecked: "2026-10-17"
 pros:
   - "Discovery is the value tier: 6 bottles for $150, four times a year — about $25 a bottle with free shipping"
   - "Every member gets 10% off all Wine Access purchases, not just club wines — so the club opens a discount on the whole shop"
@@ -21,7 +21,9 @@ cons:
   - "The per-bottle story collapses at the top: Connoisseurs is 2 bottles for $150 (~$75 each), Collector's is one bottle for $250–400"
   - "\"$25 a bottle\" at Discovery is a real number, but a curated $25 Wine Access bottle isn't the same product as a supermarket $25 bottle — different sourcing, and you can't cross-shop most of it"
   - "The 'Top Pick' and 'Best Wine Club' headlines are Wirecutter's and other outlets' — we quote the awards, we don't certify them"
-  - "We have NOT tested the cancel flow or the guarantee ourselves; both are their claims"
+  - "Their terms list the states they actually ship to: 35 states plus DC — not literally 'most US states' as the club page implies"
+  - "'Shipping Included' means ground shipping in standard cardboard to the continental US only — Alaska and Hawaii are excluded by the terms, and temperature-controlled packaging is complimentary only from $300 up"
+  - "We have NOT bought from them, so we can't describe the flow from inside a member account; the steps and the guarantee are their own written terms"
 order: 60
 ---
 
@@ -40,6 +42,15 @@ order: 60
 - **Cancel or pause is self-service** in Account Settings ("Skip or Cancel").
 
 The math to run: **Discovery is the only tier where "per bottle" means what it says — $25.** Connoisseurs and Collector's are a different game: you're paying for access and provenance, and the per-bottle number stops being the point. If your budget is real-weeknight wine, stick to Discovery or shop the store. If you're building a cellar of allocated bottles, the top tiers exist for exactly that.
+
+## What the terms and conditions add
+
+Wine Access is the club whose paperwork mostly *matches* its promises — worth saying, because it isn't the norm. Reading the terms turned up four concrete things:
+
+1. **The cancel cut-off is real.** Their FAQ says cancel anytime; the terms add the timing: *"You must cancel or skip your subscription at least one full business day"* before the shipment. Self-service, but not instant.
+2. **The state list is specific, not vague.** The terms name exactly where the seller holds permits: AK, AZ, CA, CO, CT, DC, FL, GA, HI, IA, ID, IL, IN, KS, KY, LA, MA, MI, MN, MO, MT, NC, ND, NE, NH, NM, NV, OH, OK, OR, PA, SC, TN, VA, VT, WA, WI, WV, WY. That's 35 states plus DC — a more useful "ships to" than "most states".
+3. **"Shipping Included" has limits.** Per the terms it means *ground shipping in standard cardboard packaging to the continental US*; Alaska and Hawaii are excluded. Temperature-controlled packaging is free from **$300** up.
+4. **No exit fee — and that's rare.** Their return policy states there is *"no time limit for returns or exchanges nor do we charge restocking fees."* Compare that with Firstleaf's $25 restocking fee and Winc's $9 shipping clause: on the way out, Wine Access is the cleanest of the clubs we've read.
 
 ## The fine print we read
 
@@ -63,6 +74,6 @@ The math to run: **Discovery is the only tier where "per bottle" means what it s
 
 ## What we checked (and what we didn't)
 
-**Checked on 2026-10-16** against wineaccess.com (the club landing page and its FAQ): the three club tiers and their per-shipment pricing, member benefits, shipping rules, the guarantee wording and the cancellation mechanism.
+**Checked on 2026-10-17** against wineaccess.com (the club landing page, the FAQ, the terms and conditions, the return policy): the three club tiers and their per-shipment pricing, member benefits, the definitive state list, the shipping exclusions, the one-business-day cancel cut-off, the no-restocking-fee policy and the guarantee wording. Our method is on [how we test](/how-we-test/).
 
 **Not checked:** we did not taste these wines, and we have not tested the cancellation flow ourselves. The awards quoted ("Wirecutter Top Pick", "Best Wine Club") are the publications' — we pass them on, we don't certify them. Prices and terms change; the date above tells you how fresh this is.
