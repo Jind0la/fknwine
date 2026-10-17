@@ -32,8 +32,14 @@ zu wenig Substanz") sind ein **Symptom dieses Problems**, keine Content-Frage. R
   mit dem falschen Wert meldet der Leser „keine Daten" und es sieht wie „kein Traffic" aus.
   `/user/tokens/verify` antwortet bei konto-eigenen Tokens 401 (kein Defekt).
 - **GSC:** Property per FILE verifiziert, `public/google35b2017bd84955fa.html` — **nie löschen**.
-  Nachzug-Cron `92efc5307dea` (täglich 09:30) zieht die 19 echten URLs nach (~10/Tag = Google-Kontingent);
-  `urls.txt` führt die 19 Seiten aus der Sitemap; **Cron löschen, wenn alle beantragt sind.**
+  **Korrektur (17.10., live geprüft): der „Nachzug" hat NIE funktioniert.** Der Cron `92efc5307dea` wurde
+  als Hebel beschrieben („zieht die 19 URLs nach, ~10/Tag") — tatsächlich wurde **keine einzige** URL
+  beantragt: Google lehnt die Anfrage im Browser sofort mit „Kontingent überschritten" ab, das Protokoll
+  (`fknwine_gsc_requests_log.jsonl`) zeigt ausschließlich Ablehnungen, der State 0× „beantragt".
+  Die alte Meldung („Tageskontingent erreicht — N bleiben für morgen") hat das als Fortschritt verkauft;
+  Meldung in `run_pending.py` ist korrigiert. **Konsequenz: „Request Indexing" ist bei uns unbelegt** —
+  wir können nicht sagen, ob es helfen würde, weil es nie ausgeführt wurde.
+  **Sitemap am 17.10. neu eingereicht**, weil Google noch mit dem alten Stand arbeitet (33 statt 19 URLs).
 - **KI-Zugang:** Such-/Antwort-Agenten erlaubt (`ai-input=yes`), Training gesperrt (`ai-train=no`).
   Cloudflares AI-Panel (Zone → Security) ist die **Autorität** (Search/Agent Allow, Training Disallow,
   Bot Preference Sync AN); Edge-Gegenprobe: PerplexityBot/OAI-SearchBot 200, GPTBot 403. Unsere
