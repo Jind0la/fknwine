@@ -39,13 +39,10 @@ zu wenig Substanz") sind ein **Symptom dieses Problems**, keine Content-Frage. R
   Bot Preference Sync AN); Edge-Gegenprobe: PerplexityBot/OAI-SearchBot 200, GPTBot 403. Unsere
   `robots.txt` widerspricht dem nicht mehr (Google-Extended-Allow entfernt, `2796038`). **Nach jeder
   Panel-Änderung die Live-`robots.txt` neu parsen — die Cloud-Liste ist nicht im Repo.**
-- **Live gemergt & verifiziert:** `21304a4` Content-Welle 3 (Naked Wines, Gold Medal, Wine Access +
-  2 Guides; `rehype-table-wrap.mjs` gegen Mobile-Overflow, braucht `@astrojs/markdown-remark`) ·
-  `766dee6` SEO-Welle 1 (`_headers` HSTS+immutable, `/subscribed/` noindex, Schema-`@graph` mit
-  `@id`/`sameAs`/`BreadcrumbList`, Netz interne Links Reviews↔Guides, entschiedene Verdicts,
-  Meta ≤155/Titel ≤52, Touch-Ziele ≥44 px, Tabellen-Scrollregion) · `e24c8f4` AI-Optimierung
-  (`<time datetime>` für jedes Check-Datum, meta robots, `llms.txt` Key-Facts) ·
-  `4b3cfc0` Methodenseite `/how-we-test/`.
+- **Live gemergt & verifiziert:** `21304a4` Content-Welle 3 · `766dee6` SEO-Welle 1 (`_headers` HSTS,
+  `/subscribed/` noindex, Schema-`@graph`+`BreadcrumbList`, interne Links Reviews↔Guides, Verdicts
+  entschieden, Meta ≤155, Touch-Ziele ≥44 px, Tabellen-Scrollregion) · `e24c8f4` AI-Optimierung
+  (`<time datetime>`, meta robots, `llms.txt`) · `4b3cfc0` Methodenseite. Details stehen in den Commits.
 - **Deal-Refresh:** Cron Mo 10:00 (local) prüft Deals am Merchant, schreibt `deals.ts` nur bei grünem Build.
 - **X-Wachstumssystem (17.10.):** Cron `638ebb99dfae` (täglich 15:00 = 9:00 ET) postet aus
   `~/.hermes/state/fkn_x_queue.json` (`fkn_x_post.py`); Cron **`2ec20ee15e3d`** (täglich 14:30) liefert
@@ -63,9 +60,8 @@ zu wenig Substanz") sind ein **Symptom dieses Problems**, keine Content-Frage. R
   `follow` gehen. **Antworten sind nur von Hand möglich**; Browser-Automatisierung wäre regelwidrig
   (Ban-Risiko) und ist deshalb ausgeschlossen. Erster echter Post live (`Firstleaf: 'no fees' vs.
   $25 restocking fee`, id `2111382787760554074`, per Read-back verifiziert).
-- **Domain/Deploy:** `site` in `astro.config.mjs` ist die **einzige** Domain-Quelle, Canonical mit
-  Trailing Slash (Pages 308 `/x`→`/x/`); `always_use_https` + www→Apex 301 in der Zone
-  `51e9dc8462690929e186758bf3a0916a`; Deploy über die Pages-GitHub-Integration (kein Wrangler-Token).
+- **Domain/Deploy:** `site` in `astro.config.mjs` = **einzige** Domain-Quelle, Canonical mit Trailing Slash;
+  `always_use_https` + www→Apex 301 (Zone `51e9dc8462690929e186758bf3a0916a`); Deploy via Pages-GitHub-Integration.
 
 ## Assets & Kanäle
 
