@@ -7,6 +7,25 @@
 
 ## Aktueller Stand
 
+- `2026-10-17` — **Traffic-Analyse: es gibt keinen. Und der Grund ist nicht „zu wenig Content", sondern Indexierung.**
+  **Belege:** GSC Search Analytics **0 Klicks / 0 Impressionen** über 7, 28 *und* 90 Tage. URL-Inspection:
+  Startseite = *„Duplikat, Google hat eine andere Seite als der Nutzer als kanonische Seite bestimmt"* →
+  **`googleCanonical = fknwine.pages.dev/`**; `/wine-clubs/` und der Preis-Guide = *„URL ist Google unbekannt"*.
+  Letzter Crawl der Startseite: **16.10. 10:40** — das ist der **alte Stand vor dem Relaunch-Deploy**.
+  Sitemap-Report: 33 eingereicht / **0 indexiert** (0 Fehler). X: **1 Follower**. CF Web Analytics:
+  nicht auslesbar ohne API-Token (Account Analytics Read) — offen; ohne Suchtraffic und mit 1 Follower sind
+  echte Besucherzahlen ohnehin Kleinstgröße.
+  **Root Cause des Nachzugs gefunden:** `fknwine-gsc/urls.txt` enthielt nur 10 der 19 Seiten, und die State-Datei
+  führte die toten `/artikel/*`-URLs als „beantragt" → der Nachzug hielt sich für fertig, die neuen Seiten
+  wurden **nie angefragt**; gleichzeitig hat er das Tageskontingent an einer toten URL verbrannt.
+  **Behoben:** `urls.txt` auf die 19 aktuellen URLs gesetzt (aus der Sitemap), State zurückgesetzt
+  (Backup daneben), `/subscribed/` bewusst nicht drin. Heute **0 neu beantragt** (Kontingent war durch den
+  09:30-Lauf weg) — der Cron *FKN Wine — GSC Indexierung* zieht ab morgen ~10/Tag nach, 19 URLs ≈ 2 Tage.
+  **Wirtschaftlich:** 0 Traffic = 0 Affiliate-Umsatz; die Ablehnungen von FlexOffers/Impact („kein Traffic,
+  zu wenig Substanz") sind ein **Symptom dieses Indexierungsproblems**, nicht eine Content-Frage. Reihenfolge
+  ist damit: indexiert werden → Geldseiten (6 Club-Reviews + Preis-Guide) → Affiliate-Tracking live (Awin ist
+  freigeschaltet, 3 Programm-Anträge offen).
+
 - `2026-10-17` — **Auf KI-Suche geöffnet + dafür optimiert (Nimar: „KI soll die Seite lesen und suchen können —
   sie soll sogar auch dafür optimiert sein").** Merge `e24c8f4` → live, per echtem Abruf verifiziert:
   - **Robots-Politik gedreht:** `PerplexityBot`, `OAI-SearchBot`, `ChatGPT-User`, `Claude-SearchBot`,
