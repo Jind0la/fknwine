@@ -65,8 +65,16 @@ zu wenig Substanz") sind ein **Symptom dieses Problems**, keine Content-Frage. R
 - **Repo** `Jind0la/fknwine` → `~/Workspace/projects/19-fknwine`, Desktop-Projekt `fknwine` (p_881c6f4f), KB `prj-fknwine`.
 - **Awin:** Publisher **FKN Wine, ID 3126259** aktiv, Profil 100 % (Avatar ✱, Mauritiusstraße).
   Beworben: Gold Medal (**59079**), ONEHOPE (**39702**), Parcelle (**94853**); Personal Wine 39786 öffnet kein Modal.
-  **Offen: Telefonnummer nachtragen (Nimar).** Eigenheiten: Aktivierungs-Mail mit Template-Bug (Konto dennoch nutzbar);
-  CWC läuft NICHT über Awin-US. Ablehnungen: FlexOffers (Textbaustein), Impact (Ticket **#897752**, Gate).
+  Eigenheiten: Aktivierungs-Mail mit Template-Bug (Konto dennoch nutzbar); CWC läuft NICHT über Awin-US.
+  Ablehnungen: FlexOffers (Textbaustein), Impact (Ticket **#897752**, Gate).
+  **Telefon-Falle aufgelöst (17.10., live aus dem Browser gelesen):** Awin hat **zwei** Seiten mit
+  **denselben zwei Feldern** — `/user/settings/details/…` (Benutzerdetails) und
+  `/awin/affiliate/3126259/settings/contact` (Kontaktdetails). Ausgefüllt war gegengleich:
+  Benutzerdetails `telephone` ✓ / `mobile` leer; **Kontaktdetails `mobile` ✓ / `telephone` LEER**.
+  Merken: **Kontaktdetails ist die Sicht, die Merchants sehen** → dort muss stehen. Dort ebenfalls leer
+  (und für Netzwerk-Freigaben wertvoll, weil „kein Publikum" der Ablehnungsgrund war):
+  **`twitterUsername` (→ FKNWine), `blogUrl`, `facebookPage`**, dazu `address1`/Apartment und IM-Felder (optional).
+  Speichern nur mit Passwort im Feld `password` („Details aktualisieren").
 - **Mail:** info@/hey@fknwine.com → nimarm@me.com + Gmail-Kopie (CF-Worker `fkn-mail-router`); senden als
   info@/hey@ via Resend (`~/.hermes/scripts/fkn_send.py`).
 - **Newsletter:** beehiiv live, Welcome-Flow E2E getestet, Issue #01 als Draft („A $10 Malbec and the fine
