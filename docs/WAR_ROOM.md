@@ -7,6 +7,31 @@
 
 ## Aktueller Stand
 
+- `2026-10-17` — **Auf KI-Suche geöffnet + dafür optimiert (Nimar: „KI soll die Seite lesen und suchen können —
+  sie soll sogar auch dafür optimiert sein").** Merge `e24c8f4` → live, per echtem Abruf verifiziert:
+  - **Robots-Politik gedreht:** `PerplexityBot`, `OAI-SearchBot`, `ChatGPT-User`, `Claude-SearchBot`,
+    `Claude-User`, `Google-Extended`, `Applebot`, `DuckAssistBot` → `Allow: /`; Trainings-Korpora
+    (`GPTBot`, `ClaudeBot`, `CCBot`, `Bytespider`, …) bleiben gesperrt. `Content-Signal` jetzt pro Gruppe:
+    **`ai-input=yes, ai-train=no`** (Inhalte dürfen in Antworten fließen, nicht in Modellgewichte).
+    **Abruf-Test mit den echten User-Agents: alle vier Such-Agenten → HTTP 200 / 14.912 Bytes;
+    GPTBot → HTTP 403** (Cloudflares Block greift am Edge, nicht nur als Bitte).
+  - **Optimiert:** `meta robots` `index, follow, max-snippet:-1, max-image-preview:large` (fehlte komplett);
+    `<time datetime>` für **jedes** Check-/Update-Datum auf Clubs, Guides und Deals (Daten waren nur
+    Fließtext — Maschinen konnten sie nicht lesen); `llms.txt` mit zitierfähigem „Key facts"-Block +
+    expliziter Zugangs-Erklärung. Ohne JS bleiben 4.172 Zeichen Text je Seite lesbar (inkl. Preistabelle
+    und Datum) — KI-Antwortsysteme bekommen den Inhalt vollständig.
+  - **Lehre (eigener Bug, in der Verifikation gefunden):** `Date.parse("Oct 16, 2026")` + `toISOString()`
+    schob das Datum in Berlin auf den **15.** zurück (UTC-Konvertierung) — im `<time datetime>` hätte das
+    jedem Crawler den falschen Tag gezeigt. Jetzt aus lokalen Datums-Komponenten formatiert; der Parser-Check
+    (`datetime` ↔ sichtbarer Text) ist Teil der Verifikation.
+  - **Offen:** Cloudflare schreibt einen eigenen „AI Crawl Control"-Block über unsere `robots.txt`. Für die
+    Such-Agenten ist das irrelevant (Cloud nennt sie nicht, unser Allow gilt eindeutig). Für `Google-Extended`
+    widersprechen sich beide (Cloud: Disallow, wir: Allow) — nach RFC 9309 gewinnt die weniger restriktive
+    Regel, garantiert ist das aber nicht. **Sauberer Weg: Clouds Block abschalten, dann ist `robots.txt`
+    die einzige Autorität — dafür braucht es einen Cloudflare-Zonen-API-Token (keiner hinterlegt).**
+- `2026-10-17` — **SEO-Audit-Fixes Welle 1 gemergt + live (`4b490a7`), an der Live-Seite verifiziert:**
+  HSTS aktiv (`max-age=31536000; includeSubDomains`), gehashte `/_astro/*`-Assets `immutable`,
+  Sitemap 19 → 18 URLs (kein `/subscribed/` mehr), `/subscribed/` `noindex`. Details im Eintrag unten.
 - `2026-10-16` — **Content-Welle 3 gemergt + live (Nimar-Go „über die ganze Seite und merge").**
   Neu: 3 Club-Reviews — *Naked Wines* ($40/Monat ins eigene Wein-Wallet, bis 60 % Angel-Preis,
   Kündigung nur per Telefon/Mail), *Gold Medal Wine Club* (3 Stufen ab $49/Sendung, Versand extra;
@@ -113,7 +138,10 @@
 - **Mail-Footer-Adresse bleibt Bochum** (Pflichtfeld, steht ohnehin im Impressum); Wechsel erst, wenn die Marke Umsätze macht.
 - **Look bleibt, Inhalt neu:** Neubrutalist-Optik behalten; keine Fake-Reviews, „Checked"-Daten überall.
 - **Eine Domain-Quelle statt 19 Hardcodes;** Canonical mit Trailing Slash.
-- **AI-Crawler bleiben gesperrt** (`robots.txt`), obwohl `llms.txt` sie einlädt — bewusst so (Nimar).
+- **KI-Zugang (Nimar-Entscheid 17.10.2026, dreht die frühere Sperre um):** „KI soll die Seite lesen und
+  suchen können — sie soll sogar auch dafür optimiert sein." → KI-**Suche/Antworten** erlaubt
+  (`ai-input=yes`), nur **Training** bleibt gesperrt (`ai-train=no`). Der frühere Widerspruch
+  (Sperre in `robots.txt` bei gleichzeitig einladendem `llms.txt`) ist damit aufgelöst.
 
 ## Fehlschläge & Korrekturen
 
@@ -135,6 +163,8 @@
 ## Nächste Schritte
 
 - [ ] **SEO-Audit abwarten** → Critical/High umsetzen (Branch → Preview → Merge), Report als PDF/HTML an Nimar.
+- [ ] **Cloudflare-AI-Crawl-Control abschalten** (braucht einen Zonen-API-Token) → `robots.txt` wird die
+      einzige Autorität, der `Google-Extended`-Widerspruch verschwindet.
 - [ ] Affiliate-Support-Antworten (FlexOffers, Impact #897752) → genannten Grund fixen, dann Re-Apply; Skimlinks/Sovrn prüfen.
 - [ ] Content-Welle 4: Wine Insiders, WSJ Wine, Plonk + Doku „Wie wir testen" (belegt Substanz für die Netzwerke).
 - [ ] Index-Stand beobachten (`~/.hermes/scripts/gsc.py inspect`); Cron `92efc5307dea` löschen, wenn alles beantragt ist.
