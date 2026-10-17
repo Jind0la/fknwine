@@ -7,6 +7,19 @@
 
 ## Aktueller Stand
 
+- `2026-10-17` — **Cloudflare Traffic gelesen (Token liegt, read-only) — Ergebnis: der Verkehr ist unser eigener.**
+  Leser: `~/.hermes/scripts/fknwine-gsc/cf_traffic.py` (`verify|summary|pages|referrers|countries|devices`),
+  Token in `~/.hermes/secrets/cloudflare-token` (600). **Wichtig gelernt: der GraphQL-Filter braucht den
+  `site_tag` (56bae9b3…), NICHT den Beacon-`site_token` (`dd89fc05…`) aus dem HTML** — der wird jetzt aus der
+  API geholt statt hartcodiert. `/user/tokens/verify` antwortet 401 (konto-eigener Token) → kein Fehler.
+  **Zahlen (90 T):** 60 Aufrufe / 60 Besuche. Länder: **50 DE, 10 US**. Geräte: **40 desktop/ChromeHeadless,
+  20 mobile/MobileSafari**. Tagesverlauf: 14.10. DE/mobile 10 · 16.10. DE/mobile 10 · 16.10. **DE/desktop 30**.
+  **Bewertung: keine echte Reichweite.** Die 30 Desktop-Aufrufe am 16.10. sind der `ChromeHeadless` —
+  also unsere eigene Audit-/Screenshot-Toolchain; die 20 mobilen sind Emulations-Captures bzw. Nimar selbst;
+  die 10 US-Besuche liegen zwischen 20.07. und 30.09., nicht im aktuellen Fenster. **Referrer: 100 % „(direkt)"**,
+  also kein einziger Verweis von außen. Zusammen mit GSC (0 Impressionen) und X (1 Follower): jeder Kanal steht
+  bei null. **Ehrlichkeits-Notiz:** die Fenstersummen schwanken leicht (7 T = 54, 28 T = 50, 90 T = 60) — die
+  Tagesaufschlüsselung ist die verlässlichere Ansicht; die Fenster-Aggregate traue ich weniger als den Tageszeilen.
 - `2026-10-17` — **Traffic-Analyse: es gibt keinen. Und der Grund ist nicht „zu wenig Content", sondern Indexierung.**
   **Belege:** GSC Search Analytics **0 Klicks / 0 Impressionen** über 7, 28 *und* 90 Tage. URL-Inspection:
   Startseite = *„Duplikat, Google hat eine andere Seite als der Nutzer als kanonische Seite bestimmt"* →
