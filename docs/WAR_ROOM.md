@@ -47,6 +47,15 @@ zu wenig Substanz") sind ein **Symptom dieses Problems**, keine Content-Frage. R
   (`<time datetime>` für jedes Check-Datum, meta robots, `llms.txt` Key-Facts) ·
   `4b3cfc0` Methodenseite `/how-we-test/`.
 - **Deal-Refresh:** Cron Mo 10:00 (local) prüft Deals am Merchant, schreibt `deals.ts` nur bei grünem Build.
+- **X-Wachstumssystem (17.10. aufgebaut):** Cron `638ebb99dfae` (täglich 15:00 = 9:00 ET) postet einen
+  Eintrag aus der Warteschlange `~/.hermes/state/fkn_x_queue.json` (`fkn_x_post.py`); Cron `9aca2d324c03`
+  (täglich 14:30) findet über `fkn_x_opportunities.py` frische Posts lebender Wein-Konten und liefert
+  **fertige Antwort-Entwürfe** per Telegram. Skill `x-growth` (+ `xurl` um die API-Grenze ergänzt).
+  **Harte Grenze, live geprüft:** Die X-API erlaubt **keine** Antwort/kein Quote auf fremde Posts
+  (403 „you are mentioned or are the author", Free-Tier) — `reply` schlägt fehl, `post`/`like`/`repost`/
+  `follow` gehen. **Antworten sind nur von Hand möglich**; Browser-Automatisierung wäre regelwidrig
+  (Ban-Risiko) und ist deshalb ausgeschlossen. Erster echter Post live (`Firstleaf: 'no fees' vs.
+  $25 restocking fee`, id `2111382787760554074`, per Read-back verifiziert).
 - **Domain/Deploy:** `site` in `astro.config.mjs` ist die **einzige** Domain-Quelle, Canonical mit
   Trailing Slash (Pages 308 `/x`→`/x/`); `always_use_https` + www→Apex 301 in der Zone
   `51e9dc8462690929e186758bf3a0916a`; Deploy über die Pages-GitHub-Integration (kein Wrangler-Token).
@@ -63,8 +72,15 @@ zu wenig Substanz") sind ein **Symptom dieses Problems**, keine Content-Frage. R
 - **Newsletter:** beehiiv live, Welcome-Flow E2E getestet, Issue #01 als Draft („A $10 Malbec and the fine
   print we actually read"). Byline/Signatur = „FKN Wine" (✱-Avatar), Legal-Seiten behalten den Operator-Namen,
   Footer Bochum. Composer-/CDP-Lehren im Skill `beehiiv-newsletter`.
-- **X:** @FKNWine, id `2074768137501675520`, schreib-verifiziert. **Lehre: Standalone-Link-Posts → 403
-  „not permitted" bei jungem Account; Link als Reply auf den eigenen Post.** Aufruf `xurl -u FKNWine …`.
+- **X:** @FKNWine, id `2074768137501675520`, schreib-verifiziert. Stand 17.10.: **1 Follower**, 46 Following,
+  7 Posts, 0 Medien. **Lehren:** (1) Standalone-Link-Posts → 403 „not permitted" bei jungem Account,
+  Link als Reply auf den eigenen Post; (2) **Antworten/Quotes auf fremde Posts sind über die API generell
+  gesperrt** (s. Infrastruktur) — Antwort-Wachstum braucht eine Menschenhand; (3) **drei „große" Wein-Accounts
+  sind tot** (@WineSpectator 14 Monate, @WineandSpirits 2,5 J, @drvino 3,6 J) — vor dem Antworten immer das
+  Post-Alter messen; (4) **lebendig und stündlich aktiv ist @WineEnthusiast (217k)**, dazu @WineFolly,
+  @winewankers, @vinography, @VinePair; (5) **Reichweite ohne Themenbezug ist wertlos** — @TastingTable
+  (1 Mio) postet Burger, für eine Weinmarke Nullreichweite; (6) bisherige Posts gingen im deutschen
+  Tageslicht raus = 2–5 Uhr US-Zeit, deshalb der 15:00-Cron. Aufruf immer `xurl -u FKNWine …`.
 - **Content-Stand:** 6 Club-Reviews, 3 Guides, Methodenseite, 19 URLs. E-E-A-T-Lücke geschlossen, indem
   die Clubs **selbst nachgelesen** wurden (Hilfe-Center + AGB) — gefundene Widersprüche: Firstleaf „no fees"
   vs. **$25 Restocking Fee**, Winc „Free Shipping always" vs. AGB **„$9 may apply"**, Firstleaf-Guthaben
