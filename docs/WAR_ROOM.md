@@ -7,6 +7,18 @@
 
 ## Aktueller Stand
 
+- `2026-10-17` — **Traffic-&-Index-Wächter live** (`hermes cron` Job `37a37f5866c4`, täglich 09:45,
+  no_agent → `telegram:807191501`). Skript `~/.hermes/scripts/fknwine_traffic_watch.sh` (Wrapper) →
+  `fknwine_traffic_watch.py`. Logik: **Montags immer Wochenreport; sonst nur bei Ereignis** (neu indexierte
+  URL, erster externer Referrer, erster Nicht-DE-Besuch); leerer stdout = still. State:
+  `~/.hermes/state/fknwine_traffic_state.json`. Zweimal echt gegen die APIs getestet (still + Report).
+  Zwei eigene Anfängerfehler dabei gefixt: (1) eigener Domain-Referrer galt als „externer Besuch" → `OUR_HOSTS`-Filter;
+  (2) Schlusszeile behauptete „keine Indexierung", während oben „1/19" stand.
+- `2026-10-17` — **Erster Index-Eintrag überhaupt.** URL-Inspection über alle 19 URLs: **`/about/` ist indexiert**
+  (Verdikt `PASS`, „Submitted and indexed", googleCanonical = eigene Domain, Crawl `2026-10-15T08:56Z`).
+  16 URLs = „URL is unknown to Google". **Startseite weiter `Duplicate, Google chose different canonical`** —
+  der `pages.dev`-Konflikt ist also NICHT behoben. Es gibt weiter **0 Klicks / 0 Impressionen**; indexiert ≠ gerankt.
+
 - `2026-10-17` — **Cloudflare Traffic gelesen (Token liegt, read-only) — Ergebnis: der Verkehr ist unser eigener.**
   Leser: `~/.hermes/scripts/fknwine-gsc/cf_traffic.py` (`verify|summary|pages|referrers|countries|devices`),
   Token in `~/.hermes/secrets/cloudflare-token` (600). **Wichtig gelernt: der GraphQL-Filter braucht den
