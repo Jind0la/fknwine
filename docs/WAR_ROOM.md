@@ -47,12 +47,16 @@ zu wenig Substanz") sind ein **Symptom dieses Problems**, keine Content-Frage. R
   (`<time datetime>` für jedes Check-Datum, meta robots, `llms.txt` Key-Facts) ·
   `4b3cfc0` Methodenseite `/how-we-test/`.
 - **Deal-Refresh:** Cron Mo 10:00 (local) prüft Deals am Merchant, schreibt `deals.ts` nur bei grünem Build.
-- **X-Wachstumssystem (17.10. aufgebaut):** Cron `638ebb99dfae` (täglich 15:00 = 9:00 ET) postet einen
-  Eintrag aus `~/.hermes/state/fkn_x_queue.json` (`fkn_x_post.py`); Cron **`2ec20ee15e3d`** (täglich 14:30)
-  findet über `fkn_x_opportunities.py` frische Posts lebender Wein-Konten und liefert **fertige
-  Antwort-Entwürfe** per Telegram — Format: **Antwort-Link als erste Zeile** jedes Blocks, Text zum
-  Kopieren, **keine Schluss-/Statuszeile** (Prompt liegt in `~/.hermes/state/fkn_x_digest_prompt.txt`).
-  Skill `x-growth` (+ `xurl` um die API-Grenze ergänzt).
+- **X-Wachstumssystem (17.10.):** Cron `638ebb99dfae` (täglich 15:00 = 9:00 ET) postet aus
+  `~/.hermes/state/fkn_x_queue.json` (`fkn_x_post.py`); Cron **`2ec20ee15e3d`** (täglich 14:30) liefert
+  **fertige Antwort-Entwürfe** per Telegram — **Link als erste Zeile**, dann der Fertigtext, **zweite Zeile
+  PFLICHT = Account-Hinweis** (`fkn_x_digest_prompt.txt`); **Lern-Loop:** Cron `bbbc8f7c7549` (täglich 23:00,
+  still) schreibt Schnappschüsse nach `~/.hermes/state/fkn_x_perf.jsonl`, Cron `1679e224fb1e` (Mo 15:00)
+  liefert die Wochen-Auswertung (`fkn_x_perf.py`). Skills `x-growth`, `xurl`.
+  **Der Loop ist nur möglich, weil Antworten eigene Posts des Markenkontos sind** — dadurch messbar.
+  **Fehler, der nicht wiederkommen darf:** Die ersten 3 Antworten wurden aus Nimars **privatem** Konto
+  abgeschickt, weil die Lieferung nur Link + Text enthielt. Seitdem steht der Account-Switch in jeder
+  Lieferung, und der Skill `x-growth` trägt die Regel „immer nennen, welches Konto antwortet".
   **Harte Grenze, live geprüft:** Die X-API erlaubt **keine** Antwort/kein Quote auf fremde Posts
   (403 „you are mentioned or are the author") — **X-Politik gegen LLM-Spam, keine Tarifstufe**
   (offizielle Ankündigung „Addressing LLM-Generated Spam"), ein Upgrade hilft also nicht. `post`/`like`/`repost`/
@@ -92,11 +96,10 @@ zu wenig Substanz") sind ein **Symptom dieses Problems**, keine Content-Frage. R
   @winewankers, @vinography, @VinePair; (5) **Reichweite ohne Themenbezug ist wertlos** — @TastingTable
   (1 Mio) postet Burger, für eine Weinmarke Nullreichweite; (6) bisherige Posts gingen im deutschen
   Tageslicht raus = 2–5 Uhr US-Zeit, deshalb der 15:00-Cron. Aufruf immer `xurl -u FKNWine …`.
-- **Content-Stand:** 6 Club-Reviews, 3 Guides, Methodenseite, 19 URLs. E-E-A-T-Lücke geschlossen, indem
-  die Clubs **selbst nachgelesen** wurden (Hilfe-Center + AGB) — gefundene Widersprüche: Firstleaf „no fees"
-  vs. **$25 Restocking Fee**, Winc „Free Shipping always" vs. AGB **„$9 may apply"**, Firstleaf-Guthaben
-  **verfällt bei Kündigung**, Winc **3-Tage-Frist** + Auto-Abrechner Insider Access ($59.95/Monat);
-  Wine Access als Ausnahme (keine Restocking-Gebühr, 35-Staaten-Liste, Cut-off 1 Werktag).
+- **Content-Stand:** 6 Club-Reviews, 3 Guides, Methodenseite, 19 URLs. E-E-A-T-Lücke geschlossen, indem die
+  Clubs **selbst nachgelesen** wurden (Hilfe-Center + AGB); die gefundenen Widersprüche (Firstleaf $25 vs.
+  „no fees", Winc „$9 may apply" vs. „Free shipping always", Guthaben-Verfall, 3-Tage-Frist, Wine Access als
+  Ausnahme) stehen im Detail in den Reviews und auf `/how-we-test/` — **nicht hier duplizieren.**
   **Wir haben die Clubs nicht gekauft — steht so auf jeder Seite.**
 
 ## Laufende Tasks
