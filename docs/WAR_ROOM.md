@@ -32,13 +32,17 @@ zu wenig Substanz") sind ein **Symptom dieses Problems**, keine Content-Frage. R
   mit dem falschen Wert meldet der Leser „keine Daten" und es sieht wie „kein Traffic" aus.
   `/user/tokens/verify` antwortet bei konto-eigenen Tokens 401 (kein Defekt).
 - **GSC:** Property per FILE verifiziert, `public/google35b2017bd84955fa.html` — **nie löschen**.
-  **Korrektur (17.10., live geprüft): der „Nachzug" hat NIE funktioniert.** Der Cron `92efc5307dea` wurde
-  als Hebel beschrieben („zieht die 19 URLs nach, ~10/Tag") — tatsächlich wurde **keine einzige** URL
-  beantragt: Google lehnt die Anfrage im Browser sofort mit „Kontingent überschritten" ab, das Protokoll
-  (`fknwine_gsc_requests_log.jsonl`) zeigt ausschließlich Ablehnungen, der State 0× „beantragt".
-  Die alte Meldung („Tageskontingent erreicht — N bleiben für morgen") hat das als Fortschritt verkauft;
-  Meldung in `run_pending.py` ist korrigiert. **Konsequenz: „Request Indexing" ist bei uns unbelegt** —
-  wir können nicht sagen, ob es helfen würde, weil es nie ausgeführt wurde.
+  **Korrektur (17.10., live geprüft) — der „Nachzug" ist kein Hebel, aber auch nicht tot:**
+  Der automatisierte Nachzug hat **nie einen Erfolg verzeichnet** (State 0× „beantragt", alle Läufe im
+  Protokoll nur „Kontingent überschritten"), und die Meldung („Tageskontingent erreicht — N bleiben für
+  morgen") hat das als Fortschritt verkauft; Meldung in `run_pending.py` korrigiert.
+  **Gleichzeitig zeigt das GSC-UI „Indexierung beantragen · Noch einmal beantragen"** (Sitzung eingeloggt,
+  kein Kontingent-Banner) — Anfragen sind also früher durchgegangen; „nie beantragt" wäre eine
+  Überkorrektur. **Das Entscheidende ist das Ergebnis in beiden Fällen:** 18 von 19 URLs sind Google
+  „unbekannt", die Startseite wird seit 16.10. 10:40 geführt und weiter als Duplikat mit
+  googleCanonical = pages.dev. **„Request Indexing" hat bei uns bislang keine Indexierung erzeugt** —
+  deshalb ist es kein Hebel, auf den wir planen. Job von täglich auf **wöchentlich** reduziert
+  (täglicher Browser-Lauf für einen belegbar wirkungslosen Knopf).
   **Sitemap am 17.10. neu eingereicht**, weil Google noch mit dem alten Stand arbeitet (33 statt 19 URLs).
 - **KI-Zugang:** Such-/Antwort-Agenten erlaubt (`ai-input=yes`), Training gesperrt (`ai-train=no`).
   Cloudflares AI-Panel (Zone → Security) ist die **Autorität** (Search/Agent Allow, Training Disallow,
