@@ -24,11 +24,20 @@
     schob das Datum in Berlin auf den **15.** zurück (UTC-Konvertierung) — im `<time datetime>` hätte das
     jedem Crawler den falschen Tag gezeigt. Jetzt aus lokalen Datums-Komponenten formatiert; der Parser-Check
     (`datetime` ↔ sichtbarer Text) ist Teil der Verifikation.
-  - **Offen:** Cloudflare schreibt einen eigenen „AI Crawl Control"-Block über unsere `robots.txt`. Für die
-    Such-Agenten ist das irrelevant (Cloud nennt sie nicht, unser Allow gilt eindeutig). Für `Google-Extended`
-    widersprechen sich beide (Cloud: Disallow, wir: Allow) — nach RFC 9309 gewinnt die weniger restriktive
-    Regel, garantiert ist das aber nicht. **Sauberer Weg: Clouds Block abschalten, dann ist `robots.txt`
-    die einzige Autorität — dafür braucht es einen Cloudflare-Zonen-API-Token (keiner hinterlegt).**
+  - **Aufgelöst (Nimar-Entscheid 17.10.): Cloudflares Panel bleibt AN — es ist die Autorität.**
+    Zone → Security → „Configure AI bot policies": **Search = Allow, Agent = Allow, Training = Disallow**,
+    **„Enable Bot Preference Sync" AN**. Das Panel steuert beides: den vorangestellten robots.txt-Block
+    *und* die Sperre am Edge. Messung nach dem Deploy: Such-Agenten (PerplexityBot, OAI-SearchBot,
+    Claude-SearchBot, ChatGPT-User, Applebot, DuckAssistBot) **erlaubt**, Trainings-Bots (GPTBot,
+    ClaudeBot, CCBot) **BLOCKIERT**; Edge-Gegenprobe per echtem Abruf: PerplexityBot/OpenAI-SearchBot
+    → **200**, GPTBot → **403**. **Eigener Fix dazu:** unsere `robots.txt` hatte für `Google-Extended`
+    `Allow` gesetzt, während Clouds Panel den Token als Training führt (Disallow) — zwei gegenteilige
+    Aussagen für denselben Bot. Der Allow ist raus (Commit `2796038`), die Begründung steht als Kommentar
+    an Ort und Stelle. **Bewusster Nebeneffekt:** über Clouds Trainings-Liste fallen auch Baiduspider,
+    PetalBot (Suchmaschinen für andere Märkte) und SemrushBot-SWA/Awario (SEO-/Monitoring-Tools) raus —
+    für eine US-first Seite vernachlässigbar. **Monitoring-Notiz:** Die Liste für alles, was Cloud
+    einsortiert, ist damit *nicht* mehr im Repo versioniert — nach Änderungen im Panel die Live-Datei
+    neu parsen.
 - `2026-10-17` — **SEO-Audit-Fixes Welle 1 gemergt + live (`4b490a7`), an der Live-Seite verifiziert:**
   HSTS aktiv (`max-age=31536000; includeSubDomains`), gehashte `/_astro/*`-Assets `immutable`,
   Sitemap 19 → 18 URLs (kein `/subscribed/` mehr), `/subscribed/` `noindex`. Details im Eintrag unten.
@@ -171,8 +180,9 @@
 ## Nächste Schritte
 
 - [ ] **SEO-Audit abwarten** → Critical/High umsetzen (Branch → Preview → Merge), Report als PDF/HTML an Nimar.
-- [ ] **Cloudflare-AI-Crawl-Control abschalten** (braucht einen Zonen-API-Token) → `robots.txt` wird die
-      einzige Autorität, der `Google-Extended`-Widerspruch verschwindet.
+- [ ] **KI-Zugang beobachten:** Panel-Einstellungen stehen (Search/Agent Allow, Training Disallow).
+      Nach jeder Panel-Änderung die Live-`robots.txt` neu parsen (Such-Agenten erlaubt / Training blockiert)
+      — ein Token braucht es dafür nicht mehr, die Entscheidung ist Nimar-seitig gefallen.
 - [ ] Affiliate-Support-Antworten (FlexOffers, Impact #897752) → genannten Grund fixen, dann Re-Apply; Skimlinks/Sovrn prüfen.
 - [ ] Content-Welle 4: Wine Insiders, WSJ Wine, Plonk + Doku „Wie wir testen" (belegt Substanz für die Netzwerke).
 - [ ] Index-Stand beobachten (`~/.hermes/scripts/gsc.py inspect`); Cron `92efc5307dea` löschen, wenn alles beantragt ist.
