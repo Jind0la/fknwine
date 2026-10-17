@@ -134,11 +134,10 @@ zu wenig Substanz") sind ein **Symptom dieses Problems**, keine Content-Frage. R
   nicht — erst `Emulation.setDeviceMetricsOverride` + `docScrollWidth` zeigte die Wahrheit.
 - **Eigener Bug in der AI-Welle:** `Date.parse("Oct 16, 2026")` + `toISOString()` schob das Datum in Berlin
   auf den 15. zurück (UTC) — Maschinen hätten den falschen Tag gelesen. Jetzt lokale Datumskomponenten.
-- **Audit-Rollen sind Selbstauskünfte:** „Startseite hat 3 H1" war falsch (sie hat 1); die Behauptung
-  „`og-default.png` noch DE-Stand" ebenfalls. Kernbefunde immer selbst nachprüfen.
-- **Wächter-Fehlalarm (eigener):** eigener Domain-Referrer galt als „externer Besuch" → `OUR_HOSTS`-Filter;
-  und eine Schlusszeile behauptete „keine Indexierung", während oben „1/19" stand. Ausgaben gegen die
-  eigenen Zahlen prüfen, nicht gegen die Erwartung.
+- **Fremdberichte und eigene Meldungen sind Selbstauskünfte.** Die Audit-Rollen behaupteten „Startseite hat
+  3 H1" (sie hat 1) und „`og-default.png` noch DE" (ist EN). Und der eigene Wächter meldete den eigenen
+  Domain-Referrer als „ersten externen Besuch" und behauptete „keine Indexierung" direkt über „1/19".
+  **Regel: Kernbefunde und jede Ausgabe gegen die echten Zahlen prüfen, nie gegen die Erwartung.**
 
 ## Known Limitations
 
