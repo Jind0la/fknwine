@@ -10,10 +10,14 @@
 # Der Content-Signal-Header trennt das ausdrücklich: ai-input=yes (Inhalte
 # dürfen in Antworten einfließen) vs. ai-train=no (nicht in Modellgewichte).
 #
-# Cloudflare schreibt seinen AI-Crawl-Control-Block oberhalb dieser Datei in
-# die ausgelieferte robots.txt. Widersprechen sich beide für denselben
-# User-Agent, gewinnt nach RFC 9309 / Google-Semantik die weniger restriktive
-# Regel — die Allow-Gruppen hier gelten also auch gegen Clouds Pauschal-Disallow.
+# Cloudflare schreibt seinen Block oberhalb dieser Datei in die ausgelieferte
+# robots.txt. Stand 17.10.2026 ist Clouds Panel (Zone → Security → "Configure
+# AI bot policies") identisch mit unserer Absicht: Search = Allow, Agent =
+# Allow, Training = Disallow — und es blockt Trainings-Bots zusätzlich am Edge
+# (verifiziert: PerplexityBot/OAI-SearchBot/Claude-SearchBot/ChatGPT-User → 200,
+# GPTBot → 403). Diese Datei ergänzt deshalb nur, was das Panel nicht abdeckt
+# (Such-Agenten, die dort nicht gelistet sind, plus Content-Signal) und
+# widerspricht ihm bewusst nirgends.
 
 # --- Alle: Signale setzen, alles erlauben --------------------------------
 User-agent: *
@@ -41,11 +45,12 @@ User-agent: Claude-User
 Content-Signal: search=yes,ai-input=yes,ai-train=no,use=reference
 Allow: /
 
-# Google-Extended steuert Gemini/Vertex-Grounding. Erlaubt, damit Gemini uns
-# zitieren kann; Googles normales Such-Indexing ist davon unberührt.
-User-agent: Google-Extended
-Content-Signal: search=yes,ai-input=yes,ai-train=no,use=reference
-Allow: /
+# Google-Extended: NICHT hier widersprechen. Cloudflares AI-bot-policies-Panel
+# führt den Token unter "Training" (→ Disallow) und schreibt seinen Block über
+# diese Datei. Eine Allow-Zeile hier würde eine zweite, widersprüchliche
+# Aussage für denselben Bot erzeugen. Googles normales Such-Indexing (Googlebot)
+# und AI Overviews laufen davon unberührt; wer Gemini-Grounding erlauben will,
+# stellt das in diesem Panel um, nicht in dieser Datei.
 
 # Apples Such-Crawler (Siri/Spotlight). Applebot-Extended (Training) bleibt
 # separat gesperrt.
