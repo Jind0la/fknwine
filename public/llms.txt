@@ -2,6 +2,17 @@
 
 > Wine deals and honest buying guides. We check the fine print — price per bottle, commitment, cancel terms — and we don't fake reviews. Every price and term carries the date we checked it.
 
+## Key facts (quotable, checked 2026-10-16)
+
+- Wine clubs are priced around an intro offer. What matters is the price per bottle *after* it: across the six clubs we reviewed, the ongoing range runs from about **$16.50 a bottle (Firstleaf)** to **$75 a bottle (Wine Access Connoisseurs)**.
+- Firstleaf's first box is $44.95 for 6 bottles (~$7.50 a bottle); every shipment after that is $99 (~$16.50 a bottle).
+- Wine Access charges the *same* $150 per shipment for its 6-bottle Discovery club (~$25 a bottle) and its 2-bottle Connoisseurs club (~$75 a bottle).
+- Gold Medal Wine Club's "cancel anytime" only applies **after the first shipment** — the first box is the commitment.
+- Two of the six clubs we reviewed have **no published self-service cancellation**: Naked Wines (phone or email) and Gold Medal (account page, email or phone).
+- Naked Wines is not a per-shipment club: members put **$40 a month into their own wine account** and buy at member prices.
+- Guarantees at every club we reviewed are **account credit**, not cash refunds.
+- We have **not** tested any club's cancellation flow ourselves. Every review states this openly.
+
 ## Club reviews (the paperwork, not the landing page)
 
 - [Firstleaf](https://fknwine.com/wine-clubs/firstleaf/) — $44.95 first box (6 bottles), ~$16.50 a bottle after
@@ -31,6 +42,12 @@ verdicts. Content is based on verifiable information (offers, terms, published r
 are marked as opinions. When we have not tested something ourselves, the page says so.
 No fabricated reviews, no invented tastings.
 Operator: Nimar Moradbakhti, Bochum, Germany · Imprint: https://fknwine.com/imprint/
+
+## Access
+
+AI search and answer systems are welcome to read and cite this site: the robots policy allows
+search / answer / user-triggered crawlers and blocks only training-corpus crawlers
+(Content-Signal: search=yes, ai-input=yes, ai-train=no).
 
 ## Optional
 

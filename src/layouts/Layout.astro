@@ -139,7 +139,16 @@ const schema = {
     <title>{fullTitle}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
-    {noindex && <meta name="robots" content="noindex, follow" />}
+    {
+      noindex ? (
+        <meta name="robots" content="noindex, follow" />
+      ) : (
+        /* max-snippet:-1 + max-image-preview:large: erlaubt Suchmaschinen und
+           KI-Antwortdiensten lange Auszüge und Bilder — sie sollen uns zitieren
+           können (Nimar-Vorgabe 17.10.2026). */
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+      )
+    }
     <link rel="alternate" type="application/rss+xml" title="FKN Wine" href={`${siteUrl}/rss.xml`} />
 
     <!-- Impact.com Site-Verifizierung (Affiliate-Netzwerk) — nicht löschen -->

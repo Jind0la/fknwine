@@ -8,6 +8,23 @@ interface Props {
 
 const { deal } = Astro.props;
 const href = outUrl(deal.merchantId);
+
+// <time datetime> verlangt ein maschinenlesbares Datum. Die Deal-Felder sind
+// aber Menschentexte ("Oct 16, 2026") und teils gar kein Datum
+// ("While it lasts") — deshalb nur wrappen, wenn es wirklich parst.
+const isoDate = (value?: string): string | null => {
+  if (!value) return null;
+  const parsed = Date.parse(value);
+  if (Number.isNaN(parsed)) return null;
+  // NICHT toISOString() — das rechnet nach UTC und schiebt "Oct 16" in
+  // Zeitzonen östlich von UTC auf den 15. zurück. Lokale Komponenten nutzen.
+  const d = new Date(parsed);
+  const pad = (n: number) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+};
+
+const checkedIso = isoDate(deal.checked);
+const expiresIso = isoDate(deal.expires);
 ---
 
 <article class="brutal-card deal-card">
@@ -27,7 +44,17 @@ const href = outUrl(deal.merchantId);
 
   <div class="deal-foot">
     <span class="deal-meta">
-      Checked {deal.checked}{deal.expires ? ` · Ends ${deal.expires}` : ''}
+      Checked{
+        checkedIso ? <time datetime={checkedIso}>{deal.checked}</time> : deal.checked
+      }
+      {
+        deal.expires && (
+          <>
+            {' · Ends '}
+            {expiresIso ? <time datetime={expiresIso}>{deal.expires}</time> : deal.expires}
+          </>
+        )
+      }
     </span>
     <a
       class="brutal-btn deal-btn"

@@ -52,7 +52,9 @@ const otherGuides = allGuides
     <header style="margin-top: 1.5rem;">
       <div class="guide-top">
         <span class="guide-cat">{data.category}</span>
-        <span class="updated-note">Updated {data.updated}</span>
+        <span class="updated-note">
+          Updated <time datetime={data.updated}>{data.updated}</time>
+        </span>
       </div>
       <h1 style="font-size: clamp(1.9rem, 5.5vw, 2.8rem); margin: 0.75rem 0 0.5rem;">
         {data.title}

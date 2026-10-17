@@ -1,32 +1,96 @@
+# FKN Wine — robots.txt
+#
+# ANWEISUNG (Nimar, 17.10.2026): "KI soll die Seite lesen und suchen können —
+# sie soll sogar auch dafür optimiert sein." Die Politik hier ist deshalb *auf*
+# KI-Suche ausgerichtet:
+#
+#   KI-Suche / Antworten / nutzergesteuerte Abrufe  -> ERLAUBT
+#   reine Trainings-Korpora                         -> GESPERRT
+#
+# Der Content-Signal-Header trennt das ausdrücklich: ai-input=yes (Inhalte
+# dürfen in Antworten einfließen) vs. ai-train=no (nicht in Modellgewichte).
+#
+# Cloudflare schreibt seinen AI-Crawl-Control-Block oberhalb dieser Datei in
+# die ausgelieferte robots.txt. Widersprechen sich beide für denselben
+# User-Agent, gewinnt nach RFC 9309 / Google-Semantik die weniger restriktive
+# Regel — die Allow-Gruppen hier gelten also auch gegen Clouds Pauschal-Disallow.
+
+# --- Alle: Signale setzen, alles erlauben --------------------------------
 User-agent: *
+Content-Signal: search=yes,ai-input=yes,ai-train=no,use=reference
 Allow: /
 
-# AI Crawlers (2026)
+# --- KI-Suche, Antwortmaschinen, nutzergesteuerte Abrufe: ERLAUBT ---------
+User-agent: PerplexityBot
+Content-Signal: search=yes,ai-input=yes,ai-train=no,use=reference
+Allow: /
+
+User-agent: OAI-SearchBot
+Content-Signal: search=yes,ai-input=yes,ai-train=no,use=reference
+Allow: /
+
+User-agent: ChatGPT-User
+Content-Signal: search=yes,ai-input=yes,ai-train=no,use=reference
+Allow: /
+
+User-agent: Claude-SearchBot
+Content-Signal: search=yes,ai-input=yes,ai-train=no,use=reference
+Allow: /
+
+User-agent: Claude-User
+Content-Signal: search=yes,ai-input=yes,ai-train=no,use=reference
+Allow: /
+
+# Google-Extended steuert Gemini/Vertex-Grounding. Erlaubt, damit Gemini uns
+# zitieren kann; Googles normales Such-Indexing ist davon unberührt.
+User-agent: Google-Extended
+Content-Signal: search=yes,ai-input=yes,ai-train=no,use=reference
+Allow: /
+
+# Apples Such-Crawler (Siri/Spotlight). Applebot-Extended (Training) bleibt
+# separat gesperrt.
+User-agent: Applebot
+Content-Signal: search=yes,ai-input=yes,ai-train=no,use=reference
+Allow: /
+
+User-agent: DuckAssistBot
+Content-Signal: search=yes,ai-input=yes,ai-train=no,use=reference
+Allow: /
+
+# --- Training-/Korpus-Crawler: GESPERRT ---------------------------------
 User-agent: GPTBot
+Content-Signal: ai-train=no
+Disallow: /
+
+User-agent: ClaudeBot
+Content-Signal: ai-train=no
 Disallow: /
 
 User-agent: CCBot
 Disallow: /
 
-User-agent: Claude-Web
-Disallow: /
-
 User-agent: anthropic-ai
 Disallow: /
 
-User-agent: Google-Extended
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Applebot-Extended
 Disallow: /
 
 User-agent: cohere-ai
 Disallow: /
 
-User-agent: PerplexityBot
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: Bytespider
 Disallow: /
 
 User-agent: Amazonbot
 Disallow: /
 
-User-agent: FacebookBot
+User-agent: Diffbot
 Disallow: /
 
 User-agent: Omgilibot
@@ -35,8 +99,11 @@ Disallow: /
 User-agent: Omgili
 Disallow: /
 
+User-agent: FacebookBot
+Disallow: /
+
 User-agent: YouBot
 Disallow: /
 
-# Allow our own content
+# --- Eigenes ------------------------------------------------------------
 Sitemap: https://fknwine.com/sitemap-index.xml

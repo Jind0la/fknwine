@@ -79,7 +79,9 @@ const facts: Array<[string, string]> = [
     <header style="margin-top: 1.5rem;">
       <div class="review-top">
         <span class="verdict-chip">{data.verdictLabel}</span>
-        <span class="checked-note">Checked {data.lastChecked}</span>
+        <span class="checked-note">
+          Checked <time datetime={data.lastChecked}>{data.lastChecked}</time>
+        </span>
       </div>
       <h1 style="font-size: clamp(2rem, 6vw, 3rem); margin: 0.75rem 0 0.5rem;">{data.name}</h1>
       <p style="font-size: 1.1rem; margin: 0;">{data.summary}</p>
@@ -87,7 +89,9 @@ const facts: Array<[string, string]> = [
 
     <!-- === QUICK FACTS === -->
     <section class="brutal-card facts-box">
-      <h2 style="font-size: 1.1rem; margin-top: 0;">The facts (as of {data.lastChecked})</h2>
+      <h2 style="font-size: 1.1rem; margin-top: 0;">
+        The facts (as of <time datetime={data.lastChecked}>{data.lastChecked}</time>)
+      </h2>
       <dl class="facts-list">
         {
           facts.map(([label, value]) => (
