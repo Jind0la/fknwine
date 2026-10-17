@@ -38,9 +38,16 @@
     für eine US-first Seite vernachlässigbar. **Monitoring-Notiz:** Die Liste für alles, was Cloud
     einsortiert, ist damit *nicht* mehr im Repo versioniert — nach Änderungen im Panel die Live-Datei
     neu parsen.
-- `2026-10-17` — **SEO-Audit-Fixes Welle 1 gemergt + live (`4b490a7`), an der Live-Seite verifiziert:**
-  HSTS aktiv (`max-age=31536000; includeSubDomains`), gehashte `/_astro/*`-Assets `immutable`,
-  Sitemap 19 → 18 URLs (kein `/subscribed/` mehr), `/subscribed/` `noindex`. Details im Eintrag unten.
+- `2026-10-17` — **SEO-Audit-Fixes Welle 1 gemergt + live (`4b490a7`), an der Live-Seite verifiziert.**
+  Zehn Fixes aus dem Audit: (1) `public/_headers` → **HSTS** + `immutable` für `/_astro/*` (verifiziert live:
+  Header da, Assets unveränderlich); (2) `/subscribed/` `noindex` + Sitemap-Filter (19 → 18); (3) **Schema-@graph**
+  mit `@id`, `sameAs: x.com/FKNWine`, Raster-Logo (`logo-512.png`), `Article.image`, `BreadcrumbList`,
+  Autor/Publisher als `@id`-Referenz; (4) `robots.txt` → `Sitemap: sitemap-index.xml`; (5) **interne Verlinkung
+  gemesht** — Reviews ↔ Guides, Deals-Seite → alle 6 Reviews (die 9 Spokes waren Sackgassen);
+  (6) **Verdicts entschieden** statt „Depends …"; (7) Meta-Beschreibungen ≤155 Zeichen, Titel ≤52;
+  (8) Deal-Links nennen ihren Händler („Get this deal at WTSO →"); (9) Nav-X ist ein SVG-Icon, alle
+  Header-/Button-Touch-Ziele ≥44 px, Tabellen fokussierbar + sichtbar scrollbar; (10) `llms.txt` auf den
+  echten Stand (19 statt 7 Seiten).
 - `2026-10-17` — **E-E-A-T-Lücke geschlossen: Methoden-Seite + erstmals echte Erst-Hand-Funde (`/how-we-test/`).**
   Die Lücke aus dem Audit war „kein Autor, keine eigene Erfahrung". Statt Erfahrung zu behaupten, habe ich
   die Clubs **selbst nachgelesen** — Landingpage, **Hilfe-Center und AGB** — und die Widersprüche gefunden:
@@ -73,21 +80,6 @@
   `FULL-AUDIT-REPORT.md` im Audit-Ordner. **Wichtig: die Rollen sind Selbstauskünfte** — ich habe die
   Kernbefunde selbst nachgeprüft; eine Behauptung war falsch („Startseite hat 3 H1" → sie hat **1**).
   Ebenfalls korrigiert: `og-default.png` ist **EN** (die alte Notiz „noch DE-Stand" war falsch).
-- `2026-10-17` — **SEO-Audit-Fixes Welle 1 auf `fix/seo-audit-wave1` (Preview offen, Merge offen).**
-  Umgesetzt und im Build verifiziert: (1) `public/_headers` → **HSTS** + `immutable` für `/_astro/*`
-  (vorher revalidierte jeder Besuch CSS und Fonts); (2) `/subscribed/` bekommt `noindex` und fliegt per
-  Sitemap-Filter raus (Sitemap 19 → 18); (3) **Schema-@graph** mit `@id`, `sameAs: x.com/FKNWine`,
-  Raster-Logo (`logo-512.png` statt SVG-Favicon), `Article.image`, `BreadcrumbList`, Autor/Publisher als
-  `@id`-Referenz; (4) `robots.txt` → `Sitemap: sitemap-index.xml`; (5) **interne Verlinkung gemesht** —
-  Club-Reviews ↔ Guides, Deals-Seite → alle 6 Reviews (die 9 Spokes waren Sackgassen);
-  (6) **Verdicts entschieden** statt „Depends …" auf allen 6 Reviews; (7) Meta-Beschreibungen ≤155 Zeichen
-  (ein Clamp-Helper im Layout) und Titel ≤52; (8) Deal-Links heißen jetzt „Get this deal at WTSO →"
-  (Agenten konnten 5 identische Linknamen nicht unterscheiden); (9) Nav-X ist ein SVG-Icon, alle
-  Header-/Button-Touch-Ziele ≥44 px, Tabellen sind fokussierbar + scrollen sichtbar; (10) `llms.txt` auf
-  den echten Stand gebracht (19 statt 7 Seiten).
-  **Offen für Nimar (bewusste Entscheidung, nicht eigenmächtig geändert):** `robots.txt` blockt
-  PerplexityBot — das ist ein **Such**-Crawler, die Seite fehlt damit in Perplexity-Antworten, obwohl
-  `llms.txt` KI-Systeme einlädt und Content-Signal `search=yes` sagt.
 - `2026-10-16` — **Awin: Bewerbung APPROVED + erste Programm-Bewerbungen raus.** Publisher **FKN Wine, ID 3126259** aktiv.
   **Beworben:** Gold Medal Wine Club (59079), ONEHOPE Wine (39702), Parcelle Wine (94853); Personal Wine (39786) öffnet kein Modal.
   **Profil 100 %** (Avatar ✱-Marke, Adresse Mauritiusstraße); **Nimar-Part offen: Telefonnummer**. Awin-Eigenheiten:
