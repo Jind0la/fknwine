@@ -48,11 +48,14 @@ zu wenig Substanz") sind ein **Symptom dieses Problems**, keine Content-Frage. R
   `4b3cfc0` Methodenseite `/how-we-test/`.
 - **Deal-Refresh:** Cron Mo 10:00 (local) prüft Deals am Merchant, schreibt `deals.ts` nur bei grünem Build.
 - **X-Wachstumssystem (17.10. aufgebaut):** Cron `638ebb99dfae` (täglich 15:00 = 9:00 ET) postet einen
-  Eintrag aus der Warteschlange `~/.hermes/state/fkn_x_queue.json` (`fkn_x_post.py`); Cron `9aca2d324c03`
-  (täglich 14:30) findet über `fkn_x_opportunities.py` frische Posts lebender Wein-Konten und liefert
-  **fertige Antwort-Entwürfe** per Telegram. Skill `x-growth` (+ `xurl` um die API-Grenze ergänzt).
+  Eintrag aus `~/.hermes/state/fkn_x_queue.json` (`fkn_x_post.py`); Cron **`2ec20ee15e3d`** (täglich 14:30)
+  findet über `fkn_x_opportunities.py` frische Posts lebender Wein-Konten und liefert **fertige
+  Antwort-Entwürfe** per Telegram — Format: **Antwort-Link als erste Zeile** jedes Blocks, Text zum
+  Kopieren, **keine Schluss-/Statuszeile** (Prompt liegt in `~/.hermes/state/fkn_x_digest_prompt.txt`).
+  Skill `x-growth` (+ `xurl` um die API-Grenze ergänzt).
   **Harte Grenze, live geprüft:** Die X-API erlaubt **keine** Antwort/kein Quote auf fremde Posts
-  (403 „you are mentioned or are the author", Free-Tier) — `reply` schlägt fehl, `post`/`like`/`repost`/
+  (403 „you are mentioned or are the author") — **X-Politik gegen LLM-Spam, keine Tarifstufe**
+  (offizielle Ankündigung „Addressing LLM-Generated Spam"), ein Upgrade hilft also nicht. `post`/`like`/`repost`/
   `follow` gehen. **Antworten sind nur von Hand möglich**; Browser-Automatisierung wäre regelwidrig
   (Ban-Risiko) und ist deshalb ausgeschlossen. Erster echter Post live (`Firstleaf: 'no fees' vs.
   $25 restocking fee`, id `2111382787760554074`, per Read-back verifiziert).
