@@ -1,4 +1,4 @@
-// Deal-Feed (erste Fuhre, Stand 16.10.2026 — jede Zeile am Merchant geprüft).
+// Deal-Feed (Stand 19.10.2026 — jede Zeile am Merchant geprüft).
 // Ab Content-Welle 2: Befüllung/Refresh per Cron aus Deal-Quellen-Scannern.
 
 export interface Deal {
@@ -18,30 +18,17 @@ export interface Deal {
 
 export const deals: Deal[] = [
   {
-    id: 'wtso-achaval-ferrer-takeover',
+    id: 'wtso-palazzo-brunello-2020',
     merchantId: 'wtso',
     merchantLabel: 'WTSO',
-    title: 'Achaval Ferrer Winery Takeover — 12 bottles for $120',
+    title: 'Palazzo Brunello di Montalcino 2020 — $26.99',
     detail:
-      'Achaval Ferrer is one of Mendoza\'s best-known Malbec producers — 12 bottles for $120 with free shipping. That\'s $10 a bottle while the takeover runs.',
-    price: '$120 · 12 bottles',
-    badge: 'WINERY TAKEOVER',
-    expires: 'Oct 18, 2026',
-    checked: 'Oct 16, 2026',
-    category: 'shop',
-  },
-  {
-    id: 'wtso-legon-ribera-del-duero',
-    merchantId: 'wtso',
-    merchantLabel: 'WTSO',
-    title: 'Legón Ribera del Duero "Premium" 2018 — 94 pts',
-    detail:
-      'Wine Enthusiast 94 pts, 67% off the $55 comparable price. Flash deal — valid on 4+ bottles, free shipping at 4+. Gone when it\'s gone.',
-    price: '$17.99',
-    compareAt: '$55 comparable',
-    badge: '67% OFF',
+      'Sangiovese from Montalcino, 64% off the $75 comparable price. 92 points from four critics (Wine Spectator among them). Free shipping on orders $60+, so three bottles clear it; a $2.99 handling fee per order may apply.',
+    price: '$26.99',
+    compareAt: '$75 comparable',
+    badge: '64% OFF',
     expires: 'While it lasts',
-    checked: 'Oct 16, 2026',
+    checked: 'Oct 19, 2026',
     category: 'shop',
   },
   {
@@ -54,7 +41,7 @@ export const deals: Deal[] = [
     price: '−$20',
     code: 'HAUNT20',
     expires: 'Oct 31, 2026',
-    checked: 'Oct 16, 2026',
+    checked: 'Oct 19, 2026',
     category: 'code',
   },
   {
@@ -66,7 +53,7 @@ export const deals: Deal[] = [
       '$7.50 a bottle to test if a personalized club beats your supermarket run. After that $99 per shipment (~$16.50 a bottle). No commitment — cancel anytime.',
     price: '$44.95 · 6 bottles',
     badge: 'INTRO OFFER',
-    checked: 'Oct 16, 2026',
+    checked: 'Oct 19, 2026',
     category: 'club',
   },
   {
@@ -78,7 +65,7 @@ export const deals: Deal[] = [
       'The current intro offer for new members — spread across four shipments, on top of the always-on 20% member discount and free shipping. Packs available without a membership if you want to taste first.',
     price: '$100 off',
     badge: 'INTRO OFFER',
-    checked: 'Oct 16, 2026',
+    checked: 'Oct 19, 2026',
     category: 'club',
   },
 ];
