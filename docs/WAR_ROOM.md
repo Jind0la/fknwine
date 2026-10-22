@@ -6,24 +6,33 @@
 
 ## Kernbefund (22.10.2026, SEO-Audit mit echten Daten)
 
-**Indexierung hat gedreht: 19 → 25 URLs im Index** (SERP `site:fknwine.com`), und die 6 alten DE-URLs
-sind noch drin: `/artikel/`, `/artikel/rose-guide-supermarkt/`, `/artikel/wein-fuer-pizza/`,
-`/tags/Pizza/`, `/tags/Weißwein/`, `/datenschutz/` — die ersten drei per 301 → `/`, die Tags waren
-**404** (jetzt 301, Branch `seo/audit-2026-10-22`). **Duplikat-Befund vom 17.10. ist erledigt:**
-`fknwine.pages.dev` liefert 200, aber Canonical/og:url zeigen auf `fknwine.com`.
-**GSC 28 T (24.09.–20.10.): 12 Impressions, 0 Klicks — alle 12 kommen von alten DE-URLs**
-(bestes: `rose-guide-supermarkt` Pos 8). Die 19 EN-Seiten haben **null** Impressionen.
-**Backlinks: 2 Links / 2 Referring Domains, Serpstat Domain Rank 8** → Autorität ist der Flaschenhals,
-nicht On-Page. **Technik/CWV (Lighthouse mobil, 22.10.): Perf 99 · A11y 92 · SEO 92 · BP 79**
-(FCP 1,8 s · LCP 1,9 s · CLS 0,001 · TBT 0 ms); Desktop Perf 100. Alle 20 URLs 200, Canonicals
-sauber, 1×H1, `lang="en"`, Article+Breadcrumb+Organization-Schema, alle Bilder mit ALT.
-**On-Page ist gut; die Seiten zielen nur nicht auf Keywords mit Volumen** (US: wine club 12.100/KD 52,
-wine delivery 8.100/61, wine subscription 4.400/51, **best wine club 880/35**, **wine club reviews
-70/KD 15**, firstleaf review 140/17, cheap wine club 140/32). Reihenfolge bleibt:
-**Autorität + Keyword-Zielschärfe → dann Content-Welle 4.**
+**Die Indexierung ist durch — nicht mehr 1/19, sondern bestätigt indexiert.** URL-Inspection (GSC-API,
+22.10.): Startseite **PASS, „Submitted and indexed", `googleCanonical = fknwine.com`**; `/wine-clubs/` PASS;
+`/wine-clubs/firstleaf/` PASS. Das **Duplikat-Problem vom 17.10. ist damit erledigt** (`pages.dev` liefert
+200, Canonical/og:url zeigen auf `fknwine.com`). Die 8 neuen/geänderten Seiten sind „unknown", bis Google
+sie crawlt — Sitemap wurde heute 07:10 geladen (19 → 21 URLs), IndexNow hat alle 21 an Bing/Yandex/Seznam/Naver
+gepusht (HTTP 200/202).
+**Es fehlt also nicht Indexierung, sondern Ranking:** GSC 28 T (24.09.–20.10.) = 12 Impressions / 0 Klicks,
+**alle 12 von alten DE-URLs** (`/artikel/rose-guide-supermarkt/` Pos 8, `/artikel/wein-fuer-pizza/` Pos 90);
+die EN-Seiten haben null Impressionen. **Backlinks: 2 Links / 2 Referring Domains, Serpstat Domain Rank 8.**
+**Technik/CWV (Lighthouse mobil): Perf 99 · A11y 92 → 100 nach Fix · SEO 92 · BP 79** (FCP 1,8 s · LCP 1,9 s ·
+CLS 0,001 · TBT 0 ms; Desktop 100). Der einzige „SEO-Fehler" ist `Content-Signal: Unknown directive` —
+Cloudflares AI-Policy-Zeilen, für Google irrelevant.
+**Marken-Keywords sind der Weg ohne Backlinks:** US-Volumen/KD — `gold medal wine club review` 10/KD **3**,
+`winc review` 70/**4**, `california wine club review` 50/**7**, `firstleaf review` 140/**17** (CPC $240),
+`wine club deals` 40/**17**, `cheap wine club` 140/32, `wine club for beginners` 20/31 —
+gegen `wine club` 12.100/KD **52**, das ohne Autorität unerreichbar ist.
 
 ## Infrastruktur (Stand 17.10.2026)
 
+- **Discovery (neu 22.10.):** **IndexNow** live — Key `0014cc2aab413ce45352e0770f2e903b`
+  (Datei `public/<key>.txt`, nicht löschen), Push-Skript-Idee: alle Sitemap-URLs an
+  `api.indexnow.org/indexnow` + `www.bing.com/indexnow` (HTTP 200/202 verifiziert, 21 URLs).
+  Bing speist **Copilot, ChatGPT-Suche und DuckDuckGo** — der einzige Discovery-Kanal ohne Backlink.
+  Nach jedem Deploy neu pushen. Cloudflare „Crawler Hints" (Dashboard) würde das automatisieren.
+- **GSC-Leserechte über Treg** (Connection 18871, `google-search-console.*`, $0/Call):
+  `url_inspection` (echter Index-Status + `googleCanonical`), `sitemaps`, `performance`.
+  **Immer hiernach prüfen, nicht nach `site:`-SERP** — die SERP zeigt auch 301er-Leichen.
 - **Traffic-&-Index-Wächter:** Cron `37a37f5866c4` (täglich 09:45, no_agent → Telegram). Montags Wochenreport,
   sonst nur bei Ereignis (neu indexierte URL / erster externer Referrer / erster Nicht-DE-Besuch); leerer stdout
   = still. `~/.hermes/scripts/fknwine_traffic_watch.{sh,py}`, State `~/.hermes/state/fknwine_traffic_state.json`.
