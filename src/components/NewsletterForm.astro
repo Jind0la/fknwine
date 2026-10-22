@@ -3,12 +3,13 @@ import { NEWSLETTER } from '../config';
 ---
 
 <div class="nl-wrap">
-  <div class="nl-embed">
-    <script
-      async
-      src={NEWSLETTER.loaderSrc}
-      data-beehiiv-form={NEWSLETTER.formId}
-      is:inline></script>
+  <div
+    class="nl-embed"
+    data-loader={NEWSLETTER.loaderSrc}
+    data-form={NEWSLETTER.formId}
+    aria-label="FKN Wine newsletter signup"
+  >
+    <p class="nl-placeholder">Loading the subscribe form…</p>
   </div>
   <noscript>
     <p class="nl-note">
@@ -19,25 +20,65 @@ import { NEWSLETTER } from '../config';
     </p>
   </noscript>
 
-  {/* beehiiv injiziert ein <iframe> ohne title — Lighthouse meldet das als
-      A11y-Fehler (frame-title). Nachziehen, sobald der Loader das Element baut. */}
+  {/*
+    Das beehiiv-Formular ist ein iframe und lädt von sich aus einen kompletten
+    Tag-Manager-Stack mit: gtm.js (117 KiB), HUMAN/PerimeterX px-cloud (98 KiB),
+    eigene Google-Fonts inkl. PT Serif. Messbar (PageSpeed Insights, 22.10.2026):
+    Startseite mobil Perf 65 / LCP 5,9 s — dieselbe Seite ohne Formular
+    (/imprint/) Perf 99 / LCP 1,8 s bei nur 7 statt 40 Requests.
+    Deshalb: Loader erst injizieren, wenn das Formular in den Viewport kommt.
+  */}
   <script is:inline>
     (function () {
-      function label() {
-        var frames = document.querySelectorAll('.nl-embed iframe');
+      var host = document.querySelector('.nl-embed');
+      if (!host) return;
+
+      function labelFrames() {
+        var frames = host.querySelectorAll('iframe');
         for (var i = 0; i < frames.length; i++) {
           if (!frames[i].getAttribute('title')) {
             frames[i].setAttribute('title', 'FKN Wine newsletter signup');
           }
         }
       }
-      label();
-      var host = document.querySelector('.nl-embed');
-      if (host && window.MutationObserver) {
-        new MutationObserver(label).observe(host, { childList: true, subtree: true });
+
+      var loaded = false;
+      function loadForm() {
+        if (loaded) return;
+        loaded = true;
+        var placeholder = host.querySelector('.nl-placeholder');
+        if (placeholder) placeholder.remove();
+
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = host.getAttribute('data-loader');
+        s.setAttribute('data-beehiiv-form', host.getAttribute('data-form'));
+        host.appendChild(s);
+
+        if (window.MutationObserver) {
+          new MutationObserver(labelFrames).observe(host, { childList: true, subtree: true });
+        }
+        labelFrames();
+        setTimeout(labelFrames, 1500);
       }
-      window.addEventListener('load', label);
-      setTimeout(label, 1500);
+
+      if (!('IntersectionObserver' in window)) {
+        loadForm();
+        return;
+      }
+      var io = new IntersectionObserver(
+        function (entries) {
+          for (var i = 0; i < entries.length; i++) {
+            if (entries[i].isIntersecting) {
+              loadForm();
+              io.disconnect();
+              break;
+            }
+          }
+        },
+        { rootMargin: '300px 0px' }
+      );
+      io.observe(host);
     })();
   </script>
 </div>
@@ -49,6 +90,12 @@ import { NEWSLETTER } from '../config';
 
   .nl-embed {
     min-height: 120px;
+  }
+
+  .nl-placeholder {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    margin: 0;
   }
 
   .nl-note {
