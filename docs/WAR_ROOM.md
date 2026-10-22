@@ -15,17 +15,20 @@ gepusht (HTTP 200/202).
 **Es fehlt also nicht Indexierung, sondern Ranking:** GSC 28 T (24.09.–20.10.) = 12 Impressions / 0 Klicks,
 **alle 12 von alten DE-URLs** (`/artikel/rose-guide-supermarkt/` Pos 8, `/artikel/wein-fuer-pizza/` Pos 90);
 die EN-Seiten haben null Impressionen. **Backlinks: 2 Links / 2 Referring Domains, Serpstat Domain Rank 8.**
-**Technik (22.10., PageSpeed Insights API mit eigenen Key — DAS ist die verbindliche Zahl):**
-**Mobil Perf 67** (FCP 4,9 s · **LCP 5,6 s** · CLS 0 · TBT 0 ms) · **Desktop Perf 100** (LCP 0,4 s).
-*Korrektur:* der frühere Wert „mobil 99 / LCP 1,9 s" kam aus einem **ungedrosselten** lokalen
-Lighthouse-Lauf und war zu gut. PSI drosselt Slow-4G — das ist Googles Maßstab für Page Experience.
-Hauptursachen des Unterschieds (aus dem PSI-Netzwerk-Log, **nicht im Repo** — die Live-Seite selbst
-liefert 19,9 KB HTML): `googletagmanager.com/gtm.js` **117 KiB**, `client.px-cloud.net` **98 KiB**,
-und **Fonts doppelt** (fonts.gstatic.com ~122 KiB *plus* die lokalen fontsource-Dateien). GTM und
-px-cloud stehen nicht im HTML von fknwine.com → sehr wahrscheinlich von Cloudflare injiziert
-(Bot Management / Zaraz) — im Zone-Dashboard zu prüfen.
-A11y 92 → **100** nach den Fixes (Heading-Order, iframe-title); SEO 92, einziger Rest
+**Technik (22.10., PageSpeed Insights API mit eigenem Key — DAS ist die verbindliche Zahl):**
+Mobil **Perf 100** (FCP 1,5 s · **LCP 1,5 s** · CLS 0,005 · TBT 0 ms, 7 Requests) · Desktop **Perf 100** (LCP 0,4 s).
+*Korrektur-Kette:* „mobil 99 / LCP 1,9 s" war ein **ungedrosselter** lokaler Lighthouse-Lauf; PSI (Slow-4G)
+sagte zunächst **Perf 65 / LCP 5,9 s**. Ursache war **nicht Cloudflare** (Verdacht widerlegt: GTM/px-cloud
+stehen in keiner UA-Variante im HTML), sondern der **beehiiv-iframe** im Newsletter-Formular: er lädt
+`gtm.js` (117 KiB), HUMAN/PerimeterX `px-cloud` (98 KiB) und eigene Google-Fonts inkl. PT Serif —
+13 Fremd-Requests, 40 statt 7. Beweis: dieselbe Seite ohne Formular (`/imprint/`) = Perf 99 / LCP 1,8 s.
+**Fix live (`2f31859`):** Loader wird per IntersectionObserver erst bei Sichtbarkeit injiziert →
+mobil **Perf 100 / LCP 1,5 s** nachgemessen.
+A11y 92 → **100** (Heading-Order, iframe-title); SEO 92, einziger Rest
 `Content-Signal: Unknown directive` (Cloudflares AI-Policy-Zeilen, für Google irrelevant).
+**Cloudflare:** Crawler Hints = **an**; Zone-Plan = free; der Token in `secrets/cloudflare-token` ist
+abgelaufen (`invalid access token`) — für Schreibzugriffe braucht es einen neuen.
+
 
 **Marken-Keywords sind der Weg ohne Backlinks:** US-Volumen/KD — `gold medal wine club review` 10/KD **3**,
 `winc review` 70/**4**, `california wine club review` 50/**7**, `firstleaf review` 140/**17** (CPC $240),
