@@ -86,7 +86,7 @@ IntersectionObserver erst bei Sichtbarkeit → **100/1,5 s** nachgemessen. A11y 
   Quote auf fremde Posts (Politik, keine Tarifstufe); `post`/`like`/`repost`/`follow` gehen. Antworten nur
   von Hand, keine Browser-Automatisierung. Vor dem Antworten Post-Alter messen — @WineSpectator,
   @WineandSpirits, @drvino sind monatelang tot; lebendig: @WineEnthusiast, @WineFolly, @winewankers, @VinePair.
-- **Content:** 9 Club-Reviews, 9 Guides, Methodenseite, **28 URLs**. Welle 4 am 22.10. angelegt
+- **Content:** 9 Club-Reviews, 10 Guides, Methodenseite, **29 URLs**. Welle 4 am 22.10. angelegt
   (Wine Insiders, WSJ Wine, Plonk) — je aus den echten Anbieter-Bedingungen, mit dem jeweiligen
   Datum. Widersprüche (Firstleaf $25 vs. „no fees", Winc $9 vs. „free shipping always",
   Wine Insiders $99 auf der Startseite vs. $149 im Club-Produkt, Guthaben-Verfall, 3-Tage-Frist)
@@ -145,6 +145,9 @@ IntersectionObserver erst bei Sichtbarkeit → **100/1,5 s** nachgemessen. A11y 
       **nicht im Checkout getestet** — Shopify-Discount-Endpoint verhält sich für echte und fake
       Codes identisch. Für echte Verifikation braucht es einen Browser mit Warenkorb
       (browser-harness war nicht gestartet).
-- [ ] `monthly wine club` (10/KD 1) und `wine club no commitment` (10/KD 1) — beide KD 1 und
-      inhaltlich schon in den Reviews vorhanden, aber nicht als Zielbegriff adressiert.
+- [x] `monthly wine club` + `wine club no commitment` (je 10/KD 1) — 22.10. als **eine** Seite
+      (`/guides/monthly-wine-club-no-commitment/`) statt zwei dünner Doorways; die zwei Fragen
+      stehen getrennt in einer Tabelle. Befund: nur **4 von 9** Clubs erfüllen monatlich +
+      keine Bindung + Self-Service (Winc, Firstleaf, Plonk, CWC); Gold Medal bindet die erste
+      Box, Wine Access ist quartalsweise, Wine Insiders hat keinen dokumentierten Ausstieg.
 - [ ] Awin-Kontaktdetails nachtragen (Nimar) → Merchants freischalten.
