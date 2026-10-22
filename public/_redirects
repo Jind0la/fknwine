@@ -6,3 +6,8 @@
 /datenschutz /privacy/ 301
 /bestaetigt/ /subscribed/ 301
 /bestaetigt /subscribed/ 301
+
+# Alte DE-Tag-Seiten: live 404, aber noch im Google-Index (SERP-Check 22.10.2026).
+# Inhalt existiert nicht mehr -> 301 statt 404, damit der Index aufgeräumt wird.
+/tags/* / 301
+/tags / 301

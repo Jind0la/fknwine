@@ -18,6 +18,28 @@ import { NEWSLETTER } from '../config';
       </a>.
     </p>
   </noscript>
+
+  {/* beehiiv injiziert ein <iframe> ohne title — Lighthouse meldet das als
+      A11y-Fehler (frame-title). Nachziehen, sobald der Loader das Element baut. */}
+  <script is:inline>
+    (function () {
+      function label() {
+        var frames = document.querySelectorAll('.nl-embed iframe');
+        for (var i = 0; i < frames.length; i++) {
+          if (!frames[i].getAttribute('title')) {
+            frames[i].setAttribute('title', 'FKN Wine newsletter signup');
+          }
+        }
+      }
+      label();
+      var host = document.querySelector('.nl-embed');
+      if (host && window.MutationObserver) {
+        new MutationObserver(label).observe(host, { childList: true, subtree: true });
+      }
+      window.addEventListener('load', label);
+      setTimeout(label, 1500);
+    })();
+  </script>
 </div>
 
 <style>

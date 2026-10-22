@@ -4,17 +4,23 @@
 > **Verdichtungs-Regel:** unter ~150 Zeilen; am Session-Ende abgeschlossene Tasks entfernen,
 > Einträge >2 Wochen kürzen.
 
-## Kernbefund (17.10.2026)
+## Kernbefund (22.10.2026, SEO-Audit mit echten Daten)
 
-**Kein Traffic — Ursache ist die Indexierung, nicht der Content.** GSC: **0 Klicks / 0 Impressionen** über
-7/28/90 Tage. Index **1 von 19 Seiten** (`/about/`, URL-Inspection: `PASS`, „Submitted and indexed", Crawl
-15.10. 08:56); 16 URLs „Google unbekannt"; **Startseite weiter `Duplicate, Google chose different canonical`** →
-`pages.dev`-Konflikt NICHT behoben. Cloudflare Web Analytics: 60 Aufrufe/90 T, davon **30 am 16.10. als
-`ChromeHeadless` = eigene Audit-Toolchain**, Rest Mobil-Emulation bzw. Nimar; **100 % „(direkt)", kein externer
-Verweis**; die 10 US-Besuche Juli–September. Kanäle X (**1 Follower**) und Newsletter (**2 Testabos**) bei null.
-**Wirtschaftlich:** 0 Traffic = 0 Affiliate-Umsatz; die FlexOffers/Impact-Ablehnungen sind Symptom, keine
-Content-Frage. Reihenfolge: **indexiert werden → Geldseiten (6 Club-Reviews + Preis-Guide) → Tracking live
-(Awin frei).** *Ehrlichkeit:* indexiert ≠ gerankt; Belegbasis der Fenstersummen schwankt, den Tageszeilen traue ich mehr.
+**Indexierung hat gedreht: 19 → 25 URLs im Index** (SERP `site:fknwine.com`), und die 6 alten DE-URLs
+sind noch drin: `/artikel/`, `/artikel/rose-guide-supermarkt/`, `/artikel/wein-fuer-pizza/`,
+`/tags/Pizza/`, `/tags/Weißwein/`, `/datenschutz/` — die ersten drei per 301 → `/`, die Tags waren
+**404** (jetzt 301, Branch `seo/audit-2026-10-22`). **Duplikat-Befund vom 17.10. ist erledigt:**
+`fknwine.pages.dev` liefert 200, aber Canonical/og:url zeigen auf `fknwine.com`.
+**GSC 28 T (24.09.–20.10.): 12 Impressions, 0 Klicks — alle 12 kommen von alten DE-URLs**
+(bestes: `rose-guide-supermarkt` Pos 8). Die 19 EN-Seiten haben **null** Impressionen.
+**Backlinks: 2 Links / 2 Referring Domains, Serpstat Domain Rank 8** → Autorität ist der Flaschenhals,
+nicht On-Page. **Technik/CWV (Lighthouse mobil, 22.10.): Perf 99 · A11y 92 · SEO 92 · BP 79**
+(FCP 1,8 s · LCP 1,9 s · CLS 0,001 · TBT 0 ms); Desktop Perf 100. Alle 20 URLs 200, Canonicals
+sauber, 1×H1, `lang="en"`, Article+Breadcrumb+Organization-Schema, alle Bilder mit ALT.
+**On-Page ist gut; die Seiten zielen nur nicht auf Keywords mit Volumen** (US: wine club 12.100/KD 52,
+wine delivery 8.100/61, wine subscription 4.400/51, **best wine club 880/35**, **wine club reviews
+70/KD 15**, firstleaf review 140/17, cheap wine club 140/32). Reihenfolge bleibt:
+**Autorität + Keyword-Zielschärfe → dann Content-Welle 4.**
 
 ## Infrastruktur (Stand 17.10.2026)
 
@@ -93,7 +99,9 @@ Content-Frage. Reihenfolge: **indexiert werden → Geldseiten (6 Club-Reviews + 
 
 | Task | Wer | Status | Nächster Schritt |
 |---|---|---|---|
-| Indexierung | Era/Google | **1/19 indexiert**, Startseite Duplikat | Wächter + Nachzug laufen lassen; `pages.dev`-Entdopplung nur über Canonical + Re-Crawl |
+| Indexierung | Era/Google | **25/19+ URLs im Index**, DE-Altlasten drin | DE-Reste fallen lassen (301 live), GSC-Impressionen beobachten |
+| SEO-Audit 22.10. | Era | Befund + Fixes auf `seo/audit-2026-10-22` | Preview-Blick (Nimar) → Merge → Live-Check |
+| Autorität/Backlinks | Era | **2 RD, Domain Rank 8** | Verzeichnisse, Awin-Merchant-Profil, Newsletter-Verweise; alles andere ist Nebenschauplatz |
 | Affiliate-Konten | Era | Awin aktiv, 3 Bewerbungen offen | Awin-Telefon nachtragen (Nimar); Antworten; Skimlinks/Sovrn prüfen; Re-Apply nach Traffic |
 | Content-Kadenz | Era | 6 Clubs, 3 Guides live | Welle 4: Wine Insiders, WSJ Wine, Plonk |
 | Newsletter | Era | Flow live; Issue #01 Draft | Publizieren, sobald echte Abos da sind |
