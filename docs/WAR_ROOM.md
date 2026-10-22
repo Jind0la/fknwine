@@ -33,8 +33,13 @@ geprüft (**active**). Format ist **53 Zeichen mit Unterstrich nach 4** (Cloudfl
 der alte Wert war nicht „falsch formatiert", sondern schlicht widerrufen).
 Abgedeckt: **Zone Settings Edit · Zone Analytics Read · Cache Purge**. Verifiziert: Zone lesen ✓,
 GraphQL `httpRequests1dGroups` ✓ (19.10. 117 PV/619 Req · 20.10. 77/823 · 22.10. 115/266), Settings lesen ✓.
-**Fehlt für den Traffic-Wächter: `Account → Account Analytics: Read`** (`/accounts` liefert sonst
-„kein Konto sichtbar"; der Wächter nutzt die RUM-API, nicht Zone-HTTP-Analytics).
+**Traffic-Wächter wieder online (22.10.):** `Account → Account Settings: Read` war die fehlende
+Permission — **nicht** `Account Analytics: Read`. Verifiziert: 7 T **68 Aufrufe/67 Besuche** (6 Tage mit
+Daten), 28 T **100/100**. Dabei der ehrliche Blick: **60 von 100 Aufrufen sind `ChromeHeadless`** —
+also unsere eigene Audit-Toolchain, 20 echtes Chrome, 10 ChromeMobile, **10 US / 90 DE**, Quellen
+**100 % (direkt), null externe Referrer**. Pages: `/` 40, `/wine-clubs/naked-wines/` 30,
+`/guides/wine-club-price-per-bottle/` 20, `/deals/` 10. Also weiterhin: der Traffic ist **Eigenverkehr**.
+
 Nicht im Scope und nicht nötig: Bot Management, Zaraz (die GTM/px-cloud-Frage war beehiiv, s. o.).
 
 
