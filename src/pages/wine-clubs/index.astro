@@ -3,20 +3,83 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 const clubs = (await getCollection('clubs')).sort((a, b) => a.data.order - b.data.order);
+
+// Sammelseite: die Hub-Seite ist der Einstieg für "wine club reviews" —
+// CollectionPage + ItemList, damit Suchmaschinen die 6 Einzel-Reviews als
+// geordnete Liste verstehen (SEO-Audit 22.10.2026).
+const collectionSchema = {
+  '@type': 'CollectionPage',
+  '@id': 'https://fknwine.com/wine-clubs/#collection',
+  name: 'Wine Club Reviews',
+  description:
+    'Wine club reviews built on the paperwork: real price per bottle after the intro, commitment, cancel terms and shipping.',
+  inLanguage: 'en',
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: clubs.length,
+    itemListElement: clubs.map((club, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: `${club.data.name} review`,
+      url: `https://fknwine.com/wine-clubs/${club.id}/`,
+    })),
+  },
+};
 ---
 
 <Layout
-  title="Wine Clubs, Judged"
-  description="Wine club reviews based on the paperwork: real price per bottle, commitment, cancel terms, shipping. No fake tastings."
+  title="Wine Club Reviews: 6 Clubs, Judged"
+  description="Wine club reviews built from the paperwork: real price per bottle after the intro, commitment, cancel terms, shipping. Six clubs, checked by hand."
+  breadcrumb={[
+    { name: 'Home', url: '/' },
+    { name: 'Wine Club Reviews', url: '/wine-clubs/' },
+  ]}
+  articleSchema={collectionSchema}
 >
   <section class="wrapper" style="padding-top: 3rem; padding-bottom: 4rem;">
-    <h1 style="font-size: clamp(2rem, 6vw, 3rem);">Wine clubs, judged</h1>
+    <h1 style="font-size: clamp(2rem, 6vw, 3rem);">Wine club reviews, judged</h1>
     <p style="max-width: 660px;">
-      Wine clubs live and die on one number: the price per bottle <em>after</em> the intro offer.
-      We read the fine print on every club — price, commitment, cancel terms, shipping — and
-      print it here. No tasting theatrics, no "exclusive" nonsense. Just what it actually costs.
+      These wine club reviews live and die on one number: the price per bottle <em>after</em> the
+      intro offer. We read the fine print on every club — price, commitment, cancel terms,
+      shipping — and print it here. No tasting theatrics, no "exclusive" nonsense. Just what it
+      actually costs.
     </p>
 
+    <div class="compare-wrap brutal-card" style="margin-top: 2rem;">
+      <h2 class="compare-title">All six, side by side</h2>
+      <div class="compare-scroll">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th scope="col">Club</th>
+              <th scope="col">First shipment</th>
+              <th scope="col">Per bottle</th>
+              <th scope="col">Commitment</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              clubs.map((club) => (
+                <tr>
+                  <th scope="row">
+                    <a href={`/wine-clubs/${club.id}/`}>{club.data.name}</a>
+                  </th>
+                  <td>{club.data.priceFrom}</td>
+                  <td>{club.data.perBottle}</td>
+                  <td>{club.data.commitment}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="compare-note">
+        Every figure above comes from the club's own site or help centre — each review carries the
+        date we last checked it. We have not bought from all of them, and the reviews say so.
+      </p>
+    </div>
+
+    <h2 style="margin-top: 3rem; font-size: 1.5rem;">The full reviews</h2>
     <div class="clubs-list">
       {
         clubs.map((club) => (
@@ -53,10 +116,66 @@ const clubs = (await getCollection('clubs')).sort((a, b) => a.data.order - b.dat
 </Layout>
 
 <style>
+  .compare-wrap {
+    max-width: 1000px;
+    padding: 1.25rem;
+  }
+
+  .compare-title {
+    margin: 0 0 1rem;
+    font-size: 1.1rem;
+  }
+
+  .compare-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .compare-table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+
+  .compare-table th,
+  .compare-table td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .compare-table thead th {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.7;
+    white-space: nowrap;
+  }
+
+  .compare-table tbody th {
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .compare-table a {
+    color: inherit;
+    text-decoration-color: var(--color-primary);
+    text-underline-offset: 3px;
+  }
+
+  .compare-note {
+    margin: 0.9rem 0 0;
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+
   .clubs-list {
     display: grid;
     gap: 1.5rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
 
   .club-card {
