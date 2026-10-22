@@ -17,7 +17,7 @@ order: 32
 |---|---|
 | **"Is Naked Wines trustworthy?"** — [thread](https://www.reddit.com/r/wine/comments/fcx9da/is_naked_wines_trustworthy/) | The model is unusual, not opaque: $40 a month lands in **your own wine account** as a balance, and you spend it on whatever you like at member prices. Their FAQ states no contract and no tie-in. The risk isn't the money vanishing — it's you forgetting the balance. |
 | **"Anyone purchase from Naked Wines?"** — [thread](https://www.reddit.com/r/wine/comments/zxmthw/anyone_purchase_from_naked_wines/) | Their prices are Angel prices, up to 60% off, and it's the everyday member price, not a rotating sale. What you can't do is buy a single bottle without joining. |
-| **"Naked Wines review / opinion"** — [thread](https://www.reddit.com/r/wine/comments/16gdlkr/naked_wines_reviewopinion/) | The honest verdict depends on one behaviour: do you spend $40 a month on wine anyway? If yes, the per-bottle economics are the best of the six clubs we've read. If no, it's a subscription you're feeding for nothing. |
+| **"Naked Wines review / opinion"** — [thread](https://www.reddit.com/r/wine/comments/16gdlkr/naked_wines_reviewopinion/) | The honest verdict depends on one behaviour: do you spend $40 a month on wine anyway? If yes, the per-bottle economics are the best of the nine clubs we've read. If no, it's a subscription you're feeding for nothing. |
 | **"What do people on this sub think about Naked Wines?"** — [thread](https://www.reddit.com/r/wine/comments/b6kgun/what_do_people_on_this_sub_think_about_naked/) | Read that one yourself — but note the sample: a wine subreddit is a room full of people who buy wine elsewhere by preference. Their verdict is not the same question as "is it good value for me". |
 | **"My truthful review of NakedWines.com"** — [thread](https://www.reddit.com/r/wine/comments/72ym3i/my_truthful_review_of_nakedwinescom/) | Worth reading in full, including the date — a review from years ago describes a different pricing era. Our numbers carry check dates for exactly this reason. |
 | **"Naked Wines or Wine Society?"** — [thread](https://www.reddit.com/r/wine/comments/1ayafnm/naked_wines_or_wine_society/) | Different animals: Naked is a prepaid balance with winemaker funding; Wine Society is a buying society with a membership fee. Compare them on total spend per year, not on price per bottle. |
@@ -33,7 +33,7 @@ Three of the ten most-visible threads ask a variant of *"is this legitimate?"*, 
 
 ## Our read
 
-Naked Wines is the best steady-state price of the six clubs we've reviewed — *if* you keep using the balance. The complaints in those threads cluster around service and exits, which matches what we found in the paperwork: the buying is easy, the leaving is a phone call.
+Naked Wines is the best steady-state price of the nine clubs we've reviewed — *if* you keep using the balance. The complaints in those threads cluster around service and exits, which matches what we found in the paperwork: the buying is easy, the leaving is a phone call.
 
 If you want to compare it against a club with a click-to-cancel exit, [Naked Wines vs Firstleaf](/guides/naked-wines-vs-firstleaf/) puts them side by side. The full review, every term quoted: [Naked Wines](/wine-clubs/naked-wines/).
 

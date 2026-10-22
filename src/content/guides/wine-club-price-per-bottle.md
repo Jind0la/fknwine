@@ -8,7 +8,7 @@ order: 30
 
 Every wine club leads with the same trick: an intro price that makes the first box look like a steal. It often is. The problem is the box *after* it — and the one after that.
 
-So we did the boring thing and put the real numbers in one table. **Price per bottle, after any intro, before shipping**, for the six clubs we've reviewed. All figures from the companies' own sites, checked **October 16, 2026**.
+So we did the boring thing and put the real numbers in one table. **Price per bottle, after any intro, before shipping**, for all nine clubs we've reviewed. All figures from the companies' own sites, checked **October 22, 2026**.
 
 ## The table
 
@@ -16,9 +16,12 @@ So we did the boring thing and put the real numbers in one table. **Price per bo
 |---|---|---|---|
 | **[Firstleaf](/wine-clubs/firstleaf/)** | $44.95 for 6 bottles | **~$7.50** intro → **~$16.50** ongoing | $99 per 6-bottle shipment after the intro |
 | **[Winc](/wine-clubs/winc/)** | $100 off your first 4 orders | **~$16–20** at member pricing | always-on 20% member discount |
+| **[WSJ Wine](/wine-clubs/wsj-wine/)** | 12 bottles every 3 months | **~$17.08** — $204.98 all in, shipping included | $184.99 + $19.99 shipping per seasonal case |
+| **[Wine Insiders](/wine-clubs/wine-insiders/)** | 15 bottles for $149 | **~$9.93** intro → **~$23.92** at their listed regular | the homepage advertises the same case at $99 |
 | **[The California Wine Club](/wine-clubs/california-wine-club/)** | from $49 per shipment | **~$24.50** | 2 bottles at base; shipping extra |
 | **[Gold Medal Wine Club](/wine-clubs/gold-medal-wine-club/)** | from $49 per shipment | **~$24.50+** | Gold 2-bottle base; shipping extra, scales with tier |
 | **[Wine Access](/wine-clubs/wine-access/)** | $150 per shipment | **~$25** (Discovery) → **~$75** (Connoisseurs) | Discovery is 6 bottles; Connoisseurs is 2 for the same $150 |
+| **[Plonk Wine Club](/wine-clubs/plonk-wine-club/)** | $134.99 for 4 bottles | **~$33.75**, shipping free | organic/biodynamic only; 6- and 12-bottle cases cost less per bottle |
 | **[Naked Wines](/wine-clubs/naked-wines/)** | $40/month + up to 60% off | *member price, spent from your $40/month wallet* | not a per-shipment club — you fund an account |
 
 Every row links to the review it came from — the full terms, the cancellation mechanism and the
