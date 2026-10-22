@@ -65,6 +65,21 @@ None of this is buried in a dark corner: it's on winc.com, in the terms of servi
 - **State rules apply.** Wine shipping is regulated; select your state and see before you fall for a bottle.
 - **Someone 21+ signs at the door.** Plan for it.
 
+## Cancelling Winc (the 3-day line)
+
+Winc is in the easier half: **skip, pause or cancel in your account**, self-service, per their terms. No phone call required.
+
+The catch is timing, not friction. Their terms require notice **at least 3 days before a shipment goes out**. Miss that window and the box is already moving — you'll be paying for a shipment you meant to stop. Two practical consequences:
+
+1. **Put the date in your calendar**, not your head. The 3-day line moves silently with every shipment.
+2. **Decide before the box, not after.** Once it ships, the question stops being "can I cancel" and becomes "can I return it" — a different conversation with a different answer.
+
+One contradiction we found while reading: their terms include a line about a **"$9 [fee] may apply"** while the site elsewhere promises free shipping always. We quote both rather than pick the friendlier one. If you're cancelling and a fee appears that you can't map to a clause, ask them which paragraph it comes from.
+
+**We have not tested this flow.** What we can say is what their paperwork says: self-service, 3-day notice, no tie-in.
+
+If you'd rather join a club where leaving is a click with no window, [Firstleaf](/wine-clubs/firstleaf/) is the same self-service model without the 3-day rule — see [Firstleaf vs Winc](/guides/firstleaf-vs-winc/).
+
 ## Who it's for
 
 - You drink $15–20 bottles, like trying unfamiliar labels, and won't miss picking every bottle yourself.

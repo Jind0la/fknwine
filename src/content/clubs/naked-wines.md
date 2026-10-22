@@ -51,6 +51,19 @@ The math to run isn't a per-bottle number — it's a **rhythm** question. **Will
 - **The guarantee is credit, not cash.** A bottle you don't like gets credited back to your account to spend on something else. Read that twice.
 - **You don't need to be a member to buy** — but non-members don't get the Angel price.
 
+## Cancelling Naked Wines (what it actually takes)
+
+There is **no published self-service cancel button**. Their help centre documents two routes:
+
+- **Phone:** 1-800-673-4718
+- **Email:** chat@nakedwines.com
+
+Their terms state no tie-in — cancel, skip or pause whenever you like. That's the promise; the phone call is the friction. A club that makes you call is betting some people won't, and this is the one place where Naked Wines sits in the weaker half of the six clubs we've reviewed.
+
+**We have not tested this flow**, so we can't tell you how long it takes or what they ask. Two things to settle before you join, because they're not answered on the landing page: what happens to a **remaining account balance** when you cancel, and whether a shipment already in transit can still be stopped.
+
+If click-to-cancel matters more to you than the per-bottle price, [Firstleaf](/wine-clubs/firstleaf/) and [Winc](/wine-clubs/winc/) both let you leave from your account — we put the difference side by side in [Naked Wines vs Firstleaf](/guides/naked-wines-vs-firstleaf/).
+
 ## Who it's for
 
 - You already spend $40+ a month on wine and want a member price on every bottle.
