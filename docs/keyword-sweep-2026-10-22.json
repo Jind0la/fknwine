@@ -1,0 +1,237 @@
+{
+ "cost_usd": 0.0165,
+ "keywords": 64,
+ "rows": [
+  {
+   "kw": "firstleaf vs winc",
+   "vol": 10,
+   "kd": 0,
+   "cpc": 0,
+   "intent": "informational"
+  },
+  {
+   "kw": "monthly wine club",
+   "vol": 10,
+   "kd": 1,
+   "cpc": 0,
+   "intent": "informational"
+  },
+  {
+   "kw": "naked wines worth it",
+   "vol": 10,
+   "kd": 1,
+   "cpc": 0,
+   "intent": "informational"
+  },
+  {
+   "kw": "wine club no commitment",
+   "vol": 10,
+   "kd": 1,
+   "cpc": 0,
+   "intent": "informational"
+  },
+  {
+   "kw": "winc reddit",
+   "vol": 1,
+   "kd": 1,
+   "cpc": 0,
+   "intent": ""
+  },
+  {
+   "kw": "naked wines vs firstleaf",
+   "vol": 1,
+   "kd": 1,
+   "cpc": 0,
+   "intent": ""
+  },
+  {
+   "kw": "firstleaf price",
+   "vol": 10,
+   "kd": 2,
+   "cpc": 0,
+   "intent": "transactional"
+  },
+  {
+   "kw": "winc cancel",
+   "vol": 10,
+   "kd": 2,
+   "cpc": 0,
+   "intent": "informational"
+  },
+  {
+   "kw": "winc price",
+   "vol": 10,
+   "kd": 2,
+   "cpc": 0,
+   "intent": "informational"
+  },
+  {
+   "kw": "firstleaf cost",
+   "vol": 10,
+   "kd": 2,
+   "cpc": 0,
+   "intent": "informational"
+  },
+  {
+   "kw": "naked wines reddit",
+   "vol": 90,
+   "kd": 3,
+   "cpc": 0,
+   "intent": "informational"
+  },
+  {
+   "kw": "firstleaf cancel",
+   "vol": 20,
+   "kd": 3,
+   "cpc": 0,
+   "intent": "informational"
+  },
+  {
+   "kw": "gold medal wine club review",
+   "vol": 10,
+   "kd": 3,
+   "cpc": 0,
+   "intent": "informational"
+  },
+  {
+   "kw": "winc review",
+   "vol": 70,
+   "kd": 4,
+   "cpc": 0,
+   "intent": "commercial"
+  },
+  {
+   "kw": "naked wines cancel",
+   "vol": 30,
+   "kd": 5,
+   "cpc": 0,
+   "intent": "informational"
+  },
+  {
+   "kw": "firstleaf reddit",
+   "vol": 20,
+   "kd": 5,
+   "cpc": 0,
+   "intent": "informational"
+  },
+  {
+   "kw": "naked wines price",
+   "vol": 10,
+   "kd": 6,
+   "cpc": 0,
+   "intent": "transactional"
+  },
+  {
+   "kw": "california wine club review",
+   "vol": 50,
+   "kd": 7,
+   "cpc": 3.95,
+   "intent": "commercial"
+  },
+  {
+   "kw": "naked wines cost",
+   "vol": 20,
+   "kd": 7,
+   "cpc": 0,
+   "intent": "informational"
+  },
+  {
+   "kw": "wine club reviews",
+   "vol": 70,
+   "kd": 15,
+   "cpc": 93.95,
+   "intent": "commercial"
+  },
+  {
+   "kw": "firstleaf review",
+   "vol": 140,
+   "kd": 17,
+   "cpc": 240.51,
+   "intent": "commercial"
+  },
+  {
+   "kw": "wine club deals",
+   "vol": 40,
+   "kd": 17,
+   "cpc": 4.57,
+   "intent": "informational"
+  },
+  {
+   "kw": "winc cost",
+   "vol": 10,
+   "kd": 17,
+   "cpc": 0,
+   "intent": "informational"
+  },
+  {
+   "kw": "cheapest wine club",
+   "vol": 140,
+   "kd": 19,
+   "cpc": 1.9,
+   "intent": "informational"
+  },
+  {
+   "kw": "wine club for beginners",
+   "vol": 20,
+   "kd": 31,
+   "cpc": 79.35,
+   "intent": "informational"
+  },
+  {
+   "kw": "cheap wine club",
+   "vol": 140,
+   "kd": 32,
+   "cpc": 1.9,
+   "intent": "informational"
+  },
+  {
+   "kw": "best wine club for beginners",
+   "vol": 50,
+   "kd": 32,
+   "cpc": 1.61,
+   "intent": "commercial"
+  },
+  {
+   "kw": "best wine club",
+   "vol": 880,
+   "kd": 35,
+   "cpc": 2.5,
+   "intent": "commercial"
+  },
+  {
+   "kw": "wine subscription box",
+   "vol": 1900,
+   "kd": 51,
+   "cpc": 2.25,
+   "intent": "informational"
+  },
+  {
+   "kw": "wine club gift",
+   "vol": 260,
+   "kd": 51,
+   "cpc": 3.34,
+   "intent": "informational"
+  },
+  {
+   "kw": "wine delivery subscription",
+   "vol": 140,
+   "kd": 52,
+   "cpc": 3.02,
+   "intent": "informational"
+  },
+  {
+   "kw": "wine club reddit",
+   "vol": 30,
+   "kd": null,
+   "cpc": 0,
+   "intent": "informational"
+  },
+  {
+   "kw": "winc vs firstleaf",
+   "vol": 10,
+   "kd": null,
+   "cpc": 0,
+   "intent": "informational"
+  }
+ ]
+}

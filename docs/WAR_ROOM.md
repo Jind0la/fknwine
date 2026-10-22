@@ -4,6 +4,18 @@
 > **Verdichtungs-Regel:** unter ~150 Zeilen; am Session-Ende abgeschlossene Tasks entfernen,
 > Einträge >2 Wochen kürzen.
 
+## Ziel — Wachstumsblock 2 (gesetzt 22.10.2026, Nimars Go)
+
+**Auftrag:** die findbare Fläche vergrößern, ohne Backlinks. Reihenfolge verbindlich:
+1. **Keyword-Sweep** (6 Clubs × Modifier + Vergleiche) → Zahlen statt Vermutungen.
+2. **Vergleichsseiten** aus den geprüften Review-Daten (kein neuer Faktencheck nötig).
+3. **GEO-Pass**: extrahierbare Antwortblöcke, damit KI-Suche zitiert (der Kanal ohne Backlinks).
+4. **Google-Sitemap neu einreichen** (Stand 19 URLs, live sind 21).
+5. Danach Content-Welle 4 (Wine Insiders, WSJ Wine, Plonk).
+
+**Deckel, ehrlich benannt:** ohne Off-Site-Verweise ~300–400 Besucher/Monat; „wine club" (12.100/KD 52)
+bleibt unerreichbar. Erreichbar sind die Marken-/Vergleichs-Keywords mit KD < 25.
+
 ## Kernbefund (22.10.2026, SEO-Audit mit echten Daten)
 
 **Die Indexierung ist durch — nicht mehr 1/19, sondern bestätigt indexiert.** URL-Inspection (GSC-API,
