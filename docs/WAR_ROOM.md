@@ -6,15 +6,19 @@
 
 ## Ziel — Wachstumsblock 2 (gesetzt 22.10.2026, Nimars Go)
 
-**Auftrag:** die findbare Fläche vergrößern, ohne Backlinks. Reihenfolge verbindlich:
-1. **Keyword-Sweep** (6 Clubs × Modifier + Vergleiche) → Zahlen statt Vermutungen.
-2. **Vergleichsseiten** aus den geprüften Review-Daten (kein neuer Faktencheck nötig).
-3. **GEO-Pass**: extrahierbare Antwortblöcke, damit KI-Suche zitiert (der Kanal ohne Backlinks).
-4. **Google-Sitemap neu einreichen** (Stand 19 URLs, live sind 21).
-5. Danach Content-Welle 4 (Wine Insiders, WSJ Wine, Plonk).
+**Auftrag:** findbare Fläche ohne Backlinks. **Stand:**
+① Keyword-Sweep ✓ (64 Keywords, 33 mit Volumen → `docs/keyword-sweep-2026-10-22.json`)
+② Vergleichsseiten ✓ (`firstleaf-vs-winc`, `naked-wines-vs-firstleaf`)
+③ GEO-Block ✓ (zitierbarer „Short answer" auf allen 6 Reviews, `fadd761`)
+④ Sitemap/IndexNow ✓ (**24 URLs**, jede Welle neu gepusht)
+⑤ **offen:** Content-Welle 4 · `cheapest` statt `cheap` im Preis-Guide (KD 19 statt 32) ·
+`naked wines cancel` (30/KD 5) und `winc cancel` (10/KD 2) als eigene Abschnitte.
+**Reddit-API gesperrt** (Responsible Builder Policy, App-Anlage abgelehnt) — die Reddit-Seite ist
+deshalb über SERP-belegte Thread-Titel gebaut, nicht über gelesene Kommentare.
 
 **Deckel, ehrlich benannt:** ohne Off-Site-Verweise ~300–400 Besucher/Monat; „wine club" (12.100/KD 52)
 bleibt unerreichbar. Erreichbar sind die Marken-/Vergleichs-Keywords mit KD < 25.
+
 
 ## Kernbefund (22.10.2026, SEO-Audit mit echten Daten)
 
