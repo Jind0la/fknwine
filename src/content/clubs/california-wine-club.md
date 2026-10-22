@@ -1,4 +1,5 @@
 ---
+seoTitle: "California Wine Club Review: $24.50 a Bottle"
 name: The California Wine Club
 verdict: depends
 verdictLabel: "Buy it for discovery, not for cheap bottles"

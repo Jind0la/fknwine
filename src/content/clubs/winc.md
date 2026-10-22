@@ -1,4 +1,5 @@
 ---
+seoTitle: "Winc Review: $100 Off, Then ~$16-20 a Bottle"
 name: Winc
 verdict: depends
 verdictLabel: "Fine at $16–20 a bottle — skip below that"
