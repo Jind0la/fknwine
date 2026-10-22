@@ -86,7 +86,7 @@ IntersectionObserver erst bei Sichtbarkeit → **100/1,5 s** nachgemessen. A11y 
   Quote auf fremde Posts (Politik, keine Tarifstufe); `post`/`like`/`repost`/`follow` gehen. Antworten nur
   von Hand, keine Browser-Automatisierung. Vor dem Antworten Post-Alter messen — @WineSpectator,
   @WineandSpirits, @drvino sind monatelang tot; lebendig: @WineEnthusiast, @WineFolly, @winewankers, @VinePair.
-- **Content:** 9 Club-Reviews, 8 Guides, Methodenseite, **27 URLs**. Welle 4 am 22.10. angelegt
+- **Content:** 9 Club-Reviews, 9 Guides, Methodenseite, **28 URLs**. Welle 4 am 22.10. angelegt
   (Wine Insiders, WSJ Wine, Plonk) — je aus den echten Anbieter-Bedingungen, mit dem jeweiligen
   Datum. Widersprüche (Firstleaf $25 vs. „no fees", Winc $9 vs. „free shipping always",
   Wine Insiders $99 auf der Startseite vs. $149 im Club-Produkt, Guthaben-Verfall, 3-Tage-Frist)
@@ -139,7 +139,12 @@ IntersectionObserver erst bei Sichtbarkeit → **100/1,5 s** nachgemessen. A11y 
 - [x] Content-Welle 4 (Wine Insiders, WSJ Wine, Plonk) — 22.10. erledigt, 27 URLs live.
 - [ ] **Erster echter Ranking-Check** der drei neuen Seiten (GSC-URL-Inspection nach ~1 Woche).
 - [ ] `wine insiders` (4.400/KD 19) als eigener Zielbegriff — die Review deckt bisher nur die
-      `review`-Variante (90/KD 9); für den Markenbegriff fehlt eine Kaufseite/Übersicht.
+      `review`-Variante (90/KD 9). Der Gutschein-Cluster (1.840/Mon) ist mit
+      `/guides/wine-insiders-coupon-codes/` bedient; für die reine Marke fehlt weiter eine Kaufseite.
+- [ ] **Gutschein-Code-Verifikation:** CHEERS45 ist belegt (Startseiten-Banner 22.10.), aber
+      **nicht im Checkout getestet** — Shopify-Discount-Endpoint verhält sich für echte und fake
+      Codes identisch. Für echte Verifikation braucht es einen Browser mit Warenkorb
+      (browser-harness war nicht gestartet).
 - [ ] `monthly wine club` (10/KD 1) und `wine club no commitment` (10/KD 1) — beide KD 1 und
       inhaltlich schon in den Reviews vorhanden, aber nicht als Zielbegriff adressiert.
 - [ ] Awin-Kontaktdetails nachtragen (Nimar) → Merchants freischalten.
