@@ -79,4 +79,6 @@ Checked on **October 22, 2026**: the shop catalogue and single-bottle prices, th
 
 **We have not bought a case, and we have not tried to cancel** — we can't, because there's no documented route to try. Nothing here is a tasting note; it's what the paperwork says, and where the paperwork is silent we say so.
 
+Looking for the discount code? [We did the math on CHEERS45](/guides/wine-insiders-coupon-codes/) — including the case where it costs you money.
+
 *Prices change. Every number above carries the date we read it.*
