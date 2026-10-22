@@ -26,8 +26,17 @@ stehen in keiner UA-Variante im HTML), sondern der **beehiiv-iframe** im Newslet
 mobil **Perf 100 / LCP 1,5 s** nachgemessen.
 A11y 92 → **100** (Heading-Order, iframe-title); SEO 92, einziger Rest
 `Content-Signal: Unknown directive` (Cloudflares AI-Policy-Zeilen, für Google irrelevant).
-**Cloudflare:** Crawler Hints = **an**; Zone-Plan = free; der Token in `secrets/cloudflare-token` ist
-abgelaufen (`invalid access token`) — für Schreibzugriffe braucht es einen neuen.
+**Cloudflare:** Crawler Hints = **an** (Dashboard-Toggle blau; `crawler_hints` ist **kein** API-Setting,
+nur Dashboard). Zone-Plan free, Zone-ID `51e9dc8462690929e186758bf3a0916a`.
+Neuer Token `era-fknwine-read-write` in `secrets/cloudflare-token` — am 22.10. gegen `/user/tokens/verify`
+geprüft (**active**). Format ist **53 Zeichen mit Unterstrich nach 4** (Cloudflares aktuelles Format —
+der alte Wert war nicht „falsch formatiert", sondern schlicht widerrufen).
+Abgedeckt: **Zone Settings Edit · Zone Analytics Read · Cache Purge**. Verifiziert: Zone lesen ✓,
+GraphQL `httpRequests1dGroups` ✓ (19.10. 117 PV/619 Req · 20.10. 77/823 · 22.10. 115/266), Settings lesen ✓.
+**Fehlt für den Traffic-Wächter: `Account → Account Analytics: Read`** (`/accounts` liefert sonst
+„kein Konto sichtbar"; der Wächter nutzt die RUM-API, nicht Zone-HTTP-Analytics).
+Nicht im Scope und nicht nötig: Bot Management, Zaraz (die GTM/px-cloud-Frage war beehiiv, s. o.).
+
 
 
 **Marken-Keywords sind der Weg ohne Backlinks:** US-Volumen/KD — `gold medal wine club review` 10/KD **3**,
