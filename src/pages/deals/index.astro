@@ -10,14 +10,18 @@ const clubs = (await getCollection('clubs')).sort((a, b) => a.data.order - b.dat
 ---
 
 <Layout
-  title="All Wine Deals"
-  description="Every wine deal we've checked by hand — flash sales, intro offers, promo codes. Dates included, fine print included."
+  title="Wine club deals & intro offers, checked"
+  description="Wine club deals and intro offers we've checked by hand: first-box prices, flash sales, promo codes. Dates and fine print included."
+  breadcrumb={[
+    { name: 'Home', url: '/' },
+    { name: 'Wine Club Deals', url: '/deals/' },
+  ]}
 >
   <section class="wrapper" style="padding-top: 3rem; padding-bottom: 4rem;">
-    <h1 style="font-size: clamp(2rem, 6vw, 3rem);">All deals</h1>
+    <h1 style="font-size: clamp(2rem, 6vw, 3rem);">Wine club deals, checked</h1>
     <p style="max-width: 640px;">
-      Every deal on this page was checked by hand on the date shown. Wine deals expire fast —
-      if a price is gone, it's gone. That's why we print the date.
+      Every wine club deal and intro offer on this page was checked by hand on the date shown.
+      These offers expire fast — if a price is gone, it's gone. That's why we print the date.
     </p>
 
     <div class="deals-grid" style="margin-top: 2rem;">

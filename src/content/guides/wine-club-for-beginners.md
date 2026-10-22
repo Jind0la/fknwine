@@ -32,6 +32,15 @@ Read the help centre, not the landing page. The landing page is marketing; the h
 
 Wine shipping in the US is regulated state by state. A club can be excellent and still not deliver to you. Check at checkout with a real address before you get attached to the plan.
 
+## Monthly, or by the shipment?
+
+Two billing models hide behind the same "wine club" label, and the difference decides how much you spend in a year:
+
+- **A monthly wine club** charges you every month whether or not you want wine that month. [Naked Wines](/wine-clubs/naked-wines/) works this way: $40 a month goes into your wine account, and you spend it when you like (up to 60% off Angel-only prices). It's the cheapest per bottle *if* you keep using it — and dead money if you forget it for three months.
+- **Per-shipment clubs** charge when a box goes out, at a cadence you pick: The California Wine Club and Gold Medal start at $49 per shipment, Wine Access runs four shipments a year, Firstleaf ships every 2–12 weeks depending on your plan. You can usually skip a shipment.
+
+If your first instinct is "I'll deal with it later", take the per-shipment model. A monthly wine club rewards attention and punishes autopilot.
+
 ## 5. Do you actually want someone else choosing your wine?
 
 This is the question none of the terms answer. Some clubs (Firstleaf) pick for you based on a taste quiz — that's the product, and if you won't rate bottles it stays a lottery. Others let you choose from a list each month. Neither is better; they suit different people.
