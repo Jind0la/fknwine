@@ -86,9 +86,12 @@ IntersectionObserver erst bei Sichtbarkeit → **100/1,5 s** nachgemessen. A11y 
   Quote auf fremde Posts (Politik, keine Tarifstufe); `post`/`like`/`repost`/`follow` gehen. Antworten nur
   von Hand, keine Browser-Automatisierung. Vor dem Antworten Post-Alter messen — @WineSpectator,
   @WineandSpirits, @drvino sind monatelang tot; lebendig: @WineEnthusiast, @WineFolly, @winewankers, @VinePair.
-- **Content:** 6 Club-Reviews, 8 Guides, Methodenseite, **24 URLs**. Widersprüche (Firstleaf $25 vs. „no
-  fees", Winc $9 vs. „free shipping always", Guthaben-Verfall, 3-Tage-Frist) stehen in den Reviews und auf
-  `/how-we-test/` — **nicht hier duplizieren**. **Wir haben die Clubs nicht gekauft — steht auf jeder Seite.**
+- **Content:** 9 Club-Reviews, 8 Guides, Methodenseite, **27 URLs**. Welle 4 am 22.10. angelegt
+  (Wine Insiders, WSJ Wine, Plonk) — je aus den echten Anbieter-Bedingungen, mit dem jeweiligen
+  Datum. Widersprüche (Firstleaf $25 vs. „no fees", Winc $9 vs. „free shipping always",
+  Wine Insiders $99 auf der Startseite vs. $149 im Club-Produkt, Guthaben-Verfall, 3-Tage-Frist)
+  stehen in den Reviews und auf `/how-we-test/` — **nicht hier duplizieren**.
+  **Wir haben die Clubs nicht gekauft — steht auf jeder Seite.**
 
 ## Laufende Tasks
 
@@ -131,7 +134,12 @@ IntersectionObserver erst bei Sichtbarkeit → **100/1,5 s** nachgemessen. A11y 
 
 ## Nächste Schritte
 
-- [ ] `cheapest` statt `cheap` im Preis-Guide (KD 19 statt 32).
-- [ ] `naked wines cancel` + `winc cancel` als fokussierte Abschnitte.
-- [ ] Content-Welle 4 (Wine Insiders, WSJ Wine, Plonk) — je eine Seite + ~7 Keyword-Chancen.
+- [x] `cheapest` statt `cheap` im Preis-Guide (KD 19 statt 32) — 22.10. erledigt.
+- [x] `naked wines cancel` + `winc cancel` als fokussierte Abschnitte — 22.10. erledigt.
+- [x] Content-Welle 4 (Wine Insiders, WSJ Wine, Plonk) — 22.10. erledigt, 27 URLs live.
+- [ ] **Erster echter Ranking-Check** der drei neuen Seiten (GSC-URL-Inspection nach ~1 Woche).
+- [ ] `wine insiders` (4.400/KD 19) als eigener Zielbegriff — die Review deckt bisher nur die
+      `review`-Variante (90/KD 9); für den Markenbegriff fehlt eine Kaufseite/Übersicht.
+- [ ] `monthly wine club` (10/KD 1) und `wine club no commitment` (10/KD 1) — beide KD 1 und
+      inhaltlich schon in den Reviews vorhanden, aber nicht als Zielbegriff adressiert.
 - [ ] Awin-Kontaktdetails nachtragen (Nimar) → Merchants freischalten.
