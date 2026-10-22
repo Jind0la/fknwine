@@ -22,8 +22,12 @@ export const merchants = {
   nakedwines: { name: 'Naked Wines', url: 'https://www.nakedwines.com/', affiliate: null },
   goldmedal: { name: 'Gold Medal Wine Club', url: 'https://goldmedalwineclub.com/', affiliate: null },
   wineaccess: { name: 'Wine Access', url: 'https://www.wineaccess.com/', affiliate: null },
+  // Welle 4 (22.10.2026) — Keys müssen identisch mit merchantId im Content-Schema sein.
+  wineinsiders: { name: 'Wine Insiders', url: 'https://wineinsiders.com/', affiliate: null },
+  wsjwine: { name: 'WSJ Wine', url: 'https://www.wsjwine.com/', affiliate: null },
+  plonkwineclub: { name: 'Plonk Wine Club', url: 'https://www.plonkwineclub.com/', affiliate: null },
   // Kandidaten für die nächste Welle (Programme laufen – siehe War Room):
-  // Gold Medal läuft über Awin (Merchant 59079); WineExpress via Impact-Direktlink; totalwine, vivino, winensiders, wsjwine …
+  // Gold Medal läuft über Awin (Merchant 59079); WineExpress via Impact-Direktlink; totalwine, vivino …
 } satisfies Record<string, Merchant>;
 
 export type MerchantId = keyof typeof merchants;

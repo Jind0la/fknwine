@@ -1,6 +1,6 @@
 ---
 title: "Wine club for beginners: the 5-minute check"
-description: "Before you join a wine club: the five terms that decide whether it's worth it. Written for a first order, using six clubs whose contracts we've read."
+description: "Before you join a wine club: the five terms that decide whether it's worth it. Written for a first order, using nine clubs whose contracts we've read."
 category: Guide
 updated: "2026-10-22"
 order: 22
@@ -18,7 +18,7 @@ Not the intro. The second one. Every club we've reviewed publishes an intro pric
 
 ## 2. Can you cancel without talking to a human?
 
-Two of the six clubs we've read put cancellation behind an email or a phone call. The rest let you do it in your account. Neither is illegal — it's friction, and friction is a business model.
+Two of the nine clubs we've read put cancellation behind an email or a phone call. The rest let you do it in your account. Neither is illegal — it's friction, and friction is a business model.
 
 Find the cancel path *before* you find the buy button. Our [cancellation guide](/guides/how-to-cancel-a-wine-club/) ranks all six from a button in your account to picking up the phone.
 

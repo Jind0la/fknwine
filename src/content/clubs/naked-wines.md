@@ -58,7 +58,7 @@ There is **no published self-service cancel button**. Their help centre document
 - **Phone:** 1-800-673-4718
 - **Email:** chat@nakedwines.com
 
-Their terms state no tie-in — cancel, skip or pause whenever you like. That's the promise; the phone call is the friction. A club that makes you call is betting some people won't, and this is the one place where Naked Wines sits in the weaker half of the six clubs we've reviewed.
+Their terms state no tie-in — cancel, skip or pause whenever you like. That's the promise; the phone call is the friction. A club that makes you call is betting some people won't, and this is the one place where Naked Wines sits in the weaker half of the nine clubs we've reviewed.
 
 **We have not tested this flow**, so we can't tell you how long it takes or what they ask. Two things to settle before you join, because they're not answered on the landing page: what happens to a **remaining account balance** when you cancel, and whether a shipment already in transit can still be stopped.
 

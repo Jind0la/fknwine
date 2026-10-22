@@ -30,7 +30,7 @@ Checked against both clubs' own sites and help centres on **October 16 and 22, 2
 
 **Naked Wines is a wallet. Firstleaf is a subscription.**
 
-With Naked, the $40 isn't a fee — it lands in your balance and you spend it whenever you want, on whatever you want, at prices that are permanently discounted for members. That's genuinely the best per-bottle economics in our six clubs *if* you keep using it. The failure mode is silence: three months of autopilot is $120 sitting in an account you forgot about.
+With Naked, the $40 isn't a fee — it lands in your balance and you spend it whenever you want, on whatever you want, at prices that are permanently discounted for members. That's genuinely the best per-bottle economics in our nine clubs *if* you keep using it. The failure mode is silence: three months of autopilot is $120 sitting in an account you forgot about.
 
 With Firstleaf, you're buying a series of boxes and the algorithm decides the contents. The intro is cheap enough to be a real test. The second box is where you find out if the model suits you — and by then you're at roughly supermarket-plus prices with shipping on top.
 
@@ -38,7 +38,7 @@ With Firstleaf, you're buying a series of boxes and the algorithm decides the co
 
 ## Which one
 
-- **You already spend $40+ a month on wine and like choosing:** [Naked Wines](/wine-clubs/naked-wines/). Best steady-state price of the six, if you keep it fed.
+- **You already spend $40+ a month on wine and like choosing:** [Naked Wines](/wine-clubs/naked-wines/). Best steady-state price of the nine, if you keep it fed.
 - **You want to test a club once, cheaply:** [Firstleaf](/wine-clubs/firstleaf/). $44.95 for six bottles, then decide at the second box.
 - **You hate phone calls more than you hate paying more:** Firstleaf. The exit is a click.
 - **You're price-shopping across all six:** [cheap wine clubs, ranked by real cost per bottle](/guides/cheap-wine-clubs/) puts every club on the same line.

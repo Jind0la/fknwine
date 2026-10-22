@@ -31,7 +31,7 @@ Every figure comes from the clubs' own sites and help centres, last checked **Oc
 
 **2. The second shipment.** Winc's price is stable and predictable — ~$16–20 with shipping included. Firstleaf's intro is the cheapest entry in our whole set, but the ongoing price is roughly double the intro, and shipping is on top. The number to compare is not $7.50 against $20; it's ~$16.50–26.50 **plus shipping** against ~$16–20 **delivered**.
 
-**3. How you leave.** Both are self-service, which puts them in the better half of the six clubs we've read. Winc's catch is timing: miss the 3-day window and the box ships. Firstleaf's catch is money: cancel after an order is processed and the help centre documents a $25 restocking fee, and any credit you hold expires when you cancel rather than pausing.
+**3. How you leave.** Both are self-service, which puts them in the better half of the nine clubs we've read. Winc's catch is timing: miss the 3-day window and the box ships. Firstleaf's catch is money: cancel after an order is processed and the help centre documents a $25 restocking fee, and any credit you hold expires when you cancel rather than pausing.
 
 ## Which one to pick
 

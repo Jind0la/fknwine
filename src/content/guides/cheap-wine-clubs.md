@@ -1,6 +1,6 @@
 ---
 title: "Cheapest wine clubs: the real cost per bottle"
-description: "The cheapest wine clubs aren't the ones with the $7.50 intro. Real per-bottle cost for six clubs after the intro, with the terms that decide it."
+description: "The cheapest wine clubs aren't the ones with the $7.50 intro. Real per-bottle cost for nine clubs after the intro, with the terms that decide it."
 category: Guide
 updated: "2026-10-22"
 order: 25
@@ -8,18 +8,21 @@ order: 25
 
 Every "cheap wine club" pitch on the internet quotes the same number: the intro box. Six bottles for $44.95, twelve for $79.99, "$8 a bottle!" — and then the second shipment arrives at a price nobody mentioned.
 
-So here is the same six clubs, ranked by the number that actually matters: **what you pay per bottle once the intro is over.** All of it comes from the clubs' own sites and help centres, last checked **October 22, 2026**. We quote the clubs' claims and say where we haven't tested them ourselves.
+So here are all nine clubs, ranked by the number that actually matters: **what you pay per bottle once the intro is over.** All of it comes from the clubs' own sites and help centres, last checked **October 22, 2026**. We quote the clubs' claims and say where we haven't tested them ourselves.
 
 ## Ranked by post-intro price per bottle
 
 | Rank | Club | Intro offer | After the intro | Honest read |
 |---|---|---|---|---|
-| 1 | **[Winc](/wine-clubs/winc/)** | $100 off over your first 4 orders | ~$16–20 a bottle | The lowest *stable* per-bottle price of the six — if the wines are ones you'd buy anyway. |
-| 2 | **[The California Wine Club](/wine-clubs/california-wine-club/)** | from $49 a shipment (2 bottles) | ~$24.50 a bottle + shipping | Two bottles a shipment is the floor; shipping is on top and not small. |
-| 3 | **[Gold Medal Wine Club](/wine-clubs/gold-medal-wine-club/)** | from $49 a shipment (Gold) | from ~$24.50 a bottle + shipping | Same money as California, more of a gifting product. |
-| 4 | **[Wine Access](/wine-clubs/wine-access/)** | $150 (Discovery, 6 bottles, 4×/year) | ~$25 a bottle (Discovery) | Clean pricing, and the top tiers jump to $75 and $250–400 a bottle. |
-| 5 | **[Firstleaf](/wine-clubs/firstleaf/)** | $44.95 first box (6 bottles) = ~$7.50 a bottle | ~$16.50–26.50 depending on plan, + shipping | Cheapest intro in this list, widest spread afterwards, and you don't pick the bottles. |
-| 6 | **[Naked Wines](/wine-clubs/naked-wines/)** | $40/month into your wine account | up to 60% off Angel-only prices | Can be the cheapest per bottle you'll find — but only if you'll actually spend $40 every month. |
+| 1 | **[Winc](/wine-clubs/winc/)** | $100 off over your first 4 orders | ~$16–20 a bottle | The lowest *stable* per-bottle price of the nine — if the wines are ones you'd buy anyway. |
+| 2 | **[WSJ Wine](/wine-clubs/wsj-wine/)** | 12 bottles every 3 months | ~$17.08 a bottle — **including** $19.99 shipping | Transparent if you do the math; you cancel by phone, 1-877-975-9463. |
+| 3 | **[Firstleaf](/wine-clubs/firstleaf/)** | $44.95 first box (6 bottles) = ~$7.50 a bottle | ~$16.50–26.50 depending on plan, + shipping | Cheapest intro in this list, widest spread afterwards, and you don't pick the bottles. |
+| 4 | **[Wine Insiders](/wine-clubs/wine-insiders/)** | 15 bottles for $149 = ~$9.93 a bottle | ~$23.92 at their own listed regular price | Strong intro, but the front page says $99 for the same case — and we found no published cancel route. |
+| 5 | **[The California Wine Club](/wine-clubs/california-wine-club/)** | from $49 a shipment (2 bottles) | ~$24.50 a bottle + shipping | Two bottles a shipment is the floor; shipping is on top and not small. |
+| 6 | **[Gold Medal Wine Club](/wine-clubs/gold-medal-wine-club/)** | from $49 a shipment (Gold) | from ~$24.50 a bottle + shipping | Same money as California, more of a gifting product. |
+| 7 | **[Wine Access](/wine-clubs/wine-access/)** | $150 (Discovery, 6 bottles, 4×/year) | ~$25 a bottle (Discovery) | Clean pricing, and the top tiers jump to $75 and $250–400 a bottle. |
+| 8 | **[Plonk Wine Club](/wine-clubs/plonk-wine-club/)** | $134.99 for 4 bottles | ~$33.75 a bottle, shipping free | The most expensive per bottle here — and the only one paying for organic/biodynamic farming. |
+| 9 | **[Naked Wines](/wine-clubs/naked-wines/)** | $40/month into your wine account | up to 60% off Angel-only prices | Can be the cheapest per bottle you'll find — but only if you'll actually spend $40 every month. |
 
 ## The three numbers most "cheap" lists hide
 

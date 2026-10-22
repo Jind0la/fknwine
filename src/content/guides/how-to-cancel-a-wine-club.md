@@ -1,6 +1,6 @@
 ---
 title: "How to actually cancel a wine club"
-description: "Every club says 'cancel anytime'. Almost none say how. We read the terms on six clubs and ranked them from a button in your account to picking up the phone."
+description: "Every club says 'cancel anytime'. Almost none say how. We read the terms on nine clubs and ranked them from a button in your account to picking up the phone."
 category: Guide
 updated: "2026-10-16"
 order: 20
@@ -21,7 +21,7 @@ Here's the cancellation reality for the clubs we've reviewed, as of **October 16
 | **Naked Wines** | Phone **1-800-673-4718** or email **chat@nakedwines.com** | No published self-service button — you contact them. |
 | **Gold Medal Wine Club** | Account page, email **support@goldmedalwine.com**, or phone **1-800-266-8888** | A real account option *plus* human routes. |
 
-Read that column again: two of the six put cancellation behind a phone call or email. That's not a scam — it's just friction, and friction is the point. A club that needs you to call is betting some of you won't. A club that lets you click has decided your exit isn't worth slowing down.
+Read that column again: two of the nine put cancellation behind a phone call or email. That's not a scam — it's just friction, and friction is the point. A club that needs you to call is betting some of you won't. A club that lets you click has decided your exit isn't worth slowing down.
 
 ## The rule we apply to our own money
 
