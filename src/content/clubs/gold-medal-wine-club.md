@@ -1,4 +1,5 @@
 ---
+seoTitle: "Gold Medal Review: From $49 a Shipment"
 name: Gold Medal Wine Club
 verdict: depends
 verdictLabel: "Solid for gifting and tradition — shipping is extra"

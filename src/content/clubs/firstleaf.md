@@ -1,4 +1,5 @@
 ---
+seoTitle: "Firstleaf Review: $44.95 Box, Then $16.50"
 name: Firstleaf
 verdict: depends
 verdictLabel: "Worth trying at $7.50 — decide again at $16.50"

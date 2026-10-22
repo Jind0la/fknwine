@@ -1,4 +1,5 @@
 ---
+seoTitle: "Wine Access Review: $150 Discovery, $250+ Top"
 name: Wine Access
 verdict: depends
 verdictLabel: "Take Discovery at ~$25 a bottle — skip the top tiers"

@@ -54,6 +54,10 @@ const relatedGuides = [
     label: 'What six wine clubs really cost per bottle',
   },
   { href: '/guides/how-to-cancel-a-wine-club/', label: 'How to actually cancel a wine club' },
+  // Neue Long-Tail-Guides (SEO-Audit 22.10.2026): interne Verlinkung von jeder
+  // Review aus, damit die Cluster-Seiten nicht allein auf der Sitemap stehen.
+  { href: '/guides/cheap-wine-clubs/', label: 'Cheap wine clubs: the real cost per bottle' },
+  { href: '/guides/wine-club-for-beginners/', label: 'First club? The 5-minute check' },
   { href: '/how-we-test/', label: 'How we test a wine club (our method)' },
 ];
 
@@ -67,7 +71,7 @@ const facts: Array<[string, string]> = [
 ---
 
 <Layout
-  title={`${data.name} review, checked`}
+  title={data.seoTitle ?? `${data.name} review, checked`}
   description={metaDescription}
   publishedTime={data.lastChecked}
   modifiedTime={data.lastChecked}

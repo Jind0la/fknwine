@@ -1,4 +1,5 @@
 ---
+seoTitle: "Naked Wines Review: $40/Month, 60% Off"
 name: Naked Wines
 verdict: depends
 verdictLabel: "Great if you'll spend $40 a month — pointless if you won't"

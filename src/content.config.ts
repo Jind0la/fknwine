@@ -6,6 +6,8 @@ const clubs = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/clubs' }),
   schema: z.object({
     name: z.string(),
+    /** Optionaler <title>. Default ist "<name> review, checked". */
+    seoTitle: z.string().optional(),
     verdict: z.enum(['worth-it', 'depends', 'skip']),
     verdictLabel: z.string(),
     summary: z.string(),
