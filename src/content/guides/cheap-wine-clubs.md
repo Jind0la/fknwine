@@ -1,6 +1,6 @@
 ---
-title: "Cheap wine clubs: the real cost per bottle"
-description: "Intro boxes start at ~$7.50 a bottle. That's not the price. Here is the real per-bottle cost of six clubs after the intro, with the terms that decide it."
+title: "Cheapest wine clubs: the real cost per bottle"
+description: "The cheapest wine clubs aren't the ones with the $7.50 intro. Real per-bottle cost for six clubs after the intro, with the terms that decide it."
 category: Guide
 updated: "2026-10-22"
 order: 25

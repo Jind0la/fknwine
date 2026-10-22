@@ -1,198 +1,137 @@
 # War Room — FKN Wine
 
-> Arbeits-Log des Projekts, Git-versioniert, gepflegt von Hermes (Orchestratorin).
-> **Verdichtungs-Regel:** unter ~150 Zeilen; am Session-Ende abgeschlossene Tasks entfernen,
-> Einträge >2 Wochen kürzen.
+> Arbeits-Log, Git-versioniert, gepflegt von Hermes (Orchestratorin).
+> **Verdichtungs-Regel:** unter ~150 Zeilen. Abgeschlossenes raus, Fremdberichte nie als Quelle.
 
-## Ziel — Wachstumsblock 2 (gesetzt 22.10.2026, Nimars Go)
+## Ziel — Wachstumsblock 2 (22.10.2026, Nimars Go)
 
 **Auftrag:** findbare Fläche ohne Backlinks. **Stand:**
 ① Keyword-Sweep ✓ (64 Keywords, 33 mit Volumen → `docs/keyword-sweep-2026-10-22.json`)
 ② Vergleichsseiten ✓ (`firstleaf-vs-winc`, `naked-wines-vs-firstleaf`)
 ③ GEO-Block ✓ (zitierbarer „Short answer" auf allen 6 Reviews, `fadd761`)
-④ Sitemap/IndexNow ✓ (**24 URLs**, jede Welle neu gepusht)
-⑤ **offen:** Content-Welle 4 · `cheapest` statt `cheap` im Preis-Guide (KD 19 statt 32) ·
-`naked wines cancel` (30/KD 5) und `winc cancel` (10/KD 2) als eigene Abschnitte.
-**Reddit-API gesperrt** (Responsible Builder Policy, App-Anlage abgelehnt) — die Reddit-Seite ist
-deshalb über SERP-belegte Thread-Titel gebaut, nicht über gelesene Kommentare.
+④ Sitemap/IndexNow ✓ (**24 URLs**, nach jeder Welle neu gepusht)
+⑤ **offen:** Content-Welle 4 · `cheapest` statt `cheap` (KD 19 statt 32) ·
+`naked wines cancel` (30/KD 5) + `winc cancel` (10/KD 2) als fokussierte Abschnitte.
+**Deckel:** ohne Off-Site ~300–400 Besucher/Monat; „wine club" (12.100/KD 52) unerreichbar.
 
-**Deckel, ehrlich benannt:** ohne Off-Site-Verweise ~300–400 Besucher/Monat; „wine club" (12.100/KD 52)
-bleibt unerreichbar. Erreichbar sind die Marken-/Vergleichs-Keywords mit KD < 25.
+## Kernbefund (22.10.2026, mit echten Daten)
 
+**Indexierung ist durch:** URL-Inspection (GSC-API) zeigt Startseite, `/wine-clubs/` und
+`/wine-clubs/firstleaf/` als **PASS, „Submitted and indexed"**, `googleCanonical = fknwine.com`.
+Der Duplikat-/`pages.dev`-Befund vom 17.10. ist **erledigt**. Sitemap kennt **24 URLs**.
+**Es fehlt Ranking, nicht Indexierung:** GSC 28 T (24.09.–20.10.) = **12 Impressions / 0 Klicks**, alle
+von alten DE-URLs (`/artikel/rose-guide-supermarkt/` Pos 8); die EN-Seiten hatten null Impressionen.
+**Backlinks: 2 Links / 2 Referring Domains, Serpstat Domain Rank 8** → Autorität ist der Flaschenhals.
+**Marken-/Long-Tail ist der Weg:** `gold medal wine club review` 10/KD **3**, `winc review` 70/**4**,
+`california wine club review` 50/**7**, `firstleaf review` 140/**17** (CPC $240), `naked wines reddit`
+90/**3**, `naked wines cancel` 30/**5**, `cheapest wine club` 140/**19**, `firstleaf vs winc` 10/**0**.
+**Reddit-API gesperrt** (Responsible Builder Policy) — die Reddit-Seite ist über SERP-belegte
+Thread-Titel gebaut, **nicht** über gelesene Kommentare.
 
-## Kernbefund (22.10.2026, SEO-Audit mit echten Daten)
+## Technik (PageSpeed Insights, eigener Key — die verbindliche Zahl)
 
-**Die Indexierung ist durch — nicht mehr 1/19, sondern bestätigt indexiert.** URL-Inspection (GSC-API,
-22.10.): Startseite **PASS, „Submitted and indexed", `googleCanonical = fknwine.com`**; `/wine-clubs/` PASS;
-`/wine-clubs/firstleaf/` PASS. Das **Duplikat-Problem vom 17.10. ist damit erledigt** (`pages.dev` liefert
-200, Canonical/og:url zeigen auf `fknwine.com`). Die 8 neuen/geänderten Seiten sind „unknown", bis Google
-sie crawlt — Sitemap wurde heute 07:10 geladen (19 → 21 URLs), IndexNow hat alle 21 an Bing/Yandex/Seznam/Naver
-gepusht (HTTP 200/202).
-**Es fehlt also nicht Indexierung, sondern Ranking:** GSC 28 T (24.09.–20.10.) = 12 Impressions / 0 Klicks,
-**alle 12 von alten DE-URLs** (`/artikel/rose-guide-supermarkt/` Pos 8, `/artikel/wein-fuer-pizza/` Pos 90);
-die EN-Seiten haben null Impressionen. **Backlinks: 2 Links / 2 Referring Domains, Serpstat Domain Rank 8.**
-**Technik (22.10., PageSpeed Insights API mit eigenem Key — DAS ist die verbindliche Zahl):**
-Mobil **Perf 100** (FCP 1,5 s · **LCP 1,5 s** · CLS 0,005 · TBT 0 ms, 7 Requests) · Desktop **Perf 100** (LCP 0,4 s).
-*Korrektur-Kette:* „mobil 99 / LCP 1,9 s" war ein **ungedrosselter** lokaler Lighthouse-Lauf; PSI (Slow-4G)
-sagte zunächst **Perf 65 / LCP 5,9 s**. Ursache war **nicht Cloudflare** (Verdacht widerlegt: GTM/px-cloud
-stehen in keiner UA-Variante im HTML), sondern der **beehiiv-iframe** im Newsletter-Formular: er lädt
-`gtm.js` (117 KiB), HUMAN/PerimeterX `px-cloud` (98 KiB) und eigene Google-Fonts inkl. PT Serif —
-13 Fremd-Requests, 40 statt 7. Beweis: dieselbe Seite ohne Formular (`/imprint/`) = Perf 99 / LCP 1,8 s.
-**Fix live (`2f31859`):** Loader wird per IntersectionObserver erst bei Sichtbarkeit injiziert →
-mobil **Perf 100 / LCP 1,5 s** nachgemessen.
-A11y 92 → **100** (Heading-Order, iframe-title); SEO 92, einziger Rest
-`Content-Signal: Unknown directive` (Cloudflares AI-Policy-Zeilen, für Google irrelevant).
-**Cloudflare:** Crawler Hints = **an** (Dashboard-Toggle blau; `crawler_hints` ist **kein** API-Setting,
-nur Dashboard). Zone-Plan free, Zone-ID `51e9dc8462690929e186758bf3a0916a`.
-Neuer Token `era-fknwine-read-write` in `secrets/cloudflare-token` — am 22.10. gegen `/user/tokens/verify`
-geprüft (**active**). Format ist **53 Zeichen mit Unterstrich nach 4** (Cloudflares aktuelles Format —
-der alte Wert war nicht „falsch formatiert", sondern schlicht widerrufen).
-Abgedeckt: **Zone Settings Edit · Zone Analytics Read · Cache Purge**. Verifiziert: Zone lesen ✓,
-GraphQL `httpRequests1dGroups` ✓ (19.10. 117 PV/619 Req · 20.10. 77/823 · 22.10. 115/266), Settings lesen ✓.
-**Traffic-Wächter wieder online (22.10.):** `Account → Account Settings: Read` war die fehlende
-Permission — **nicht** `Account Analytics: Read`. Verifiziert: 7 T **68 Aufrufe/67 Besuche** (6 Tage mit
-Daten), 28 T **100/100**. Dabei der ehrliche Blick: **60 von 100 Aufrufen sind `ChromeHeadless`** —
-also unsere eigene Audit-Toolchain, 20 echtes Chrome, 10 ChromeMobile, **10 US / 90 DE**, Quellen
-**100 % (direkt), null externe Referrer**. Pages: `/` 40, `/wine-clubs/naked-wines/` 30,
-`/guides/wine-club-price-per-bottle/` 20, `/deals/` 10. Also weiterhin: der Traffic ist **Eigenverkehr**.
+Mobil **Perf 100** (FCP 1,5 s · **LCP 1,5 s** · CLS 0,005 · TBT 0 ms · 7 Requests) · Desktop **100** (LCP 0,4 s).
+*Korrektur-Kette:* „mobil 99/LCP 1,9 s" war ein **ungedrosselter** lokaler Lauf; PSI (Slow-4G) sagte zuerst
+**65/5,9 s**. Ursache war **nicht Cloudflare**, sondern der **beehiiv-iframe** (gtm.js 117 KiB, HUMAN/px-cloud
+98 KiB, eigene Google-Fonts inkl. PT Serif → 40 statt 7 Requests). **Fix `2f31859`:** Loader per
+IntersectionObserver erst bei Sichtbarkeit → **100/1,5 s** nachgemessen. A11y 92 → **100**; SEO 92
+(einziger Rest `Content-Signal: Unknown directive`, für Google irrelevant).
 
-Nicht im Scope und nicht nötig: Bot Management, Zaraz (die GTM/px-cloud-Frage war beehiiv, s. o.).
+## Infrastruktur (Stand 22.10.2026)
 
-
-
-**Marken-Keywords sind der Weg ohne Backlinks:** US-Volumen/KD — `gold medal wine club review` 10/KD **3**,
-`winc review` 70/**4**, `california wine club review` 50/**7**, `firstleaf review` 140/**17** (CPC $240),
-`wine club deals` 40/**17**, `cheap wine club` 140/32, `wine club for beginners` 20/31 —
-gegen `wine club` 12.100/KD **52**, das ohne Autorität unerreichbar ist.
-
-## Infrastruktur (Stand 17.10.2026)
-
-- **Discovery (neu 22.10.):** **IndexNow** live — Key `0014cc2aab413ce45352e0770f2e903b`
-  (Datei `public/<key>.txt`, nicht löschen), Push-Skript-Idee: alle Sitemap-URLs an
-  `api.indexnow.org/indexnow` + `www.bing.com/indexnow` (HTTP 200/202 verifiziert, 21 URLs).
-  Bing speist **Copilot, ChatGPT-Suche und DuckDuckGo** — der einzige Discovery-Kanal ohne Backlink.
-  Nach jedem Deploy neu pushen. Cloudflare „Crawler Hints" (Dashboard) würde das automatisieren.
-- **GSC-Leserechte über Treg** (Connection 18871, `google-search-console.*`, $0/Call):
-  `url_inspection` (echter Index-Status + `googleCanonical`), `sitemaps`, `performance`.
-  **Immer hiernach prüfen, nicht nach `site:`-SERP** — die SERP zeigt auch 301er-Leichen.
-- **Traffic-&-Index-Wächter:** Cron `37a37f5866c4` (täglich 09:45, no_agent → Telegram). Montags Wochenreport,
-  sonst nur bei Ereignis (neu indexierte URL / erster externer Referrer / erster Nicht-DE-Besuch); leerer stdout
-  = still. `~/.hermes/scripts/fknwine_traffic_watch.{sh,py}`, State `~/.hermes/state/fknwine_traffic_state.json`.
-  Zweimal echt gegen die APIs getestet.
-- **Cloudflare-Leser:** `~/.hermes/scripts/fknwine-gsc/cf_traffic.py` (`verify|summary|pages|referrers|countries|devices`),
-  Token read-only in `~/.hermes/secrets/cloudflare-token` (600). **Lehre: GraphQL braucht den `site_tag` aus der
-  API, NICHT den Beacon-`site_token` aus dem HTML** — sonst „keine Daten" und es sieht wie „kein Traffic" aus.
-  `/user/tokens/verify` antwortet bei konto-eigenen Tokens 401 (kein Defekt).
-- **GSC:** Property per FILE verifiziert, `public/google35b2017bd84955fa.html` — **nie löschen**. Der
-  automatisierte Nachzug hat **nie einen Erfolg verzeichnet** (State 0× „beantragt", alle Läufe „Kontingent
-  überschritten") und die Meldung verkaufte das als Fortschritt; Text in `run_pending.py` korrigiert. Das GSC-UI
-  zeigt aber „Indexierung beantragen · Noch einmal beantragen" (eingeloggt, kein Kontingent-Banner) → Anfragen
-  gingen früher durch; „nie beantragt" wäre eine Überkorrektur. **Entscheidend ist das Ergebnis:** 18/19 URLs
-  „unbekannt", Startseite seit 16.10. 10:40 geführt und weiter Duplikat mit `googleCanonical = pages.dev`.
-  **„Request Indexing" hat bei uns bislang keine Indexierung erzeugt** — kein Hebel, auf den wir planen; Job von
-  täglich auf **wöchentlich** reduziert. **Sitemap am 17.10. neu eingereicht** (Google arbeitete noch mit 33 statt 19 URLs).
-- **KI-Zugang:** Such-/Antwort-Agenten erlaubt (`ai-input=yes`), Training gesperrt (`ai-train=no`). Cloudflares
-  AI-Panel (Zone → Security) ist die **Autorität** (Search/Agent Allow, Training Disallow, Bot Preference Sync AN);
-  Edge-Gegenprobe: PerplexityBot/OAI-SearchBot 200, GPTBot 403. `robots.txt` widerspricht dem nicht mehr
-  (Google-Extended-Allow entfernt, `2796038`). **Nach jeder Panel-Änderung die Live-`robots.txt` neu parsen —
-  die Cloud-Liste ist nicht im Repo.**
-- **Live gemergt & verifiziert:** `21304a4` Content-Welle 3 · `766dee6` SEO-Welle 1 (`_headers` HSTS, `/subscribed/`
-  noindex, Schema-`@graph`+`BreadcrumbList`, interne Links Reviews↔Guides, Verdicts entschieden, Meta ≤155,
-  Touch-Ziele ≥44 px, Tabellen-Scrollregion) · `e24c8f4` AI-Optimierung (`<time datetime>`, meta robots, `llms.txt`) ·
-  `4b3cfc0` Methodenseite. Details in den Commits.
-- **Deal-Refresh:** Cron Mo 10:00 (local) prüft Deals am Merchant, schreibt `deals.ts` nur bei grünem Build.
-- **X-Wachstumssystem (17.10.):** Cron `638ebb99dfae` (täglich 15:00 = 9:00 ET) postet aus
-  `~/.hermes/state/fkn_x_queue.json` (`fkn_x_post.py`); Cron `2ec20ee15e3d` (täglich 14:30) liefert **fertige
-  Antwort-Entwürfe** per Telegram — **Link erste Zeile**, dann Fertigtext, **zweite Zeile PFLICHT = Account-Hinweis**
-  (`fkn_x_digest_prompt.txt`); Lern-Loop: Cron `bbbc8f7c7549` (täglich 23:00) schreibt Schnappschüsse nach
-  `~/.hermes/state/fkn_x_perf.jsonl`, Cron `1679e224fb1e` (Mo 15:00) liefert die Wochen-Auswertung (`fkn_x_perf.py`);
-  Skills `x-growth`, `xurl`. Der Loop funktioniert nur, weil Antworten eigene Posts des Markenkontos sind.
-  **Fehler, der nicht wiederkommen darf:** die ersten 3 Antworten gingen aus Nimars **privatem** Konto raus, weil die
-  Lieferung nur Link + Text enthielt — seitdem steht der Account-Switch in jeder Lieferung, Skill `x-growth` trägt
-  „immer nennen, welches Konto antwortet". **Harte Grenze (live):** die X-API erlaubt **keine** Antwort/kein Quote auf
-  fremde Posts (403 „you are mentioned or are the author") — **X-Politik gegen LLM-Spam, keine Tarifstufe** (Upgrade
-  hilft nicht); `post`/`like`/`repost`/`follow` gehen. Antworten nur von Hand; Browser-Automatisierung wäre
-  regelwidrig (Ban) und ist ausgeschlossen. Erster echter Post live (`Firstleaf: 'no fees' vs. $25 restocking fee`,
-  id `2111382787760554074`, per Read-back verifiziert).
-- **Domain/Deploy:** `site` in `astro.config.mjs` = **einzige** Domain-Quelle, Canonical mit Trailing Slash;
-  `always_use_https` + www→Apex 301 (Zone `51e9dc8462690929e186758bf3a0916a`); Deploy via Pages-GitHub-Integration.
+- **Discovery:** **IndexNow** live — Key `0014cc2aab413ce45352e0770f2e903b` (`public/<key>.txt`, nicht
+  löschen); nach jedem Deploy alle Sitemap-URLs an `api.indexnow.org` + `www.bing.com` (HTTP 200/202).
+  **Bing** speist Copilot, ChatGPT-Suche und DuckDuckGo — der einzige Kanal ohne Backlink.
+  Cloudflare **Crawler Hints = an** (nur Dashboard; `crawler_hints` ist kein API-Setting).
+- **Bing Webmaster API:** Key in `.env` (`BING_WEBMASTER_API_KEY`), Site **verifiziert**, Sitemap geholt,
+  21 URLs aktiv eingereicht. `GetQueryStats` leer (Bing kennt die Seite noch nicht).
+- **Google:** PageSpeed/CrUX über `GOOGLE_API_KEY` (Projekt `hermes-agent-nimar`); GSC-Leserechte über
+  **Treg** (Connection 18871, $0/Call): `url_inspection`, `sitemaps`, `performance`. **Immer
+  URL-Inspection statt `site:`-SERP** — die SERP zeigt 301er-Leichen. Property per FILE verifiziert,
+  `public/google35b2017bd84955fa.html` **nie löschen**.
+- **Cloudflare-Token** `era-fknwine-read-write` in `secrets/cloudflare-token` (`active`): Zone Settings
+  Edit · Zone Analytics Read · Cache Purge · **Account Settings Read** (letzteres war der Schlüssel für
+  `/accounts`, *nicht* Account Analytics). 53 Zeichen mit Unterstrich = gültiges Format. **Kein DNS-Zugriff.**
+- **Traffic-Wächter:** Cron `37a37f5866c4` (täglich 09:45, no_agent → Telegram), Montags Wochenreport,
+  sonst nur bei Ereignis; leerer stdout = still. `~/.hermes/scripts/fknwine_traffic_watch.{sh,py}`.
+  Verifiziert 22.10.: 7 T **68 Aufrufe/67 Besuche**, 28 T **100/100** — davon **60 % `ChromeHeadless`
+  (unsere Audits)**, 20 % echtes Chrome, 10 % mobil, **90 DE / 10 US**, **100 % direkt, null externe
+  Referrer**. Der Traffic ist **Eigenverkehr**.
+- **Cloudflare-Leser:** `~/.hermes/scripts/fknwine-gsc/cf_traffic.py`
+  (`verify|summary|pages|referrers|countries|devices`). **Lehre:** GraphQL braucht den `site_tag` aus der
+  API, nicht den Beacon-`site_token` aus dem HTML.
+- **Rank-Monitor:** Cron `1144f046b41b` (1. des Monats 9:00 → Telegram), `fkn_rank_check.py`, State
+  `~/.hermes/state/fkn_rank.json`. Baseline 22.10.: **0/11 Keywords in Top 30**.
+- **KI-Zugang:** Suche/Antworten erlaubt (`ai-input=yes`), Training gesperrt. Cloudflares AI-Panel ist die
+  Autorität; nach Panel-Änderungen die Live-`robots.txt` neu parsen (Cloud-Liste ist nicht im Repo).
+- **Domain/Deploy:** `site` in `astro.config.mjs` = einzige Domain-Quelle, Canonical mit Trailing Slash;
+  `always_use_https` + www→Apex; Deploy über Pages-GitHub-Integration (kein Wrangler-Token).
+- **Deal-Refresh:** Cron Mo 10:00, schreibt `deals.ts` nur bei grünem Build.
 
 ## Assets & Kanäle
 
-- **Repo** `Jind0la/fknwine` → `~/Workspace/projects/19-fknwine`, Desktop-Projekt `fknwine` (p_881c6f4f), KB `prj-fknwine`.
-- **Awin:** Publisher **FKN Wine, ID 3126259** aktiv, Profil 100 % (Avatar ✱, Mauritiusstraße). Beworben: Gold Medal
-  (**59079**), ONEHOPE (**39702**), Parcelle (**94853**); Personal Wine 39786 öffnet kein Modal. Eigenheiten:
-  Aktivierungs-Mail mit Template-Bug (Konto nutzbar); CWC läuft NICHT über Awin-US. Ablehnungen: FlexOffers
-  (Textbaustein), Impact (Ticket **#897752**, Gate). **Telefon-Falle (17.10., live):** Awin hat **zwei** Seiten mit
-  denselben zwei Feldern — `/user/settings/details/…` (Benutzerdetails) und `/awin/affiliate/3126259/settings/contact`
-  (Kontaktdetails); gegengleich ausgefüllt: Benutzerdetails `telephone` ✓ / `mobile` leer, **Kontaktdetails `mobile` ✓ /
-  `telephone` LEER**. **Kontaktdetails ist die Sicht, die Merchants sehen** → dort muss es stehen. Dort ebenfalls leer
-  (für Netzwerk-Freigaben wertvoll, „kein Publikum" war Ablehnungsgrund): `twitterUsername` (→ FKNWine), `blogUrl`,
-  `facebookPage`, `address1`/Apartment, IM-Felder (optional). Speichern nur mit Passwort im Feld `password`.
-- **Mail:** info@/hey@fknwine.com → nimarm@me.com + Gmail-Kopie (CF-Worker `fkn-mail-router`); senden als info@/hey@
-  via Resend (`~/.hermes/scripts/fkn_send.py`).
-- **Newsletter:** beehiiv live, Welcome-Flow E2E getestet, Issue #01 als Draft („A $10 Malbec and the fine print we
-  actually read"). Byline/Signatur = „FKN Wine" (✱-Avatar), Legal-Seiten behalten den Operator-Namen, Footer Bochum.
-  Composer-/CDP-Lehren im Skill `beehiiv-newsletter`.
-- **X:** @FKNWine, id `2074768137501675520`, schreib-verifiziert; Stand 17.10.: **1 Follower**, 46 Following, 7 Posts,
-  0 Medien. **Lehren:** (1) Standalone-Link-Posts → 403 bei jungem Account, Link als Reply auf den eigenen Post;
-  (2) Antworten/Quotes auf fremde Posts API-generell gesperrt → Antwort-Wachstum braucht eine Menschenhand;
-  (3) drei „große" Wein-Accounts sind tot (@WineSpectator 14 Mon., @WineandSpirits 2,5 J, @drvino 3,6 J) — vor dem
-  Antworten Post-Alter messen; (4) lebendig/stündlich: @WineEnthusiast (217k), @WineFolly, @winewankers, @vinography,
-  @VinePair; (5) Reichweite ohne Themenbezug ist wertlos (@TastingTable 1 Mio postet Burger, für Wein Null);
-  (6) alte Posts liefen im deutschen Tageslicht (2–5 Uhr US) — deshalb der 15:00-Cron. Aufruf immer `xurl -u FKNWine …`.
-- **Content-Stand:** 6 Club-Reviews, 3 Guides, Methodenseite, 19 URLs. E-E-A-T-Lücke geschlossen durch **eigenes
-  Nachlesen** der Clubs (Hilfe-Center + AGB); gefundene Widersprüche (Firstleaf $25 vs. „no fees", Winc „$9 may apply"
-  vs. „Free shipping always", Guthaben-Verfall, 3-Tage-Frist, Wine Access als Ausnahme) stehen in den Reviews und auf
-  `/how-we-test/` — **nicht hier duplizieren.** **Wir haben die Clubs nicht gekauft — steht so auf jeder Seite.**
+- **Repo** `Jind0la/fknwine` → `~/Workspace/projects/19-fknwine`; Desktop-Projekt `fknwine`; KB `prj-fknwine`.
+- **Awin:** Publisher **FKN Wine, ID 3126259**, Profil 100 %. Beworben: Gold Medal (59079), ONEHOPE (39702),
+  Parcelle (94853); CWC läuft **nicht** über Awin-US. **Telefon-Falle:** Kontaktdetails
+  (`/awin/affiliate/3126259/settings/contact`) ist die Sicht der Merchants — dort fehlt `telephone`;
+  ebenfalls leer: `twitterUsername`, `blogUrl`, `facebookPage`. Speichern nur mit `password` im Formular.
+  Ablehnungen: FlexOffers, Impact (#897752).
+- **Mail:** info@/hey@fknwine.com → nimarm@me.com + Gmail-Kopie (CF-Worker `fkn-mail-router`), senden per
+  Resend (`fkn_send.py`).
+- **Newsletter:** beehiiv live, Welcome-Flow getestet, Issue #01 Draft („A $10 Malbec…"). Byline „FKN Wine";
+  Legal-Seiten behalten den Operator-Namen. Composer-Lehren im Skill `beehiiv-newsletter`.
+- **X:** @FKNWine (id `2074768137501675520`). Crons: Post 15:00 (`638ebb99dfae`), Antwort-Entwürfe 14:30
+  (`2ec20ee15e3d` — **Account-Hinweis Pflicht in jeder Lieferung**, sonst gehen Antworten aus dem privaten
+  Konto raus), Lern-Loop 23:00, Wochen-Auswertung Mo. **Harte Grenze:** X-API erlaubt **keine** Antwort/kein
+  Quote auf fremde Posts (Politik, keine Tarifstufe); `post`/`like`/`repost`/`follow` gehen. Antworten nur
+  von Hand, keine Browser-Automatisierung. Vor dem Antworten Post-Alter messen — @WineSpectator,
+  @WineandSpirits, @drvino sind monatelang tot; lebendig: @WineEnthusiast, @WineFolly, @winewankers, @VinePair.
+- **Content:** 6 Club-Reviews, 8 Guides, Methodenseite, **24 URLs**. Widersprüche (Firstleaf $25 vs. „no
+  fees", Winc $9 vs. „free shipping always", Guthaben-Verfall, 3-Tage-Frist) stehen in den Reviews und auf
+  `/how-we-test/` — **nicht hier duplizieren**. **Wir haben die Clubs nicht gekauft — steht auf jeder Seite.**
 
 ## Laufende Tasks
 
-| Task | Wer | Status | Nächster Schritt |
-|---|---|---|---|
-| Indexierung | Era/Google | **25/19+ URLs im Index**, DE-Altlasten drin | DE-Reste fallen lassen (301 live), GSC-Impressionen beobachten |
-| SEO-Audit 22.10. | Era | Befund + Fixes auf `seo/audit-2026-10-22` | Preview-Blick (Nimar) → Merge → Live-Check |
-| Autorität/Backlinks | Era | **2 RD, Domain Rank 8** | Verzeichnisse, Awin-Merchant-Profil, Newsletter-Verweise; alles andere ist Nebenschauplatz |
-| Affiliate-Konten | Era | Awin aktiv, 3 Bewerbungen offen | Awin-Telefon nachtragen (Nimar); Antworten; Skimlinks/Sovrn prüfen; Re-Apply nach Traffic |
-| Content-Kadenz | Era | 6 Clubs, 3 Guides live | Welle 4: Wine Insiders, WSJ Wine, Plonk |
-| Newsletter | Era | Flow live; Issue #01 Draft | Publizieren, sobald echte Abos da sind |
-| Monetarisierung | Era | Konzept steht (EN/US, „Deals + Data + Voice") | Tracking-Links live → `AFFILIATE_LIVE=true` (FTC-Disclosure) |
+| Task | Status | Nächster Schritt |
+|---|---|---|
+| Ranking | 0/11 Keywords in Top 30 | Monatsreport 1.11. abwarten |
+| Autorität | 2 RD, Domain Rank 8 | Verzeichnisse, Awin-Profil, Newsletter — der einzige echte Wachstumshebel |
+| Affiliate | Awin aktiv, 3 Bewerbungen offen | Awin-Kontaktdetails (Nimar), Re-Apply nach Traffic |
+| Content | 6 Clubs, 8 Guides | Welle 4: Wine Insiders, WSJ Wine, Plonk |
+| Newsletter | Flow live, Issue #01 Draft | publizieren, sobald echte Abos da sind |
+| Monetarisierung | Konzept steht | Tracking live → `AFFILIATE_LIVE=true` (FTC-Disclosure) |
 
 ## Entscheidungen
 
-- **EN-Pivot (Nimars Go):** Deals + Data + Voice auf EN/US. Ablauf Branch → Live-Preview → Merge (**kein Merge ohne
-  Preview-Blick**); X Premium bewusst aufgeschoben.
-- **KI-Zugang (17.10., dreht frühere Sperre um):** KI darf lesen und suchen (`ai-input=yes`), nur Training zu (`ai-train=no`).
-- **Kein Cloudflare-Schreib-Token** — bewusst nur Leserechte für Analytics. **Amazon zahlt 0 % auf Alkohol** — nie als
-  Einnahme planen.
-- **Keine Tasting-Behauptungen:** Meinung als Meinung markiert, jede Zahl mit „Checked"-Datum.
-- **Look bleibt, Inhalt neu:** Neubrutalist-Optik behalten; Footer-Adresse vorerst Bochum.
+- **EN-Pivot** (Nimars Go): Deals + Data + Voice, EN/US. Branch → Live-Preview → Merge (**kein Merge ohne
+  Preview-Blick**). X Premium aufgeschoben.
+- **KI-Zugang:** lesen/suchen erlaubt, Training gesperrt.
+- **Amazon zahlt 0 % auf Alkohol** — nie als Einnahme planen.
+- **Keine Tasting-Behauptungen:** Meinung als Meinung, jede Zahl mit „Checked"-Datum.
+- **Look bleibt:** Neubrutalist-Optik; Footer-Adresse vorerst Bochum.
 
-## Fehlschläge & Korrekturen (Lehren)
+## Lehren
 
-- **Eigener Fehler: Host-Redirect per Pages-Function zerlegte die Live-Seite** (~4 Min Ausfall, per `git revert`
-  zurück). Host-Redirects nie aus einer Pages-Function ableiten; grünes Preview beweist hostabhängiges
-  Produktionsverhalten nicht.
-- **Erste Mobile-Overflow-Diagnose war ein Messfehler:** headless `--window-size` setzt das Layout-Viewport nicht —
-  erst `Emulation.setDeviceMetricsOverride` + `docScrollWidth` zeigte die Wahrheit.
-- **Eigener Bug in der AI-Welle:** `Date.parse("Oct 16, 2026")` + `toISOString()` schob das Datum in Berlin auf den
-  15. zurück (UTC). Jetzt lokale Datumskomponenten.
-- **Fremdberichte und eigene Meldungen sind Selbstauskünfte:** Audit-Rollen behaupteten „Startseite hat 3 H1" (hat 1)
-  und „`og-default.png` noch DE" (ist EN); der eigene Wächter meldete den eigenen Domain-Referrer als „ersten
-  externen Besuch" und „keine Indexierung" direkt über „1/19". **Regel: Kernbefunde und jede Ausgabe gegen die echten
-  Zahlen prüfen, nie gegen die Erwartung.**
+- **Fremdberichte und eigene Meldungen sind Selbstauskünfte:** Audit-Rollen behaupteten „3 H1" (war 1) und
+  „keine Indexierung" direkt über „1/19". Immer gegen echte Zahlen prüfen, nie gegen die Erwartung.
+- **Ungedrosselte Lighthouse-Läufe lügen** — PSI mit Slow-4G ist der Maßstab.
+- **Erst Ursache, dann Verdacht:** Cloudflare war unschuldig, das Newsletter-iframe schuldig.
+- **Host-Redirect per Pages-Function zerlegte die Live-Seite** (~4 Min Ausfall) — nie wieder.
+- **Messfehler:** headless `--window-size` setzt das Layout-Viewport nicht (erst
+  `Emulation.setDeviceMetricsOverride` zeigte den Overflow).
+- **Zeitzonen-Bug:** `Date.parse` + `toISOString()` schob Daten in Berlin um einen Tag zurück.
+- **Cloudflare-Permissions sind feinkörnig:** `/accounts` hängt an Account *Settings*, nicht Analytics.
 
 ## Known Limitations
 
-- [ ] **Deploy hängt an der Pages-GitHub-Integration** — kein Wrangler-Token; Verifikation nur per Live-Check nach dem Push.
-- [ ] `fknwine.pages.dev` liefert weiter 200 → Entdopplung nur über Canonical + Re-Crawl (Pages-Function-Weg verboten).
-- [ ] Startseite ist für Google ein Duplikat mit fremdem Canonical → blockiert den Einstieg in den Index.
+- [ ] Deploy hängt an der Pages-GitHub-Integration — Verifikation nur per Live-Check nach dem Push.
 - [ ] Ohne Suchtraffic sind Traffic-Zahlen Kleinstgröße und von Eigenverkehr kaum zu trennen.
+- [ ] Reddit-API nicht verfügbar (Policy) → keine echten Kommentar-Zitate.
+- [ ] PageSpeed-Key trägt vier ungenutzte API-Scopes (Telemetry, Service Usage, People, Analytics Hub).
 
 ## Nächste Schritte
 
-- [ ] **Indexierung beobachten** (Wächter meldet selbst); Startseiten-Duplikat im Auge behalten — echtes Ranking erst,
-      wenn die Startseite auf `fknwine.com` steht.
-- [ ] **Awin-Telefonnummer** nachtragen (Nimar) → Merchants freischalten. Affiliate-Antworten (FlexOffers,
-      Impact #897752) → genannten Grund fixen, dann Re-Apply.
-- [ ] Content-Welle 4 (Wine Insiders, WSJ Wine, Plonk) — **erst nach Index-Fortschritt**.
+- [ ] `cheapest` statt `cheap` im Preis-Guide (KD 19 statt 32).
+- [ ] `naked wines cancel` + `winc cancel` als fokussierte Abschnitte.
+- [ ] Content-Welle 4 (Wine Insiders, WSJ Wine, Plonk) — je eine Seite + ~7 Keyword-Chancen.
+- [ ] Awin-Kontaktdetails nachtragen (Nimar) → Merchants freischalten.
