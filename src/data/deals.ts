@@ -7,6 +7,12 @@ export interface Deal {
   id: string;
   /** Muss ein Key aus merchants.ts sein — sonst gibt es keinen Tracking-Link. */
   merchantId: MerchantId;
+  /**
+   * Optionaler Pfad beim Merchant (z. B. '/products/xyz/'), damit der Klick auf
+   * der Produktseite landet und nicht auf der Startseite. Wird durch outUrl()
+   * mit dem Tracking-Template verpackt.
+   */
+  path?: string;
   merchantLabel: string;
   title: string;
   detail: string;
@@ -74,6 +80,7 @@ export const deals: Deal[] = [
   {
     id: 'makerwine-advent-presale',
     merchantId: 'makerwine',
+    path: '/products/canned-wine-advent-calendar/',
     merchantLabel: 'Maker Wine',
     title: 'Maker Wine: 12 Days of Canned Wine — $125 instead of $139',
     detail:

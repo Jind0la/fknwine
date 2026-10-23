@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { deal } = Astro.props;
-const href = outUrl(deal.merchantId);
+const href = outUrl(deal.merchantId, deal.path ?? '');
 
 // <time datetime> verlangt ein maschinenlesbares Datum. Die Deal-Felder sind
 // aber Menschentexte ("Oct 16, 2026") und teils gar kein Datum
