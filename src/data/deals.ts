@@ -1,9 +1,12 @@
 // Deal-Feed (Stand 19.10.2026 — jede Zeile am Merchant geprüft).
 // Ab Content-Welle 2: Befüllung/Refresh per Cron aus Deal-Quellen-Scannern.
 
+import type { MerchantId } from './merchants';
+
 export interface Deal {
   id: string;
-  merchantId: 'firstleaf' | 'wtso' | 'winecom' | 'winc';
+  /** Muss ein Key aus merchants.ts sein — sonst gibt es keinen Tracking-Link. */
+  merchantId: MerchantId;
   merchantLabel: string;
   title: string;
   detail: string;
@@ -67,5 +70,19 @@ export const deals: Deal[] = [
     badge: 'INTRO OFFER',
     checked: 'Oct 19, 2026',
     category: 'club',
+  },
+  {
+    id: 'makerwine-advent-presale',
+    merchantId: 'makerwine',
+    merchantLabel: 'Maker Wine',
+    title: 'Maker Wine: 12 Days of Canned Wine — $125 instead of $139',
+    detail:
+      'Presale on the 12-can advent calendar: 12 cans at 250 ml each (⅓ of a bottle), all from female and minority-led wineries, dry with 0 g sugar. Ships early November — the presale price is the only discount, it goes back to $139 afterwards. Free shipping starts at 12 cans, so the box clears the threshold on its own.',
+    price: '$125 · 12 cans',
+    compareAt: '$139 after the presale',
+    badge: 'PRESALE',
+    expires: 'Ships early November',
+    checked: 'Oct 23, 2026',
+    category: 'shop',
   },
 ];
