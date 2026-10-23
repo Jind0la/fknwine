@@ -29,6 +29,7 @@ const clubs = defineCollection({
         'wineinsiders',
         'wsjwine',
         'plonkwineclub',
+        'makerwine',
       ])
       .optional(),
     lastChecked: z.string(),
