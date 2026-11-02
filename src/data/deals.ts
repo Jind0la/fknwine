@@ -1,4 +1,4 @@
-// Deal-Feed (Stand 26.10.2026 — jede Zeile am Merchant geprüft).
+// Deal-Feed (Stand 02.11.2026 — jede Zeile am Merchant geprüft).
 // Ab Content-Welle 2: Befüllung/Refresh per Cron aus Deal-Quellen-Scannern.
 
 import type { MerchantId } from './merchants';
@@ -38,20 +38,20 @@ export const deals: Deal[] = [
     compareAt: '$75 comparable',
     badge: '64% OFF',
     expires: 'While it lasts',
-    checked: 'Oct 26, 2026',
+    checked: 'Nov 2, 2026',
     category: 'shop',
   },
   {
-    id: 'winecom-haunt20',
+    id: 'winecom-feast20',
     merchantId: 'winecom',
     merchantLabel: 'Wine.com',
-    title: 'Wine.com: $20 off orders of $200+',
+    title: 'Wine.com: $20 off orders of $150+',
     detail:
-      '$200 minimum before shipping and tax, and bottles whose price ends in 7 do not count toward it. New customers, one-time use. No Ohio, no select Champagne brands, spirits, Riedel glassware, 187 ml splits or 1.5 L+ bottles. Order must be placed by 10/31.',
+      '$150 minimum excluding shipping and tax, and bottles whose price ends in 7 do not count toward it. One code per order, one-time use per customer, no other promo codes on top. No Ohio; excludes corporate orders, gift certificates, StewardShip fees, select Champagne brands, spirits, Riedel glassware, fine and rare wine, 187 ml splits, Picked subscriptions and 1.5 L+ bottles. Order must be placed by 11/26, and $40 off $300+ (FEAST40) or $75 off $500+ (FEAST75) works on the same terms.',
     price: '−$20',
-    code: 'HAUNT20',
-    expires: 'Oct 31, 2026',
-    checked: 'Oct 26, 2026',
+    code: 'FEAST20',
+    expires: 'Nov 26, 2026',
+    checked: 'Nov 2, 2026',
     category: 'code',
   },
   {
@@ -60,11 +60,10 @@ export const deals: Deal[] = [
     merchantLabel: 'Firstleaf',
     title: 'Firstleaf: first 6 bottles for $44.95',
     detail:
-      '$7.50 a bottle to test if a personalized club beats your supermarket run. New members also get one extra bottle in the box — that part runs through 10/31. After the first six, $99 per shipment (~$16.50 a bottle), no commitment, cancel anytime.',
+      '$7.50 a bottle to test if a personalized club beats your supermarket run. After the first six, $99 per club shipment (~$16.50 a bottle), no extra fees and no commitment — you can change, reschedule or cancel the shipments. Members average 30% off club orders, and a bottle you don\'t like gets credited against your next order.',
     price: '$44.95 · 6 bottles',
     badge: 'INTRO OFFER',
-    expires: 'Oct 31, 2026',
-    checked: 'Oct 26, 2026',
+    checked: 'Nov 2, 2026',
     category: 'club',
   },
   {
@@ -73,11 +72,11 @@ export const deals: Deal[] = [
     merchantLabel: 'Winc',
     title: 'Winc: $100 off over your first 4 orders',
     detail:
-      'Code WINC100 takes $100 total off your first four deliveries — $25 off each shipment, on top of the always-on 20% member discount and free shipping. Packs available without a membership if you want to taste first.',
+      'Code WINC100 takes $100 total off your first four deliveries — $25 off each shipment, on top of the 20% member discount that applies automatically to every order, plus free shipping for members. Packs are available without a membership if you want to taste first.',
     price: '$100 off',
     badge: 'INTRO OFFER',
     code: 'WINC100',
-    checked: 'Oct 26, 2026',
+    checked: 'Nov 2, 2026',
     category: 'club',
   },
   {
@@ -87,12 +86,12 @@ export const deals: Deal[] = [
     merchantLabel: 'Maker Wine',
     title: 'Maker Wine: 12 Days of Canned Wine — $125 instead of $139',
     detail:
-      'Presale on the 12-can advent calendar: 12 cans at 250 ml each (⅓ of a bottle), all from female and minority-led wineries, dry with 0 g sugar. Ships Nov 6. The presale price is the only discount — the calendar is excluded from other sales, promotions and codes — and it goes back to $139 afterwards. Free shipping starts at 12 cans, so the box clears the threshold on its own.',
+      'Presale on the 12-can advent calendar: 12 different cans, four bottles in total, each can one third of a bottle — a mix of red, white, rosé and sparkling from female and minority-led wineries, dry with 0 g sugar. Ships November 6. The presale price is the only discount — the calendar is excluded from other sales, promotions and discounts — and it goes back to $139 afterwards. Free shipping starts at 12 cans, so the box clears the threshold on its own.',
     price: '$125 · 12 cans',
     compareAt: '$139 after the presale',
     badge: 'PRESALE',
     expires: 'Ships Nov 6, 2026',
-    checked: 'Oct 26, 2026',
+    checked: 'Nov 2, 2026',
     category: 'shop',
   },
 ];
